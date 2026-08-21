@@ -2,7 +2,7 @@
 set -euo pipefail
 
 
-if [ -n "$(git status --porcelain)" ]; then
+if [ -n "$(git status --porcelain -- ':!results')" ]; then
 	echo "working tree dirty: commit before measuring" >&2
 	exit 1
 fi
