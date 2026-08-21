@@ -27,3 +27,19 @@ java -jar target/benchmarks.jar
 
 Benchmark results in this repo and in the article are valid only for the machine, JDK build, and ISA they were measured on. Vectorization behavior (and thus every ratio between variants) depends on the CPU's SIMD capabilities; do not transfer the ratios elsewhere. Run the benchmarks on your own hardware instead.
 
+## Measuring
+
+Official runs go through the wrapper script:
+
+```bash
+scripts/bench.sh m1              # full run: -f 3 -wi 5 -i 5, txt + json in results/
+scripts/bench.sh m1-gc -prof gc  # same, with the GC profiler
+```
+
+The script refuses to run on a dirty working tree, rebuilds the jar from
+scratch, and stamps every result file with the commit hash, JDK build, and
+CPU it was measured on. Files in results/ are the raw data the article
+quotes; the .json twins feed the plotting scripts.
+
+Correctness is checked separately from measurement: mvn test asserts that
+all variants produce bit-identical results for the same size and seed.
