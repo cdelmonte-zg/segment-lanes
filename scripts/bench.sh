@@ -19,6 +19,6 @@ jdk_version=$(java --version 2>&1 | head -1)
 mkdir -p results
 
 echo "# commit: ${commit} JDK: ${jdk_version}  CPU: Ryzen 9 7950X3D 
-# java -jar target/benchmarks.jar -f 3 -wi 5 -i 5" > ${filename_txt}
+# java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 ${@:2}" > "${filename_txt}"
 
 java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff "${filename_json}" "${@:2}" | tee -a "${filename_txt}"
