@@ -1,0 +1,276 @@
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.array
+# Parameters: (size = 1024)
+
+# Run progress: 0.00% complete, ETA 00:00:10
+# Fork: 1 of 1
+# Preparing profilers: LinuxPerfAsmProfiler 
+# Profilers consume stdout and stderr from target VM, use -v EXTRA to copy to console
+# Warmup Iteration   1: 556.520 ns/op
+# Warmup Iteration   2: 539.103 ns/op
+# Warmup Iteration   3: 538.103 ns/op
+# Warmup Iteration   4: 535.511 ns/op
+# Warmup Iteration   5: 538.557 ns/op
+Iteration   1: 542.490 ns/op
+Iteration   2: 541.385 ns/op
+Iteration   3: 543.143 ns/op
+Iteration   4: 538.222 ns/op
+Iteration   5: 543.248 ns/op
+# Processing profiler results: LinuxPerfAsmProfiler 
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
+  541.698 ±(99.9%) 8.007 ns/op [Average]
+  (min, avg, max) = (538.222, 541.698, 543.248), stdev = 2.079
+  CI (99.9%): [533.690, 549.705] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:asm":
+PrintAssembly processed: 257675 total address lines.
+Perf output processed (skipped 8.472 seconds):
+ Column 1: cycles (4554 events)
+
+Hottest code regions (>10.00% "cycles" events):
+ Event counts are percents of total event count.
+
+....[Hottest Region 1]..............................................................................
+c2, level 4, dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+
+            0x00007c792c2263de:   vmovups		0x150(%rbx, %rsi, 8), %zmm1
+            0x00007c792c2263e9:   vmulpd		0x150(%rdi, %rsi, 8), %zmm1, %zmm21
+   0.20%    0x00007c792c2263f4:   vmovups		0x110(%rbx, %rsi, 8), %zmm1
+            0x00007c792c2263ff:   vmulpd		0x110(%rdi, %rsi, 8), %zmm1, %zmm1
+   0.02%    0x00007c792c22640a:   vmovups		0xd0(%rbx, %rsi, 8), %zmm2
+            0x00007c792c226415:   vmulpd		0xd0(%rdi, %rsi, 8), %zmm2, %zmm2
+            0x00007c792c226420:   vmovups		0x90(%rbx, %rsi, 8), %zmm3
+            0x00007c792c22642b:   vmulpd		0x90(%rdi, %rsi, 8), %zmm3, %zmm3
+            0x00007c792c226436:   vmovups		0x50(%rbx, %rsi, 8), %zmm4
+            0x00007c792c226441:   vmulpd		0x50(%rdi, %rsi, 8), %zmm4, %zmm4
+   0.07%    0x00007c792c22644c:   vmovups		0x10(%rbx, %rsi, 8), %zmm5
+            0x00007c792c226457:   vmulpd		0x10(%rdi, %rsi, 8), %zmm5, %zmm5
+   0.02%    0x00007c792c226462:   vaddsd		%xmm5, %xmm0, %xmm0
+   0.07%    0x00007c792c226466:   vpshufd		$0xe, %xmm5, %xmm15
+            0x00007c792c22646b:   vaddsd		%xmm15, %xmm0, %xmm0
+   0.11%    0x00007c792c226470:   vextractf128		$1, %ymm5, %xmm15
+            0x00007c792c226476:   vaddsd		%xmm15, %xmm0, %xmm0
+   0.29%    0x00007c792c22647b:   vpshufd		$0xe, %xmm15, %xmm14
+            0x00007c792c226481:   vaddsd		%xmm14, %xmm0, %xmm0
+   0.13%    0x00007c792c226486:   vextracti64x4		$1, %zmm5, %ymm14
+   0.09%    0x00007c792c22648d:   vaddsd		%xmm14, %xmm0, %xmm0
+   0.22%    0x00007c792c226492:   vpshufd		$0xe, %xmm14, %xmm15
+            0x00007c792c226498:   vaddsd		%xmm15, %xmm0, %xmm0;   {other}
+   0.64%    0x00007c792c22649d:   vextractf128		$1, %ymm14, %xmm15
+            0x00007c792c2264a3:   vaddsd		%xmm15, %xmm0, %xmm0
+   0.31%    0x00007c792c2264a8:   vpshufd		$0xe, %xmm15, %xmm14
+            0x00007c792c2264ae:   vaddsd		%xmm14, %xmm0, %xmm0
+   0.70%    0x00007c792c2264b3:   vaddsd		%xmm4, %xmm0, %xmm0
+   0.44%    0x00007c792c2264b7:   vpshufd		$0xe, %xmm4, %xmm14
+            0x00007c792c2264bc:   vaddsd		%xmm14, %xmm0, %xmm0
+   0.83%    0x00007c792c2264c1:   vextractf128		$1, %ymm4, %xmm14
+            0x00007c792c2264c7:   vaddsd		%xmm14, %xmm0, %xmm0
+   0.68%    0x00007c792c2264cc:   vpshufd		$0xe, %xmm14, %xmm5
+            0x00007c792c2264d2:   vaddsd		%xmm5, %xmm0, %xmm0
+   0.90%    0x00007c792c2264d6:   vextracti64x4		$1, %zmm4, %ymm5
+            0x00007c792c2264dd:   vaddsd		%xmm5, %xmm0, %xmm0
+   0.79%    0x00007c792c2264e1:   vpshufd		$0xe, %xmm5, %xmm14
+            0x00007c792c2264e6:   vaddsd		%xmm14, %xmm0, %xmm0
+   2.15%    0x00007c792c2264eb:   vextractf128		$1, %ymm5, %xmm14
+            0x00007c792c2264f1:   vaddsd		%xmm14, %xmm0, %xmm0
+   2.85%    0x00007c792c2264f6:   vpshufd		$0xe, %xmm14, %xmm5
+            0x00007c792c2264fc:   vaddsd		%xmm5, %xmm0, %xmm0
+   0.94%    0x00007c792c226500:   vaddsd		%xmm3, %xmm0, %xmm0
+   0.86%    0x00007c792c226504:   vpshufd		$0xe, %xmm3, %xmm5
+   0.04%    0x00007c792c226509:   vaddsd		%xmm5, %xmm0, %xmm0
+   1.41%    0x00007c792c22650d:   vextractf128		$1, %ymm3, %xmm5
+            0x00007c792c226513:   vaddsd		%xmm5, %xmm0, %xmm0
+   2.13%    0x00007c792c226517:   vpshufd		$0xe, %xmm5, %xmm4
+            0x00007c792c22651c:   vaddsd		%xmm4, %xmm0, %xmm0
+   0.83%    0x00007c792c226520:   vextracti64x4		$1, %zmm3, %ymm4
+            0x00007c792c226527:   vaddsd		%xmm4, %xmm0, %xmm0
+   0.46%    0x00007c792c22652b:   vpshufd		$0xe, %xmm4, %xmm5
+   0.07%    0x00007c792c226530:   vaddsd		%xmm5, %xmm0, %xmm0
+   1.10%    0x00007c792c226534:   vextractf128		$1, %ymm4, %xmm5
+            0x00007c792c22653a:   vaddsd		%xmm5, %xmm0, %xmm0
+   0.92%    0x00007c792c22653e:   vpshufd		$0xe, %xmm5, %xmm4
+            0x00007c792c226543:   vaddsd		%xmm4, %xmm0, %xmm0
+   0.64%    0x00007c792c226547:   vaddsd		%xmm2, %xmm0, %xmm0
+   0.97%    0x00007c792c22654b:   vpshufd		$0xe, %xmm2, %xmm13
+            0x00007c792c226550:   vaddsd		%xmm13, %xmm0, %xmm0
+   1.65%    0x00007c792c226555:   vextractf128		$1, %ymm2, %xmm13
+            0x00007c792c22655b:   vaddsd		%xmm13, %xmm0, %xmm0
+   1.16%    0x00007c792c226560:   vpshufd		$0xe, %xmm13, %xmm3
+            0x00007c792c226566:   vaddsd		%xmm3, %xmm0, %xmm0
+   1.95%    0x00007c792c22656a:   vextracti64x4		$1, %zmm2, %ymm3
+            0x00007c792c226571:   vaddsd		%xmm3, %xmm0, %xmm0
+   1.76%    0x00007c792c226575:   vpshufd		$0xe, %xmm3, %xmm13
+            0x00007c792c22657a:   vaddsd		%xmm13, %xmm0, %xmm0
+   1.16%    0x00007c792c22657f:   vextractf128		$1, %ymm3, %xmm13
+            0x00007c792c226585:   vaddsd		%xmm13, %xmm0, %xmm0
+   1.41%    0x00007c792c22658a:   vpshufd		$0xe, %xmm13, %xmm3
+            0x00007c792c226590:   vaddsd		%xmm3, %xmm0, %xmm0
+   1.34%    0x00007c792c226594:   vaddsd		%xmm1, %xmm0, %xmm0
+   1.52%    0x00007c792c226598:   vpshufd		$0xe, %xmm1, %xmm9  ;   {other}
+            0x00007c792c22659d:   vaddsd		%xmm9, %xmm0, %xmm0
+   1.58%    0x00007c792c2265a2:   vextractf128		$1, %ymm1, %xmm9
+   0.09%    0x00007c792c2265a8:   vaddsd		%xmm9, %xmm0, %xmm0
+   1.12%    0x00007c792c2265ad:   vpshufd		$0xe, %xmm9, %xmm6
+            0x00007c792c2265b3:   vaddsd		%xmm6, %xmm0, %xmm0
+   1.16%    0x00007c792c2265b7:   vextracti64x4		$1, %zmm1, %ymm6
+            0x00007c792c2265be:   vaddsd		%xmm6, %xmm0, %xmm0
+   0.99%    0x00007c792c2265c2:   vpshufd		$0xe, %xmm6, %xmm9
+            0x00007c792c2265c7:   vaddsd		%xmm9, %xmm0, %xmm0
+   1.10%    0x00007c792c2265cc:   vextractf128		$1, %ymm6, %xmm9
+            0x00007c792c2265d2:   vaddsd		%xmm9, %xmm0, %xmm0
+   1.41%    0x00007c792c2265d7:   vpshufd		$0xe, %xmm9, %xmm6
+            0x00007c792c2265dd:   vaddsd		%xmm6, %xmm0, %xmm0
+   1.49%    0x00007c792c2265e1:   vmovdqu64		%zmm21, %zmm1
+            0x00007c792c2265e7:   vaddsd		%xmm1, %xmm0, %xmm0
+   1.43%    0x00007c792c2265eb:   vpshufd		$0xe, %xmm1, %xmm11
+            0x00007c792c2265f0:   vaddsd		%xmm11, %xmm0, %xmm0
+   1.65%    0x00007c792c2265f5:   vextractf128		$1, %ymm1, %xmm11
+            0x00007c792c2265fb:   vaddsd		%xmm11, %xmm0, %xmm0
+   2.02%    0x00007c792c226600:   vpshufd		$0xe, %xmm11, %xmm10
+            0x00007c792c226606:   vaddsd		%xmm10, %xmm0, %xmm0
+   2.13%    0x00007c792c22660b:   vextracti64x4		$1, %zmm1, %ymm10
+            0x00007c792c226612:   vaddsd		%xmm10, %xmm0, %xmm0
+   1.32%    0x00007c792c226617:   vpshufd		$0xe, %xmm10, %xmm11
+            0x00007c792c22661d:   vaddsd		%xmm11, %xmm0, %xmm0
+   1.34%    0x00007c792c226622:   vextractf128		$1, %ymm10, %xmm11
+            0x00007c792c226628:   vaddsd		%xmm11, %xmm0, %xmm0
+   1.41%    0x00007c792c22662d:   vpshufd		$0xe, %xmm11, %xmm10
+            0x00007c792c226633:   vaddsd		%xmm10, %xmm0, %xmm0
+   2.02%    0x00007c792c226638:   vmovdqu64		%zmm20, %zmm1
+            0x00007c792c22663e:   vaddsd		%xmm1, %xmm0, %xmm0
+   2.50%    0x00007c792c226642:   vpshufd		$0xe, %xmm1, %xmm7
+            0x00007c792c226647:   vaddsd		%xmm7, %xmm0, %xmm0
+   1.25%    0x00007c792c22664b:   vextractf128		$1, %ymm1, %xmm7
+            0x00007c792c226651:   vaddsd		%xmm7, %xmm0, %xmm0
+   1.69%    0x00007c792c226655:   vpshufd		$0xe, %xmm7, %xmm12
+            0x00007c792c22665a:   vaddsd		%xmm12, %xmm0, %xmm0
+   1.80%    0x00007c792c22665f:   vextracti64x4		$1, %zmm1, %ymm12
+            0x00007c792c226666:   vaddsd		%xmm12, %xmm0, %xmm0
+   1.38%    0x00007c792c22666b:   vpshufd		$0xe, %xmm12, %xmm7
+            0x00007c792c226671:   vaddsd		%xmm7, %xmm0, %xmm0
+   0.88%    0x00007c792c226675:   vextractf128		$1, %ymm12, %xmm7
+            0x00007c792c22667b:   vaddsd		%xmm7, %xmm0, %xmm0
+   1.32%    0x00007c792c22667f:   vpshufd		$0xe, %xmm7, %xmm12
+            0x00007c792c226684:   vaddsd		%xmm12, %xmm0, %xmm0
+   1.98%    0x00007c792c226689:   vmovdqu64		%zmm19, %zmm2
+            0x00007c792c22668f:   vaddsd		%xmm2, %xmm0, %xmm0
+   1.34%    0x00007c792c226693:   vpshufd		$0xe, %xmm2, %xmm8
+            0x00007c792c226698:   vaddsd		%xmm8, %xmm0, %xmm0 ;   {other}
+   1.82%    0x00007c792c22669d:   vextractf128		$1, %ymm2, %xmm8
+            0x00007c792c2266a3:   vaddsd		%xmm8, %xmm0, %xmm0
+   2.22%    0x00007c792c2266a8:   vpshufd		$0xe, %xmm8, %xmm1
+            0x00007c792c2266ae:   vaddsd		%xmm1, %xmm0, %xmm0
+   3.07%    0x00007c792c2266b2:   vextracti64x4		$1, %zmm2, %ymm1
+            0x00007c792c2266b9:   vaddsd		%xmm1, %xmm0, %xmm0
+   3.38%    0x00007c792c2266bd:   vpshufd		$0xe, %xmm1, %xmm8
+            0x00007c792c2266c2:   vaddsd		%xmm8, %xmm0, %xmm0
+   3.80%    0x00007c792c2266c7:   vextractf128		$1, %ymm1, %xmm8
+            0x00007c792c2266cd:   vaddsd		%xmm8, %xmm0, %xmm0
+   4.00%    0x00007c792c2266d2:   vpshufd		$0xe, %xmm8, %xmm1
+            0x00007c792c2266d8:   vaddsd		%xmm1, %xmm0, %xmm0 ;*dadd {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.PrimitiveArrayDot::compute@26 (line 26)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::array@4 (line 46)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub@17 (line 236)
+   2.24%    0x00007c792c2266dc:   leal		0x40(%rsi), %ebp
+            0x00007c792c2266df:   cmpl		%r8d, %ebp
+            0x00007c792c2266e2:   jl		0x7c792c2263b0      ;*if_icmpge {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.PrimitiveArrayDot::compute@9 (line 25)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::array@4 (line 46)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub@17 (line 236)
+            0x00007c792c2266e8:   movq		0x30(%r15), %r8     ; ImmutableOopMap {rcx=Oop rbx=Oop rdi=Oop r14=Oop xmm16=Oop xmm17=Oop xmm18=Oop }
+                                                                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+....................................................................................................
+  90.51%  <total for region 1>
+
+....[Hottest Regions]...............................................................................
+  90.51%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+   4.66%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+   0.55%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+   0.37%   [kernel.kallsyms]  __perf_event_task_sched_in 
+   0.33%   [kernel.kallsyms]  perf_ctx_enable 
+   0.22%                      <unknown> 
+   0.22%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+   0.15%   [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
+   0.13%           libjvm.so  defaultStream::hold(long) 
+   0.13%           libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
+   0.11%   [kernel.kallsyms]  x86_pmu_enable 
+   0.11%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+   0.11%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.09%   [kernel.kallsyms]  entry_SYSCALL_64 
+   0.09%   [kernel.kallsyms]  do_syscall_64 
+   0.09%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+   0.09%           libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
+   0.07%   [kernel.kallsyms]  entry_SYSCALL_64_after_hwframe 
+   0.07%   [kernel.kallsyms]  srso_alias_safe_ret 
+   0.07%   [kernel.kallsyms]  rw_verify_area 
+   1.82%  <...other 69 warm regions...>
+....................................................................................................
+  99.98%  <totals>
+
+....[Hottest Methods (after inlining)]..............................................................
+  96.31%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_array_jmhTest::array_avgt_jmhStub, version 5, compile id 941 
+   0.37%   [kernel.kallsyms]  __perf_event_task_sched_in 
+   0.35%                      <unknown> 
+   0.33%   [kernel.kallsyms]  perf_ctx_enable 
+   0.24%           libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
+   0.15%   [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
+   0.13%           libjvm.so  defaultStream::hold(long) 
+   0.11%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.11%   [kernel.kallsyms]  do_syscall_64 
+   0.11%   [kernel.kallsyms]  x86_pmu_enable 
+   0.09%   [kernel.kallsyms]  entry_SYSCALL_64 
+   0.07%    libcapstone.so.4  [unknown] 
+   0.07%   [kernel.kallsyms]  srso_alias_safe_ret 
+   0.07%   [kernel.kallsyms]  _copy_from_iter 
+   0.07%   [kernel.kallsyms]  rw_verify_area 
+   0.07%   [kernel.kallsyms]  entry_SYSCALL_64_after_hwframe 
+   0.07%   [kernel.kallsyms]  anon_pipe_write 
+   0.04%           libjvm.so  jio_print 
+   0.04%   [kernel.kallsyms]  arch_exit_to_user_mode_prepare.isra.0 
+   0.04%   [kernel.kallsyms]  __task_pid_nr_ns 
+   1.14%  <...other 48 warm methods...>
+....................................................................................................
+  99.98%  <totals>
+
+....[Distribution by Source]........................................................................
+  96.31%         c2, level 4
+   2.37%   [kernel.kallsyms]
+   0.70%           libjvm.so
+   0.35%                    
+   0.13%           libc.so.6
+   0.07%    libcapstone.so.4
+   0.02%         c1, level 3
+   0.02%         interpreter
+....................................................................................................
+  99.98%  <totals>
+
+
+
+# Run complete. Total time: 00:00:15
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                  (size)  Mode  Cnt    Score   Error  Units
+DotProductBench.array        1024  avgt    5  541.698 ± 8.007  ns/op
+DotProductBench.array:asm    1024  avgt           NaN            ---

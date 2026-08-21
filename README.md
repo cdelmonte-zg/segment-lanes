@@ -43,3 +43,17 @@ quotes; the .json twins feed the plotting scripts.
 
 Correctness is checked separately from measurement: mvn test asserts that
 all variants produce bit-identical results for the same size and seed.
+
+### Assembly verification
+
+Hot-loop disassembly runs need perf counters unlocked and an hsdis library
+(not shipped with the JDK; any binutils-based build works):
+
+```bash
+scripts/bench-system.sh setup    # governor + perf counters; `restore` when done
+LD_LIBRARY_PATH=<path-to-hsdis-dir> \
+java -jar target/benchmarks.jar 'DotProductBench.array$' -p size=1024 \
+-f 1 -wi 5 -i 5 -prof perfasm | tee results/<date>-<tag>-perfasm.txt
+```
+
+See docs/reading-perfasm.md for how to read the output.
