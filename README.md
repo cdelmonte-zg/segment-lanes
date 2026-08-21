@@ -57,3 +57,19 @@ java -jar target/benchmarks.jar 'DotProductBench.array$' -p size=1024 \
 ```
 
 See docs/reading-perfasm.md for how to read the output.
+
+## Reading
+
+Specifications this lab builds on:
+
+- [JEP 454: Foreign Function & Memory API](https://openjdk.org/jeps/454) — final in JDK 22; `MemorySegment`, `Arena`, `ValueLayout`.
+- [JEP 508: Vector API (Tenth Incubator)](https://openjdk.org/jeps/508) — the incubation status shipped with JDK 25.
+- [JMH samples](https://github.com/openjdk/jmh/tree/master/jmh-samples) — the canonical benchmark-methodology walkthrough.
+
+Background on the mechanisms the measurements expose:
+
+- Ulrich Drepper, [*What Every Programmer Should Know About Memory*](https://akkadia.org/drepper/cpumemory.pdf) (2007) — cache hierarchy, locality, prefetching; sections 1–3 and 6 cover everything this lab touches.
+- Denis Bakhvalov, [*Performance Analysis and Tuning on Modern CPUs*](https://easyperf.net) — modern measurement practice, SIMD, reading profiles.
+- Aleksey Shipilëv, [*JVM Anatomy Quarks*](https://shipilev.net/jvm/anatomy-quarks/) — what HotSpot actually does, in digestible pieces.
+- [Agner Fog's instruction tables](https://agner.org/optimize/) and [uops.info](https://uops.info) — per-microarchitecture instruction latency and throughput.
+- [felixcloutier.com/x86](https://www.felixcloutier.com/x86/) — per-instruction x86 reference.
