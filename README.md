@@ -26,3 +26,4 @@ java -jar target/benchmarks.jar
 ## A note on the numbers
 
 Benchmark results in this repo and in the article are valid only for the machine, JDK build, and ISA they were measured on. Vectorization behavior (and thus every ratio between variants) depends on the CPU's SIMD capabilities; do not transfer the ratios elsewhere. Run the benchmarks on your own hardware instead.
+
