@@ -13,10 +13,12 @@ import org.openjdk.jmh.annotations.Param;
 import org.openjdk.jmh.annotations.Scope;
 import org.openjdk.jmh.annotations.Setup;
 import org.openjdk.jmh.annotations.State;
+import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 
 import dev.cdelmonte.segmentlanes.compute.BoxedListDot;
 import dev.cdelmonte.segmentlanes.compute.PrimitiveArrayDot;
+import dev.cdelmonte.segmentlanes.compute.SegmentScalarDot;
 
 @BenchmarkMode(Mode.AverageTime)          // report result: e.g. average time for invocation
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -31,6 +33,7 @@ public class DotProductBench {
 
     PrimitiveArrayDot arrayDot;
     BoxedListDot boxedDot;
+    SegmentScalarDot segmentScalarDot;
 
     @Setup(Level.Trial)                   // executed just one time x fork, not measured
     public void setup() {
@@ -39,6 +42,9 @@ public class DotProductBench {
 
         boxedDot = new BoxedListDot();
         boxedDot.setup(size, 42L);
+
+        segmentScalarDot = new SegmentScalarDot();
+        segmentScalarDot.setup(size, 42L);
     }
 
     @Benchmark                            // method measured: only the kernel
@@ -49,5 +55,17 @@ public class DotProductBench {
     @Benchmark
     public double list() {
         return boxedDot.compute();
+    }
+
+    @Benchmark
+    public double segmentScalar() {
+        return segmentScalarDot.compute();
+    }
+
+    @TearDown(Level.Trial)
+    public void tearDown() {
+        arrayDot.close();
+        boxedDot.close();
+        segmentScalarDot.close();
     }
 }
