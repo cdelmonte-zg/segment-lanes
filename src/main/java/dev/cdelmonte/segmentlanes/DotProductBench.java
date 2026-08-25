@@ -16,6 +16,7 @@ import org.openjdk.jmh.annotations.State;
 import org.openjdk.jmh.annotations.TearDown;
 import org.openjdk.jmh.annotations.Warmup;
 
+import dev.cdelmonte.segmentlanes.compute.ArrayVectorDot;
 import dev.cdelmonte.segmentlanes.compute.BoxedListDot;
 import dev.cdelmonte.segmentlanes.compute.PrimitiveArrayDot;
 import dev.cdelmonte.segmentlanes.compute.SegmentScalarDot;
@@ -34,6 +35,7 @@ public class DotProductBench {
     PrimitiveArrayDot arrayDot;
     BoxedListDot boxedDot;
     SegmentScalarDot segmentScalarDot;
+    ArrayVectorDot arrayVectorDot;
 
     @Setup(Level.Trial)                   // executed just one time x fork, not measured
     public void setup() {
@@ -45,6 +47,9 @@ public class DotProductBench {
 
         segmentScalarDot = new SegmentScalarDot();
         segmentScalarDot.setup(size, 42L);
+
+        arrayVectorDot = new ArrayVectorDot();
+        arrayVectorDot.setup(size, 42L);
     }
 
     @Benchmark                            // method measured: only the kernel
@@ -62,10 +67,16 @@ public class DotProductBench {
         return segmentScalarDot.compute();
     }
 
+    @Benchmark
+    public double arrayVector() {
+        return arrayVectorDot.compute();
+    }
+
     @TearDown(Level.Trial)
     public void tearDown() {
         arrayDot.close();
         boxedDot.close();
         segmentScalarDot.close();
+        arrayVectorDot.close();
     }
 }

@@ -41,8 +41,17 @@ scratch, and stamps every result file with the commit hash, JDK build, and
 CPU it was measured on. Files in results/ are the raw data the article
 quotes; the .json twins feed the plotting scripts.
 
-Correctness is checked separately from measurement: mvn test asserts that
-all variants produce bit-identical results for the same size and seed.
+Correctness is checked separately from measurement, with two levels of
+guarantee. For the same size and seed, `mvn test` asserts that the scalar
+variants (`BoxedListDot`, `PrimitiveArrayDot`, `SegmentScalarDot`) produce
+bit-identical results: they all add the products in index order, and C2
+preserves that order. The Vector API variants are held to a relative
+tolerance instead. They accumulate one partial sum per lane and merge the
+lanes at the end, so the addition order differs by construction and the
+last bits legitimately diverge (at size 1024, seed 42: `263.7864929552308`
+scalar vs `263.78649295523115` vectorized, about 6 ulp). Neither value is
+"the right one"; the scalar loop fixes the order, the vectorized loop gives
+it up explicitly, which is what makes the lanes possible.
 
 ### Assembly verification
 
