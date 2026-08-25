@@ -1,0 +1,192 @@
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 1024)
+
+# Run progress: 0.00% complete, ETA 00:00:10
+# Fork: 1 of 1
+# Preparing profilers: LinuxPerfAsmProfiler 
+# Profilers consume stdout and stderr from target VM, use -v EXTRA to copy to console
+# Warmup Iteration   1: 208.552 ns/op
+# Warmup Iteration   2: 68.608 ns/op
+# Warmup Iteration   3: 67.987 ns/op
+# Warmup Iteration   4: 68.278 ns/op
+# Warmup Iteration   5: 67.971 ns/op
+Iteration   1: 68.066 ns/op
+Iteration   2: 67.266 ns/op
+Iteration   3: 68.198 ns/op
+Iteration   4: 67.928 ns/op
+Iteration   5: 68.713 ns/op
+# Processing profiler results: LinuxPerfAsmProfiler 
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  68.034 ±(99.9%) 2.011 ns/op [Average]
+  (min, avg, max) = (67.266, 68.034, 68.713), stdev = 0.522
+  CI (99.9%): [66.024, 70.045] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:asm":
+PrintAssembly processed: 322812 total address lines.
+Perf output processed (skipped 8.841 seconds):
+ Column 1: cycles (4559 events)
+
+Hottest code regions (>10.00% "cycles" events):
+ Event counts are percents of total event count.
+
+....[Hottest Region 1]..............................................................................
+c2, level 4, dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+
+                                                                      ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 43)
+                                                                      ; - jdk.incubator.vector.DoubleVector::add@5 (line 1263)
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.ArrayVectorDot::compute@63 (line 35)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::arrayVector@4 (line 72)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub@17 (line 238)
+            0x000076e7f423470f:   addq		$-0x38, %rax
+            0x000076e7f4234713:   leaq		(%r12, %r11, 8), %rbp
+            0x000076e7f4234717:   cmpq		$-0x80000000, %rax
+            0x000076e7f423471d:   movq		$-0x80000000, %r11
+            0x000076e7f4234724:   cmovlq		%r11, %rax
+   0.22%    0x000076e7f4234728:   shlq		$3, %rsi
+            0x000076e7f423472c:   movl		%eax, %r11d
+            0x000076e7f423472f:   cmpl		$8, %r11d
+            0x000076e7f4234733:   jle		0x76e7f4234940
+            0x000076e7f4234739:   leaq		(%r12, %r10, 8), %rax;   {other}
+            0x000076e7f423473d:   movl		$8, %ebx
+   0.02%    0x000076e7f4234742:   movl		%r11d, %r9d
+            0x000076e7f4234745:   subl		%ebx, %r9d
+            0x000076e7f4234748:   cmpl		%ebx, %r11d
+            0x000076e7f423474b:   cmovll		%ecx, %r9d
+            0x000076e7f423474f:   cmpl		$0xfa00, %r9d
+            0x000076e7f4234756:   cmoval		%edx, %r9d
+   0.24%    0x000076e7f423475a:   addl		%ebx, %r9d
+            0x000076e7f423475d:   nop		
+            0x000076e7f4234760:   vmovups		0x90(%rbp, %rbx, 8), %zmm4
+            0x000076e7f423476b:   vmulpd		0x90(%rsi, %rbx, 8), %zmm4, %zmm4
+   0.44%    0x000076e7f4234776:   vmovups		0x10(%rbp, %rbx, 8), %zmm5
+            0x000076e7f4234781:   vmulpd		0x10(%rsi, %rbx, 8), %zmm5, %zmm5
+   0.64%    0x000076e7f423478c:   vmovups		0x1d0(%rbp, %rbx, 8), %zmm6
+   0.07%    0x000076e7f4234797:   vmulpd		0x1d0(%rsi, %rbx, 8), %zmm6, %zmm6
+   1.23%    0x000076e7f42347a2:   vmovups		0x50(%rbp, %rbx, 8), %zmm7
+   3.66%    0x000076e7f42347ad:   vmulpd		0x50(%rsi, %rbx, 8), %zmm7, %zmm7
+   1.32%    0x000076e7f42347b8:   vmovups		0x190(%rbp, %rbx, 8), %zmm9
+   0.15%    0x000076e7f42347c3:   vmulpd		0x190(%rsi, %rbx, 8), %zmm9, %zmm9
+   1.80%    0x000076e7f42347ce:   vmovups		0x150(%rbp, %rbx, 8), %zmm10
+   0.11%    0x000076e7f42347d9:   vmulpd		0x150(%rsi, %rbx, 8), %zmm10, %zmm10
+   2.81%    0x000076e7f42347e4:   vmovups		0x110(%rbp, %rbx, 8), %zmm12
+   0.22%    0x000076e7f42347ef:   vmulpd		0x110(%rsi, %rbx, 8), %zmm12, %zmm12
+   4.21%    0x000076e7f42347fa:   vmovups		0xd0(%rbp, %rbx, 8), %zmm13
+   2.17%    0x000076e7f4234805:   vmulpd		0xd0(%rsi, %rbx, 8), %zmm13, %zmm13
+   4.72%    0x000076e7f4234810:   vaddpd		%zmm8, %zmm5, %zmm5
+   1.71%    0x000076e7f4234816:   vaddpd		%zmm5, %zmm7, %zmm5
+   5.97%    0x000076e7f423481c:   vaddpd		%zmm4, %zmm5, %zmm4
+   6.62%    0x000076e7f4234822:   vaddpd		%zmm4, %zmm13, %zmm4
+   8.03%    0x000076e7f4234828:   vaddpd		%zmm4, %zmm12, %zmm4
+   8.88%    0x000076e7f423482e:   vaddpd		%zmm4, %zmm10, %zmm4
+   9.70%    0x000076e7f4234834:   vaddpd		%zmm4, %zmm9, %zmm4 ;*invokestatic reductionCoerced {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - jdk.incubator.vector.DoubleVector::reduceLanesTemplate@78 (line 2681)
+                                                                      ; - jdk.incubator.vector.Double512Vector::reduceLanes@2 (line 317)
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.ArrayVectorDot::compute@89 (line 37)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::arrayVector@4 (line 72)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub@17 (line 238)
+  10.09%    0x000076e7f423483a:   vaddpd		%zmm4, %zmm6, %zmm8 ;*invokestatic binaryOp {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - jdk.incubator.vector.DoubleVector::lanewiseTemplate@113 (line 803)
+                                                                      ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 278)
+                                                                      ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 43)
+                                                                      ; - jdk.incubator.vector.DoubleVector::add@5 (line 1263)
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.ArrayVectorDot::compute@63 (line 35)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::arrayVector@4 (line 72)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub@17 (line 238)
+                                                                      ;   {other}
+  10.09%    0x000076e7f4234840:   addl		$0x40, %ebx
+            0x000076e7f4234843:   cmpl		%r9d, %ebx
+            0x000076e7f4234846:   jl		0x76e7f4234760
+....................................................................................................
+  85.11%  <total for region 1>
+
+....[Hottest Regions]...............................................................................
+  85.11%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+   5.77%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+   4.19%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+   0.48%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+   0.29%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+   0.22%   [kernel.kallsyms]  perf_ctx_enable 
+   0.20%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+   0.20%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.15%   [kernel.kallsyms]  syscall_return_via_sysret 
+   0.13%   [kernel.kallsyms]  __raw_spin_lock_irqsave 
+   0.11%   [kernel.kallsyms]  entry_SYSCALL_64 
+   0.11%                      <unknown> 
+   0.11%   [kernel.kallsyms]  perf_ctx_unlock 
+   0.11%                      <unknown> 
+   0.11%   [kernel.kallsyms]  do_syscall_64 
+   0.11%   [kernel.kallsyms]  _raw_spin_unlock 
+   0.11%           libjvm.so  defaultStream::hold(long) 
+   0.09%   [kernel.kallsyms]  __perf_event_task_sched_in 
+   0.09%           libjvm.so  defaultStream::write(char const*, unsigned long) 
+   0.09%                      <unknown> 
+   2.22%  <...other 84 warm regions...>
+....................................................................................................
+  99.98%  <totals>
+
+....[Hottest Methods (after inlining)]..............................................................
+  96.03%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1148 
+   0.61%                      <unknown> 
+   0.22%   [kernel.kallsyms]  perf_ctx_enable 
+   0.20%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.18%   [kernel.kallsyms]  do_syscall_64 
+   0.15%   [kernel.kallsyms]  syscall_return_via_sysret 
+   0.13%   [kernel.kallsyms]  __raw_spin_lock_irqsave 
+   0.11%   [kernel.kallsyms]  _raw_spin_unlock 
+   0.11%           libjvm.so  defaultStream::hold(long) 
+   0.11%           libjvm.so  defaultStream::write(char const*, unsigned long) 
+   0.11%   [kernel.kallsyms]  perf_ctx_unlock 
+   0.11%   [kernel.kallsyms]  entry_SYSCALL_64 
+   0.09%           libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
+   0.09%   [kernel.kallsyms]  __perf_event_task_sched_in 
+   0.09%   [kernel.kallsyms]  anon_pipe_write 
+   0.07%   [kernel.kallsyms]  arch_exit_to_user_mode_prepare.isra.0 
+   0.07%           libjvm.so  xmlStream::write_text(char const*, unsigned long) 
+   0.07%   [kernel.kallsyms]  srso_alias_safe_ret 
+   0.07%   [kernel.kallsyms]  vfs_write 
+   0.07%           libc.so.6  __GI___pthread_enable_asynccancel 
+   1.32%  <...other 57 warm methods...>
+....................................................................................................
+  99.98%  <totals>
+
+....[Distribution by Source]........................................................................
+  96.03%         c2, level 4
+   2.13%   [kernel.kallsyms]
+   0.92%           libjvm.so
+   0.61%                    
+   0.24%           libc.so.6
+   0.04%    libcapstone.so.4
+....................................................................................................
+  99.98%  <totals>
+
+
+
+# Run complete. Total time: 00:00:15
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                        (size)  Mode  Cnt   Score   Error  Units
+DotProductBench.arrayVector        1024  avgt    5  68.034 ± 2.011  ns/op
+DotProductBench.arrayVector:asm    1024  avgt          NaN            ---
