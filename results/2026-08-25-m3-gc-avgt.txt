@@ -1,0 +1,1829 @@
+# commit: 71bffc5 JDK: openjdk 25.0.3 2026-04-21  CPU: Ryzen 9 7950X3D 
+# java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff results/2026-08-25-m3-gc-avgt.json -prof gc
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.array
+# Parameters: (size = 1024)
+
+# Run progress: 0.00% complete, ETA 00:06:00
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 552.193 ns/op
+# Warmup Iteration   2: 537.259 ns/op
+# Warmup Iteration   3: 554.157 ns/op
+# Warmup Iteration   4: 551.139 ns/op
+# Warmup Iteration   5: 561.324 ns/op
+Iteration   1: 548.709 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 544.047 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 548.378 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 561.371 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 561.302 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.005 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 2.78% complete, ETA 00:05:55
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 557.061 ns/op
+# Warmup Iteration   2: 562.369 ns/op
+# Warmup Iteration   3: 546.953 ns/op
+# Warmup Iteration   4: 548.304 ns/op
+# Warmup Iteration   5: 548.339 ns/op
+Iteration   1: 538.502 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 555.981 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 545.009 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 546.188 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 545.824 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.005 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 5.56% complete, ETA 00:05:45
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 565.513 ns/op
+# Warmup Iteration   2: 557.175 ns/op
+# Warmup Iteration   3: 551.519 ns/op
+# Warmup Iteration   4: 544.291 ns/op
+# Warmup Iteration   5: 551.436 ns/op
+Iteration   1: 548.989 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 556.586 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 552.846 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 542.242 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 545.766 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.005 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
+  549.449 ±(99.9%) 7.271 ns/op [Average]
+  (min, avg, max) = (538.502, 549.449, 561.371), stdev = 6.802
+  CI (99.9%): [542.178, 556.721] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate.norm":
+  0.004 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (0.004, 0.004, 0.005), stdev = 0.001
+  CI (99.9%): [0.004, 0.004] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.array
+# Parameters: (size = 65536)
+
+# Run progress: 8.33% complete, ETA 00:05:35
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 37801.193 ns/op
+# Warmup Iteration   2: 37241.882 ns/op
+# Warmup Iteration   3: 36256.145 ns/op
+# Warmup Iteration   4: 37344.893 ns/op
+# Warmup Iteration   5: 37114.015 ns/op
+Iteration   1: 36585.877 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.254 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 37814.097 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.263 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 37629.823 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.261 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 36901.212 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.256 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 36472.232 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.308 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 11.11% complete, ETA 00:05:25
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 37104.581 ns/op
+# Warmup Iteration   2: 36913.385 ns/op
+# Warmup Iteration   3: 37300.530 ns/op
+# Warmup Iteration   4: 36493.519 ns/op
+# Warmup Iteration   5: 36222.631 ns/op
+Iteration   1: 36171.665 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.251 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 36077.655 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.250 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 36437.861 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.253 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 36083.285 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.251 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 37170.263 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.314 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 13.89% complete, ETA 00:05:14
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 36458.005 ns/op
+# Warmup Iteration   2: 36471.741 ns/op
+# Warmup Iteration   3: 35766.510 ns/op
+# Warmup Iteration   4: 36355.267 ns/op
+# Warmup Iteration   5: 36287.022 ns/op
+Iteration   1: 36048.702 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.250 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 36078.259 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.250 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 36046.365 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.250 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 36097.086 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.251 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 36489.559 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.308 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
+  36540.263 ±(99.9%) 626.686 ns/op [Average]
+  (min, avg, max) = (36046.365, 36540.263, 37814.097), stdev = 586.202
+  CI (99.9%): [35913.577, 37166.949] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate.norm":
+  0.265 ±(99.9%) 0.025 B/op [Average]
+  (min, avg, max) = (0.250, 0.265, 0.314), stdev = 0.024
+  CI (99.9%): [0.239, 0.290] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.array
+# Parameters: (size = 16777216)
+
+# Run progress: 16.67% complete, ETA 00:05:04
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10178560.404 ns/op
+# Warmup Iteration   2: 10066667.450 ns/op
+# Warmup Iteration   3: 10284458.214 ns/op
+# Warmup Iteration   4: 10125603.535 ns/op
+# Warmup Iteration   5: 10175644.040 ns/op
+Iteration   1: 10055634.970 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.120 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 10079705.310 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.760 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 10542891.989 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 73.095 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 10106769.747 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 70.141 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 10418881.083 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 88.000 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 19.44% complete, ETA 00:05:01
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10232127.857 ns/op
+# Warmup Iteration   2: 10078466.400 ns/op
+# Warmup Iteration   3: 10137016.879 ns/op
+# Warmup Iteration   4: 10111338.323 ns/op
+# Warmup Iteration   5: 10260638.265 ns/op
+Iteration   1: 10097319.560 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.440 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 10088649.410 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.440 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 10047826.760 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.440 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 10079376.420 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.760 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 10013556.000 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 84.480 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 22.22% complete, ETA 00:04:55
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10113724.737 ns/op
+# Warmup Iteration   2: 10210296.449 ns/op
+# Warmup Iteration   3: 10100983.350 ns/op
+# Warmup Iteration   4: 10103219.798 ns/op
+# Warmup Iteration   5: 10214359.061 ns/op
+Iteration   1: 10157526.374 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 70.141 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 10023690.220 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.440 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 10103448.111 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 70.141 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 10069578.580 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.760 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 10174730.263 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 85.333 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
+  10137305.653 ±(99.9%) 157999.771 ns/op [Average]
+  (min, avg, max) = (10013556.000, 10137305.653, 10542891.989), stdev = 147793.084
+  CI (99.9%): [9979305.882, 10295305.424] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.007] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate.norm":
+  73.166 ±(99.9%) 7.173 B/op [Average]
+  (min, avg, max) = (69.120, 73.166, 88.000), stdev = 6.710
+  CI (99.9%): [65.993, 80.339] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 1024)
+
+# Run progress: 25.00% complete, ETA 00:04:48
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 73.484 ns/op
+# Warmup Iteration   2: 70.136 ns/op
+# Warmup Iteration   3: 69.882 ns/op
+# Warmup Iteration   4: 70.593 ns/op
+# Warmup Iteration   5: 69.455 ns/op
+Iteration   1: 70.295 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 70.740 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 69.928 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 70.346 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 69.892 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 27.78% complete, ETA 00:04:36
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 71.543 ns/op
+# Warmup Iteration   2: 68.617 ns/op
+# Warmup Iteration   3: 68.968 ns/op
+# Warmup Iteration   4: 68.825 ns/op
+# Warmup Iteration   5: 68.723 ns/op
+Iteration   1: 67.907 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 68.152 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 68.785 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 68.836 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 67.978 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 30.56% complete, ETA 00:04:24
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 71.424 ns/op
+# Warmup Iteration   2: 67.962 ns/op
+# Warmup Iteration   3: 68.054 ns/op
+# Warmup Iteration   4: 68.495 ns/op
+# Warmup Iteration   5: 68.107 ns/op
+Iteration   1: 68.019 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 68.299 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 67.952 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 69.024 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 68.084 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  68.949 ±(99.9%) 1.090 ns/op [Average]
+  (min, avg, max) = (67.907, 68.949, 70.740), stdev = 1.020
+  CI (99.9%): [67.859, 70.039] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate.norm":
+  ≈ 10⁻³ B/op
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 65536)
+
+# Run progress: 33.33% complete, ETA 00:04:12
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 7975.635 ns/op
+# Warmup Iteration   2: 7677.141 ns/op
+# Warmup Iteration   3: 7858.481 ns/op
+# Warmup Iteration   4: 7919.506 ns/op
+# Warmup Iteration   5: 7905.913 ns/op
+Iteration   1: 7792.705 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.054 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 7860.698 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 7949.751 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 8029.964 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 7787.216 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.066 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 36.11% complete, ETA 00:04:01
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 7883.933 ns/op
+# Warmup Iteration   2: 7687.615 ns/op
+# Warmup Iteration   3: 7826.115 ns/op
+# Warmup Iteration   4: 7875.255 ns/op
+# Warmup Iteration   5: 7854.603 ns/op
+Iteration   1: 7779.333 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.054 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 7853.873 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.054 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 7767.042 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.054 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 8154.307 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.057 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 7821.434 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.066 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 38.89% complete, ETA 00:03:50
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 7956.579 ns/op
+# Warmup Iteration   2: 7668.637 ns/op
+# Warmup Iteration   3: 7757.203 ns/op
+# Warmup Iteration   4: 7804.564 ns/op
+# Warmup Iteration   5: 7714.342 ns/op
+Iteration   1: 7653.669 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.053 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 7702.100 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.053 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 7673.951 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.053 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 7803.593 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.054 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 7640.353 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.065 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  7817.999 ±(99.9%) 150.415 ns/op [Average]
+  (min, avg, max) = (7640.353, 7817.999, 8154.307), stdev = 140.698
+  CI (99.9%): [7667.584, 7968.414] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate.norm":
+  0.057 ±(99.9%) 0.005 B/op [Average]
+  (min, avg, max) = (0.053, 0.057, 0.066), stdev = 0.005
+  CI (99.9%): [0.052, 0.062] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 16777216)
+
+# Run progress: 41.67% complete, ETA 00:03:39
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 6814320.136 ns/op
+# Warmup Iteration   2: 6003574.144 ns/op
+# Warmup Iteration   3: 5968029.238 ns/op
+# Warmup Iteration   4: 5976126.565 ns/op
+# Warmup Iteration   5: 5976792.875 ns/op
+Iteration   1: 5994311.210 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.581 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 5991216.964 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.581 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 5970373.637 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.333 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 5963380.524 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.333 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 5969026.655 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 50.286 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 44.44% complete, ETA 00:03:30
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 6960872.361 ns/op
+# Warmup Iteration   2: 5966381.214 ns/op
+# Warmup Iteration   3: 5946857.314 ns/op
+# Warmup Iteration   4: 5387409.376 ns/op
+# Warmup Iteration   5: 5992098.443 ns/op
+Iteration   1: 5963718.673 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.524 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 5952759.385 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 40.899 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 5956135.643 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.333 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 5944739.734 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 40.899 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 5983884.583 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 50.286 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 47.22% complete, ETA 00:03:21
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 6918863.462 ns/op
+# Warmup Iteration   2: 5946294.609 ns/op
+# Warmup Iteration   3: 5953979.167 ns/op
+# Warmup Iteration   4: 5990559.467 ns/op
+# Warmup Iteration   5: 5946404.231 ns/op
+Iteration   1: 5949357.160 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 40.899 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 5962969.899 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.143 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 5947731.811 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.089 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 5990820.317 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 41.581 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 5950426.805 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 49.988 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  5966056.867 ±(99.9%) 18071.933 ns/op [Average]
+  (min, avg, max) = (5944739.734, 5966056.867, 5994311.210), stdev = 16904.497
+  CI (99.9%): [5947984.933, 5984128.800] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.007] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate.norm":
+  43.050 ±(99.9%) 3.958 B/op [Average]
+  (min, avg, max) = (40.899, 43.050, 50.286), stdev = 3.702
+  CI (99.9%): [39.093, 47.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.list
+# Parameters: (size = 1024)
+
+# Run progress: 50.00% complete, ETA 00:03:12
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 596.847 ns/op
+# Warmup Iteration   2: 592.146 ns/op
+# Warmup Iteration   3: 597.638 ns/op
+# Warmup Iteration   4: 593.177 ns/op
+# Warmup Iteration   5: 591.368 ns/op
+Iteration   1: 592.982 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 591.289 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 596.413 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 591.366 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 592.598 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.005 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 52.78% complete, ETA 00:03:00
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 608.134 ns/op
+# Warmup Iteration   2: 590.982 ns/op
+# Warmup Iteration   3: 594.114 ns/op
+# Warmup Iteration   4: 594.449 ns/op
+# Warmup Iteration   5: 589.180 ns/op
+Iteration   1: 591.193 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 589.055 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 596.693 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 592.564 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 593.317 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.005 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 55.56% complete, ETA 00:02:49
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 597.763 ns/op
+# Warmup Iteration   2: 597.596 ns/op
+# Warmup Iteration   3: 593.813 ns/op
+# Warmup Iteration   4: 590.928 ns/op
+# Warmup Iteration   5: 589.282 ns/op
+Iteration   1: 591.352 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 589.369 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 596.158 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 588.867 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 594.129 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.005 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
+  592.490 ±(99.9%) 2.718 ns/op [Average]
+  (min, avg, max) = (588.867, 592.490, 596.693), stdev = 2.542
+  CI (99.9%): [589.772, 595.208] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate.norm":
+  0.004 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (0.004, 0.004, 0.005), stdev = 0.001
+  CI (99.9%): [0.004, 0.005] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.list
+# Parameters: (size = 65536)
+
+# Run progress: 58.33% complete, ETA 00:02:38
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 40018.207 ns/op
+# Warmup Iteration   2: 39166.083 ns/op
+# Warmup Iteration   3: 39415.490 ns/op
+# Warmup Iteration   4: 39254.425 ns/op
+# Warmup Iteration   5: 39092.183 ns/op
+Iteration   1: 39386.560 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.273 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 39146.404 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.272 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 39568.703 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.273 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 39577.725 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.275 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 39213.546 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.331 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 61.11% complete, ETA 00:02:28
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 39776.974 ns/op
+# Warmup Iteration   2: 39430.476 ns/op
+# Warmup Iteration   3: 39530.942 ns/op
+# Warmup Iteration   4: 39280.352 ns/op
+# Warmup Iteration   5: 40196.218 ns/op
+Iteration   1: 39417.480 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.274 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 39237.799 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.272 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 39659.646 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.275 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 39239.918 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.272 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 39262.132 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.330 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 63.89% complete, ETA 00:02:17
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 40151.444 ns/op
+# Warmup Iteration   2: 39516.176 ns/op
+# Warmup Iteration   3: 39260.357 ns/op
+# Warmup Iteration   4: 39172.929 ns/op
+# Warmup Iteration   5: 39235.155 ns/op
+Iteration   1: 39010.798 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.271 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 38885.442 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.270 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 39346.160 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.273 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 38892.386 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.270 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 39017.571 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.330 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
+  39257.485 ±(99.9%) 258.157 ns/op [Average]
+  (min, avg, max) = (38885.442, 39257.485, 39659.646), stdev = 241.480
+  CI (99.9%): [38999.327, 39515.642] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate.norm":
+  0.284 ±(99.9%) 0.026 B/op [Average]
+  (min, avg, max) = (0.270, 0.284, 0.331), stdev = 0.024
+  CI (99.9%): [0.259, 0.310] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.list
+# Parameters: (size = 16777216)
+
+# Run progress: 66.67% complete, ETA 00:02:06
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 31051762.667 ns/op
+# Warmup Iteration   2: 29743382.618 ns/op
+# Warmup Iteration   3: 29956212.882 ns/op
+# Warmup Iteration   4: 29742816.588 ns/op
+# Warmup Iteration   5: 29808581.353 ns/op
+Iteration   1: 29941508.265 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 204.235 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 29881851.441 ns/op
+                 gc.alloc.rate:      0.006 MB/sec
+                 gc.alloc.rate.norm: 203.294 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 29820487.529 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 204.235 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 29818332.029 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 203.294 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 29726215.176 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 248.471 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 69.44% complete, ETA 00:01:56
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 30972562.394 ns/op
+# Warmup Iteration   2: 29925499.471 ns/op
+# Warmup Iteration   3: 29906345.912 ns/op
+# Warmup Iteration   4: 30171009.235 ns/op
+# Warmup Iteration   5: 29953341.676 ns/op
+Iteration   1: 29965193.618 ns/op
+                 gc.alloc.rate:      0.006 MB/sec
+                 gc.alloc.rate.norm: 204.235 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 29979780.088 ns/op
+                 gc.alloc.rate:      0.006 MB/sec
+                 gc.alloc.rate.norm: 203.294 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 29925563.147 ns/op
+                 gc.alloc.rate:      0.006 MB/sec
+                 gc.alloc.rate.norm: 203.294 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 30128419.118 ns/op
+                 gc.alloc.rate:      0.006 MB/sec
+                 gc.alloc.rate.norm: 203.294 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 29860719.794 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 248.471 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 72.22% complete, ETA 00:01:46
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 30820409.848 ns/op
+# Warmup Iteration   2: 29958782.529 ns/op
+# Warmup Iteration   3: 29700666.765 ns/op
+# Warmup Iteration   4: 29843243.529 ns/op
+# Warmup Iteration   5: 29661636.529 ns/op
+Iteration   1: 29565394.882 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 205.176 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 29680632.147 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 204.235 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 29843054.647 ns/op
+                 gc.alloc.rate:      0.006 MB/sec
+                 gc.alloc.rate.norm: 203.294 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 29513774.559 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 205.176 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 29408062.286 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 241.371 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
+  29803932.582 ±(99.9%) 207278.136 ns/op [Average]
+  (min, avg, max) = (29408062.286, 29803932.582, 30128419.118), stdev = 193888.097
+  CI (99.9%): [29596654.445, 30011210.718] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.006, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.007] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate.norm":
+  212.358 ±(99.9%) 18.758 B/op [Average]
+  (min, avg, max) = (203.294, 212.358, 248.471), stdev = 17.546
+  CI (99.9%): [193.601, 231.116] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
+# Parameters: (size = 1024)
+
+# Run progress: 75.00% complete, ETA 00:01:36
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 553.839 ns/op
+# Warmup Iteration   2: 539.196 ns/op
+# Warmup Iteration   3: 538.922 ns/op
+# Warmup Iteration   4: 522.719 ns/op
+# Warmup Iteration   5: 529.904 ns/op
+Iteration   1: 530.511 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 542.387 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 524.787 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 529.235 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 524.434 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 77.78% complete, ETA 00:01:25
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 547.002 ns/op
+# Warmup Iteration   2: 541.507 ns/op
+# Warmup Iteration   3: 534.102 ns/op
+# Warmup Iteration   4: 533.931 ns/op
+# Warmup Iteration   5: 534.740 ns/op
+Iteration   1: 522.695 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 533.187 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 522.478 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 544.644 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 525.169 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 80.56% complete, ETA 00:01:14
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 551.370 ns/op
+# Warmup Iteration   2: 546.284 ns/op
+# Warmup Iteration   3: 531.195 ns/op
+# Warmup Iteration   4: 524.701 ns/op
+# Warmup Iteration   5: 530.872 ns/op
+Iteration   1: 531.975 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 537.000 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 525.124 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 531.036 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 522.642 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.004 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
+  529.820 ±(99.9%) 7.569 ns/op [Average]
+  (min, avg, max) = (522.478, 529.820, 544.644), stdev = 7.080
+  CI (99.9%): [522.252, 537.389] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate.norm":
+  0.004 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (0.004, 0.004, 0.004), stdev = 0.001
+  CI (99.9%): [0.003, 0.004] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
+# Parameters: (size = 65536)
+
+# Run progress: 83.33% complete, ETA 00:01:03
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 36737.173 ns/op
+# Warmup Iteration   2: 35627.296 ns/op
+# Warmup Iteration   3: 35262.792 ns/op
+# Warmup Iteration   4: 35517.650 ns/op
+# Warmup Iteration   5: 35387.343 ns/op
+Iteration   1: 34822.560 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.242 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 35787.884 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.248 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 34751.622 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.241 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 35158.328 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.244 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 34774.391 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.294 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 86.11% complete, ETA 00:00:53
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 36752.970 ns/op
+# Warmup Iteration   2: 35357.007 ns/op
+# Warmup Iteration   3: 36222.468 ns/op
+# Warmup Iteration   4: 34797.670 ns/op
+# Warmup Iteration   5: 35224.041 ns/op
+Iteration   1: 35614.741 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.247 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 35421.158 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.246 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 34796.438 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.242 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 35280.062 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.245 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 35354.673 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.299 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 88.89% complete, ETA 00:00:42
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 36958.962 ns/op
+# Warmup Iteration   2: 34891.587 ns/op
+# Warmup Iteration   3: 35351.187 ns/op
+# Warmup Iteration   4: 35822.200 ns/op
+# Warmup Iteration   5: 35825.454 ns/op
+Iteration   1: 35698.749 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.248 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 35269.608 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.245 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 34806.706 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.242 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 35456.871 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.246 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 35619.792 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 0.301 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
+  35240.906 ±(99.9%) 395.025 ns/op [Average]
+  (min, avg, max) = (34751.622, 35240.906, 35787.884), stdev = 369.507
+  CI (99.9%): [34845.881, 35635.931] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.008] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate.norm":
+  0.255 ±(99.9%) 0.024 B/op [Average]
+  (min, avg, max) = (0.241, 0.255, 0.301), stdev = 0.022
+  CI (99.9%): [0.232, 0.279] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.count":
+  ≈ 0 counts
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.3, OpenJDK 64-Bit Server VM, 25.0.3+9-2-24.04.2-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
+# Parameters: (size = 16777216)
+
+# Run progress: 91.67% complete, ETA 00:00:31
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 11061856.593 ns/op
+# Warmup Iteration   2: 10535728.284 ns/op
+# Warmup Iteration   3: 10628840.453 ns/op
+# Warmup Iteration   4: 10768425.957 ns/op
+# Warmup Iteration   5: 10845376.602 ns/op
+Iteration   1: 10581005.716 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 72.758 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 10651507.319 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 73.872 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 10562971.905 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 73.095 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 10653521.426 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 73.872 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 10692229.436 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 89.872 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 94.44% complete, ETA 00:00:21
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10334328.113 ns/op
+# Warmup Iteration   2: 9972855.257 ns/op
+# Warmup Iteration   3: 10233627.051 ns/op
+# Warmup Iteration   4: 9988137.188 ns/op
+# Warmup Iteration   5: 10101325.220 ns/op
+Iteration   1: 9973211.881 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 68.752 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 9973263.267 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 68.752 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 10151010.444 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 70.141 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 9983640.842 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 68.752 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 9977905.931 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 83.644 B/op
+                 gc.count:           ≈ 0 counts
+
+
+# Run progress: 97.22% complete, ETA 00:00:10
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10365908.381 ns/op
+# Warmup Iteration   2: 10219210.439 ns/op
+# Warmup Iteration   3: 10014648.600 ns/op
+# Warmup Iteration   4: 10131368.566 ns/op
+# Warmup Iteration   5: 10008848.920 ns/op
+Iteration   1: 10213657.173 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 70.857 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 9936853.614 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 68.752 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 10042570.960 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.440 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 9935020.287 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 68.436 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 10011971.680 ns/op
+                 gc.alloc.rate:      0.008 MB/sec
+                 gc.alloc.rate.norm: 84.480 B/op
+                 gc.count:           ≈ 0 counts
+
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
+  10222689.459 ±(99.9%) 328537.355 ns/op [Average]
+  (min, avg, max) = (9935020.287, 10222689.459, 10692229.436), stdev = 307314.046
+  CI (99.9%): [9894152.103, 10551226.814] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate":
+  0.007 ±(99.9%) 0.001 MB/sec [Average]
+  (min, avg, max) = (0.007, 0.007, 0.008), stdev = 0.001
+  CI (99.9%): [0.006, 0.007] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate.norm":
+  73.698 ±(99.9%) 7.242 B/op [Average]
+  (min, avg, max) = (68.436, 73.698, 89.872), stdev = 6.774
+  CI (99.9%): [66.456, 80.941] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.count":
+  ≈ 0 counts
+
+
+# Run complete. Total time: 00:06:24
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                           (size)  Mode  Cnt         Score        Error   Units
+DotProductBench.array                                 1024  avgt   15       549.449 ±      7.271   ns/op
+DotProductBench.array:gc.alloc.rate                   1024  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.array:gc.alloc.rate.norm              1024  avgt   15         0.004 ±      0.001    B/op
+DotProductBench.array:gc.count                        1024  avgt   15           ≈ 0               counts
+DotProductBench.array                                65536  avgt   15     36540.263 ±    626.686   ns/op
+DotProductBench.array:gc.alloc.rate                  65536  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.array:gc.alloc.rate.norm             65536  avgt   15         0.265 ±      0.025    B/op
+DotProductBench.array:gc.count                       65536  avgt   15           ≈ 0               counts
+DotProductBench.array                             16777216  avgt   15  10137305.653 ± 157999.771   ns/op
+DotProductBench.array:gc.alloc.rate               16777216  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.array:gc.alloc.rate.norm          16777216  avgt   15        73.166 ±      7.173    B/op
+DotProductBench.array:gc.count                    16777216  avgt   15           ≈ 0               counts
+DotProductBench.arrayVector                           1024  avgt   15        68.949 ±      1.090   ns/op
+DotProductBench.arrayVector:gc.alloc.rate             1024  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.arrayVector:gc.alloc.rate.norm        1024  avgt   15        ≈ 10⁻³                 B/op
+DotProductBench.arrayVector:gc.count                  1024  avgt   15           ≈ 0               counts
+DotProductBench.arrayVector                          65536  avgt   15      7817.999 ±    150.415   ns/op
+DotProductBench.arrayVector:gc.alloc.rate            65536  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.arrayVector:gc.alloc.rate.norm       65536  avgt   15         0.057 ±      0.005    B/op
+DotProductBench.arrayVector:gc.count                 65536  avgt   15           ≈ 0               counts
+DotProductBench.arrayVector                       16777216  avgt   15   5966056.867 ±  18071.933   ns/op
+DotProductBench.arrayVector:gc.alloc.rate         16777216  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.arrayVector:gc.alloc.rate.norm    16777216  avgt   15        43.050 ±      3.958    B/op
+DotProductBench.arrayVector:gc.count              16777216  avgt   15           ≈ 0               counts
+DotProductBench.list                                  1024  avgt   15       592.490 ±      2.718   ns/op
+DotProductBench.list:gc.alloc.rate                    1024  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.list:gc.alloc.rate.norm               1024  avgt   15         0.004 ±      0.001    B/op
+DotProductBench.list:gc.count                         1024  avgt   15           ≈ 0               counts
+DotProductBench.list                                 65536  avgt   15     39257.485 ±    258.157   ns/op
+DotProductBench.list:gc.alloc.rate                   65536  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.list:gc.alloc.rate.norm              65536  avgt   15         0.284 ±      0.026    B/op
+DotProductBench.list:gc.count                        65536  avgt   15           ≈ 0               counts
+DotProductBench.list                              16777216  avgt   15  29803932.582 ± 207278.136   ns/op
+DotProductBench.list:gc.alloc.rate                16777216  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.list:gc.alloc.rate.norm           16777216  avgt   15       212.358 ±     18.758    B/op
+DotProductBench.list:gc.count                     16777216  avgt   15           ≈ 0               counts
+DotProductBench.segmentScalar                         1024  avgt   15       529.820 ±      7.569   ns/op
+DotProductBench.segmentScalar:gc.alloc.rate           1024  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.segmentScalar:gc.alloc.rate.norm      1024  avgt   15         0.004 ±      0.001    B/op
+DotProductBench.segmentScalar:gc.count                1024  avgt   15           ≈ 0               counts
+DotProductBench.segmentScalar                        65536  avgt   15     35240.906 ±    395.025   ns/op
+DotProductBench.segmentScalar:gc.alloc.rate          65536  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.segmentScalar:gc.alloc.rate.norm     65536  avgt   15         0.255 ±      0.024    B/op
+DotProductBench.segmentScalar:gc.count               65536  avgt   15           ≈ 0               counts
+DotProductBench.segmentScalar                     16777216  avgt   15  10222689.459 ± 328537.355   ns/op
+DotProductBench.segmentScalar:gc.alloc.rate       16777216  avgt   15         0.007 ±      0.001  MB/sec
+DotProductBench.segmentScalar:gc.alloc.rate.norm  16777216  avgt   15        73.698 ±      7.242    B/op
+DotProductBench.segmentScalar:gc.count            16777216  avgt   15           ≈ 0               counts
+
+Benchmark result is saved to results/2026-08-25-m3-gc-avgt.json
