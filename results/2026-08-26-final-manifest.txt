@@ -1,0 +1,24 @@
+# session: final   date: 2026-08-26
+# commit: 78c2e2e
+# JDK: openjdk 25.0.4 2026-07-21
+# CPU: Ryzen 9 7950X3D
+# pinning: 8-15,24-31
+# hsdis: /home/sp4/Workspace/decode-shape/hsdis-build/lib
+# perfasm at size 1024, perfnorm at size 16777216
+# machine state as measured:
+#   governor            = performance
+#   perf_event_paranoid = 0
+#   kptr_restrict       = 0
+#   saved prior state:
+#     GOV=powersave
+#     PARANOID=4
+#     KPTR=1
+# files:
+#   2026-08-26-final-avgt.{txt,json}
+#   2026-08-26-final-gc-avgt.{txt,json}
+#   2026-08-26-final-perfasm-array.txt
+#   2026-08-26-final-perfasm-segmentscalar.txt
+#   2026-08-26-final-perfasm-arrayvector.txt
+#   2026-08-26-final-perfasm-segmentvector.txt
+#   2026-08-26-final-perfasm-arrayloadcontrol.txt
+#   2026-08-26-final-perfnorm-16777216.txt
