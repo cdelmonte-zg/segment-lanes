@@ -26,8 +26,8 @@ public class SegmentVectorDot implements DotProduct {
 
         Random random = new Random(seed);
 
-        this.segmentA = arena.allocate(ValueLayout.JAVA_DOUBLE, size);
-        this.segmentB = arena.allocate(ValueLayout.JAVA_DOUBLE, size);
+        this.segmentA = arena.allocate((long) size * Double.BYTES, 64);
+        this.segmentB = arena.allocate((long) size * Double.BYTES, 64);
 
         for (int i = 0; i < size; i++) {
             segmentA.setAtIndex(ValueLayout.JAVA_DOUBLE, i, random.nextDouble());
@@ -35,6 +35,13 @@ public class SegmentVectorDot implements DotProduct {
         for (int i = 0; i < size; i++) {
             segmentB.setAtIndex(ValueLayout.JAVA_DOUBLE, i, random.nextDouble());
         }
+
+        long diff = segmentB.address() - segmentA.address();
+        System.out.println("Class: " + getClass().getSimpleName());
+        System.out.println("Segment A address: " + Long.toHexString(segmentA.address()));
+        System.out.println("Segment B address: " + Long.toHexString(segmentB.address()));
+        System.out.println("Distance between Segment A and Segment B: " + Long.toHexString(diff));
+        System.out.println("Exponent: " + Long.numberOfTrailingZeros(diff));
     }
 
     @Override
