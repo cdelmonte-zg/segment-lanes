@@ -1,0 +1,229 @@
+# commit: a1e3dbe JDK: openjdk 25.0.4 2026-07-21  CPU: Ryzen 9 7950X3D 
+# java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff results/2026-08-26-alignment-avgt.json DotProductBench.(array|segment)Vector$ -p size=16777216
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 16777216)
+
+# Run progress: 0.00% complete, ETA 00:01:00
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: Class: SegmentScalarDot
+Segment A address: 7a6663fff040
+Segment B address: 7a665bffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+Class: SegmentVectorDot
+Segment A address: 7a663bfff040
+Segment B address: 7a6633ffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+7026560.280 ns/op
+# Warmup Iteration   2: 6033126.488 ns/op
+# Warmup Iteration   3: 6058120.946 ns/op
+# Warmup Iteration   4: 6043746.904 ns/op
+# Warmup Iteration   5: 6026126.175 ns/op
+Iteration   1: 6048228.349 ns/op
+Iteration   2: 6058510.759 ns/op
+Iteration   3: 6030319.976 ns/op
+Iteration   4: 6029388.970 ns/op
+Iteration   5: 6053612.946 ns/op
+
+# Run progress: 16.67% complete, ETA 00:00:59
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: Class: SegmentScalarDot
+Segment A address: 756f7ffff040
+Segment B address: 756f77ffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+Class: SegmentVectorDot
+Segment A address: 756f57fff040
+Segment B address: 756f4fffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+7168507.943 ns/op
+# Warmup Iteration   2: 6185998.753 ns/op
+# Warmup Iteration   3: 6178822.352 ns/op
+# Warmup Iteration   4: 6228061.677 ns/op
+# Warmup Iteration   5: 6180092.414 ns/op
+Iteration   1: 6196261.253 ns/op
+Iteration   2: 6160280.834 ns/op
+Iteration   3: 6088805.982 ns/op
+Iteration   4: 6121344.317 ns/op
+Iteration   5: 6098937.811 ns/op
+
+# Run progress: 33.33% complete, ETA 00:00:47
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: Class: SegmentScalarDot
+Segment A address: 79e413fff040
+Segment B address: 79e40bffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+Class: SegmentVectorDot
+Segment A address: 79e3ebfff040
+Segment B address: 79e3e3ffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+7025590.126 ns/op
+# Warmup Iteration   2: 6218646.391 ns/op
+# Warmup Iteration   3: 6176800.994 ns/op
+# Warmup Iteration   4: 6086350.139 ns/op
+# Warmup Iteration   5: 6204258.722 ns/op
+Iteration   1: 6215956.615 ns/op
+Iteration   2: 6145903.718 ns/op
+Iteration   3: 6134815.494 ns/op
+Iteration   4: 6117806.488 ns/op
+Iteration   5: 6116165.128 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  6107755.909 ±(99.9%) 61491.198 ns/op [Average]
+  (min, avg, max) = (6029388.970, 6107755.909, 6215956.615), stdev = 57518.905
+  CI (99.9%): [6046264.711, 6169247.107] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentVector
+# Parameters: (size = 16777216)
+
+# Run progress: 50.00% complete, ETA 00:00:35
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: Class: SegmentScalarDot
+Segment A address: 7f0afbfff040
+Segment B address: 7f0af3ffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+Class: SegmentVectorDot
+Segment A address: 7f0ad3fff040
+Segment B address: 7f0acbffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+7264735.486 ns/op
+# Warmup Iteration   2: 6249523.739 ns/op
+# Warmup Iteration   3: 6229285.497 ns/op
+# Warmup Iteration   4: 6245556.261 ns/op
+# Warmup Iteration   5: 6281961.006 ns/op
+Iteration   1: 6250471.839 ns/op
+Iteration   2: 6241527.689 ns/op
+Iteration   3: 6260269.250 ns/op
+Iteration   4: 6245602.186 ns/op
+Iteration   5: 6268600.581 ns/op
+
+# Run progress: 66.67% complete, ETA 00:00:23
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: Class: SegmentScalarDot
+Segment A address: 7820a3fff040
+Segment B address: 78209bffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+Class: SegmentVectorDot
+Segment A address: 78207bfff040
+Segment B address: 782073ffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+7230672.460 ns/op
+# Warmup Iteration   2: 6161172.571 ns/op
+# Warmup Iteration   3: 6257536.081 ns/op
+# Warmup Iteration   4: 6273542.288 ns/op
+# Warmup Iteration   5: 6278161.900 ns/op
+Iteration   1: 6177393.346 ns/op
+Iteration   2: 6152204.460 ns/op
+Iteration   3: 6223524.025 ns/op
+Iteration   4: 6199966.253 ns/op
+Iteration   5: 6217008.671 ns/op
+
+# Run progress: 83.33% complete, ETA 00:00:11
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: Class: SegmentScalarDot
+Segment A address: 729ee7fff040
+Segment B address: 729edfffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+Class: SegmentVectorDot
+Segment A address: 729ebffff040
+Segment B address: 729eb7ffe040
+Distance between Segment A and Segment B: fffffffff7fff000
+Exponent: 12
+7234941.266 ns/op
+# Warmup Iteration   2: 6147868.558 ns/op
+# Warmup Iteration   3: 6174434.387 ns/op
+# Warmup Iteration   4: 6244280.981 ns/op
+# Warmup Iteration   5: 6063869.442 ns/op
+Iteration   1: 6189543.290 ns/op
+Iteration   2: 6148298.129 ns/op
+Iteration   3: 6159942.546 ns/op
+Iteration   4: 6141019.785 ns/op
+Iteration   5: 6150178.564 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
+  6201703.374 ±(99.9%) 48346.768 ns/op [Average]
+  (min, avg, max) = (6141019.785, 6201703.374, 6268600.581), stdev = 45223.597
+  CI (99.9%): [6153356.606, 6250050.143] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:01:11
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                        (size)  Mode  Cnt        Score       Error  Units
+DotProductBench.arrayVector    16777216  avgt   15  6107755.909 ± 61491.198  ns/op
+DotProductBench.segmentVector  16777216  avgt   15  6201703.374 ± 48346.768  ns/op
+
+Benchmark result is saved to results/2026-08-26-alignment-avgt.json

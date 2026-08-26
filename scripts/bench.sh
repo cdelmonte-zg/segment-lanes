@@ -10,6 +10,16 @@ fi
 
 commit=$(git rev-parse --short HEAD)
 run_date=$(date +%F)
+cpu_model=$(lscpu | sed -n 's/^Model name: *//p' | head -1)
+
+# The benchmark jar runs on whatever `java` is first on PATH, which is not
+# necessarily the toolchain Maven compiled with. Fail loudly instead of
+# producing a result file that silently mixes the two.
+java_spec=$(java -XshowSettings:properties -version 2>&1 | sed -n 's/^ *java.specification.version = //p')
+if [ "${java_spec}" != "25" ]; then
+	echo "expected JDK 25 on PATH, found ${java_spec:-unknown}" >&2
+	exit 1
+fi
 
 # session.sh builds once for the whole session and sets this to skip the rebuild
 [ -n "${BENCH_SKIP_PACKAGE:-}" ] || mvn -q clean package
@@ -27,7 +37,7 @@ fi
 
 cmd="${pin}java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff ${filename_json} ${@:2}"
 
-echo "# commit: ${commit} JDK: ${jdk_version}  CPU: Ryzen 9 7950X3D 
+echo "# commit: ${commit} JDK: ${jdk_version}  CPU: ${cpu_model}
 # ${cmd}" > "${filename_txt}"
 
 ${cmd} | tee -a "${filename_txt}"

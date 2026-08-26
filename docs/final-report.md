@@ -54,7 +54,7 @@ instruction counters, see the perfnorm section.
 
 Each vector variant against its own scalar baseline:
 
-| size | arrayVector / array | segmentVector / segmentScalar |
+| size | array / arrayVector | segmentScalar / segmentVector |
 |---|---|---|
 | 1 024 | 6.6x | **9.0x** |
 | 65 536 | 4.6x | 5.0x |
@@ -76,11 +76,16 @@ materialized, no segment escapes.
    past its object header and its 64-byte loads straddle two lines.
 2. **The array is also less reproducible, and that is a finding in itself.**
    At 1024, `arrayVector` carries ±6.5 ns on 81 (8 percent) while
-   `segmentVector` carries ±1.0 on 60 (1.6 percent); every other variant is
-   under 1 percent. The vector-over-array kernel is the only one whose
-   fork-to-fork spread is large, which is what you expect when placement is
-   decided by the collector rather than requested. **Explicit layout buys
-   predictability, not only speed.**
+   `segmentVector` carries ±1.0 on 60 (1.6 percent). The others sit between
+   0.5 and 2.6 percent, so `arrayVector` is not merely the worst: it is three
+   times worse than the next one. The three forks are not noise around a mean
+   but three plateaus, roughly 85.6, 72.8 and 84.7 ns, which is what different
+   heap placements would look like. **The fork-to-fork spread is consistent
+   with heap-placement effects; the segment removes that source of uncertainty
+   by requesting its alignment explicitly.** Stated that way it is what the
+   data supports: the causal link is demonstrated for the segment (see the
+   experiment in `m4-report.md`), not yet for the array. Closing it would take
+   a padded-array variant sweeping offsets 0 to 7.
 3. **The speedup over the scalar baseline is larger for the segment (9.0x)
    than for the array (6.6x) at 1024, and it is not because the vector kernel
    is better.** It is because the baselines differ: `segmentScalar` is purely
@@ -103,7 +108,8 @@ for section 4 of the article.
 
 | | segmentScalar | array (auto-vectorized) | segmentVector (declared) |
 |---|---|---|---|
-| loads | 8x `vmovsd` | 6x `vmovups` zmm | 8x `vmovups` zmm |
+| explicit load instructions | 8x `vmovsd` | 6x `vmovups` zmm | 8x `vmovups` zmm |
+| loads folded into the multiply | none | 7 memory operands | 8 memory operands |
 | multiplies | 8x `vmulsd` | 7x `vmulpd` zmm | 8x `vmulpd` zmm |
 | lane extraction | none | 32x `vpshufd`, 16x `vextractf128`, 8x `vextracti64x4` | none |
 | additions | 8x `vaddsd`, ordered chain | **64x `vaddsd`**, ordered chain | 8x `vaddpd`, ordered chain |
@@ -142,19 +148,30 @@ indicative.
 | CPI | 1.52 | 0.78 | 4.71 | 3.81 | **6.58** |
 | L1-dcache-loads | 8.56 M | 33.83 M | 8.48 M | 8.56 M | 8.48 M |
 | L1-dcache-load-misses | 4.21 M | 5.25 M | 4.26 M | 4.27 M | 4.25 M |
-| misses per line | 1.003 | 1.253 | 1.016 | 1.017 | 1.013 |
+| L1-miss events per line | 1.003 | 1.253 | 1.016 | 1.017 | 1.013 |
 
 The streaming minimum is 268 435 456 bytes over 64-byte lines = 4 194 304.
+
+Read that last row as **events, not lines refetched**. The load count itself
+shows why: 262 144 iterations of 16 architectural loads is 4.19 M, while the
+counter reports 8.5 M, consistent with 64-byte accesses being served over the
+256-bit datapath of this microarchitecture. So a ratio above 1.0 means extra
+miss events per line, which misaligned accesses produce; it does not license
+the statement that a third of the lines were fetched twice. The strong result
+is the change itself: correcting the alignment moves the segment from 1.25 to
+1.02 and nothing else moves with it. Closing the mechanism properly would take
+the misaligned-access events this vendor exposes through IBS.
 
 1. **The bandwidth claim, open since M3, is now measured.**
    `arrayLoadControl` walks the same two arrays with two independent
    accumulators and no multiply. It executes **29 percent fewer instructions**
    than `arrayVector` (5.11 M against 7.22 M) and has the **highest CPI of any
-   variant** (6.58), and it finishes in the same time: 6 117 452 ± 44 075
-   against 6 153 034 ± 64 192, error bars overlapping. Less work, same
+   variant** (6.58), and it finishes in the same time. In the avgt run, which
+   is the citable one: 6.107 ± 0.055 ms against 6.084 ± 0.064. Less work, same
    duration. At 16 M the dot product is limited by the arrival of the data,
    not by arithmetic. About 44 GB/s on one core.
-2. **Every vector variant streams ideally**, 1.00 to 1.02 misses per line.
+2. **Every vector variant streams ideally**, 1.00 to 1.02 L1-miss events
+   per theoretical cache line.
    The excess that M4 found in the unaligned segment (1.33) is gone.
 3. **The structural claim of section 4, without needing the disassembly.**
    `segmentVector` executes 9.09 M instructions against 7.22 M for
@@ -182,22 +199,51 @@ The streaming minimum is 268 435 456 bytes over 64-byte lines = 4 194 304.
 
 ## Direction for the article
 
-- **Section 3**: alignment is the concrete illustration of the thesis.
-  `ValueLayout.JAVA_DOUBLE` promises the 8 bytes of the element; a 512-bit
-  load wants 64. The natural form of the API leaves 16 percent on the table at
-  16 M and 25 percent at 1024, invisible while the data is in cache. With a
-  `double[]` you cannot ask: you get what the collector gives you, with the
-  variance that implies. Say it with the right sign: the point is not that
-  segments are faster, it is that the control exists and has to be exercised.
-- **Section 4**: the three-column instruction table above, plus the fact that
-  the compiler never reassociates. The programmer declares the structure, one
-  partial sum per lane, and gives up the sequential order explicitly.
-- **Section 4 to 6 bridge**: the ratio collapses from 6.6x to 1.7x, and at
-  16 M a kernel doing almost no arithmetic takes the same time. Explicit
-  compute pays only while the data arrives.
-- **Scoping, as always**: this kernel, JDK 25.0.4, Zen 4, 512-bit species,
-  one CCD. The reasoning about lanes and alignment transfers across ISAs; the
-  numbers do not.
+The lab does not say that the Vector API and `MemorySegment` are faster. It
+says that the JVM now lets a program make explicit two things the object model
+kept implicit: **the layout of the data and the structure of the computation**.
+The measurements then show what each one buys, and they do not buy the same
+thing in the same place.
+
+- **Explicit computation pays while the data is near.** 6.6x in L1, 4.6x at
+  1 MB, 1.7x at 256 MB. The ceiling is not arithmetic: at 16 M a kernel doing
+  29 percent fewer instructions takes the same time. Section 4 gets the
+  speedup, section 6 gets its collapse.
+- **Explicit layout pays at every size.** Changing only the alignment moves
+  `segmentVector` by 18 percent at 1024, 6.7 percent at 65 536 and 15.2 percent
+  at 16 M. It is not the case that computation matters while compute-bound and
+  layout takes over when memory-bound: in cache the layout is worth more, not
+  less, and it is what decides whether the segment beats the array (by 25
+  percent at 1024) or loses to it (by 2.8 percent at 16 M). **The two levers do
+  not hand over to each other: the first fades as the data moves away, the
+  second does not.**
+- **Section 3**, on layout: `ValueLayout.JAVA_DOUBLE` promises the 8 bytes of
+  the element and a 512-bit load wants 64, so the natural form of the API
+  leaves double-digit percentages on the floor, invisibly while the data is in
+  cache. With a `double[]` you cannot ask for an alignment at all. Say it with
+  the right sign: the point is not that segments are faster, it is that the
+  control exists and has to be exercised.
+- **Section 3, second half**: the scalar segment loop is **not vectorized at
+  all** and still matches the array, which is the more interesting version of
+  "FFM costs nothing". It does not cost nothing: it costs the auto-vectorizer,
+  and that cost is invisible because the wall in both is the ordered chain of
+  additions. That is the step that sets up section 4.
+- **Section 4**, on computation: the three-column instruction table, plus the
+  fact that the compiler never reassociates floating-point sums. The
+  programmer declares the structure, one partial sum per lane, and **gives up
+  the sequential order explicitly**; the compiler cannot infer that from the
+  scalar loop, which is why it has to build the extract-and-add staircase.
+- **Quote every ratio with its baseline.** `segmentScalar / segmentVector` is
+  9.0x against 6.6x for the array pair, which reads as if the segment kernel
+  were better. It is not: the direct comparison is 25 percent, and the 9.0x is
+  inflated by a worse starting point, the unvectorized scalar segment loop. A
+  ratio measures distance from its own baseline, and these baselines differ.
+- **`List<Double>` is the size-dependent one**: 1.10x at 1024 and 65 536, then
+  2.76x at 16 M. Boxing and pointer chasing become visible exactly when the
+  memory hierarchy starts to dominate.
+- **Scoping, as always**: this kernel, JDK 25.0.4, Zen 4, 512-bit species, one
+  CCD, and the JVM layout flags recorded in the manifest. The reasoning about
+  lanes and alignment transfers across ISAs; the numbers do not.
 
 ## Open
 

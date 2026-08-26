@@ -39,6 +39,13 @@ fi
 run_date=$(date +%F)
 commit=$(git rev-parse --short HEAD)
 jdk_version=$(java --version 2>&1 | head -1)
+cpu_model=$(lscpu | sed -n 's/^Model name: *//p' | head -1)
+
+java_spec=$(java -XshowSettings:properties -version 2>&1 | sed -n 's/^ *java.specification.version = //p')
+if [ "${java_spec}" != "25" ]; then
+	echo "expected JDK 25 on PATH, found ${java_spec:-unknown}" >&2
+	exit 1
+fi
 manifest="results/${run_date}-${TAG}-manifest.txt"
 mkdir -p results
 
@@ -60,10 +67,14 @@ trap 'echo "==> restoring machine state"; scripts/bench-system.sh restore' EXIT
 	echo "# session: ${TAG}   date: ${run_date}"
 	echo "# commit: ${commit}"
 	echo "# JDK: ${jdk_version}"
-	echo "# CPU: Ryzen 9 7950X3D"
+	echo "# CPU: ${cpu_model}"
 	echo "# pinning: ${PIN:-none (all cores)}"
 	echo "# hsdis: ${HSDIS_LIB}"
 	echo "# perfasm at size ${PERFASM_AT}, perfnorm at size ${PERFNORM_AT}"
+	echo "# JVM layout flags (a lab about layout should record these):"
+	java -XX:+PrintFlagsFinal -version 2>/dev/null \
+		| grep -E '^ *(int|bool|intx) +(ObjectAlignmentInBytes|UseCompactObjectHeaders|UseCompressedOops|UseCompressedClassPointers|UseAVX) ' \
+		| awk '{print "#   "$2" = "$4}'
 	echo "# machine state as measured:"
 	scripts/bench-system.sh status | sed 's/^/#   /'
 	echo "# files:"
@@ -88,7 +99,7 @@ if [ -f "${HSDIS_LIB}/hsdis-amd64.so" ]; then
 		out="results/${run_date}-${TAG}-perfasm-$(echo "$v" | tr '[:upper:]' '[:lower:]').txt"
 		cmd="${pin}java -jar target/benchmarks.jar 'DotProductBench.${v}$' -p size=${PERFASM_AT} -f 1 -wi 5 -i 5 -prof perfasm"
 		echo "==> perfasm ${v} @${PERFASM_AT}"
-		echo "# commit: ${commit} JDK: ${jdk_version}  CPU: Ryzen 9 7950X3D
+		echo "# commit: ${commit} JDK: ${jdk_version}  CPU: ${cpu_model}
 # ${cmd}
 # ns/op in this file are NOT citable: the profiler perturbs the run." > "${out}"
 		LD_LIBRARY_PATH="${HSDIS_LIB}" ${pin} java -jar target/benchmarks.jar \
@@ -107,7 +118,7 @@ out="results/${run_date}-${TAG}-perfnorm-${PERFNORM_AT}.txt"
 regex="DotProductBench.($(echo ${PROFILED} | tr ' ' '|'))\$"
 cmd="${pin}java -jar target/benchmarks.jar '${regex}' -p size=${PERFNORM_AT} -f 3 -wi 5 -i 5 -prof perfnorm"
 echo "==> perfnorm @${PERFNORM_AT}"
-echo "# commit: ${commit} JDK: ${jdk_version}  CPU: Ryzen 9 7950X3D
+echo "# commit: ${commit} JDK: ${jdk_version}  CPU: ${cpu_model}
 # ${cmd}" > "${out}"
 ${pin} java -jar target/benchmarks.jar "${regex}" -p size=${PERFNORM_AT} \
 	-f 3 -wi 5 -i 5 -prof perfnorm 2>&1 | tee -a "${out}"

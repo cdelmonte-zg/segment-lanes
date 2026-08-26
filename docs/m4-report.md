@@ -68,7 +68,7 @@ intra-vector order deliberately unspecified.
 
 Speedup of each vector variant over its own scalar baseline:
 
-| size | arrayVector / array | segmentVector / segmentScalar |
+| size | array / arrayVector | segmentScalar / segmentVector |
 |---|---|---|
 | 1 024 | 7.2x | 7.3x |
 | 65 536 | 5.1x | 4.8x |
@@ -155,10 +155,16 @@ both: the core is waiting on memory roughly 78 percent of the time either
 way. What moves is the miss count, at an identical load count. With
 268 435 456 bytes touched, the streaming minimum is 4 194 304 lines:
 
-- arrayVector: **1.02 misses per line**, the ideal, every line fetched
-  once;
-- segmentVector: **1.33 misses per line**, a third of the lines fetched
-  again.
+- arrayVector: **1.02 L1-miss events per theoretical line**, the streaming
+  ideal;
+- segmentVector: **1.33**, a third more miss events for the same lines.
+
+Read those as events rather than as lines refetched: 64-byte accesses are
+served over a 256-bit datapath here, so one architectural load can raise the
+counter more than once, and misaligned accesses are exactly the case where it
+does. What the number establishes is the difference between the two variants
+and the fact that it disappears with the alignment fix, not a count of
+refetched lines.
 
 The 1.27 M excess misses at roughly 6.4 cycles each account for the 8.2 M
 cycle difference. The dTLB delta is real but small: 12 000 extra walks
@@ -211,7 +217,7 @@ the two segments is unchanged, still `0x8001000`, still a multiple of
 
 And the mechanism, not just the time (perfnorm on the branch):
 
-| @16 M, per op | arrayVector | segmentVector | misses per line |
+| @16 M, per op | arrayVector | segmentVector | miss events per line |
 |---|---|---|---|
 | alignment 8 | 4 293 072 | 5 563 853 | 1.02 vs 1.33 |
 | alignment 64 | 4 279 701 | 4 262 141 | 1.02 vs 1.016 |
