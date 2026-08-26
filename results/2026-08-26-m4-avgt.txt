@@ -1,0 +1,1144 @@
+# commit: 59f56f2 JDK: openjdk 25.0.4 2026-07-21  CPU: Ryzen 9 7950X3D 
+# java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff results/2026-08-26-m4-avgt.json 
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.array
+# Parameters: (size = 1024)
+
+# Run progress: 0.00% complete, ETA 00:07:30
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 552.542 ns/op
+# Warmup Iteration   2: 538.866 ns/op
+# Warmup Iteration   3: 535.670 ns/op
+# Warmup Iteration   4: 541.785 ns/op
+# Warmup Iteration   5: 538.157 ns/op
+Iteration   1: 538.653 ns/op
+Iteration   2: 539.481 ns/op
+Iteration   3: 535.506 ns/op
+Iteration   4: 541.785 ns/op
+Iteration   5: 544.922 ns/op
+
+# Run progress: 2.22% complete, ETA 00:07:26
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 542.850 ns/op
+# Warmup Iteration   2: 541.805 ns/op
+# Warmup Iteration   3: 547.555 ns/op
+# Warmup Iteration   4: 541.740 ns/op
+# Warmup Iteration   5: 537.951 ns/op
+Iteration   1: 536.511 ns/op
+Iteration   2: 535.403 ns/op
+Iteration   3: 540.197 ns/op
+Iteration   4: 540.752 ns/op
+Iteration   5: 535.737 ns/op
+
+# Run progress: 4.44% complete, ETA 00:07:15
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 542.024 ns/op
+# Warmup Iteration   2: 541.242 ns/op
+# Warmup Iteration   3: 536.774 ns/op
+# Warmup Iteration   4: 541.121 ns/op
+# Warmup Iteration   5: 533.541 ns/op
+Iteration   1: 536.060 ns/op
+Iteration   2: 533.486 ns/op
+Iteration   3: 535.388 ns/op
+Iteration   4: 539.133 ns/op
+Iteration   5: 535.944 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
+  537.930 ±(99.9%) 3.307 ns/op [Average]
+  (min, avg, max) = (533.486, 537.930, 544.922), stdev = 3.093
+  CI (99.9%): [534.623, 541.238] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.array
+# Parameters: (size = 65536)
+
+# Run progress: 6.67% complete, ETA 00:07:05
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 36404.214 ns/op
+# Warmup Iteration   2: 36231.175 ns/op
+# Warmup Iteration   3: 36220.064 ns/op
+# Warmup Iteration   4: 37060.648 ns/op
+# Warmup Iteration   5: 36896.232 ns/op
+Iteration   1: 37364.036 ns/op
+Iteration   2: 38269.039 ns/op
+Iteration   3: 37475.299 ns/op
+Iteration   4: 37083.755 ns/op
+Iteration   5: 37031.348 ns/op
+
+# Run progress: 8.89% complete, ETA 00:06:56
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 37338.456 ns/op
+# Warmup Iteration   2: 37032.486 ns/op
+# Warmup Iteration   3: 36359.436 ns/op
+# Warmup Iteration   4: 37121.896 ns/op
+# Warmup Iteration   5: 36373.349 ns/op
+Iteration   1: 37405.928 ns/op
+Iteration   2: 36502.006 ns/op
+Iteration   3: 36545.383 ns/op
+Iteration   4: 37011.759 ns/op
+Iteration   5: 36568.437 ns/op
+
+# Run progress: 11.11% complete, ETA 00:06:46
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 37307.615 ns/op
+# Warmup Iteration   2: 37379.560 ns/op
+# Warmup Iteration   3: 37181.287 ns/op
+# Warmup Iteration   4: 36678.119 ns/op
+# Warmup Iteration   5: 36462.099 ns/op
+Iteration   1: 36072.063 ns/op
+Iteration   2: 36951.632 ns/op
+Iteration   3: 37110.072 ns/op
+Iteration   4: 36613.289 ns/op
+Iteration   5: 36693.941 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
+  36979.866 ±(99.9%) 563.915 ns/op [Average]
+  (min, avg, max) = (36072.063, 36979.866, 38269.039), stdev = 527.486
+  CI (99.9%): [36415.951, 37543.781] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.array
+# Parameters: (size = 16777216)
+
+# Run progress: 13.33% complete, ETA 00:06:35
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10111019.030 ns/op
+# Warmup Iteration   2: 10144561.313 ns/op
+# Warmup Iteration   3: 10102913.727 ns/op
+# Warmup Iteration   4: 10357297.876 ns/op
+# Warmup Iteration   5: 10080705.330 ns/op
+Iteration   1: 10188848.879 ns/op
+Iteration   2: 10203508.727 ns/op
+Iteration   3: 10135117.707 ns/op
+Iteration   4: 10220202.000 ns/op
+Iteration   5: 10403711.175 ns/op
+
+# Run progress: 15.56% complete, ETA 00:06:35
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10315715.633 ns/op
+# Warmup Iteration   2: 10208615.408 ns/op
+# Warmup Iteration   3: 10168925.273 ns/op
+# Warmup Iteration   4: 10133662.788 ns/op
+# Warmup Iteration   5: 10233082.898 ns/op
+Iteration   1: 10033592.860 ns/op
+Iteration   2: 10143930.515 ns/op
+Iteration   3: 10177114.131 ns/op
+Iteration   4: 10133343.970 ns/op
+Iteration   5: 10186892.303 ns/op
+
+# Run progress: 17.78% complete, ETA 00:06:32
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 10426677.155 ns/op
+# Warmup Iteration   2: 10538808.021 ns/op
+# Warmup Iteration   3: 10424415.135 ns/op
+# Warmup Iteration   4: 10531212.453 ns/op
+# Warmup Iteration   5: 10297969.071 ns/op
+Iteration   1: 10310677.866 ns/op
+Iteration   2: 10537345.800 ns/op
+Iteration   3: 10764948.828 ns/op
+Iteration   4: 10560604.147 ns/op
+Iteration   5: 10359833.804 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
+  10290644.848 ±(99.9%) 213770.183 ns/op [Average]
+  (min, avg, max) = (10033592.860, 10290644.848, 10764948.828), stdev = 199960.762
+  CI (99.9%): [10076874.665, 10504415.030] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 1024)
+
+# Run progress: 20.00% complete, ETA 00:06:27
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 85.997 ns/op
+# Warmup Iteration   2: 85.467 ns/op
+# Warmup Iteration   3: 82.509 ns/op
+# Warmup Iteration   4: 82.956 ns/op
+# Warmup Iteration   5: 82.972 ns/op
+Iteration   1: 81.671 ns/op
+Iteration   2: 84.616 ns/op
+Iteration   3: 80.741 ns/op
+Iteration   4: 84.709 ns/op
+Iteration   5: 86.208 ns/op
+
+# Run progress: 22.22% complete, ETA 00:06:14
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 76.627 ns/op
+# Warmup Iteration   2: 73.495 ns/op
+# Warmup Iteration   3: 73.419 ns/op
+# Warmup Iteration   4: 72.550 ns/op
+# Warmup Iteration   5: 72.120 ns/op
+Iteration   1: 72.281 ns/op
+Iteration   2: 73.040 ns/op
+Iteration   3: 70.291 ns/op
+Iteration   4: 69.561 ns/op
+Iteration   5: 69.565 ns/op
+
+# Run progress: 24.44% complete, ETA 00:06:01
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 74.534 ns/op
+# Warmup Iteration   2: 73.570 ns/op
+# Warmup Iteration   3: 70.826 ns/op
+# Warmup Iteration   4: 69.641 ns/op
+# Warmup Iteration   5: 70.721 ns/op
+Iteration   1: 70.405 ns/op
+Iteration   2: 70.626 ns/op
+Iteration   3: 70.320 ns/op
+Iteration   4: 69.687 ns/op
+Iteration   5: 69.180 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  74.860 ±(99.9%) 7.035 ns/op [Average]
+  (min, avg, max) = (69.180, 74.860, 86.208), stdev = 6.581
+  CI (99.9%): [67.825, 81.895] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 65536)
+
+# Run progress: 26.67% complete, ETA 00:05:49
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 7818.892 ns/op
+# Warmup Iteration   2: 7596.264 ns/op
+# Warmup Iteration   3: 7562.740 ns/op
+# Warmup Iteration   4: 7467.398 ns/op
+# Warmup Iteration   5: 7559.655 ns/op
+Iteration   1: 7528.606 ns/op
+Iteration   2: 7715.943 ns/op
+Iteration   3: 7554.739 ns/op
+Iteration   4: 7547.090 ns/op
+Iteration   5: 7941.534 ns/op
+
+# Run progress: 28.89% complete, ETA 00:05:38
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 7941.050 ns/op
+# Warmup Iteration   2: 7226.494 ns/op
+# Warmup Iteration   3: 7224.896 ns/op
+# Warmup Iteration   4: 7093.606 ns/op
+# Warmup Iteration   5: 6970.137 ns/op
+Iteration   1: 7050.378 ns/op
+Iteration   2: 7055.954 ns/op
+Iteration   3: 7196.035 ns/op
+Iteration   4: 7005.730 ns/op
+Iteration   5: 6946.306 ns/op
+
+# Run progress: 31.11% complete, ETA 00:05:26
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 7519.662 ns/op
+# Warmup Iteration   2: 7343.681 ns/op
+# Warmup Iteration   3: 6833.958 ns/op
+# Warmup Iteration   4: 7025.811 ns/op
+# Warmup Iteration   5: 7084.707 ns/op
+Iteration   1: 7091.096 ns/op
+Iteration   2: 6926.011 ns/op
+Iteration   3: 6963.347 ns/op
+Iteration   4: 6844.591 ns/op
+Iteration   5: 6908.587 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  7218.396 ±(99.9%) 368.644 ns/op [Average]
+  (min, avg, max) = (6844.591, 7218.396, 7941.534), stdev = 344.830
+  CI (99.9%): [6849.752, 7587.041] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayVector
+# Parameters: (size = 16777216)
+
+# Run progress: 33.33% complete, ETA 00:05:15
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 6896545.603 ns/op
+# Warmup Iteration   2: 5969527.405 ns/op
+# Warmup Iteration   3: 5979151.798 ns/op
+# Warmup Iteration   4: 5926830.716 ns/op
+# Warmup Iteration   5: 5964109.554 ns/op
+Iteration   1: 5967310.411 ns/op
+Iteration   2: 5990724.419 ns/op
+Iteration   3: 6039758.373 ns/op
+Iteration   4: 5968925.702 ns/op
+Iteration   5: 5996097.653 ns/op
+
+# Run progress: 35.56% complete, ETA 00:05:07
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 6969981.201 ns/op
+# Warmup Iteration   2: 6067799.970 ns/op
+# Warmup Iteration   3: 6141351.951 ns/op
+# Warmup Iteration   4: 6008820.940 ns/op
+# Warmup Iteration   5: 5981821.917 ns/op
+Iteration   1: 5997800.144 ns/op
+Iteration   2: 5989603.737 ns/op
+Iteration   3: 6007885.515 ns/op
+Iteration   4: 5992484.192 ns/op
+Iteration   5: 5972122.268 ns/op
+
+# Run progress: 37.78% complete, ETA 00:04:58
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 6857483.000 ns/op
+# Warmup Iteration   2: 5921040.391 ns/op
+# Warmup Iteration   3: 5939339.633 ns/op
+# Warmup Iteration   4: 5955644.012 ns/op
+# Warmup Iteration   5: 5944881.621 ns/op
+Iteration   1: 5963625.131 ns/op
+Iteration   2: 5943211.201 ns/op
+Iteration   3: 5926599.047 ns/op
+Iteration   4: 5937852.994 ns/op
+Iteration   5: 5930692.036 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
+  5974979.521 ±(99.9%) 33729.608 ns/op [Average]
+  (min, avg, max) = (5926599.047, 5974979.521, 6039758.373), stdev = 31550.696
+  CI (99.9%): [5941249.913, 6008709.130] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.list
+# Parameters: (size = 1024)
+
+# Run progress: 40.00% complete, ETA 00:04:50
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 603.591 ns/op
+# Warmup Iteration   2: 593.232 ns/op
+# Warmup Iteration   3: 596.479 ns/op
+# Warmup Iteration   4: 594.627 ns/op
+# Warmup Iteration   5: 597.629 ns/op
+Iteration   1: 595.511 ns/op
+Iteration   2: 593.199 ns/op
+Iteration   3: 590.928 ns/op
+Iteration   4: 595.530 ns/op
+Iteration   5: 596.061 ns/op
+
+# Run progress: 42.22% complete, ETA 00:04:38
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 605.282 ns/op
+# Warmup Iteration   2: 589.582 ns/op
+# Warmup Iteration   3: 593.387 ns/op
+# Warmup Iteration   4: 591.655 ns/op
+# Warmup Iteration   5: 593.137 ns/op
+Iteration   1: 595.206 ns/op
+Iteration   2: 593.281 ns/op
+Iteration   3: 593.888 ns/op
+Iteration   4: 612.431 ns/op
+Iteration   5: 605.924 ns/op
+
+# Run progress: 44.44% complete, ETA 00:04:27
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 603.039 ns/op
+# Warmup Iteration   2: 589.622 ns/op
+# Warmup Iteration   3: 595.962 ns/op
+# Warmup Iteration   4: 590.348 ns/op
+# Warmup Iteration   5: 601.614 ns/op
+Iteration   1: 593.541 ns/op
+Iteration   2: 594.569 ns/op
+Iteration   3: 589.758 ns/op
+Iteration   4: 591.935 ns/op
+Iteration   5: 597.143 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
+  595.927 ±(99.9%) 6.258 ns/op [Average]
+  (min, avg, max) = (589.758, 595.927, 612.431), stdev = 5.854
+  CI (99.9%): [589.669, 602.186] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.list
+# Parameters: (size = 65536)
+
+# Run progress: 46.67% complete, ETA 00:04:15
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 40361.107 ns/op
+# Warmup Iteration   2: 40947.029 ns/op
+# Warmup Iteration   3: 40410.710 ns/op
+# Warmup Iteration   4: 40477.184 ns/op
+# Warmup Iteration   5: 40495.657 ns/op
+Iteration   1: 40269.081 ns/op
+Iteration   2: 40225.877 ns/op
+Iteration   3: 40289.861 ns/op
+Iteration   4: 40217.036 ns/op
+Iteration   5: 40372.611 ns/op
+
+# Run progress: 48.89% complete, ETA 00:04:04
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 41469.089 ns/op
+# Warmup Iteration   2: 40850.476 ns/op
+# Warmup Iteration   3: 40503.501 ns/op
+# Warmup Iteration   4: 39292.868 ns/op
+# Warmup Iteration   5: 40209.587 ns/op
+Iteration   1: 39453.093 ns/op
+Iteration   2: 40255.318 ns/op
+Iteration   3: 40602.154 ns/op
+Iteration   4: 40789.810 ns/op
+Iteration   5: 40231.231 ns/op
+
+# Run progress: 51.11% complete, ETA 00:03:53
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 40234.195 ns/op
+# Warmup Iteration   2: 40176.435 ns/op
+# Warmup Iteration   3: 39700.215 ns/op
+# Warmup Iteration   4: 40719.120 ns/op
+# Warmup Iteration   5: 40462.274 ns/op
+Iteration   1: 39348.954 ns/op
+Iteration   2: 39473.545 ns/op
+Iteration   3: 39318.539 ns/op
+Iteration   4: 39456.197 ns/op
+Iteration   5: 39682.150 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
+  39999.030 ±(99.9%) 523.706 ns/op [Average]
+  (min, avg, max) = (39318.539, 39999.030, 40789.810), stdev = 489.875
+  CI (99.9%): [39475.325, 40522.736] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.list
+# Parameters: (size = 16777216)
+
+# Run progress: 53.33% complete, ETA 00:03:42
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 31694021.844 ns/op
+# Warmup Iteration   2: 30437928.636 ns/op
+# Warmup Iteration   3: 30624700.364 ns/op
+# Warmup Iteration   4: 30443155.030 ns/op
+# Warmup Iteration   5: 30532163.727 ns/op
+Iteration   1: 30391411.030 ns/op
+Iteration   2: 30517161.727 ns/op
+Iteration   3: 30349698.061 ns/op
+Iteration   4: 30408470.424 ns/op
+Iteration   5: 30566225.030 ns/op
+
+# Run progress: 55.56% complete, ETA 00:03:32
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 31298670.188 ns/op
+# Warmup Iteration   2: 30220176.559 ns/op
+# Warmup Iteration   3: 30362314.970 ns/op
+# Warmup Iteration   4: 30641157.091 ns/op
+# Warmup Iteration   5: 30791336.545 ns/op
+Iteration   1: 30760145.394 ns/op
+Iteration   2: 30553241.121 ns/op
+Iteration   3: 30171543.647 ns/op
+Iteration   4: 30637589.030 ns/op
+Iteration   5: 30650851.061 ns/op
+
+# Run progress: 57.78% complete, ETA 00:03:23
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 31688579.188 ns/op
+# Warmup Iteration   2: 30738539.182 ns/op
+# Warmup Iteration   3: 30447614.485 ns/op
+# Warmup Iteration   4: 30516740.606 ns/op
+# Warmup Iteration   5: 30630657.121 ns/op
+Iteration   1: 30695684.000 ns/op
+Iteration   2: 30740843.697 ns/op
+Iteration   3: 30470521.788 ns/op
+Iteration   4: 30992929.424 ns/op
+Iteration   5: 30978026.303 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
+  30592289.449 ±(99.9%) 240481.979 ns/op [Average]
+  (min, avg, max) = (30171543.647, 30592289.449, 30992929.424), stdev = 224946.992
+  CI (99.9%): [30351807.471, 30832771.428] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
+# Parameters: (size = 1024)
+
+# Run progress: 60.00% complete, ETA 00:03:13
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 575.254 ns/op
+# Warmup Iteration   2: 542.423 ns/op
+# Warmup Iteration   3: 547.682 ns/op
+# Warmup Iteration   4: 537.612 ns/op
+# Warmup Iteration   5: 531.479 ns/op
+Iteration   1: 537.519 ns/op
+Iteration   2: 539.192 ns/op
+Iteration   3: 524.185 ns/op
+Iteration   4: 538.644 ns/op
+Iteration   5: 524.921 ns/op
+
+# Run progress: 62.22% complete, ETA 00:03:02
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 554.491 ns/op
+# Warmup Iteration   2: 544.855 ns/op
+# Warmup Iteration   3: 537.505 ns/op
+# Warmup Iteration   4: 540.485 ns/op
+# Warmup Iteration   5: 538.193 ns/op
+Iteration   1: 543.559 ns/op
+Iteration   2: 539.993 ns/op
+Iteration   3: 523.393 ns/op
+Iteration   4: 536.084 ns/op
+Iteration   5: 523.516 ns/op
+
+# Run progress: 64.44% complete, ETA 00:02:51
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 554.122 ns/op
+# Warmup Iteration   2: 530.909 ns/op
+# Warmup Iteration   3: 556.729 ns/op
+# Warmup Iteration   4: 542.520 ns/op
+# Warmup Iteration   5: 547.754 ns/op
+Iteration   1: 554.747 ns/op
+Iteration   2: 553.610 ns/op
+Iteration   3: 547.172 ns/op
+Iteration   4: 546.500 ns/op
+Iteration   5: 533.437 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
+  537.765 ±(99.9%) 11.162 ns/op [Average]
+  (min, avg, max) = (523.393, 537.765, 554.747), stdev = 10.441
+  CI (99.9%): [526.603, 548.927] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
+# Parameters: (size = 65536)
+
+# Run progress: 66.67% complete, ETA 00:02:40
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 36483.005 ns/op
+# Warmup Iteration   2: 36261.137 ns/op
+# Warmup Iteration   3: 36390.965 ns/op
+# Warmup Iteration   4: 35522.572 ns/op
+# Warmup Iteration   5: 36186.193 ns/op
+Iteration   1: 35440.673 ns/op
+Iteration   2: 35951.929 ns/op
+Iteration   3: 36051.758 ns/op
+Iteration   4: 36319.840 ns/op
+Iteration   5: 35913.038 ns/op
+
+# Run progress: 68.89% complete, ETA 00:02:29
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 36295.697 ns/op
+# Warmup Iteration   2: 35047.740 ns/op
+# Warmup Iteration   3: 36287.923 ns/op
+# Warmup Iteration   4: 36678.782 ns/op
+# Warmup Iteration   5: 38230.465 ns/op
+Iteration   1: 38197.970 ns/op
+Iteration   2: 37005.257 ns/op
+Iteration   3: 37282.796 ns/op
+Iteration   4: 36798.429 ns/op
+Iteration   5: 37527.886 ns/op
+
+# Run progress: 71.11% complete, ETA 00:02:18
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 38399.813 ns/op
+# Warmup Iteration   2: 35991.420 ns/op
+# Warmup Iteration   3: 36074.055 ns/op
+# Warmup Iteration   4: 36447.399 ns/op
+# Warmup Iteration   5: 37797.119 ns/op
+Iteration   1: 37170.594 ns/op
+Iteration   2: 36606.338 ns/op
+Iteration   3: 36478.250 ns/op
+Iteration   4: 36580.156 ns/op
+Iteration   5: 37126.698 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
+  36696.774 ±(99.9%) 765.442 ns/op [Average]
+  (min, avg, max) = (35440.673, 36696.774, 38197.970), stdev = 715.995
+  CI (99.9%): [35931.332, 37462.216] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
+# Parameters: (size = 16777216)
+
+# Run progress: 73.33% complete, ETA 00:02:07
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 11053998.385 ns/op
+# Warmup Iteration   2: 10871443.250 ns/op
+# Warmup Iteration   3: 10817847.204 ns/op
+# Warmup Iteration   4: 10524830.479 ns/op
+# Warmup Iteration   5: 10975450.141 ns/op
+Iteration   1: 10652342.053 ns/op
+Iteration   2: 10653978.489 ns/op
+Iteration   3: 10845594.484 ns/op
+Iteration   4: 10734852.702 ns/op
+Iteration   5: 10732173.989 ns/op
+
+# Run progress: 75.56% complete, ETA 00:01:57
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 11215325.989 ns/op
+# Warmup Iteration   2: 10840166.710 ns/op
+# Warmup Iteration   3: 10713378.606 ns/op
+# Warmup Iteration   4: 10644429.723 ns/op
+# Warmup Iteration   5: 10848959.043 ns/op
+Iteration   1: 10711800.734 ns/op
+Iteration   2: 10957170.663 ns/op
+Iteration   3: 10707584.521 ns/op
+Iteration   4: 10820365.043 ns/op
+Iteration   5: 10749130.628 ns/op
+
+# Run progress: 77.78% complete, ETA 00:01:47
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 11069214.462 ns/op
+# Warmup Iteration   2: 11078917.066 ns/op
+# Warmup Iteration   3: 10757973.806 ns/op
+# Warmup Iteration   4: 10558010.032 ns/op
+# Warmup Iteration   5: 10879256.413 ns/op
+Iteration   1: 10729349.149 ns/op
+Iteration   2: 10906181.685 ns/op
+Iteration   3: 10755003.532 ns/op
+Iteration   4: 10819289.871 ns/op
+Iteration   5: 10668894.564 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
+  10762914.140 ±(99.9%) 96170.657 ns/op [Average]
+  (min, avg, max) = (10652342.053, 10762914.140, 10957170.663), stdev = 89958.092
+  CI (99.9%): [10666743.483, 10859084.798] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentVector
+# Parameters: (size = 1024)
+
+# Run progress: 80.00% complete, ETA 00:01:36
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 75.766 ns/op
+# Warmup Iteration   2: 71.139 ns/op
+# Warmup Iteration   3: 70.892 ns/op
+# Warmup Iteration   4: 71.145 ns/op
+# Warmup Iteration   5: 70.851 ns/op
+Iteration   1: 70.382 ns/op
+Iteration   2: 72.723 ns/op
+Iteration   3: 70.577 ns/op
+Iteration   4: 71.022 ns/op
+Iteration   5: 74.269 ns/op
+
+# Run progress: 82.22% complete, ETA 00:01:25
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 78.071 ns/op
+# Warmup Iteration   2: 71.951 ns/op
+# Warmup Iteration   3: 72.001 ns/op
+# Warmup Iteration   4: 70.673 ns/op
+# Warmup Iteration   5: 73.158 ns/op
+Iteration   1: 73.463 ns/op
+Iteration   2: 73.714 ns/op
+Iteration   3: 73.246 ns/op
+Iteration   4: 72.514 ns/op
+Iteration   5: 73.991 ns/op
+
+# Run progress: 84.44% complete, ETA 00:01:15
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 78.086 ns/op
+# Warmup Iteration   2: 74.461 ns/op
+# Warmup Iteration   3: 73.322 ns/op
+# Warmup Iteration   4: 75.610 ns/op
+# Warmup Iteration   5: 75.695 ns/op
+Iteration   1: 73.811 ns/op
+Iteration   2: 75.174 ns/op
+Iteration   3: 75.571 ns/op
+Iteration   4: 78.255 ns/op
+Iteration   5: 76.710 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
+  73.695 ±(99.9%) 2.329 ns/op [Average]
+  (min, avg, max) = (70.382, 73.695, 78.255), stdev = 2.179
+  CI (99.9%): [71.365, 76.024] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentVector
+# Parameters: (size = 65536)
+
+# Run progress: 86.67% complete, ETA 00:01:04
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 7997.367 ns/op
+# Warmup Iteration   2: 7449.864 ns/op
+# Warmup Iteration   3: 7376.220 ns/op
+# Warmup Iteration   4: 7459.251 ns/op
+# Warmup Iteration   5: 7287.847 ns/op
+Iteration   1: 7371.240 ns/op
+Iteration   2: 7604.008 ns/op
+Iteration   3: 7613.182 ns/op
+Iteration   4: 7722.953 ns/op
+Iteration   5: 7681.705 ns/op
+
+# Run progress: 88.89% complete, ETA 00:00:53
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 8328.832 ns/op
+# Warmup Iteration   2: 7929.140 ns/op
+# Warmup Iteration   3: 7676.561 ns/op
+# Warmup Iteration   4: 7365.611 ns/op
+# Warmup Iteration   5: 7538.875 ns/op
+Iteration   1: 7306.241 ns/op
+Iteration   2: 7442.576 ns/op
+Iteration   3: 7402.275 ns/op
+Iteration   4: 7409.707 ns/op
+Iteration   5: 7488.558 ns/op
+
+# Run progress: 91.11% complete, ETA 00:00:42
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 8307.200 ns/op
+# Warmup Iteration   2: 7791.789 ns/op
+# Warmup Iteration   3: 7989.813 ns/op
+# Warmup Iteration   4: 7904.839 ns/op
+# Warmup Iteration   5: 7880.741 ns/op
+Iteration   1: 7578.456 ns/op
+Iteration   2: 7941.027 ns/op
+Iteration   3: 7721.392 ns/op
+Iteration   4: 8067.867 ns/op
+Iteration   5: 7515.187 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
+  7591.092 ±(99.9%) 226.695 ns/op [Average]
+  (min, avg, max) = (7306.241, 7591.092, 8067.867), stdev = 212.051
+  CI (99.9%): [7364.396, 7817.787] (assumes normal distribution)
+
+
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentVector
+# Parameters: (size = 16777216)
+
+# Run progress: 93.33% complete, ETA 00:00:31
+# Fork: 1 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 8486171.932 ns/op
+# Warmup Iteration   2: 7243808.022 ns/op
+# Warmup Iteration   3: 7248369.108 ns/op
+# Warmup Iteration   4: 7250332.283 ns/op
+# Warmup Iteration   5: 7248717.058 ns/op
+Iteration   1: 7252454.877 ns/op
+Iteration   2: 7266464.920 ns/op
+Iteration   3: 7263516.174 ns/op
+Iteration   4: 7323443.285 ns/op
+Iteration   5: 7229157.324 ns/op
+
+# Run progress: 95.56% complete, ETA 00:00:21
+# Fork: 2 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 8747484.513 ns/op
+# Warmup Iteration   2: 7492003.388 ns/op
+# Warmup Iteration   3: 7501826.560 ns/op
+# Warmup Iteration   4: 7484336.776 ns/op
+# Warmup Iteration   5: 7476321.313 ns/op
+Iteration   1: 7452235.948 ns/op
+Iteration   2: 7458026.237 ns/op
+Iteration   3: 7561705.338 ns/op
+Iteration   4: 7500585.873 ns/op
+Iteration   5: 7502281.216 ns/op
+
+# Run progress: 97.78% complete, ETA 00:00:10
+# Fork: 3 of 3
+WARNING: Using incubator modules: jdk.incubator.vector
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# Warmup Iteration   1: 8603740.479 ns/op
+# Warmup Iteration   2: 7368827.735 ns/op
+# Warmup Iteration   3: 7350061.876 ns/op
+# Warmup Iteration   4: 7360804.162 ns/op
+# Warmup Iteration   5: 7371338.610 ns/op
+Iteration   1: 7371875.787 ns/op
+Iteration   2: 7369093.919 ns/op
+Iteration   3: 7370949.390 ns/op
+Iteration   4: 7358285.191 ns/op
+Iteration   5: 7363655.875 ns/op
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
+  7376248.757 ±(99.9%) 108154.796 ns/op [Average]
+  (min, avg, max) = (7229157.324, 7376248.757, 7561705.338), stdev = 101168.064
+  CI (99.9%): [7268093.961, 7484403.553] (assumes normal distribution)
+
+
+# Run complete. Total time: 00:08:03
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                        (size)  Mode  Cnt         Score        Error  Units
+DotProductBench.array              1024  avgt   15       537.930 ±      3.307  ns/op
+DotProductBench.array             65536  avgt   15     36979.866 ±    563.915  ns/op
+DotProductBench.array          16777216  avgt   15  10290644.848 ± 213770.183  ns/op
+DotProductBench.arrayVector        1024  avgt   15        74.860 ±      7.035  ns/op
+DotProductBench.arrayVector       65536  avgt   15      7218.396 ±    368.644  ns/op
+DotProductBench.arrayVector    16777216  avgt   15   5974979.521 ±  33729.608  ns/op
+DotProductBench.list               1024  avgt   15       595.927 ±      6.258  ns/op
+DotProductBench.list              65536  avgt   15     39999.030 ±    523.706  ns/op
+DotProductBench.list           16777216  avgt   15  30592289.449 ± 240481.979  ns/op
+DotProductBench.segmentScalar      1024  avgt   15       537.765 ±     11.162  ns/op
+DotProductBench.segmentScalar     65536  avgt   15     36696.774 ±    765.442  ns/op
+DotProductBench.segmentScalar  16777216  avgt   15  10762914.140 ±  96170.657  ns/op
+DotProductBench.segmentVector      1024  avgt   15        73.695 ±      2.329  ns/op
+DotProductBench.segmentVector     65536  avgt   15      7591.092 ±    226.695  ns/op
+DotProductBench.segmentVector  16777216  avgt   15   7376248.757 ± 108154.796  ns/op
+
+Benchmark result is saved to results/2026-08-26-m4-avgt.json
