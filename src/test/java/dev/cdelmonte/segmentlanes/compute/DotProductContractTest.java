@@ -17,18 +17,21 @@ public class DotProductContractTest {
             DotProduct list = new BoxedListDot();
             DotProduct segmentScalar = new SegmentScalarDot();
             DotProduct arrayVector = new ArrayVectorDot();
+            DotProduct segmentVector = new SegmentVectorDot();
         ) {
             array.setup(size, seed);
             list.setup(size, seed);
             segmentScalar.setup(size, seed);
             arrayVector.setup(size, seed);
+            segmentVector.setup(size, seed);
 
             double expected = array.compute();
             assertEquals(expected, list.compute());
             assertEquals(expected, segmentScalar.compute());
-
+            
             // Reduction order differs by construction; see README
             assertEquals(expected, arrayVector.compute(), Math.abs(expected) * 1e-12);
+            assertEquals(expected, segmentVector.compute(), Math.abs(expected) * 1e-12);
         }
     }
 
@@ -42,5 +45,17 @@ public class DotProductContractTest {
 
         // Calling close more than once has no effect
         segmentScalar.close();
+    }
+
+    @Test
+    void testSegmentVectorLifetime() {
+        DotProduct segmentVector = new SegmentVectorDot();
+        segmentVector.setup(1024, 42);
+        segmentVector.compute();
+        segmentVector.close();
+        assertThrows(IllegalStateException.class, () -> segmentVector.compute());
+
+        // Calling close more than once has no effect
+        segmentVector.close();
     }
 }

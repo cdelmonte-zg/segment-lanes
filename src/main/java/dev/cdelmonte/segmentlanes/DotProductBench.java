@@ -20,6 +20,7 @@ import dev.cdelmonte.segmentlanes.compute.ArrayVectorDot;
 import dev.cdelmonte.segmentlanes.compute.BoxedListDot;
 import dev.cdelmonte.segmentlanes.compute.PrimitiveArrayDot;
 import dev.cdelmonte.segmentlanes.compute.SegmentScalarDot;
+import dev.cdelmonte.segmentlanes.compute.SegmentVectorDot;
 
 @BenchmarkMode(Mode.AverageTime)          // report result: e.g. average time for invocation
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
@@ -36,6 +37,7 @@ public class DotProductBench {
     BoxedListDot boxedDot;
     SegmentScalarDot segmentScalarDot;
     ArrayVectorDot arrayVectorDot;
+    SegmentVectorDot segmentVectorDot;
 
     @Setup(Level.Trial)                   // executed just one time x fork, not measured
     public void setup() {
@@ -50,6 +52,9 @@ public class DotProductBench {
 
         arrayVectorDot = new ArrayVectorDot();
         arrayVectorDot.setup(size, 42L);
+
+        segmentVectorDot = new SegmentVectorDot();
+        segmentVectorDot.setup(size, 42L);
     }
 
     @Benchmark                            // method measured: only the kernel
@@ -72,11 +77,17 @@ public class DotProductBench {
         return arrayVectorDot.compute();
     }
 
+    @Benchmark
+    public double segmentVector() {
+        return segmentVectorDot.compute();
+    }
+
     @TearDown(Level.Trial)
     public void tearDown() {
         arrayDot.close();
         boxedDot.close();
         segmentScalarDot.close();
         arrayVectorDot.close();
+        segmentVectorDot.close();
     }
 }
