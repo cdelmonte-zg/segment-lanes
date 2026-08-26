@@ -1,6 +1,6 @@
 # M3 report: Vector API on double[] (plus the M4 perfasm for it)
 
-First read of the M3 measurements and the M4 disassembly for
+First read of the M3 measurements and the disassembly for
 `ArrayVectorDot` (2026-08-25). Same conditions as M1/M2 for the timing
 runs (stock machine state: governor powersave, no pinning), so
 cross-milestone comparisons are valid. Commit `71bffc5`, JDK 25.0.3,
@@ -64,7 +64,7 @@ at every size; the gc-run timings agree with the avgt run within error.
    µs): same unexplained fact as in M2, still not to be quoted.
 4. `list` at 16 M: 30.1 ms, 2.96x, stable across M1/M2/M3.
 
-## Perfasm (M4 for arrayVector): real SIMD, one dependent chain
+## Perfasm for arrayVector: real SIMD, one dependent chain
 
 Disassembly at size 1024 (`2026-08-25-m3-perfasm-arrayvector.txt`).
 
@@ -133,7 +133,7 @@ Disassembly at size 1024 (`2026-08-25-m3-perfasm-arrayvector.txt`).
 
 ## Open
 
-- `SegmentVectorDot` (M3b): `fromMemorySegment` with byte offsets, scalar
+- `SegmentVectorDot` (M4): `fromMemorySegment` with byte offsets, scalar
   tail via `getAtIndex`, idempotent `close()`, tolerance + lifetime tests.
   Then one run with all five variants, and its perfasm: if the loop body
   matches this one (base+offset loads instead of array loads), "explicit
