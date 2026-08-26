@@ -1,5 +1,11 @@
 # M4 report: Vector API on MemorySegment
 
+> **Historical experiment, superseded by [`final-report.md`](../final-report.md).**
+> This report records an intermediate state of the investigation and must not be
+> used for the article's benchmark figures. The machine state, the per-variant
+> `@State` isolation and the segment alignment all changed after it was written.
+> It is kept because how a result was reached is part of the result.
+
 Reading of the M4 measurements for `SegmentVectorDot` (2026-08-26): the
 fifth and last variant of the ladder, and the one the whole lab was built
 to reach. Commit `b3a68b3` for the kernel, `b063f69` for the raw data.
@@ -13,10 +19,10 @@ previous values (see "Reproducibility" below), so cross milestone
 comparisons still hold, but the "same conditions" line the earlier
 reports carry now has this exception attached to it.
 
-Raw data: `results/2026-08-26-m4-avgt.{txt,json}`,
-`results/2026-08-26-m4-gc-avgt.{txt,json}`,
-`results/2026-08-26-m4-perfasm-segmentvector.txt` and
-`results/2026-08-26-m4-perfnorm-16m.txt` (the two profiled runs were
+Raw data: `results/archive/2026-08-26-m4-avgt.{txt,json}`,
+`results/archive/2026-08-26-m4-gc-avgt.{txt,json}`,
+`results/archive/2026-08-26-m4-perfasm-segmentvector.txt` and
+`results/archive/2026-08-26-m4-perfnorm-16m.txt` (the two profiled runs were
 taken under bench-system setup; their ns/op are not citable).
 
 ## The kernel
@@ -130,7 +136,7 @@ the same code**. What differs is one address computation.
 
 ## Perfnorm at 16 M: what the gap is, and what it is not
 
-Counters per operation (`results/2026-08-26-m4-perfnorm-16m.txt`):
+Counters per operation (`results/archive/2026-08-26-m4-perfnorm-16m.txt`):
 
 | | arrayVector | segmentVector | delta |
 |---|---|---|---|
@@ -203,7 +209,7 @@ arguments were raised against this and both are wrong:
   that was never measured, and the measurement disagrees.
 
 **The experiment** (branch `experiment/cache-line-alignment`, commit
-`a1e3dbe`, `results/2026-08-26-alignment-*`): one change, from
+`a1e3dbe`, `results/experiments/2026-08-26-alignment-*`): one change, from
 `arena.allocate(ValueLayout.JAVA_DOUBLE, size)` to
 `arena.allocate((long) size * Double.BYTES, 64)`, in both segment
 variants. Addresses go from `...010` to `...040`. The distance between

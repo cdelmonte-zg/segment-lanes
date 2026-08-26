@@ -22,6 +22,7 @@ import dev.cdelmonte.segmentlanes.compute.BoxedListDot;
 import dev.cdelmonte.segmentlanes.compute.PrimitiveArrayDot;
 import dev.cdelmonte.segmentlanes.compute.SegmentScalarDot;
 import dev.cdelmonte.segmentlanes.compute.SegmentVectorDot;
+import dev.cdelmonte.segmentlanes.compute.SegmentVectorUnalignedDot;
 
 /**
  * One @State per variant: a trial allocates only the variant it measures.
@@ -59,6 +60,12 @@ public class DotProductBench {
     @Benchmark
     public double segmentVector(SegmentVectorState s) {
         return s.segmentVectorDot.compute();
+    }
+
+    /** Experiment: same kernel, 8-byte alignment instead of 64. */
+    @Benchmark
+    public double segmentVectorUnaligned(SegmentVectorUnalignedState s) {
+        return s.segmentVectorUnalignedDot.compute();
     }
 
     /** Experimental control for the bandwidth claim, not part of the ladder. */
@@ -173,6 +180,25 @@ public class DotProductBench {
         public void setup() {
             arrayLoadControl = new ArrayLoadControl();
             arrayLoadControl.setup(size, 42L);
+        }
+    }
+
+    @State(Scope.Benchmark)
+    public static class SegmentVectorUnalignedState {
+        @Param({"1024", "65536", "16777216"})
+        int size;
+
+        SegmentVectorUnalignedDot segmentVectorUnalignedDot;
+
+        @Setup(Level.Trial)
+        public void setup() {
+            segmentVectorUnalignedDot = new SegmentVectorUnalignedDot();
+            segmentVectorUnalignedDot.setup(size, 42L);
+        }
+
+        @TearDown(Level.Trial)
+        public void tearDown() {
+            segmentVectorUnalignedDot.close();
         }
     }
 }

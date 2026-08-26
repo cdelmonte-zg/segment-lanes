@@ -24,10 +24,13 @@ fi
 # session.sh builds once for the whole session and sets this to skip the rebuild
 [ -n "${BENCH_SKIP_PACKAGE:-}" ] || mvn -q clean package
 
-filename_txt="results/${run_date}-${1}-avgt.txt"
-filename_json="results/${run_date}-${1}-avgt.json"
+# BENCH_OUT selects the subdirectory under results/. session.sh and the
+# experiment scripts set it so that a run lands where its kind belongs.
+out_dir="${BENCH_OUT:-results}"
+filename_txt="${out_dir}/${run_date}-${1}-avgt.txt"
+filename_json="${out_dir}/${run_date}-${1}-avgt.json"
 jdk_version=$(java --version 2>&1 | head -1)
-mkdir -p results
+mkdir -p "${out_dir}"
 
 # BENCH_PIN pins the run to a set of cores, e.g. BENCH_PIN=8-15,24-31 for one CCD
 pin=""

@@ -14,7 +14,13 @@ One numeric kernel (dot product), five data representations of the same hot path
 
 All variants fill their vectors from the same seed, so every `compute()` runs over the same values in a different physical form.
 
-A sixth class, `ArrayLoadControl`, sits beside the ladder without being part of it: it walks the same two arrays with the least arithmetic the compiler will allow, as a control for whether the largest size is limited by memory bandwidth rather than by compute.
+Two further classes sit beside the ladder without being part of it.
+`ArrayLoadControl` walks the same two arrays with the least arithmetic the
+compiler will allow, as a control for whether the largest size is limited by
+memory bandwidth rather than by compute. `SegmentVectorUnalignedDot` is
+`SegmentVectorDot` with one line changed, the alignment asked of the arena, and
+exists so that alignment can be varied on its own. Neither is measured by the
+full session: they belong to the experiments that use them.
 
 ## Requirements and usage
 
@@ -38,12 +44,16 @@ that introduced it.
 
 | Milestone | What it added | Report |
 |---|---|---|
-| M1 | `BoxedListDot` and `PrimitiveArrayDot`, the two baselines | numbers in `results/` |
+| M1 | `BoxedListDot` and `PrimitiveArrayDot`, the two baselines | numbers in `results/archive/` |
 | M1.5 | disassembly of `PrimitiveArrayDot` | see M2's report |
-| M2 | `SegmentScalarDot` | `docs/m2-report.md` |
-| M3 | `ArrayVectorDot` | `docs/m3-report.md` |
-| M4 | `SegmentVectorDot` | `docs/m4-report.md` |
+| M2 | `SegmentScalarDot` | `docs/archive/m2-report.md` |
+| M3 | `ArrayVectorDot` | `docs/archive/m3-report.md` |
+| M4 | `SegmentVectorDot` | `docs/archive/m4-report.md` |
 | final | all five measured together, plus `ArrayLoadControl` | `docs/final-report.md` |
+
+The M1 to M4 reports live in `docs/archive/` and carry a banner saying so: they
+document how the investigation proceeded and are superseded as sources of
+numbers. Raw data follows the same split, see `results/README.md`.
 
 M1.5 is a half step because it added no variant. It disassembled the
 primitive-array baseline and found it already partly auto-vectorized, which
@@ -82,9 +92,23 @@ That runs timings, the GC profile, one disassembly per variant and the
 hardware counters, and writes a manifest recording the governor and perf
 settings as they actually were, not as they were meant to be. It restores the
 machine from a trap on exit, so an interrupted session cannot leave the
-governor pinned. Note that everything inside a session runs under
-`bench-system setup`, which makes its numbers a self-consistent baseline of
-their own rather than a continuation of runs taken on a stock machine.
+governor pinned, and it builds hsdis first if it is missing. Note that
+everything inside a session runs under `bench-system setup`, which makes its
+numbers a self-consistent baseline of their own rather than a continuation of
+runs taken on a stock machine. A session measures the five variants and the
+bandwidth control, never the experimental kernels.
+
+Controlled experiments have their own scripts, so that each one is a single
+command and stays reproducible:
+
+```bash
+BENCH_PIN=8-15,24-31 scripts/experiment-alignment.sh
+```
+
+That one varies segment alignment and nothing else, at every size, with ten
+forks because the fork-to-fork distribution is itself part of the result. Read
+the per-fork values in the `.json`, not only the mean: at 1024 the mean sits
+where no fork actually ran.
 
 Correctness is checked separately from measurement, with two levels of
 guarantee. For the same size and seed, `mvn test` asserts that the scalar
@@ -101,10 +125,18 @@ it up explicitly, which is what makes the lanes possible.
 ### Assembly verification
 
 Hot-loop disassembly runs need perf counters unlocked and an hsdis library,
-which is not shipped with the JDK. JDK 25 requires one that exports
-`decode_instructions_virtual`, so older distribution packages exporting the
-previous ABI will not do; build one against either the capstone or the
-binutils backend from `src/utils/hsdis` in the JDK sources.
+which is not shipped with the JDK. Build one with:
+
+```bash
+scripts/build-hsdis.sh           # writes hsdis/lib/hsdis-amd64.so, no sudo
+```
+
+The script uses the LLVM backend of `src/utils/hsdis` from the JDK sources,
+for two reasons. JDK 25 requires a library exporting
+`decode_instructions_virtual`, so distribution packages built against the
+previous ABI degrade PrintAssembly to a byte dump. And the capstone backend,
+with the 4.0.2 that Ubuntu 24.04 ships, does not decode every AVX-512
+encoding.
 
 ```bash
 scripts/bench-system.sh setup    # governor + perf counters; `restore` when done
@@ -113,14 +145,15 @@ java -jar target/benchmarks.jar 'DotProductBench.array$' -p size=1024 \
 -f 1 -wi 5 -i 5 -prof perfasm | tee results/<date>-<tag>-perfasm.txt
 ```
 
-Know your decoder before trusting a listing. The runs in this repo used a
-capstone-backed hsdis, and capstone 4.0.2 does not decode every AVX-512
-encoding: undecoded instructions appear as `.byte 0x62`, the EVEX prefix,
-followed by mnemonics that belong to no real instruction. Two of the five
-disassemblies in the final session are affected, in a reproducible way, and
-say so in `docs/final-report.md`. If a listing looks structurally wrong,
-suspect the decoder before the compiler, and cross-check against the
-instruction counters from `-prof perfnorm`, which do not depend on it.
+Know your decoder before trusting a listing. Two of the five disassemblies in
+the final session were taken with a capstone-backed hsdis and carry six
+undecoded instructions each: they show up as `.byte 0x62`, the EVEX prefix,
+followed by mnemonics that belong to no real instruction. Read one of those
+literally and you conclude that two kernels compile to different loop bodies,
+when re-running the same benchmark under the LLVM backend shows them
+identical. If a listing looks structurally wrong, suspect the decoder before
+the compiler, and cross-check against the instruction counters from
+`-prof perfnorm`, which do not depend on it.
 
 See docs/reading-perfasm.md for how to read the output.
 

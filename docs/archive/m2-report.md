@@ -1,13 +1,19 @@
 # M2 report: MemorySegment scalar variant
 
+> **Historical experiment, superseded by [`final-report.md`](../final-report.md).**
+> This report records an intermediate state of the investigation and must not be
+> used for the article's benchmark figures. The machine state, the per-variant
+> `@State` isolation and the segment alignment all changed after it was written.
+> It is kept because how a result was reached is part of the result.
+
 First read of the M2 measurements (2026-08-24). Working numbers, not the
 final controlled session: stock machine state (governor powersave, no
 pinning), same conditions as the M1 runs, so cross-milestone comparisons
 are valid. Commit `ed9f969`, JDK 25.0.3, Ryzen 9 7950X3D.
 
-Raw data: `results/2026-08-24-m2-avgt.{txt,json}`,
-`results/2026-08-24-m2-gc-avgt.{txt,json}` and
-`results/2026-08-24-m2-perfasm-segment.txt` (perfasm run under
+Raw data: `results/archive/2026-08-24-m2-avgt.{txt,json}`,
+`results/archive/2026-08-24-m2-gc-avgt.{txt,json}` and
+`results/archive/2026-08-24-m2-perfasm-segment.txt` (perfasm run under
 bench-system setup; its ns/op are not citable).
 
 ## Numbers (avgt, 3 forks x 5 iterations)

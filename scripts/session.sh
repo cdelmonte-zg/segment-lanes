@@ -22,7 +22,7 @@ set -euo pipefail
 
 TAG="${1:?usage: scripts/session.sh <tag>   (e.g. final)}"
 PIN="${BENCH_PIN:-}"
-HSDIS_LIB="${HSDIS_LIB:-$HOME/Workspace/decode-shape/hsdis-build/lib}"
+HSDIS_LIB="${HSDIS_LIB:-$PWD/hsdis/lib}"
 
 # Sizes and variants. PERFASM_AT is a single size on purpose: at 16 M the
 # listing is too large to read. list is left out of the profiled runs (its
@@ -30,6 +30,11 @@ HSDIS_LIB="${HSDIS_LIB:-$HOME/Workspace/decode-shape/hsdis-build/lib}"
 PERFASM_AT=1024
 PERFNORM_AT=16777216
 PROFILED="array segmentScalar arrayVector segmentVector arrayLoadControl"
+
+# The ladder plus its control. Experimental kernels (SegmentVectorUnalignedDot
+# and anything else added for a one-off question) are deliberately excluded:
+# they have their own scripts and must not drift into the session numbers.
+CANONICAL="DotProductBench.(array|list|segmentScalar|arrayVector|segmentVector|arrayLoadControl)\$"
 
 if [ -n "$(git status --porcelain -- ':!results')" ]; then
 	echo "working tree dirty: commit before measuring" >&2
@@ -46,8 +51,10 @@ if [ "${java_spec}" != "25" ]; then
 	echo "expected JDK 25 on PATH, found ${java_spec:-unknown}" >&2
 	exit 1
 fi
-manifest="results/${run_date}-${TAG}-manifest.txt"
-mkdir -p results
+OUT_DIR="results/session"
+export BENCH_OUT="${OUT_DIR}"
+manifest="${OUT_DIR}/${run_date}-${TAG}-manifest.txt"
+mkdir -p "${OUT_DIR}"
 
 pin=""
 if [ -n "${PIN}" ]; then
@@ -70,6 +77,9 @@ trap 'echo "==> restoring machine state"; scripts/bench-system.sh restore' EXIT
 	echo "# CPU: ${cpu_model}"
 	echo "# pinning: ${PIN:-none (all cores)}"
 	echo "# hsdis: ${HSDIS_LIB}"
+	if [ -f "${HSDIS_LIB}/hsdis-amd64.so" ]; then
+		echo "# hsdis backend: $(nm -D "${HSDIS_LIB}/hsdis-amd64.so" 2>/dev/null | grep -qi llvm && echo "LLVM (decodes AVX-512 fully)" || echo "unknown, check that AVX-512 decodes: capstone 4.x does not")"
+	fi
 	echo "# perfasm at size ${PERFASM_AT}, perfnorm at size ${PERFNORM_AT}"
 	echo "# JVM layout flags (a lab about layout should record these):"
 	java -XX:+PrintFlagsFinal -version 2>/dev/null \
@@ -85,18 +95,23 @@ note() { echo "#   $1" >> "${manifest}"; }
 # --- timings and allocation, all variants, all sizes -----------------------
 
 echo "==> avgt (all variants, all sizes)"
-scripts/bench.sh "${TAG}"
+scripts/bench.sh "${TAG}" "${CANONICAL}"
 note "${run_date}-${TAG}-avgt.{txt,json}"
 
 echo "==> gc profile"
-scripts/bench.sh "${TAG}-gc" -prof gc
+scripts/bench.sh "${TAG}-gc" "${CANONICAL}" -prof gc
 note "${run_date}-${TAG}-gc-avgt.{txt,json}"
 
 # --- disassembly, one variant per file, in-cache size ----------------------
 
+if [ ! -f "${HSDIS_LIB}/hsdis-amd64.so" ] && [ -x scripts/build-hsdis.sh ]; then
+	echo "==> hsdis not found, building it (LLVM backend)"
+	scripts/build-hsdis.sh || echo "!!! hsdis build failed, perfasm will be skipped" >&2
+fi
+
 if [ -f "${HSDIS_LIB}/hsdis-amd64.so" ]; then
 	for v in ${PROFILED}; do
-		out="results/${run_date}-${TAG}-perfasm-$(echo "$v" | tr '[:upper:]' '[:lower:]').txt"
+		out="${OUT_DIR}/${run_date}-${TAG}-perfasm-$(echo "$v" | tr '[:upper:]' '[:lower:]').txt"
 		cmd="${pin}java -jar target/benchmarks.jar 'DotProductBench.${v}$' -p size=${PERFASM_AT} -f 1 -wi 5 -i 5 -prof perfasm"
 		echo "==> perfasm ${v} @${PERFASM_AT}"
 		echo "# commit: ${commit} JDK: ${jdk_version}  CPU: ${cpu_model}
@@ -114,8 +129,8 @@ fi
 
 # --- hardware counters at the size where memory dominates -----------------
 
-out="results/${run_date}-${TAG}-perfnorm-${PERFNORM_AT}.txt"
-regex="DotProductBench.($(echo ${PROFILED} | tr ' ' '|'))\$"
+out="${OUT_DIR}/${run_date}-${TAG}-perfnorm-${PERFNORM_AT}.txt"
+regex="DotProductBench.($(echo ${PROFILED} | tr ' ' '|'))\$"   # profiled subset, list excluded
 cmd="${pin}java -jar target/benchmarks.jar '${regex}' -p size=${PERFNORM_AT} -f 3 -wi 5 -i 5 -prof perfnorm"
 echo "==> perfnorm @${PERFNORM_AT}"
 echo "# commit: ${commit} JDK: ${jdk_version}  CPU: ${cpu_model}

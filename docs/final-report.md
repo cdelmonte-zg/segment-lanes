@@ -4,7 +4,7 @@ The controlled session the whole lab was built for: one machine state, one
 build, every file the article can quote. Run with `scripts/session.sh final`
 on 2026-08-26, commit `78c2e2e`, JDK 25.0.4, Ryzen 9 7950X3D, Blackhole mode
 `compiler`, pinned to `8-15,24-31`. The full state is in
-`results/2026-08-26-final-manifest.txt`, which records the governor and perf
+`results/session/2026-08-26-final-manifest.txt`, which records the governor and perf
 settings as measured rather than as intended.
 
 ## Read this before comparing with M1 to M4
@@ -21,28 +21,31 @@ line by line.** Three things changed at once, all of them deliberate:
    It also tightens the numbers.
 3. **Cache-line alignment.** Both segment variants now allocate with
    `arena.allocate(bytes, 64)` instead of taking the element alignment of
-   `ValueLayout.JAVA_DOUBLE`. See `m4-report.md` for why.
+   `ValueLayout.JAVA_DOUBLE`. See `archive/m4-report.md` for why.
 
 The earlier reports stay as they are, as dated snapshots of what was true
 when they were written. Two of their conclusions are corrected below.
 
-Raw data: `results/2026-08-26-final-avgt.{txt,json}`,
+Raw data: `results/session/2026-08-26-final-avgt.{txt,json}`,
 `-gc-avgt.{txt,json}`, five `-perfasm-<variant>.txt` at size 1024, and
 `-perfnorm-16777216.txt`. The ns/op inside the profiled files are not
 citable: the profiler perturbs the run.
 
 **Note on two of the perfasm files.** `arrayVector` and `arrayLoadControl`
-each contain six instructions the disassembler failed to decode, showing up
-as `.byte 0x62` (the EVEX prefix) followed by nonsense mnemonics. The decoder
-is capstone 4.0.2, which predates most AVX-512 coverage and is the newest
-version this distribution ships; hsdis here is built on the capstone backend,
-so the same limit applies to it. Re-running does not help, and it is
-deterministic: it affects the two kernels that load through
-`DoubleVector.fromArray` under JDK 25.0.4, while the same variant under
-25.0.3 (`2026-08-25-m3-perfasm-arrayvector.txt`) and the segment kernels are
-clean. **Nothing in this report rests on those six instructions**: the
-structural claim they would have supported is measured directly by the
-instruction counters, see the perfnorm section.
+each contain six instructions the disassembler failed to decode, showing up as
+`.byte 0x62` (the EVEX prefix) followed by mnemonics that belong to no real
+instruction. The cause is the decoder, not the compiler: these runs used a
+capstone-backed hsdis, and capstone 4.0.2, the newest this distribution ships,
+does not cover every AVX-512 encoding. It is deterministic, affecting the two
+kernels that load through `DoubleVector.fromArray` under JDK 25.0.4.
+
+Re-taking the same disassembly with an LLVM-backed hsdis (`scripts/build-hsdis.sh`)
+decodes everything, and the result matters: `arrayVector` then shows 8
+`vmovups`, 8 `vmulpd` and 8 `vaddpd`, that is **the same loop body as
+`segmentVector`**. Read literally, the capstone listing would have said the two
+compile differently. Nothing in this report rests on those six instructions,
+and the structural claim is in any case carried by the instruction counters,
+which do not depend on a decoder.
 
 ## Numbers (avgt, 3 forks x 5 iterations)
 
@@ -70,10 +73,13 @@ materialized, no segment escapes.
 1. **The aligned segment beats the array in cache, and the margin is wide.**
    60.4 against 81.0 ns at 1024, a 25 percent difference with error bars far
    apart; 7.08 against 7.93 µs at 65 536, still separated. At 16 M the order
-   flips by 2.8 percent in the array's favour. The mechanism is the one from
-   `m4-report.md` seen from the other side: the segment is aligned to the
-   cache line by request, while the payload of a `double[]` starts 16 bytes
-   past its object header and its 64-byte loads straddle two lines.
+   flips by 2.8 percent in the array's favour. **The mechanism is not the
+   alignment**, which a later single-variable experiment ruled out at these
+   sizes (see below): an unaligned segment beats the array in cache just as
+   well, 60.1 against 69.4 ns comparing like-for-like fork modes. Both vector
+   kernels compile to the same loop body, and the segment executes more
+   instructions while finishing sooner, so the difference is throughput rather
+   than instruction count. Where that throughput goes is not established.
 2. **The array is also less reproducible, and that is a finding in itself.**
    At 1024, `arrayVector` carries ±6.5 ns on 81 (8 percent) while
    `segmentVector` carries ±1.0 on 60 (1.6 percent). The others sit between
@@ -84,7 +90,7 @@ materialized, no segment escapes.
    with heap-placement effects; the segment removes that source of uncertainty
    by requesting its alignment explicitly.** Stated that way it is what the
    data supports: the causal link is demonstrated for the segment (see the
-   experiment in `m4-report.md`), not yet for the array. Closing it would take
+   experiment in `archive/m4-report.md`), not yet for the array. Closing it would take
    a padded-array variant sweeping offsets 0 to 7.
 3. **The speedup over the scalar baseline is larger for the segment (9.0x)
    than for the array (6.6x) at 1024, and it is not because the vector kernel
@@ -129,10 +135,10 @@ Three readings, in order of how surprising they are:
    `vaddpd` per 64 elements instead of 64 `vaddsd`, and nothing between the
    multiply and the add. The reduction happens once, after the loop.
 
-The additions are a strictly ordered dependency chain in all three. **C2
-never reassociates floating-point sums**, not in the scalar loops and not in
-the vector one: the only reassociation in the whole program is the one the
-lanes declare.
+The additions are a strictly ordered dependency chain in all three. **C2 does
+not reassociate the floating-point sums in these kernels**, neither in the
+scalar loops nor in the vector one: the only reassociation in this program is
+the one the lanes declare.
 
 ## Perfnorm at 16 M: the wall is the data
 
@@ -169,7 +175,7 @@ the misaligned-access events this vendor exposes through IBS.
    variant** (6.58), and it finishes in the same time. In the avgt run, which
    is the citable one: 6.107 ± 0.055 ms against 6.084 ± 0.064. Less work, same
    duration. At 16 M the dot product is limited by the arrival of the data,
-   not by arithmetic. About 44 GB/s on one core.
+   not by arithmetic. About 44 GB/s for the single benchmark thread.
 2. **Every vector variant streams ideally**, 1.00 to 1.02 L1-miss events
    per theoretical cache line.
    The excess that M4 found in the unaligned segment (1.33) is gone.
@@ -180,18 +186,83 @@ the misaligned-access events this vendor exposes through IBS.
    `segmentVector` listing. Explicit layout and explicit compute compile to
    the same loop plus one address computation, and this is a hardware count,
    independent of what the disassembler managed to render.
-4. **`segmentScalar` does four times the loads** (33.8 M against 8.5 M): one
-   per element instead of one per 64-byte line. It carries 1.25 misses per
-   line, the worst of the six, and is still faster than `array` at 16 M
-   because it remains compute-bound and the misses hide behind the chain.
+4. **`segmentScalar` records about four times as many L1 load events** as the
+   vector kernels (33.8 M against 8.5 M), consistent with scalar 8-byte
+   accesses rather than wide vector ones. As with the miss counter, this is a
+   hardware event count and not a one-to-one count of source-level loads. It
+   also carries the highest miss-event rate of the six, 1.25 per line, and is
+   still faster than `array` at 16 M because it remains compute-bound and the
+   misses hide behind the chain.
+
+## The alignment experiment, by size
+
+`archive/m4-report.md` established at 16 M that segment alignment is causal, by
+changing that one property and nothing else. The obvious follow-up was whether
+the same holds in cache, where the final session shows the segment ahead of the
+array. Branch `experiment/alignment-vs-size` answers it properly:
+`SegmentVectorUnalignedDot` is `SegmentVectorDot` with one line changed, and
+both run **in the same JMH session**, so alignment is the single variable
+rather than a comparison across two runs. Pinned to one CCD under
+`bench-system setup`, ten forks, with `arrayVector` present as a reference.
+
+| size | 8-byte alignment | 64-byte alignment | effect |
+|---|---|---|---|
+| 1 024 | 63.01 ± 4.28 ns | 60.88 ± 0.56 ns | -3.4%, **error bars overlap** |
+| 65 536 | 7 221 ± 56 ns | 7 190 ± 72 ns | -0.4%, **error bars overlap** |
+| 16 M | 7 385 ± 18 µs | 6 186 ± 38 µs | **-16.2%, separated** |
+
+Three results, and two of them correct this report.
+
+1. **At 16 M the effect holds and is larger under control**, 16.2 percent
+   against the 15 percent measured across two runs. It was not CCD migration
+   and not frequency scaling.
+2. **In cache alignment does nothing measurable.** This is a conclusive
+   negative rather than an inconclusive one: the aligned variant carries ±0.9
+   percent, so an effect of the size seen at 16 M could not hide. An earlier
+   stock-machine version of this experiment suggested -13 percent at 1024; most
+   of that was machine noise, which is what running it without pinning bought.
+3. **The in-cache advantage of the segment is therefore unexplained.** At 1024
+   the *unaligned* segment still beats `arrayVector`. Whatever the segment is
+   doing better in cache, it is not the alignment.
+
+### At 1024 the averages hide two modes
+
+The mean is the wrong statistic here. Per-fork averages, ten forks:
+
+```
+arrayVector              69.2 69.2 69.3 69.3 69.7 69.7 69.9 70.8 | 82.7 82.7
+segmentVector (64B)      59.8 60.0 60.1 60.1 60.4 60.9 60.9 61.3 62.2 63.1
+segmentVectorUnaligned   59.9 60.1 60.1 60.1 60.1 60.2 60.3 60.3 60.4 | 88.7
+```
+
+The 63.01 ns quoted above for the unaligned variant describes **no fork that
+actually ran**: nine sit at 60.1 and one at 88.7. Three consequences:
+
+- **In the fast mode the two segment variants are indistinguishable**, 60.1
+  against 60.5. At this size alignment does not change the time, it changes how
+  often a run lands in the slow mode: one in ten against zero in ten. That is
+  far too thin to state as a rule, and it is reported here as an observation.
+- **The array is bimodal too**, two forks in ten at 82.7 against eight at 69.4,
+  so this is not a property of segments.
+- **The segment's in-cache advantage survives the correction and gets
+  cleaner**: 60.1 against 69.4 comparing fast modes, about 13 percent, with no
+  dependence on alignment or on the outliers.
+
+The profiled runs sample this distribution differently, which is a reason to
+distrust their absolute numbers beyond the usual one. Under `perfnorm` the
+unaligned variant lands at 72.7, 75.4 and 75.7 across its three forks, that is
+the slow mode every time, while the clean run finds it nine times out of ten in
+the fast one. What those profiled runs do establish is the character of the slow
+mode: same instruction count (742 against 743), same L1 load events, more
+cycles. Whatever it is, it is not extra work.
 
 ## Corrections to the earlier reports
 
-- **`m4-report.md`, finding 1, "In cache, the segment is the array."** True
+- **`archive/m4-report.md`, finding 1, "In cache, the segment is the array."** True
   for the kernel measured there, which took the 8-byte element alignment.
   With `allocate(bytes, 64)` the segment is 25 percent *faster* than the array
   at 1024. The earlier sentence describes the default, not the API.
-- **`m3-report.md`, finding 1 and the Open section, the bandwidth
+- **`archive/m3-report.md`, finding 1 and the Open section, the bandwidth
   hypothesis.** No longer a hypothesis, see above. The load-only control
   kernel listed there as optional turned out to be the measurement that
   closes it.
@@ -209,27 +280,35 @@ thing in the same place.
   1 MB, 1.7x at 256 MB. The ceiling is not arithmetic: at 16 M a kernel doing
   29 percent fewer instructions takes the same time. Section 4 gets the
   speedup, section 6 gets its collapse.
-- **Explicit layout pays at every size.** Changing only the alignment moves
-  `segmentVector` by 18 percent at 1024, 6.7 percent at 65 536 and 15.2 percent
-  at 16 M. It is not the case that computation matters while compute-bound and
-  layout takes over when memory-bound: in cache the layout is worth more, not
-  less, and it is what decides whether the segment beats the array (by 25
-  percent at 1024) or loses to it (by 2.8 percent at 16 M). **The two levers do
-  not hand over to each other: the first fades as the data moves away, the
-  second does not.**
-- **Section 3**, on layout: `ValueLayout.JAVA_DOUBLE` promises the 8 bytes of
-  the element and a 512-bit load wants 64, so the natural form of the API
-  leaves double-digit percentages on the floor, invisibly while the data is in
-  cache. With a `double[]` you cannot ask for an alignment at all. Say it with
-  the right sign: the point is not that segments are faster, it is that the
-  control exists and has to be exercised.
+- **Explicit layout is a performance variable the program controls, and it
+  pays where the memory system is the constraint.** The single-variable
+  experiment now covers every size: changing only the segment alignment is
+  worth 16.2 percent at 16 M and nothing measurable at 1024 and 65 536. That
+  shape is the mechanism itself, since cache lines matter when you are crossing
+  them in bulk. For section 3 the claim is therefore precise and modest:
+  **alignment has become an explicit parameter of the memory model**, and it
+  buys double digits exactly where the data no longer fits. What it does not
+  explain is why the segment is ahead of the array in cache, which the same
+  experiment rules out as an alignment effect and leaves open. **For the
+  article, use the 16 M result and stop there.** The bimodality at 1024 is
+  worth keeping in the lab, but in a section on layout it would derail the
+  argument for a phenomenon whose cause is unidentified.
+- **Section 3**, on layout: `ValueLayout.JAVA_DOUBLE` requires only the
+  natural 8-byte alignment of a `double`, while the program can request a
+  stronger one for a wider access pattern. In the controlled 16 M experiment,
+  asking for 64 bytes removes a double-digit penalty. The property that matters
+  is not that 64 bytes are universally better, but that **alignment has become
+  an explicit parameter of the memory model**. With a `double[]` you cannot ask
+  at all. Say it with the right sign: the point is not that segments are
+  faster, it is that the control exists and has to be exercised.
 - **Section 3, second half**: the scalar segment loop is **not vectorized at
   all** and still matches the array, which is the more interesting version of
-  "FFM costs nothing". It does not cost nothing: it costs the auto-vectorizer,
-  and that cost is invisible because the wall in both is the ordered chain of
-  additions. That is the step that sets up section 4.
+  "FFM costs nothing". In this kernel on JDK 25.0.4, C2 does not auto-vectorize
+  the scalar `MemorySegment` loop, and that costs nothing measurable because
+  the wall in both is the ordered chain of additions. That is the step that sets up section 4.
 - **Section 4**, on computation: the three-column instruction table, plus the
-  fact that the compiler never reassociates floating-point sums. The
+  fact that the compiler did not reassociate the floating-point sums in any of
+  the three kernels here. The
   programmer declares the structure, one partial sum per lane, and **gives up
   the sequential order explicitly**; the compiler cannot infer that from the
   scalar loop, which is why it has to build the extract-and-add staircase.
@@ -242,15 +321,32 @@ thing in the same place.
   2.76x at 16 M. Boxing and pointer chasing become visible exactly when the
   memory hierarchy starts to dominate.
 - **Scoping, as always**: this kernel, JDK 25.0.4, Zen 4, 512-bit species, one
-  CCD, and the JVM layout flags recorded in the manifest. The reasoning about
-  lanes and alignment transfers across ISAs; the numbers do not.
+  CCD. The reasoning about lanes and alignment transfers across ISAs; the
+  numbers do not. Note that this session's manifest predates the change that
+  records the JVM layout flags, so any statement about array headers here rests
+  on the defaults of this JDK build rather than on a logged value.
 
 ## Open
 
-- Two perfasm files carry six undecoded instructions each (capstone 4.0.2).
-  Fixing it means building capstone 5 from source and relinking hsdis, about
-  fifteen minutes in userspace. Not needed for this article. Worth doing
-  before the next SIMD lab, where the disassembly carries more weight.
+- Two perfasm files in this session carry six undecoded instructions each.
+  Fixed for the future rather than in place: `scripts/build-hsdis.sh` now
+  builds an LLVM-backed hsdis, which decodes them all. Re-taking those two
+  listings would cost two minutes and a machine setup.
+- The slow mode at 1024 is uncharacterized. One precise measurement would
+  close it: log `segment.address() & 63` for both segments on every fork and
+  correlate it with that fork's time. If the 88.7 ns fork sits at a particular
+  offset and the 60 ns ones elsewhere, the mechanism is settled. Not needed for
+  the article.
+- Why the segment is ahead of the array in cache is open. Same loop body, more
+  instructions, better CPI: the time goes somewhere the counters at 1024 are
+  too noisy to show, and the alignment experiment has ruled out the obvious
+  candidate. The remaining hypothesis is the placement of the two `double[]`
+  in a 32 KB L1, which would need a padded-array variant sweeping offsets to
+  test.
+- This session's manifest predates the flag logging added to `session.sh`.
+  A rerun would produce a manifest that records `ObjectAlignmentInBytes`,
+  `UseCompactObjectHeaders` and the rest, making the layout statements
+  auditable rather than dependent on the defaults holding.
 - The 1.6 percent `segmentScalar` advantage at 65 536 has been unexplained
   across four sessions and is now inside the error bars. Either profile at
   that size or keep it out of the article.

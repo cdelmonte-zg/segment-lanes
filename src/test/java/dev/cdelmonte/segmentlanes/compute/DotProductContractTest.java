@@ -18,12 +18,14 @@ public class DotProductContractTest {
             DotProduct segmentScalar = new SegmentScalarDot();
             DotProduct arrayVector = new ArrayVectorDot();
             DotProduct segmentVector = new SegmentVectorDot();
+            DotProduct segmentVectorUnaligned = new SegmentVectorUnalignedDot();
         ) {
             array.setup(size, seed);
             list.setup(size, seed);
             segmentScalar.setup(size, seed);
             arrayVector.setup(size, seed);
             segmentVector.setup(size, seed);
+            segmentVectorUnaligned.setup(size, seed);
 
             double expected = array.compute();
             assertEquals(expected, list.compute());
@@ -32,6 +34,8 @@ public class DotProductContractTest {
             // Reduction order differs by construction; see README
             assertEquals(expected, arrayVector.compute(), Math.abs(expected) * 1e-12);
             assertEquals(expected, segmentVector.compute(), Math.abs(expected) * 1e-12);
+            // Alignment changes where the bytes live, not what the kernel computes
+            assertEquals(segmentVector.compute(), segmentVectorUnaligned.compute());
         }
     }
 

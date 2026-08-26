@@ -2,3 +2,5 @@ target/
 dependency-reduced-pom.xml
 segment-lanes.code-workspace
 .*.sw?
+# hsdis is built locally by scripts/build-hsdis.sh
+hsdis/

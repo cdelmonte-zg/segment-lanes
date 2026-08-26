@@ -1,0 +1,202 @@
+# commit: ca456b9 JDK: openjdk 25.0.4 2026-07-21  CPU: AMD Ryzen 9 7950X3D 16-Core Processor
+# taskset -c 8-15,24-31 java -jar target/benchmarks.jar 'DotProductBench.segmentVectorUnaligned$' -p size=1024 -f 1 -wi 5 -i 5 -prof perfasm
+# ns/op in this file are NOT citable: the profiler perturbs the run.
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
+WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+# JMH version: 1.37
+# VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
+# VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
+# VM options: --add-modules=jdk.incubator.vector
+# Blackhole mode: compiler (auto-detected, use -Djmh.blackhole.autoDetect=false to disable)
+# Warmup: 5 iterations, 1 s each
+# Measurement: 5 iterations, 1 s each
+# Timeout: 10 min per iteration
+# Threads: 1 thread, will synchronize iterations
+# Benchmark mode: Average time, time/op
+# Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentVectorUnaligned
+# Parameters: (size = 1024)
+
+# Run progress: 0.00% complete, ETA 00:00:10
+# Fork: 1 of 1
+# Preparing profilers: LinuxPerfAsmProfiler 
+# Profilers consume stdout and stderr from target VM, use -v EXTRA to copy to console
+# Warmup Iteration   1: 3093.149 ns/op
+# Warmup Iteration   2: 87.879 ns/op
+# Warmup Iteration   3: 88.204 ns/op
+# Warmup Iteration   4: 85.751 ns/op
+# Warmup Iteration   5: 88.920 ns/op
+Iteration   1: 87.842 ns/op
+Iteration   2: 86.349 ns/op
+Iteration   3: 84.904 ns/op
+Iteration   4: 87.673 ns/op
+Iteration   5: 85.219 ns/op
+# Processing profiler results: LinuxPerfAsmProfiler 
+
+
+Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVectorUnaligned":
+  86.397 ±(99.9%) 5.214 ns/op [Average]
+  (min, avg, max) = (84.904, 86.397, 87.842), stdev = 1.354
+  CI (99.9%): [81.184, 91.611] (assumes normal distribution)
+
+Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVectorUnaligned:asm":
+PrintAssembly processed: 336017 total address lines.
+Perf output processed (skipped 8.491 seconds):
+ Column 1: cycles (4624 events)
+
+Hottest code regions (>10.00% "cycles" events):
+ Event counts are percents of total event count.
+
+....[Hottest Region 1]..............................................................................
+c2, level 4, dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+
+                                                                       ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub@19 (line 247)
+             0x0000705de81f1b2a:   shlq		$3, %r10
+             0x0000705de81f1b2e:   vmovq		%r10, %xmm11        ;*invokestatic checkIndex {reexecute=0 rethrow=0 return_oop=0}
+                                                                       ; - java.util.Objects::checkIndex@3 (line 441)
+                                                                       ; - jdk.incubator.vector.VectorIntrinsics::checkFromIndexSize@45 (line 68)
+                                                                       ; - jdk.incubator.vector.DoubleVector::fromMemorySegment@14 (line 3034)
+                                                                       ; - dev.cdelmonte.segmentlanes.compute.SegmentVectorUnalignedDot::compute@47 (line 57)
+                                                                       ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentVectorUnaligned@4 (line 68)
+                                                                       ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub@19 (line 247)
+             0x0000705de81f1b33:   vmovdqu64		%zmm12, %zmm14
+   0.11%     0x0000705de81f1b39:   movl		%ecx, %r11d
+             0x0000705de81f1b3c:   xorl		%r10d, %r10d
+             0x0000705de81f1b3f:   jmp		0x705de81f1c97
+             0x0000705de81f1b44:   nopw		(%rax, %rax)
+             0x0000705de81f1b4a:   nopw		(%rax, %rax)
+          ↗  0x0000705de81f1b50:   movl		%ebp, %r9d
+          │  0x0000705de81f1b53:   movslq		%r9d, %rbp
+   0.06%  │  0x0000705de81f1b56:   shlq		$3, %rbp
+          │  0x0000705de81f1b5a:   movq		%rsi, %r13
+   0.11%  │  0x0000705de81f1b5d:   addq		%rbp, %r13
+          │  0x0000705de81f1b60:   movq		%rdi, %r14
+          │  0x0000705de81f1b63:   addq		%rbp, %r14
+          │  0x0000705de81f1b66:   vmovups		0x1c0(%r13), %zmm13
+   2.60%  │  0x0000705de81f1b6d:   vmulpd		0x1c0(%r14), %zmm13, %zmm18
+   1.49%  │  0x0000705de81f1b74:   vmovups		0x40(%r14), %zmm13
+   0.28%  │  0x0000705de81f1b7b:   vmulpd		0x40(%r13), %zmm13, %zmm13
+   1.99%  │  0x0000705de81f1b82:   vmovups		(%r14), %zmm15
+   0.35%  │  0x0000705de81f1b88:   vmulpd		(%r13), %zmm15, %zmm15
+   3.11%  │  0x0000705de81f1b8f:   vmovups		0x80(%r14), %zmm16
+   0.39%  │  0x0000705de81f1b96:   vmulpd		0x80(%r13), %zmm16, %zmm16
+   3.63%  │  0x0000705de81f1b9d:   vaddpd		%zmm14, %zmm15, %zmm14
+   3.18%  │  0x0000705de81f1ba3:   vmovups		0x100(%r14), %zmm15
+   0.69%  │  0x0000705de81f1baa:   vmulpd		0x100(%r13), %zmm15, %zmm15
+   4.28%  │  0x0000705de81f1bb1:   vaddpd		%zmm13, %zmm14, %zmm13;   {other}
+   5.56%  │  0x0000705de81f1bb7:   vmovups		0x140(%r14), %zmm14
+   1.06%  │  0x0000705de81f1bbe:   vmulpd		0x140(%r13), %zmm14, %zmm14
+   4.52%  │  0x0000705de81f1bc5:   vaddpd		%zmm13, %zmm16, %zmm13
+   5.10%  │  0x0000705de81f1bcb:   vmovups		0x180(%r14), %zmm16
+   0.76%  │  0x0000705de81f1bd2:   vmovups		0xc0(%r14), %zmm17
+   1.02%  │  0x0000705de81f1bd9:   vmulpd		0x180(%r13), %zmm16, %zmm16
+   5.06%  │  0x0000705de81f1be0:   vmulpd		0xc0(%r13), %zmm17, %zmm17
+   5.58%  │  0x0000705de81f1be7:   vaddpd		%zmm17, %zmm13, %zmm13
+   3.31%  │  0x0000705de81f1bed:   vaddpd		%zmm13, %zmm15, %zmm13
+   7.14%  │  0x0000705de81f1bf3:   vaddpd		%zmm13, %zmm14, %zmm13
+   7.83%  │  0x0000705de81f1bf9:   vaddpd		%zmm13, %zmm16, %zmm13;*invokestatic reductionCoerced {reexecute=0 rethrow=0 return_oop=0}
+          │                                                            ; - jdk.incubator.vector.DoubleVector::reduceLanesTemplate@78 (line 2681)
+          │                                                            ; - jdk.incubator.vector.Double512Vector::reduceLanes@2 (line 317)
+          │                                                            ; - dev.cdelmonte.segmentlanes.compute.SegmentVectorUnalignedDot::compute@105 (line 63)
+          │                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentVectorUnaligned@4 (line 68)
+          │                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub@19 (line 247)
+   7.98%  │  0x0000705de81f1bff:   vaddpd		%zmm13, %zmm18, %zmm14;*invokestatic binaryOp {reexecute=0 rethrow=0 return_oop=0}
+          │                                                            ; - jdk.incubator.vector.DoubleVector::lanewiseTemplate@113 (line 803)
+          │                                                            ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 278)
+          │                                                            ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 43)
+          │                                                            ; - jdk.incubator.vector.DoubleVector::add@5 (line 1263)
+          │                                                            ; - dev.cdelmonte.segmentlanes.compute.SegmentVectorUnalignedDot::compute@79 (line 61)
+          │                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentVectorUnaligned@4 (line 68)
+          │                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub@19 (line 247)
+   8.89%  │  0x0000705de81f1c05:   leal		0x40(%r9), %ebp
+          │  0x0000705de81f1c09:   cmpl		%ebx, %ebp
+          ╰  0x0000705de81f1c0b:   jl		0x705de81f1b50
+             0x0000705de81f1c11:   movq		0x30(%r15), %r13
+....................................................................................................
+  86.07%  <total for region 1>
+
+....[Hottest Regions]...............................................................................
+  86.07%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   3.53%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   3.50%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.71%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.26%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.26%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.24%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.24%  ld-linux-x86-64.so.2  __tls_get_addr 
+   0.19%     [kernel.kallsyms]  __rcu_read_unlock 
+   0.19%     [kernel.kallsyms]  perf_ctx_unlock 
+   0.19%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.19%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.19%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.19%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.17%     [kernel.kallsyms]  srso_alias_safe_ret 
+   0.17%     [kernel.kallsyms]  perf_ctx_enable 
+   0.15%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.15%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.15%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.11%     [kernel.kallsyms]  entry_SYSCALL_64 
+   3.11%  <...other 109 warm regions...>
+....................................................................................................
+ 100.00%  <totals>
+
+....[Hottest Methods (after inlining)]..............................................................
+  95.80%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentVectorUnaligned_jmhTest::segmentVectorUnaligned_avgt_jmhStub, version 6, compile id 1175 
+   0.30%     [kernel.kallsyms]  perf_ctx_unlock 
+   0.24%                        <unknown> 
+   0.24%  ld-linux-x86-64.so.2  __tls_get_addr 
+   0.19%     [kernel.kallsyms]  __rcu_read_unlock 
+   0.17%     [kernel.kallsyms]  srso_alias_safe_ret 
+   0.17%     [kernel.kallsyms]  perf_ctx_enable 
+   0.11%     [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
+   0.11%     [kernel.kallsyms]  entry_SYSCALL_64 
+   0.09%     [kernel.kallsyms]  __perf_event_task_sched_in 
+   0.09%             libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.09%             libjvm.so  defaultStream::hold(long) 
+   0.09%             libjvm.so  defaultStream::write(char const*, unsigned long) 
+   0.09%             libjvm.so  fileStream::write(char const*, unsigned long) 
+   0.06%     [kernel.kallsyms]  do_syscall_64 
+   0.06%     [kernel.kallsyms]  arch_exit_to_user_mode_prepare.isra.0 
+   0.04%     [kernel.kallsyms]  __irqentry_text_end 
+   0.04%     [kernel.kallsyms]  _find_next_bit 
+   0.04%     [kernel.kallsyms]  __memcg_slab_post_alloc_hook 
+   0.04%     [kernel.kallsyms]  xas_load 
+   1.92%  <...other 84 warm methods...>
+....................................................................................................
+ 100.00%  <totals>
+
+....[Distribution by Source]........................................................................
+  95.80%           c2, level 4
+   2.81%     [kernel.kallsyms]
+   0.56%             libjvm.so
+   0.24%                      
+   0.24%  ld-linux-x86-64.so.2
+   0.22%             libc.so.6
+   0.04%           interpreter
+   0.02%            libjava.so
+   0.02%           libz.so.1.3
+   0.02%             [iwlwifi]
+   0.02%              [nvidia]
+....................................................................................................
+ 100.00%  <totals>
+
+
+
+# Run complete. Total time: 00:00:15
+
+REMEMBER: The numbers below are just data. To gain reusable insights, you need to follow up on
+why the numbers are the way they are. Use profilers (see -prof, -lprof), design factorial
+experiments, perform baseline and negative tests that provide experimental control, make sure
+the benchmarking environment is safe on JVM/OS/HW level, ask for reviews from the domain experts.
+Do not assume the numbers tell you what you want them to tell.
+
+NOTE: Current JVM experimentally supports Compiler Blackholes, and they are in use. Please exercise
+extra caution when trusting the results, look into the generated code to check the benchmark still
+works, and factor in a small probability of new VM bugs. Additionally, while comparisons between
+different JVMs are already problematic, the performance difference caused by different Blackhole
+modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
+
+Benchmark                                   (size)  Mode  Cnt   Score   Error  Units
+DotProductBench.segmentVectorUnaligned        1024  avgt    5  86.397 ± 5.214  ns/op
+DotProductBench.segmentVectorUnaligned:asm    1024  avgt          NaN            ---

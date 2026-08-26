@@ -1,14 +1,20 @@
 # M3 report: Vector API on double[] (plus the M4 perfasm for it)
 
+> **Historical experiment, superseded by [`final-report.md`](../final-report.md).**
+> This report records an intermediate state of the investigation and must not be
+> used for the article's benchmark figures. The machine state, the per-variant
+> `@State` isolation and the segment alignment all changed after it was written.
+> It is kept because how a result was reached is part of the result.
+
 First read of the M3 measurements and the disassembly for
 `ArrayVectorDot` (2026-08-25). Same conditions as M1/M2 for the timing
 runs (stock machine state: governor powersave, no pinning), so
 cross-milestone comparisons are valid. Commit `71bffc5`, JDK 25.0.3,
 Ryzen 9 7950X3D, Blackhole mode `compiler` (auto-detected, same as M1/M2).
 
-Raw data: `results/2026-08-25-m3-avgt.{txt,json}`,
-`results/2026-08-25-m3-gc-avgt.{txt,json}` and
-`results/2026-08-25-m3-perfasm-arrayvector.txt` (perfasm run under
+Raw data: `results/archive/2026-08-25-m3-avgt.{txt,json}`,
+`results/archive/2026-08-25-m3-gc-avgt.{txt,json}` and
+`results/archive/2026-08-25-m3-perfasm-arrayvector.txt` (perfasm run under
 bench-system setup; its ns/op are not citable).
 
 ## The kernel
