@@ -18,8 +18,8 @@ public class SegmentScalarDot implements DotProduct {
 
         Random random = new Random(seed);
 
-        this.segmentA = arena.allocate(ValueLayout.JAVA_DOUBLE, size);
-        this.segmentB = arena.allocate(ValueLayout.JAVA_DOUBLE, size);
+        this.segmentA = arena.allocate((long) size * Double.BYTES, 64);
+        this.segmentB = arena.allocate((long) size * Double.BYTES, 64);
 
         for (int i = 0; i < size; i++) {
             segmentA.setAtIndex(ValueLayout.JAVA_DOUBLE, i, random.nextDouble());
