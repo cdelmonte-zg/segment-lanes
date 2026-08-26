@@ -1,4 +1,4 @@
-# commit: 78c2e2e JDK: openjdk 25.0.4 2026-07-21  CPU: Ryzen 9 7950X3D
+# commit: bf5a096 JDK: openjdk 25.0.4 2026-07-21  CPU: AMD Ryzen 9 7950X3D 16-Core Processor
 # taskset -c 8-15,24-31 java -jar target/benchmarks.jar 'DotProductBench.arrayVector$' -p size=1024 -f 1 -wi 5 -i 5 -prof perfasm
 # ns/op in this file are NOT citable: the profiler perturbs the run.
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
@@ -22,187 +22,152 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 # Fork: 1 of 1
 # Preparing profilers: LinuxPerfAsmProfiler 
 # Profilers consume stdout and stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 150.875 ns/op
-# Warmup Iteration   2: 68.095 ns/op
-# Warmup Iteration   3: 69.456 ns/op
-# Warmup Iteration   4: 69.457 ns/op
-# Warmup Iteration   5: 69.004 ns/op
-Iteration   1: 69.405 ns/op
-Iteration   2: 69.118 ns/op
-Iteration   3: 70.206 ns/op
-Iteration   4: 68.909 ns/op
-Iteration   5: 69.305 ns/op
+# Warmup Iteration   1: 167.444 ns/op
+# Warmup Iteration   2: 68.791 ns/op
+# Warmup Iteration   3: 68.502 ns/op
+# Warmup Iteration   4: 70.471 ns/op
+# Warmup Iteration   5: 69.814 ns/op
+Iteration   1: 69.228 ns/op
+Iteration   2: 70.602 ns/op
+Iteration   3: 69.352 ns/op
+Iteration   4: 70.351 ns/op
+Iteration   5: 70.163 ns/op
 # Processing profiler results: LinuxPerfAsmProfiler 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
-  69.389 ±(99.9%) 1.905 ns/op [Average]
-  (min, avg, max) = (68.909, 69.389, 70.206), stdev = 0.495
-  CI (99.9%): [67.484, 71.293] (assumes normal distribution)
+  69.939 ±(99.9%) 2.365 ns/op [Average]
+  (min, avg, max) = (69.228, 69.939, 70.602), stdev = 0.614
+  CI (99.9%): [67.575, 72.304] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:asm":
-PrintAssembly processed: 298713 total address lines.
-Perf output processed (skipped 8.335 seconds):
- Column 1: cycles (4679 events)
+PrintAssembly processed: 288718 total address lines.
+Perf output processed (skipped 8.435 seconds):
+ Column 1: cycles (4613 events)
 
 Hottest code regions (>10.00% "cycles" events):
  Event counts are percents of total event count.
 
 ....[Hottest Region 1]..............................................................................
-c2, level 4, dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
+c2, level 4, dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
 
-                 0x00007e238c1e6a23:   vmovd		%xmm4, %r11d
-   0.21%         0x00007e238c1e6a28:   leaq		(%r12, %r11, 8), %rbp
-                 0x00007e238c1e6a2c:   movl		$8, %r11d
-                 0x00007e238c1e6a32:   movl		%r10d, %r9d
-                 0x00007e238c1e6a35:   subl		%r11d, %r9d
-                 0x00007e238c1e6a38:   cmpl		%r11d, %r10d
-                 0x00007e238c1e6a3b:   cmovll		%r14d, %r9d
-                 0x00007e238c1e6a3f:   cmpl		$0xfa00, %r9d
-                 0x00007e238c1e6a46:   cmoval		%esi, %r9d
-                 0x00007e238c1e6a4a:   addl		%r11d, %r9d
-   0.13%         0x00007e238c1e6a4d:   nop		
-              ↗  0x00007e238c1e6a50:   .byte		0x62
-              │  0x00007e238c1e6a51:   xchgl		%ecx, %eax
-          ╭   │  0x00007e238c1e6a52:   jl		0x7e238c1e6a9c
-          │   │  0x00007e238c1e6a54:   adcb		%bl, 0x90(%rax, %rbx, 8)
-   0.19%  │   │  0x00007e238c1e6a5b:   vmulpd		0x90(%rax, %r11, 8), %zmm3, %zmm3
-   0.45%  │   │  0x00007e238c1e6a66:   .byte		0x62
-          │   │  0x00007e238c1e6a67:   xchgl		%ecx, %eax
-          │╭  │  0x00007e238c1e6a68:   jl		0x7e238c1e6ab2
-          ││  │  0x00007e238c1e6a6a:   adcb		%ch, 0x10(%rax, %rbx, 8)
-          ││  │  0x00007e238c1e6a71:   vmulpd		0x10(%rax, %r11, 8), %zmm5, %zmm5
-   0.60%  ││  │  0x00007e238c1e6a7c:   .byte		0x62
-          ││  │  0x00007e238c1e6a7d:   adcl		%edi, 0x10(%rax, %rcx, 2)
-          ││  │  0x00007e238c1e6a81:   testb		%bl, %al
-          ││  │  0x00007e238c1e6a83:   rolb		$1, (%rcx)
-          ││  │  0x00007e238c1e6a85:   addb		%al, (%rax)
-   0.06%  ││  │  0x00007e238c1e6a87:   vmulpd		0x1d0(%rax, %r11, 8), %zmm8, %zmm8
-   0.98%  ││  │  0x00007e238c1e6a92:   .byte		0x62
-          ││  │  0x00007e238c1e6a93:   adcl		%edi, 0x10(%rax, %rcx, 2)
-          ││  │  0x00007e238c1e6a97:   movl		%ds, %eax
-          ││  │  0x00007e238c1e6a99:   pushq		%rax
-          ││  │  0x00007e238c1e6a9a:   addb		%al, (%rax)
-          ↘│  │  0x00007e238c1e6a9c:   addb		%ah, 0x31(%rdx)
-           │  │  0x00007e238c1e6a9f:   movb		$0x48, %ch
-           │  │  0x00007e238c1e6aa1:   popq		%rcx
-           │  │  0x00007e238c1e6aa2:   movl		%ds, %eax
-           │  │  0x00007e238c1e6aa4:   pushq		%rax
-           │  │  0x00007e238c1e6aa5:   addb		%al, (%rax)
-           │  │  0x00007e238c1e6aa7:   addb		%ah, 0x11(%rdx)
-           │╭ │  0x00007e238c1e6aaa:   jl		0x7e238c1e6af4
-           ││ │  0x00007e238c1e6aac:   adcb		%dl, 0x190(%rax, %rbx, 8)
-   0.30%    │ │  0x00007e238c1e6ab3:   vmulpd		0x190(%rax, %r11, 8), %zmm10, %zmm10
-   2.01%    │ │  0x00007e238c1e6abe:   .byte		0x62
-            │ │  0x00007e238c1e6abf:   adcl		%edi, 0x10(%rax, %rcx, 2)
-            │ │  0x00007e238c1e6ac3:   pushfq		
-            │ │  0x00007e238c1e6ac4:   fcoms		1(%rax)
-            │ │  0x00007e238c1e6ac7:   addb		%al, (%rax)
-   0.13%    │ │  0x00007e238c1e6ac9:   vmulpd		0x150(%rax, %r11, 8), %zmm11, %zmm11
-   3.12%    │ │  0x00007e238c1e6ad4:   .byte		0x62
-            │ │  0x00007e238c1e6ad5:   adcl		%edi, 0x10(%rax, %rcx, 2)
-            │ │  0x00007e238c1e6ad9:   movsb		(%rsi), (%rdi)
-            │ │  0x00007e238c1e6ada:   fcoms		(%rax)
-            │ │  0x00007e238c1e6adc:   addl		%eax, (%rax)
-            │ │  0x00007e238c1e6ade:   addb		%ah, 0x31(%rdx)
-            │ │  0x00007e238c1e6ae1:   popfq		
-            │ │  0x00007e238c1e6ae2:   popq		%rcx
-            │ │  0x00007e238c1e6ae4:   movsb		(%rsi), (%rdi)
-            │ │  0x00007e238c1e6ae5:   fcoms		(%rax)
-            │ │  0x00007e238c1e6ae7:   addl		%eax, (%rax)
-            │ │  0x00007e238c1e6ae9:   addb		%ah, 0x11(%rdx)
-            │╭│  0x00007e238c1e6aec:   jl		0x7e238c1e6b36
-            │││  0x00007e238c1e6aee:   adcb		%ch, 0xd0(%rax, %rbx, 8)
-   2.33%     ││  0x00007e238c1e6af5:   vmulpd		0xd0(%rax, %r11, 8), %zmm13, %zmm13
-   5.07%     ││  0x00007e238c1e6b00:   vaddpd		%zmm7, %zmm5, %zmm5
-   1.67%     ││  0x00007e238c1e6b06:   vaddpd		%zmm5, %zmm9, %zmm5
-   5.58%     ││  0x00007e238c1e6b0c:   vaddpd		%zmm3, %zmm5, %zmm3 ;   {other}
-   6.01%     ││  0x00007e238c1e6b12:   vaddpd		%zmm3, %zmm13, %zmm3
-   7.52%     ││  0x00007e238c1e6b18:   vaddpd		%zmm3, %zmm12, %zmm3
-  10.07%     ││  0x00007e238c1e6b1e:   vaddpd		%zmm3, %zmm11, %zmm3
-   9.83%     ││  0x00007e238c1e6b24:   vaddpd		%zmm3, %zmm10, %zmm3;*invokestatic reductionCoerced {reexecute=0 rethrow=0 return_oop=0}
-             ││                                                            ; - jdk.incubator.vector.DoubleVector::reduceLanesTemplate@78 (line 2681)
-             ││                                                            ; - jdk.incubator.vector.Double512Vector::reduceLanes@2 (line 317)
-             ││                                                            ; - dev.cdelmonte.segmentlanes.compute.ArrayVectorDot::compute@89 (line 37)
-             ││                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::arrayVector@4 (line 56)
-             ││                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub@19 (line 247)
-   8.83%     ││  0x00007e238c1e6b2a:   vaddpd		%zmm3, %zmm8, %zmm7 ;*invokestatic binaryOp {reexecute=0 rethrow=0 return_oop=0}
-             ││                                                            ; - jdk.incubator.vector.DoubleVector::lanewiseTemplate@113 (line 803)
-             ││                                                            ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 278)
-             ││                                                            ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 43)
-             ││                                                            ; - jdk.incubator.vector.DoubleVector::add@5 (line 1263)
-             ││                                                            ; - dev.cdelmonte.segmentlanes.compute.ArrayVectorDot::compute@63 (line 35)
-             ││                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::arrayVector@4 (line 56)
-             ││                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub@19 (line 247)
-  10.04%     ││  0x00007e238c1e6b30:   addl		$0x40, %r11d
-             ││  0x00007e238c1e6b34:   cmpl		%r9d, %r11d
-              ╰  0x00007e238c1e6b37:   jl		0x7e238c1e6a50
-                 0x00007e238c1e6b3d:   movq		0x30(%r15), %r9     ; ImmutableOopMap {r8=Oop rbx=Oop rdi=Oop rdx=Oop rax=Oop rbp=Oop r13=Oop xmm1=Oop xmm4=NarrowOop }
+            0x00007d5b601e88a3:   	vmovd	%xmm4, %r11d
+   0.04%    0x00007d5b601e88a8:   	leaq	(%r12,%r11,8), %rbp
+            0x00007d5b601e88ac:   	movl	$0x8, %r11d
+            0x00007d5b601e88b2:   	movl	%r10d, %r9d
+            0x00007d5b601e88b5:   	subl	%r11d, %r9d
+            0x00007d5b601e88b8:   	cmpl	%r11d, %r10d
+            0x00007d5b601e88bb:   	cmovll	%r14d, %r9d
+            0x00007d5b601e88bf:   	cmpl	$0xfa00, %r9d
+            0x00007d5b601e88c6:   	cmoval	%esi, %r9d
+            0x00007d5b601e88ca:   	addl	%r11d, %r9d
+   0.15%    0x00007d5b601e88cd:   	nop
+            0x00007d5b601e88d0:   	vmovups	0x90(%r8,%r11,8), %zmm3
+   0.04%    0x00007d5b601e88db:   	vmulpd	0x90(%rax,%r11,8), %zmm3, %zmm3
+   0.11%    0x00007d5b601e88e6:   	vmovups	0x10(%r8,%r11,8), %zmm5
+   0.07%    0x00007d5b601e88f1:   	vmulpd	0x10(%rax,%r11,8), %zmm5, %zmm5
+   0.33%    0x00007d5b601e88fc:   	vmovups	0x1d0(%r8,%r11,8), %zmm8
+   0.02%    0x00007d5b601e8907:   	vmulpd	0x1d0(%rax,%r11,8), %zmm8, %zmm8
+   0.48%    0x00007d5b601e8912:   	vmovups	0x50(%r8,%r11,8), %zmm9
+   2.36%    0x00007d5b601e891d:   	vmulpd	0x50(%rax,%r11,8), %zmm9, %zmm9
+   0.98%    0x00007d5b601e8928:   	vmovups	0x190(%r8,%r11,8), %zmm10
+   0.13%    0x00007d5b601e8933:   	vmulpd	0x190(%rax,%r11,8), %zmm10, %zmm10
+   1.21%    0x00007d5b601e893e:   	vmovups	0x150(%r8,%r11,8), %zmm11
+   0.07%    0x00007d5b601e8949:   	vmulpd	0x150(%rax,%r11,8), %zmm11, %zmm11
+  22.11%    0x00007d5b601e8954:   	vmovups	0x110(%r8,%r11,8), %zmm12
+   0.24%    0x00007d5b601e895f:   	vmulpd	0x110(%rax,%r11,8), %zmm12, %zmm12
+   1.95%    0x00007d5b601e896a:   	vmovups	0xd0(%r8,%r11,8), %zmm13
+   1.60%    0x00007d5b601e8975:   	vmulpd	0xd0(%rax,%r11,8), %zmm13, %zmm13
+   2.88%    0x00007d5b601e8980:   	vaddpd	%zmm7, %zmm5, %zmm5
+   0.93%    0x00007d5b601e8986:   	vaddpd	%zmm5, %zmm9, %zmm5
+   2.82%    0x00007d5b601e898c:   	vaddpd	%zmm3, %zmm5, %zmm3 ;   {other}
+   3.58%    0x00007d5b601e8992:   	vaddpd	%zmm3, %zmm13, %zmm3
+   7.61%    0x00007d5b601e8998:   	vaddpd	%zmm3, %zmm12, %zmm3
+   5.25%    0x00007d5b601e899e:   	vaddpd	%zmm3, %zmm11, %zmm3
+   5.33%    0x00007d5b601e89a4:   	vaddpd	%zmm3, %zmm10, %zmm3;*invokestatic reductionCoerced {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - jdk.incubator.vector.DoubleVector::reduceLanesTemplate@78 (line 2681)
+                                                                      ; - jdk.incubator.vector.Double512Vector::reduceLanes@2 (line 317)
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.ArrayVectorDot::compute@89 (line 37)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::arrayVector@4 (line 57)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub@19 (line 247)
+  11.77%    0x00007d5b601e89aa:   	vaddpd	%zmm3, %zmm8, %zmm7 ;*invokestatic binaryOp {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - jdk.incubator.vector.DoubleVector::lanewiseTemplate@113 (line 803)
+                                                                      ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 278)
+                                                                      ; - jdk.incubator.vector.Double512Vector::lanewise@3 (line 43)
+                                                                      ; - jdk.incubator.vector.DoubleVector::add@5 (line 1263)
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.ArrayVectorDot::compute@63 (line 35)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::arrayVector@4 (line 57)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub@19 (line 247)
+  13.77%    0x00007d5b601e89b0:   	addl	$0x40, %r11d
+            0x00007d5b601e89b4:   	cmpl	%r9d, %r11d
+            0x00007d5b601e89b7:   	jl	-0xed
+            0x00007d5b601e89bd:   	movq	0x30(%r15), %r9     ; ImmutableOopMap {r8=Oop rbx=Oop rdi=Oop rdx=Oop rax=Oop rbp=Oop r13=Oop xmm1=Oop xmm4=NarrowOop }
 ....................................................................................................
-  83.56%  <total for region 1>
+  85.78%  <total for region 1>
 
 ....[Hottest Regions]...............................................................................
-  83.56%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   5.39%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   4.30%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.41%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.36%   [kernel.kallsyms]  __perf_event_task_sched_in 
-   0.36%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.34%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.32%   [kernel.kallsyms]  srso_alias_safe_ret 
-   0.32%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.28%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.24%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.19%   [kernel.kallsyms]  perf_ctx_unlock 
-   0.19%                      <unknown> 
-   0.17%           libjvm.so  xmlStream::write_text(char const*, unsigned long) 
-   0.15%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
-   0.13%   [kernel.kallsyms]  _raw_spin_unlock 
-   0.13%           libjvm.so  defaultStream::hold(long) 
-   0.11%   [kernel.kallsyms]  __raw_spin_lock_irqsave 
-   0.09%   [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
-   0.09%   [kernel.kallsyms]  perf_ctx_enable 
-   2.86%  <...other 115 warm regions...>
+  85.78%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   5.20%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   4.25%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   0.30%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   0.28%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   0.26%     [kernel.kallsyms]  perf_ctx_enable 
+   0.26%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   0.24%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   0.20%     [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
+   0.20%     [kernel.kallsyms]  perf_ctx_unlock 
+   0.20%             libjvm.so  xmlStream::write_text(char const*, unsigned long) 
+   0.17%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   0.15%             libjvm.so  defaultStream::hold(long) 
+   0.13%     [kernel.kallsyms]  _raw_spin_unlock 
+   0.13%             libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.09%     [kernel.kallsyms]  entry_SYSCALL_64 
+   0.09%     [kernel.kallsyms]  __rcu_read_unlock 
+   0.09%             libc.so.6  _IO_fwrite 
+   0.07%     [kernel.kallsyms]  __task_pid_nr_ns 
+   0.07%     [kernel.kallsyms]  fdget_pos 
+   1.86%  <...other 74 warm regions...>
 ....................................................................................................
-  99.98%  <totals>
+ 100.00%  <totals>
 
 ....[Hottest Methods (after inlining)]..............................................................
-  95.19%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1093 
-   0.51%                      <unknown> 
-   0.36%   [kernel.kallsyms]  __perf_event_task_sched_in 
-   0.32%   [kernel.kallsyms]  srso_alias_safe_ret 
-   0.19%   [kernel.kallsyms]  perf_ctx_unlock 
-   0.17%           libjvm.so  xmlStream::write_text(char const*, unsigned long) 
-   0.15%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
-   0.13%   [kernel.kallsyms]  _raw_spin_unlock 
-   0.13%           libjvm.so  defaultStream::hold(long) 
-   0.11%   [kernel.kallsyms]  __raw_spin_lock_irqsave 
-   0.09%   [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
-   0.09%   [kernel.kallsyms]  perf_ctx_enable 
-   0.06%   [kernel.kallsyms]  asm_sysvec_apic_timer_interrupt 
-   0.06%           libc.so.6  _IO_fwrite 
-   0.06%   [kernel.kallsyms]  entry_SYSCALL_64_after_hwframe 
-   0.06%   [kernel.kallsyms]  sched_use_asym_prio.isra.0 
-   0.04%   [kernel.kallsyms]  ext4_da_write_end 
-   0.04%   [kernel.kallsyms]  do_syscall_64 
-   0.04%   [kernel.kallsyms]  entry_SYSCALL_64 
-   0.04%   [kernel.kallsyms]  __rcu_read_unlock 
-   2.12%  <...other 93 warm methods...>
+  96.55%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_arrayVector_jmhTest::arrayVector_avgt_jmhStub, version 6, compile id 1086 
+   0.26%     [kernel.kallsyms]  perf_ctx_enable 
+   0.20%             libjvm.so  xmlStream::write_text(char const*, unsigned long) 
+   0.20%     [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
+   0.20%     [kernel.kallsyms]  perf_ctx_unlock 
+   0.17%                        <unknown> 
+   0.15%             libjvm.so  defaultStream::hold(long) 
+   0.13%             libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.13%     [kernel.kallsyms]  _raw_spin_unlock 
+   0.09%     [kernel.kallsyms]  __rcu_read_unlock 
+   0.09%     [kernel.kallsyms]  vfs_write 
+   0.09%             libc.so.6  _IO_fwrite 
+   0.09%     [kernel.kallsyms]  entry_SYSCALL_64 
+   0.07%     [kernel.kallsyms]  __task_pid_nr_ns 
+   0.07%     [kernel.kallsyms]  fdget_pos 
+   0.07%     [kernel.kallsyms]  begin_current_label_crit_section 
+   0.04%     [kernel.kallsyms]  arch_exit_to_user_mode_prepare.isra.0 
+   0.04%     [kernel.kallsyms]  file_update_time_flags 
+   0.04%  ld-linux-x86-64.so.2  __tls_get_addr 
+   0.04%     [kernel.kallsyms]  mutex_lock 
+   1.30%  <...other 59 warm methods...>
 ....................................................................................................
-  99.98%  <totals>
+ 100.00%  <totals>
 
 ....[Distribution by Source]........................................................................
-  95.19%         c2, level 4
-   3.27%   [kernel.kallsyms]
-   0.75%           libjvm.so
-   0.51%                    
-   0.17%           libc.so.6
-   0.02%         c1, level 3
-   0.02%     perf-201186.map
-   0.02%               [kvm]
-   0.02%         interpreter
+  96.55%           c2, level 4
+   2.19%     [kernel.kallsyms]
+   0.69%             libjvm.so
+   0.17%                      
+   0.17%             libc.so.6
+   0.09%          libLLVM.so.1
+   0.04%           interpreter
+   0.04%  ld-linux-x86-64.so.2
+   0.02%                [nvme]
+   0.02%      Unknown, level 0
 ....................................................................................................
-  99.98%  <totals>
+ 100.00%  <totals>
 
 
 
@@ -221,5 +186,5 @@ different JVMs are already problematic, the performance difference caused by dif
 modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
 
 Benchmark                        (size)  Mode  Cnt   Score   Error  Units
-DotProductBench.arrayVector        1024  avgt    5  69.389 ± 1.905  ns/op
+DotProductBench.arrayVector        1024  avgt    5  69.939 ± 2.365  ns/op
 DotProductBench.arrayVector:asm    1024  avgt          NaN            ---

@@ -1,4 +1,4 @@
-# commit: 78c2e2e JDK: openjdk 25.0.4 2026-07-21  CPU: Ryzen 9 7950X3D
+# commit: bf5a096 JDK: openjdk 25.0.4 2026-07-21  CPU: AMD Ryzen 9 7950X3D 16-Core Processor
 # taskset -c 8-15,24-31 java -jar target/benchmarks.jar 'DotProductBench.segmentScalar$' -p size=1024 -f 1 -wi 5 -i 5 -prof perfasm
 # ns/op in this file are NOT citable: the profiler perturbs the run.
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
@@ -22,177 +22,172 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 # Fork: 1 of 1
 # Preparing profilers: LinuxPerfAsmProfiler 
 # Profilers consume stdout and stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 795.544 ns/op
-# Warmup Iteration   2: 565.832 ns/op
-# Warmup Iteration   3: 549.520 ns/op
-# Warmup Iteration   4: 547.054 ns/op
-# Warmup Iteration   5: 557.593 ns/op
-Iteration   1: 540.541 ns/op
-Iteration   2: 542.064 ns/op
-Iteration   3: 538.385 ns/op
-Iteration   4: 543.202 ns/op
-Iteration   5: 537.299 ns/op
+# Warmup Iteration   1: 890.562 ns/op
+# Warmup Iteration   2: 543.481 ns/op
+# Warmup Iteration   3: 539.979 ns/op
+# Warmup Iteration   4: 533.744 ns/op
+# Warmup Iteration   5: 537.462 ns/op
+Iteration   1: 542.107 ns/op
+Iteration   2: 537.094 ns/op
+Iteration   3: 548.198 ns/op
+Iteration   4: 545.337 ns/op
+Iteration   5: 542.711 ns/op
 # Processing profiler results: LinuxPerfAsmProfiler 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
-  540.298 ±(99.9%) 9.484 ns/op [Average]
-  (min, avg, max) = (537.299, 540.298, 543.202), stdev = 2.463
-  CI (99.9%): [530.814, 549.783] (assumes normal distribution)
+  543.089 ±(99.9%) 15.900 ns/op [Average]
+  (min, avg, max) = (537.094, 543.089, 548.198), stdev = 4.129
+  CI (99.9%): [527.189, 558.989] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:asm":
-PrintAssembly processed: 289394 total address lines.
-Perf output processed (skipped 8.515 seconds):
- Column 1: cycles (4668 events)
+PrintAssembly processed: 284569 total address lines.
+Perf output processed (skipped 8.461 seconds):
+ Column 1: cycles (4641 events)
 
 Hottest code regions (>10.00% "cycles" events):
  Event counts are percents of total event count.
 
 ....[Hottest Region 1]..............................................................................
-c2, level 4, dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 998 
+c2, level 4, dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 1005 
 
-                                                                       ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@11 (line 59)
-                                                                       ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@10 (line 53)
-                                                                       ; - java.lang.invoke.VarHandleGuards::guard_LJ_D@49 (line 290)
-                                                                       ; - jdk.internal.foreign.AbstractMemorySegmentImpl::getAtIndex@22 (line 902)
-                                                                       ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@22 (line 37)
-                                                                       ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 51)
-                                                                       ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
-             0x00007bf4181e3a1f:   movl		%edi, %esi
-             0x00007bf4181e3a21:   xorl		%ecx, %ecx
-             0x00007bf4181e3a23:   vxorpd		%xmm11, %xmm11, %xmm11
-   0.02%     0x00007bf4181e3a28:   jmp		0x7bf4181e3b68
-             0x00007bf4181e3a2d:   nop		
-          ↗  0x00007bf4181e3a30:   movl		%r11d, %r10d        ;*dload_1 {reexecute=0 rethrow=0 return_oop=0}
-          │                                                            ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@12 (line 37)
-          │                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 51)
-          │                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
-          │  0x00007bf4181e3a33:   movslq		%r10d, %r11
-   0.04%  │  0x00007bf4181e3a36:   shlq		$3, %r11
-   0.06%  │  0x00007bf4181e3a3a:   movq		%rbx, %r13
-          │  0x00007bf4181e3a3d:   addq		%r11, %r13          ;*invokevirtual getLongUnaligned {reexecute=0 rethrow=0 return_oop=0}
-          │                                                            ; - jdk.internal.misc.Unsafe::getLongUnaligned@5 (line 3571)
-          │                                                            ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnalignedInternal@15 (line 3861)
-          │                                                            ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnaligned@6 (line 3849)
-          │                                                            ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@42 (line 60)
-          │                                                            ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@10 (line 53)
-          │                                                            ; - java.lang.invoke.VarHandleGuards::guard_LJ_D@49 (line 290)
-          │                                                            ; - jdk.internal.foreign.AbstractMemorySegmentImpl::getAtIndex@22 (line 902)
-          │                                                            ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@22 (line 37)
-          │                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 51)
-          │                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
-          │  0x00007bf4181e3a40:   movq		%r9, %r14
-   0.02%  │  0x00007bf4181e3a43:   addq		%r11, %r14          ;*invokevirtual getLongUnaligned {reexecute=0 rethrow=0 return_oop=0}
-          │                                                            ; - jdk.internal.misc.Unsafe::getLongUnaligned@5 (line 3571)
-          │                                                            ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnalignedInternal@15 (line 3861)
-          │                                                            ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnaligned@6 (line 3849)
-          │                                                            ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@42 (line 60)
-          │                                                            ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@10 (line 53)
-          │                                                            ; - java.lang.invoke.VarHandleGuards::guard_LJ_D@49 (line 290)
-          │                                                            ; - jdk.internal.foreign.AbstractMemorySegmentImpl::getAtIndex@22 (line 902)
-          │                                                            ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@36 (line 38)
-          │                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 51)
-          │                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
-          │  0x00007bf4181e3a46:   vmovsd		8(%r13), %xmm12
-   2.19%  │  0x00007bf4181e3a4c:   vmulsd		8(%r14), %xmm12, %xmm12
-   0.71%  │  0x00007bf4181e3a52:   vmovsd		0x28(%r14), %xmm13
-          │  0x00007bf4181e3a58:   vmulsd		0x28(%r13), %xmm13, %xmm13
-          │  0x00007bf4181e3a5e:   vmovsd		0x20(%r14), %xmm14
-          │  0x00007bf4181e3a64:   vmulsd		0x20(%r13), %xmm14, %xmm14
-   0.11%  │  0x00007bf4181e3a6a:   vmovsd		0x30(%r14), %xmm15
-          │  0x00007bf4181e3a70:   vmulsd		0x30(%r13), %xmm15, %xmm15
-          │  0x00007bf4181e3a76:   vmovsd		(%r13), %xmm16
-   2.74%  │  0x00007bf4181e3a7d:   vmulsd		(%r14), %xmm16, %xmm16
-   0.54%  │  0x00007bf4181e3a83:   vmovsd		0x10(%r13), %xmm17
-          │  0x00007bf4181e3a8a:   vmulsd		0x10(%r14), %xmm17, %xmm17
-   0.06%  │  0x00007bf4181e3a91:   vaddsd		%xmm11, %xmm16, %xmm11
-   2.49%  │  0x00007bf4181e3a97:   vmovsd		0x38(%r13), %xmm16
-   0.06%  │  0x00007bf4181e3a9e:   vmovsd		0x18(%r13), %xmm18  ;   {other}
-          │  0x00007bf4181e3aa5:   vmulsd		0x38(%r14), %xmm16, %xmm16
-          │  0x00007bf4181e3aac:   vmulsd		0x18(%r14), %xmm18, %xmm18
-          │  0x00007bf4181e3ab3:   vaddsd		%xmm12, %xmm11, %xmm11
-   9.32%  │  0x00007bf4181e3ab8:   vaddsd		%xmm11, %xmm17, %xmm11
-   7.80%  │  0x00007bf4181e3abe:   vaddsd		%xmm18, %xmm11, %xmm11
-   5.96%  │  0x00007bf4181e3ac4:   vaddsd		%xmm14, %xmm11, %xmm11
-  14.95%  │  0x00007bf4181e3ac9:   vaddsd		%xmm13, %xmm11, %xmm11
-  27.46%  │  0x00007bf4181e3ace:   vaddsd		%xmm15, %xmm11, %xmm11
-  12.43%  │  0x00007bf4181e3ad3:   vaddsd		%xmm11, %xmm16, %xmm11;*dadd {reexecute=0 rethrow=0 return_oop=0}
-          │                                                            ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@42 (line 38)
-          │                                                            ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 51)
-          │                                                            ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
-   7.39%  │  0x00007bf4181e3ad9:   leal		8(%r10), %r11d
-          │  0x00007bf4181e3add:   cmpl		%eax, %r11d
-          ╰  0x00007bf4181e3ae0:   jl		0x7bf4181e3a30
-             0x00007bf4181e3ae6:   movq		0x30(%r15), %r13
-             0x00007bf4181e3aea:   addl		$7, %r10d
-             0x00007bf4181e3aee:   leal		1(%r10, %rcx), %eax ; ImmutableOopMap {xmm0=Oop xmm1=Oop xmm2=Oop xmm3=Oop xmm4=Oop xmm5=Oop xmm6=NarrowOop xmm8=Oop xmm9=Oop xmm10=Oop }
-                                                                       ;*goto {reexecute=1 rethrow=0 return_oop=0}
-                                                                       ; - (reexecute) dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@47 (line 36)
+            0x00007c8dac1e561f:   	movl	%edi, %esi
+            0x00007c8dac1e5621:   	xorl	%ecx, %ecx
+            0x00007c8dac1e5623:   	vxorpd	%xmm11, %xmm11, %xmm11
+            0x00007c8dac1e5628:   	jmp	0x13b
+            0x00007c8dac1e562d:   	nop
+            0x00007c8dac1e5630:   	movl	%r11d, %r10d        ;*dload_1 {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@12 (line 37)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 52)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
+            0x00007c8dac1e5633:   	movslq	%r10d, %r11
+   0.02%    0x00007c8dac1e5636:   	shlq	$0x3, %r11
+   0.02%    0x00007c8dac1e563a:   	movq	%rbx, %r13
+            0x00007c8dac1e563d:   	addq	%r11, %r13          ;*invokevirtual getLongUnaligned {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - jdk.internal.misc.Unsafe::getLongUnaligned@5 (line 3571)
+                                                                      ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnalignedInternal@15 (line 3861)
+                                                                      ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnaligned@6 (line 3849)
+                                                                      ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@42 (line 60)
+                                                                      ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@10 (line 53)
+                                                                      ; - java.lang.invoke.VarHandleGuards::guard_LJ_D@49 (line 290)
+                                                                      ; - jdk.internal.foreign.AbstractMemorySegmentImpl::getAtIndex@22 (line 902)
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@22 (line 37)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 52)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
+            0x00007c8dac1e5640:   	movq	%r9, %r14
+   0.02%    0x00007c8dac1e5643:   	addq	%r11, %r14          ;*invokevirtual getLongUnaligned {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - jdk.internal.misc.Unsafe::getLongUnaligned@5 (line 3571)
+                                                                      ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnalignedInternal@15 (line 3861)
+                                                                      ; - jdk.internal.misc.ScopedMemoryAccess::getLongUnaligned@6 (line 3849)
+                                                                      ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@42 (line 60)
+                                                                      ; - java.lang.invoke.VarHandleSegmentAsDoubles::get@10 (line 53)
+                                                                      ; - java.lang.invoke.VarHandleGuards::guard_LJ_D@49 (line 290)
+                                                                      ; - jdk.internal.foreign.AbstractMemorySegmentImpl::getAtIndex@22 (line 902)
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@36 (line 38)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 52)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
+            0x00007c8dac1e5646:   	vmovsd	0x8(%r13), %xmm12
+   2.37%    0x00007c8dac1e564c:   	vmulsd	0x8(%r14), %xmm12, %xmm12
+   0.58%    0x00007c8dac1e5652:   	vmovsd	0x28(%r14), %xmm13
+   0.06%    0x00007c8dac1e5658:   	vmulsd	0x28(%r13), %xmm13, %xmm13
+   0.02%    0x00007c8dac1e565e:   	vmovsd	0x20(%r14), %xmm14
+            0x00007c8dac1e5664:   	vmulsd	0x20(%r13), %xmm14, %xmm14
+   0.04%    0x00007c8dac1e566a:   	vmovsd	0x30(%r14), %xmm15
+   0.02%    0x00007c8dac1e5670:   	vmulsd	0x30(%r13), %xmm15, %xmm15
+            0x00007c8dac1e5676:   	vmovsd	(%r13), %xmm16
+   2.48%    0x00007c8dac1e567d:   	vmulsd	(%r14), %xmm16, %xmm16
+   0.58%    0x00007c8dac1e5683:   	vmovsd	0x10(%r13), %xmm17
+   0.02%    0x00007c8dac1e568a:   	vmulsd	0x10(%r14), %xmm17, %xmm17
+   0.06%    0x00007c8dac1e5691:   	vaddsd	%xmm11, %xmm16, %xmm11
+   3.04%    0x00007c8dac1e5697:   	vmovsd	0x38(%r13), %xmm16
+            0x00007c8dac1e569e:   	vmovsd	0x18(%r13), %xmm18  ;   {other}
+   0.04%    0x00007c8dac1e56a5:   	vmulsd	0x38(%r14), %xmm16, %xmm16
+            0x00007c8dac1e56ac:   	vmulsd	0x18(%r14), %xmm18, %xmm18
+   0.04%    0x00007c8dac1e56b3:   	vaddsd	%xmm12, %xmm11, %xmm11
+  10.04%    0x00007c8dac1e56b8:   	vaddsd	%xmm11, %xmm17, %xmm11
+   9.67%    0x00007c8dac1e56be:   	vaddsd	%xmm18, %xmm11, %xmm11
+   8.30%    0x00007c8dac1e56c4:   	vaddsd	%xmm14, %xmm11, %xmm11
+  15.28%    0x00007c8dac1e56c9:   	vaddsd	%xmm13, %xmm11, %xmm11
+  23.49%    0x00007c8dac1e56ce:   	vaddsd	%xmm15, %xmm11, %xmm11
+  12.54%    0x00007c8dac1e56d3:   	vaddsd	%xmm11, %xmm16, %xmm11;*dadd {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@42 (line 38)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 52)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
+   6.90%    0x00007c8dac1e56d9:   	leal	0x8(%r10), %r11d
+   0.02%    0x00007c8dac1e56dd:   	cmpl	%eax, %r11d
+            0x00007c8dac1e56e0:   	jl	-0xb6
+            0x00007c8dac1e56e6:   	movq	0x30(%r15), %r13
+            0x00007c8dac1e56ea:   	addl	$0x7, %r10d
+            0x00007c8dac1e56ee:   	leal	0x1(%r10,%rcx), %eax; ImmutableOopMap {xmm0=Oop xmm1=Oop xmm2=Oop xmm3=Oop xmm4=Oop xmm5=Oop xmm6=NarrowOop xmm8=Oop xmm9=Oop xmm10=Oop }
+                                                                      ;*goto {reexecute=1 rethrow=0 return_oop=0}
+                                                                      ; - (reexecute) dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@47 (line 36)
+                                                                      ; - dev.cdelmonte.segmentlanes.DotProductBench::segmentScalar@4 (line 52)
+                                                                      ; - dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub@19 (line 247)
+            0x00007c8dac1e56f3:   	testl	%eax, (%r13)        ;*goto {reexecute=0 rethrow=0 return_oop=0}
+                                                                      ; - dev.cdelmonte.segmentlanes.compute.SegmentScalarDot::compute@47 (line 36)
 ....................................................................................................
-  94.34%  <total for region 1>
+  95.67%  <total for region 1>
 
 ....[Hottest Regions]...............................................................................
-  94.34%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 998 
-   0.56%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 998 
-   0.39%     [kernel.kallsyms]  __perf_event_task_sched_in 
-   0.19%     [kernel.kallsyms]  perf_ctx_unlock 
-   0.19%     [kernel.kallsyms]  perf_ctx_enable 
-   0.17%     [kernel.kallsyms]  srso_alias_safe_ret 
-   0.17%             libjvm.so  xmlStream::write_text(char const*, unsigned long) 
-   0.15%     [kernel.kallsyms]  entry_SYSCALL_64 
-   0.13%     [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
-   0.13%     [kernel.kallsyms]  _raw_spin_unlock 
-   0.13%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 998 
-   0.13%             libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
-   0.11%     [kernel.kallsyms]  rw_verify_area 
-   0.09%                        <unknown> 
-   0.06%             libjvm.so  fileStream::write(char const*, unsigned long) 
-   0.06%             libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
-   0.06%             libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
-   0.06%             libc.so.6  __GI___pthread_enable_asynccancel 
-   0.04%     [kernel.kallsyms]  arch_exit_to_user_mode_prepare.isra.0 
-   0.04%                        <unknown> 
-   2.78%  <...other 112 warm regions...>
+  95.67%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 1005 
+   0.71%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 1005 
+   0.26%   [kernel.kallsyms]  srso_alias_safe_ret 
+   0.19%           libjvm.so  defaultStream::hold(long) 
+   0.17%   [kernel.kallsyms]  perf_ctx_unlock 
+   0.13%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.11%   [kernel.kallsyms]  __perf_event_task_sched_in 
+   0.11%           libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
+   0.09%   [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
+   0.09%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 1005 
+   0.09%           libjvm.so  xmlStream::write_text(char const*, unsigned long) 
+   0.06%   [kernel.kallsyms]  __rcu_read_lock 
+   0.06%   [kernel.kallsyms]  inotify_merge 
+   0.04%   [kernel.kallsyms]  entry_SYSCALL_64 
+   0.04%   [kernel.kallsyms]  syscall_return_via_sysret 
+   0.04%   [kernel.kallsyms]  sched_use_asym_prio.isra.0 
+   0.04%   [kernel.kallsyms]  __rcu_read_unlock 
+   0.04%   [kernel.kallsyms]  __refill_objects_node 
+   0.04%   [kernel.kallsyms]  __memcg_slab_post_alloc_hook 
+   0.04%   [kernel.kallsyms]  __x64_sys_write 
+   1.94%  <...other 79 warm regions...>
 ....................................................................................................
- 100.00%  <totals>
+  99.98%  <totals>
 
 ....[Hottest Methods (after inlining)]..............................................................
-  95.33%           c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 998 
-   0.39%     [kernel.kallsyms]  __perf_event_task_sched_in 
-   0.34%                        <unknown> 
-   0.19%     [kernel.kallsyms]  perf_ctx_enable 
-   0.19%     [kernel.kallsyms]  perf_ctx_unlock 
-   0.17%     [kernel.kallsyms]  srso_alias_safe_ret 
-   0.17%             libjvm.so  xmlStream::write_text(char const*, unsigned long) 
-   0.15%     [kernel.kallsyms]  entry_SYSCALL_64 
-   0.13%     [kernel.kallsyms]  _raw_spin_unlock 
-   0.13%     [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
-   0.13%             libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
-   0.13%             libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
-   0.11%     [kernel.kallsyms]  rw_verify_area 
-   0.09%     [kernel.kallsyms]  do_syscall_64 
-   0.06%     [kernel.kallsyms]  timekeeping_update_from_shadow 
-   0.06%             libc.so.6  __GI___pthread_enable_asynccancel 
-   0.06%             libjvm.so  fileStream::write(char const*, unsigned long) 
-   0.04%     [kernel.kallsyms]  native_sched_clock 
-   0.04%     [kernel.kallsyms]  begin_current_label_crit_section 
-   0.04%     [kernel.kallsyms]  mutex_lock 
-   2.04%  <...other 83 warm methods...>
+  96.77%         c2, level 4  dev.cdelmonte.segmentlanes.jmh_generated.DotProductBench_segmentScalar_jmhTest::segmentScalar_avgt_jmhStub, version 5, compile id 1005 
+   0.26%   [kernel.kallsyms]  srso_alias_safe_ret 
+   0.19%                      <unknown> 
+   0.19%           libjvm.so  defaultStream::hold(long) 
+   0.17%           libjvm.so  xmlStream::write_text(char const*, unsigned long) [clone .part.0] 
+   0.17%   [kernel.kallsyms]  perf_ctx_unlock 
+   0.13%           libjvm.so  ElfSymbolTable::lookup(unsigned char*, int*, int*, int*, ElfFuncDescTable*) 
+   0.11%   [kernel.kallsyms]  __perf_event_task_sched_in 
+   0.09%           libjvm.so  xmlStream::write_text(char const*, unsigned long) 
+   0.09%   [kernel.kallsyms]  entry_SYSRETQ_unsafe_stack 
+   0.06%   [kernel.kallsyms]  __rcu_read_lock 
+   0.06%         interpreter  method entry point (kind = zerolocals)  
+   0.06%   [kernel.kallsyms]  inotify_merge 
+   0.04%           libjvm.so  jio_print 
+   0.04%   [kernel.kallsyms]  __rcu_read_unlock 
+   0.04%   [kernel.kallsyms]  syscall_return_via_sysret 
+   0.04%   [kernel.kallsyms]  vfs_write 
+   0.04%           libc.so.6  __GI___pthread_enable_asynccancel 
+   0.04%   [kernel.kallsyms]  __x64_sys_write 
+   0.04%   [kernel.kallsyms]  fsnotify 
+   1.31%  <...other 57 warm methods...>
 ....................................................................................................
- 100.00%  <totals>
+  99.98%  <totals>
 
 ....[Distribution by Source]........................................................................
-  95.33%           c2, level 4
-   3.11%     [kernel.kallsyms]
-   0.77%             libjvm.so
-   0.34%                      
-   0.32%             libc.so.6
-   0.04%      libcapstone.so.4
-   0.04%  ld-linux-x86-64.so.2
-   0.02%           c1, level 3
-   0.02%           interpreter
+  96.77%         c2, level 4
+   1.92%   [kernel.kallsyms]
+   0.80%           libjvm.so
+   0.19%                    
+   0.17%           libc.so.6
+   0.06%        libLLVM.so.1
+   0.06%         interpreter
 ....................................................................................................
- 100.00%  <totals>
+  99.98%  <totals>
 
 
 
@@ -210,6 +205,6 @@ works, and factor in a small probability of new VM bugs. Additionally, while com
 different JVMs are already problematic, the performance difference caused by different Blackhole
 modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
 
-Benchmark                          (size)  Mode  Cnt    Score   Error  Units
-DotProductBench.segmentScalar        1024  avgt    5  540.298 ± 9.484  ns/op
-DotProductBench.segmentScalar:asm    1024  avgt           NaN            ---
+Benchmark                          (size)  Mode  Cnt    Score    Error  Units
+DotProductBench.segmentScalar        1024  avgt    5  543.089 ± 15.900  ns/op
+DotProductBench.segmentScalar:asm    1024  avgt           NaN             ---

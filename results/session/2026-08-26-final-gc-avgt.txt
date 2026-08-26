@@ -1,5 +1,5 @@
-# commit: 78c2e2e JDK: openjdk 25.0.4 2026-07-21  CPU: Ryzen 9 7950X3D 
-# taskset -c 8-15,24-31 java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff results/2026-08-26-final-gc-avgt.json -prof gc
+# commit: bf5a096 JDK: openjdk 25.0.4 2026-07-21  CPU: AMD Ryzen 9 7950X3D 16-Core Processor
+# taskset -c 8-15,24-31 java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff results/session/2026-08-26-final-gc-avgt.json DotProductBench.(array|list|segmentScalar|arrayVector|segmentVector|arrayLoadControl)$ -prof gc
 # JMH version: 1.37
 # VM version: JDK 25.0.4, OpenJDK 64-Bit Server VM, 25.0.4+7-1-24.04-Ubuntu
 # VM invoker: /usr/lib/jvm/java-25-openjdk-amd64/bin/java
@@ -20,32 +20,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 544.151 ns/op
-# Warmup Iteration   2: 549.794 ns/op
-# Warmup Iteration   3: 547.609 ns/op
-# Warmup Iteration   4: 551.263 ns/op
-# Warmup Iteration   5: 568.143 ns/op
-Iteration   1: 564.438 ns/op
+# Warmup Iteration   1: 542.039 ns/op
+# Warmup Iteration   2: 548.674 ns/op
+# Warmup Iteration   3: 540.025 ns/op
+# Warmup Iteration   4: 544.574 ns/op
+# Warmup Iteration   5: 561.635 ns/op
+Iteration   1: 536.068 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 557.715 ns/op
+Iteration   2: 547.758 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 556.649 ns/op
+Iteration   3: 544.902 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 541.475 ns/op
+Iteration   4: 554.539 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 556.427 ns/op
+Iteration   5: 545.650 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
@@ -58,32 +58,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 559.025 ns/op
-# Warmup Iteration   2: 550.894 ns/op
-# Warmup Iteration   3: 549.525 ns/op
-# Warmup Iteration   4: 544.808 ns/op
-# Warmup Iteration   5: 546.075 ns/op
-Iteration   1: 551.295 ns/op
+# Warmup Iteration   1: 553.329 ns/op
+# Warmup Iteration   2: 548.584 ns/op
+# Warmup Iteration   3: 564.465 ns/op
+# Warmup Iteration   4: 544.073 ns/op
+# Warmup Iteration   5: 540.676 ns/op
+Iteration   1: 539.614 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 549.158 ns/op
+Iteration   2: 546.776 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 553.164 ns/op
+Iteration   3: 550.184 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 545.956 ns/op
+Iteration   4: 552.419 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 550.523 ns/op
+Iteration   5: 539.092 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
@@ -96,32 +96,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 551.632 ns/op
-# Warmup Iteration   2: 548.965 ns/op
-# Warmup Iteration   3: 563.509 ns/op
-# Warmup Iteration   4: 558.210 ns/op
-# Warmup Iteration   5: 558.801 ns/op
-Iteration   1: 549.176 ns/op
+# Warmup Iteration   1: 539.500 ns/op
+# Warmup Iteration   2: 545.985 ns/op
+# Warmup Iteration   3: 545.449 ns/op
+# Warmup Iteration   4: 543.154 ns/op
+# Warmup Iteration   5: 538.954 ns/op
+Iteration   1: 533.317 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 552.324 ns/op
+Iteration   2: 539.306 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 554.969 ns/op
+Iteration   3: 533.246 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 567.001 ns/op
+Iteration   4: 537.536 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 560.454 ns/op
+Iteration   5: 536.744 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
@@ -129,9 +129,9 @@ Iteration   5: 560.454 ns/op
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
-  554.048 ±(99.9%) 7.219 ns/op [Average]
-  (min, avg, max) = (541.475, 554.048, 567.001), stdev = 6.753
-  CI (99.9%): [546.829, 561.267] (assumes normal distribution)
+  542.477 ±(99.9%) 7.358 ns/op [Average]
+  (min, avg, max) = (533.246, 542.477, 554.539), stdev = 6.883
+  CI (99.9%): [535.118, 549.835] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -167,34 +167,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 37313.902 ns/op
-# Warmup Iteration   2: 37139.854 ns/op
-# Warmup Iteration   3: 37291.278 ns/op
-# Warmup Iteration   4: 37196.195 ns/op
-# Warmup Iteration   5: 37031.741 ns/op
-Iteration   1: 37050.919 ns/op
+# Warmup Iteration   1: 36380.744 ns/op
+# Warmup Iteration   2: 35991.248 ns/op
+# Warmup Iteration   3: 36192.043 ns/op
+# Warmup Iteration   4: 36175.946 ns/op
+# Warmup Iteration   5: 35839.329 ns/op
+Iteration   1: 36031.214 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.259 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 37254.015 ns/op
+Iteration   2: 35930.915 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.261 B/op
+                 gc.alloc.rate.norm: 0.251 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 37588.688 ns/op
+Iteration   3: 35778.155 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.263 B/op
+                 gc.alloc.rate.norm: 0.250 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 37964.609 ns/op
+Iteration   4: 35954.967 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.266 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 36713.349 ns/op
+Iteration   5: 35695.182 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.257 B/op
+                 gc.alloc.rate.norm: 0.250 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -205,34 +205,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 37399.796 ns/op
-# Warmup Iteration   2: 37057.480 ns/op
-# Warmup Iteration   3: 37587.855 ns/op
-# Warmup Iteration   4: 37054.545 ns/op
-# Warmup Iteration   5: 37362.073 ns/op
-Iteration   1: 38007.143 ns/op
+# Warmup Iteration   1: 36376.166 ns/op
+# Warmup Iteration   2: 36214.877 ns/op
+# Warmup Iteration   3: 35788.036 ns/op
+# Warmup Iteration   4: 35959.272 ns/op
+# Warmup Iteration   5: 35986.925 ns/op
+Iteration   1: 36429.615 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.266 B/op
+                 gc.alloc.rate.norm: 0.255 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 37393.598 ns/op
+Iteration   2: 36074.142 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.262 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 37072.896 ns/op
+Iteration   3: 35973.024 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.259 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 37036.788 ns/op
+Iteration   4: 35981.161 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.259 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 36884.450 ns/op
+Iteration   5: 35957.144 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.257 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -243,42 +243,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 37604.715 ns/op
-# Warmup Iteration   2: 37490.908 ns/op
-# Warmup Iteration   3: 37557.685 ns/op
-# Warmup Iteration   4: 36937.748 ns/op
-# Warmup Iteration   5: 37390.236 ns/op
-Iteration   1: 37552.575 ns/op
+# Warmup Iteration   1: 36466.073 ns/op
+# Warmup Iteration   2: 36009.036 ns/op
+# Warmup Iteration   3: 35737.653 ns/op
+# Warmup Iteration   4: 36398.499 ns/op
+# Warmup Iteration   5: 35803.741 ns/op
+Iteration   1: 36372.409 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.263 B/op
+                 gc.alloc.rate.norm: 0.255 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 37438.360 ns/op
+Iteration   2: 35822.483 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.262 B/op
+                 gc.alloc.rate.norm: 0.251 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 37770.499 ns/op
+Iteration   3: 35956.959 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.264 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 37514.398 ns/op
+Iteration   4: 35833.050 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.263 B/op
+                 gc.alloc.rate.norm: 0.251 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 37837.410 ns/op
+Iteration   5: 36173.727 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.265 B/op
+                 gc.alloc.rate.norm: 0.253 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
-  37405.313 ±(99.9%) 424.600 ns/op [Average]
-  (min, avg, max) = (36713.349, 37405.313, 38007.143), stdev = 397.171
-  CI (99.9%): [36980.713, 37829.914] (assumes normal distribution)
+  35997.610 ±(99.9%) 216.263 ns/op [Average]
+  (min, avg, max) = (35695.182, 35997.610, 36429.615), stdev = 202.292
+  CI (99.9%): [35781.347, 36213.872] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -286,9 +286,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate.norm":
-  0.262 ±(99.9%) 0.003 B/op [Average]
-  (min, avg, max) = (0.257, 0.262, 0.266), stdev = 0.003
-  CI (99.9%): [0.259, 0.265] (assumes normal distribution)
+  0.252 ±(99.9%) 0.002 B/op [Average]
+  (min, avg, max) = (0.250, 0.252, 0.255), stdev = 0.001
+  CI (99.9%): [0.250, 0.253] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.count":
   ≈ 0 counts
@@ -314,34 +314,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 10538278.874 ns/op
-# Warmup Iteration   2: 10514526.365 ns/op
-# Warmup Iteration   3: 10569025.179 ns/op
-# Warmup Iteration   4: 10333235.784 ns/op
-# Warmup Iteration   5: 10584571.600 ns/op
-Iteration   1: 10543157.926 ns/op
+# Warmup Iteration   1: 10168269.646 ns/op
+# Warmup Iteration   2: 10058542.570 ns/op
+# Warmup Iteration   3: 9968951.089 ns/op
+# Warmup Iteration   4: 10068830.050 ns/op
+# Warmup Iteration   5: 9992959.782 ns/op
+Iteration   1: 10208657.541 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 73.684 B/op
+                 gc.alloc.rate.norm: 71.429 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 10513716.938 ns/op
+Iteration   2: 10080505.050 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.917 B/op
+                 gc.alloc.rate.norm: 70.320 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 10338687.660 ns/op
+Iteration   3: 10153880.646 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.165 B/op
+                 gc.alloc.rate.norm: 71.030 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 10369035.309 ns/op
+Iteration   4: 9980284.921 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.165 B/op
+                 gc.alloc.rate.norm: 69.624 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 10311188.567 ns/op
+Iteration   5: 10070523.530 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.165 B/op
+                 gc.alloc.rate.norm: 70.000 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -352,34 +352,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 10411829.268 ns/op
-# Warmup Iteration   2: 10441845.802 ns/op
-# Warmup Iteration   3: 10415105.010 ns/op
-# Warmup Iteration   4: 10297912.541 ns/op
-# Warmup Iteration   5: 10720467.457 ns/op
-Iteration   1: 10358475.825 ns/op
+# Warmup Iteration   1: 10043410.890 ns/op
+# Warmup Iteration   2: 10124653.111 ns/op
+# Warmup Iteration   3: 10093414.450 ns/op
+# Warmup Iteration   4: 10050997.210 ns/op
+# Warmup Iteration   5: 10103455.475 ns/op
+Iteration   1: 10088856.610 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.165 B/op
+                 gc.alloc.rate.norm: 70.000 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 10506252.646 ns/op
+Iteration   2: 9993662.079 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.917 B/op
+                 gc.alloc.rate.norm: 69.307 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 10414300.835 ns/op
+Iteration   3: 10032275.800 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.165 B/op
+                 gc.alloc.rate.norm: 70.000 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 10241156.929 ns/op
+Iteration   4: 9968634.554 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 69.307 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 10216743.316 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 71.429 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 10475060.302 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.917 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -390,42 +390,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 10474387.583 ns/op
-# Warmup Iteration   2: 10553828.074 ns/op
-# Warmup Iteration   3: 10360297.289 ns/op
-# Warmup Iteration   4: 10942927.326 ns/op
-# Warmup Iteration   5: 10248086.367 ns/op
-Iteration   1: 10687139.745 ns/op
+# Warmup Iteration   1: 10228879.847 ns/op
+# Warmup Iteration   2: 10035464.790 ns/op
+# Warmup Iteration   3: 10124744.596 ns/op
+# Warmup Iteration   4: 9986325.257 ns/op
+# Warmup Iteration   5: 10188018.697 ns/op
+Iteration   1: 9991814.762 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 74.468 B/op
+                 gc.alloc.rate.norm: 69.307 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 10254024.857 ns/op
+Iteration   2: 10109482.636 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 71.429 B/op
+                 gc.alloc.rate.norm: 70.707 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 10398235.866 ns/op
+Iteration   3: 10049165.180 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.165 B/op
+                 gc.alloc.rate.norm: 70.000 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 10356197.557 ns/op
+Iteration   4: 10064899.390 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 72.165 B/op
+                 gc.alloc.rate.norm: 70.000 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 10541566.884 ns/op
+Iteration   5: 10089288.930 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 73.684 B/op
+                 gc.alloc.rate.norm: 70.000 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
-  10420546.523 ±(99.9%) 130777.725 ns/op [Average]
-  (min, avg, max) = (10241156.929, 10420546.523, 10687139.745), stdev = 122329.565
-  CI (99.9%): [10289768.798, 10551324.248] (assumes normal distribution)
+  10073244.996 ±(99.9%) 81908.093 ns/op [Average]
+  (min, avg, max) = (9968634.554, 10073244.996, 10216743.316), stdev = 76616.881
+  CI (99.9%): [9991336.903, 10155153.089] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -433,9 +433,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.alloc.rate.norm":
-  72.573 ±(99.9%) 0.913 B/op [Average]
-  (min, avg, max) = (71.429, 72.573, 74.468), stdev = 0.854
-  CI (99.9%): [71.661, 73.486] (assumes normal distribution)
+  70.164 ±(99.9%) 0.752 B/op [Average]
+  (min, avg, max) = (69.307, 70.164, 71.429), stdev = 0.703
+  CI (99.9%): [69.412, 70.916] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:gc.count":
   ≈ 0 counts
@@ -461,34 +461,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 73.954 ns/op
-# Warmup Iteration   2: 71.488 ns/op
-# Warmup Iteration   3: 71.555 ns/op
-# Warmup Iteration   4: 71.924 ns/op
-# Warmup Iteration   5: 71.135 ns/op
-Iteration   1: 70.698 ns/op
+# Warmup Iteration   1: 70.894 ns/op
+# Warmup Iteration   2: 69.315 ns/op
+# Warmup Iteration   3: 71.189 ns/op
+# Warmup Iteration   4: 70.130 ns/op
+# Warmup Iteration   5: 71.854 ns/op
+Iteration   1: 69.997 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 70.054 ns/op
+Iteration   2: 71.730 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 70.899 ns/op
+Iteration   3: 69.888 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 71.765 ns/op
+Iteration   4: 70.797 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 71.121 ns/op
+Iteration   5: 72.244 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -499,34 +499,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 84.121 ns/op
-# Warmup Iteration   2: 84.238 ns/op
-# Warmup Iteration   3: 85.007 ns/op
-# Warmup Iteration   4: 86.342 ns/op
-# Warmup Iteration   5: 84.044 ns/op
-Iteration   1: 85.934 ns/op
+# Warmup Iteration   1: 71.369 ns/op
+# Warmup Iteration   2: 68.921 ns/op
+# Warmup Iteration   3: 71.103 ns/op
+# Warmup Iteration   4: 71.033 ns/op
+# Warmup Iteration   5: 71.499 ns/op
+Iteration   1: 70.368 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 70.895 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 70.088 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 71.515 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 84.043 ns/op
+Iteration   5: 70.520 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   3: 84.018 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   4: 82.756 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 83.554 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -537,32 +537,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 72.005 ns/op
-# Warmup Iteration   2: 71.198 ns/op
-# Warmup Iteration   3: 70.497 ns/op
-# Warmup Iteration   4: 70.707 ns/op
-# Warmup Iteration   5: 71.374 ns/op
-Iteration   1: 71.188 ns/op
+# Warmup Iteration   1: 71.481 ns/op
+# Warmup Iteration   2: 69.700 ns/op
+# Warmup Iteration   3: 71.208 ns/op
+# Warmup Iteration   4: 71.314 ns/op
+# Warmup Iteration   5: 71.170 ns/op
+Iteration   1: 70.094 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 69.030 ns/op
+Iteration   2: 71.851 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 70.423 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 70.371 ns/op
+Iteration   4: 72.057 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 69.432 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 70.553 ns/op
+Iteration   5: 70.541 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
@@ -570,9 +570,9 @@ Iteration   5: 70.553 ns/op
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl":
-  75.028 ±(99.9%) 7.135 ns/op [Average]
-  (min, avg, max) = (69.030, 75.028, 85.934), stdev = 6.674
-  CI (99.9%): [67.893, 82.163] (assumes normal distribution)
+  70.867 ±(99.9%) 0.859 ns/op [Average]
+  (min, avg, max) = (69.888, 70.867, 72.244), stdev = 0.804
+  CI (99.9%): [70.008, 71.726] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -580,9 +580,7 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.alloc.rate.norm":
-  0.001 ±(99.9%) 0.001 B/op [Average]
-  (min, avg, max) = (≈ 10⁻³, 0.001, 0.001), stdev = 0.001
-  CI (99.9%): [≈ 10⁻³, 0.001] (assumes normal distribution)
+  ≈ 10⁻³ B/op
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.count":
   ≈ 0 counts
@@ -608,32 +606,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7908.347 ns/op
-# Warmup Iteration   2: 7597.730 ns/op
-# Warmup Iteration   3: 7651.049 ns/op
-# Warmup Iteration   4: 7595.270 ns/op
-# Warmup Iteration   5: 7650.172 ns/op
-Iteration   1: 7652.156 ns/op
+# Warmup Iteration   1: 8039.179 ns/op
+# Warmup Iteration   2: 7635.532 ns/op
+# Warmup Iteration   3: 7573.466 ns/op
+# Warmup Iteration   4: 7639.779 ns/op
+# Warmup Iteration   5: 7658.188 ns/op
+Iteration   1: 7507.135 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.053 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 7465.693 ns/op
+Iteration   2: 7606.191 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.053 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 7473.763 ns/op
+Iteration   3: 7507.058 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.053 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7658.011 ns/op
+Iteration   4: 7653.166 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.054 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 7597.571 ns/op
+Iteration   5: 7509.475 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.053 B/op
                  gc.count:           ≈ 0 counts
@@ -646,34 +644,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 8268.176 ns/op
-# Warmup Iteration   2: 7795.936 ns/op
-# Warmup Iteration   3: 7557.049 ns/op
-# Warmup Iteration   4: 7513.723 ns/op
-# Warmup Iteration   5: 7442.999 ns/op
-Iteration   1: 7544.459 ns/op
+# Warmup Iteration   1: 7879.144 ns/op
+# Warmup Iteration   2: 7309.982 ns/op
+# Warmup Iteration   3: 7303.751 ns/op
+# Warmup Iteration   4: 7349.592 ns/op
+# Warmup Iteration   5: 7385.339 ns/op
+Iteration   1: 7207.850 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.053 B/op
+                 gc.alloc.rate.norm: 0.050 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 7381.221 ns/op
+Iteration   2: 7353.541 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.051 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 7553.235 ns/op
+Iteration   3: 7223.861 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.053 B/op
+                 gc.alloc.rate.norm: 0.051 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7446.409 ns/op
+Iteration   4: 7327.041 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.051 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 7387.432 ns/op
+Iteration   5: 7214.593 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.050 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -684,42 +682,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7907.843 ns/op
-# Warmup Iteration   2: 7848.538 ns/op
-# Warmup Iteration   3: 7816.491 ns/op
-# Warmup Iteration   4: 7634.474 ns/op
-# Warmup Iteration   5: 7557.699 ns/op
-Iteration   1: 7529.381 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.053 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   2: 7426.527 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   3: 7309.581 ns/op
+# Warmup Iteration   1: 7665.028 ns/op
+# Warmup Iteration   2: 7220.240 ns/op
+# Warmup Iteration   3: 7308.291 ns/op
+# Warmup Iteration   4: 7362.442 ns/op
+# Warmup Iteration   5: 7309.133 ns/op
+Iteration   1: 7240.359 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.051 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7598.386 ns/op
+Iteration   2: 7300.300 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.053 B/op
+                 gc.alloc.rate.norm: 0.051 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 7492.348 ns/op
+Iteration   3: 7303.193 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.051 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 7356.919 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.051 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 7213.846 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.050 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl":
-  7501.078 ±(99.9%) 109.251 ns/op [Average]
-  (min, avg, max) = (7309.581, 7501.078, 7658.011), stdev = 102.193
-  CI (99.9%): [7391.827, 7610.329] (assumes normal distribution)
+  7368.302 ±(99.9%) 161.012 ns/op [Average]
+  (min, avg, max) = (7207.850, 7368.302, 7653.166), stdev = 150.611
+  CI (99.9%): [7207.290, 7529.314] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -728,8 +726,8 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.alloc.rate.norm":
   0.052 ±(99.9%) 0.001 B/op [Average]
-  (min, avg, max) = (0.051, 0.052, 0.054), stdev = 0.001
-  CI (99.9%): [0.052, 0.053] (assumes normal distribution)
+  (min, avg, max) = (0.050, 0.052, 0.054), stdev = 0.001
+  CI (99.9%): [0.050, 0.053] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.count":
   ≈ 0 counts
@@ -748,41 +746,41 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc
 # Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl
 # Parameters: (size = 16777216)
 
-# Run progress: 27.78% complete, ETA 00:06:38
+# Run progress: 27.78% complete, ETA 00:06:37
 # Fork: 1 of 3
 WARNING: Using incubator modules: jdk.incubator.vector
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 8670710.086 ns/op
-# Warmup Iteration   2: 6269445.575 ns/op
-# Warmup Iteration   3: 6345018.418 ns/op
-# Warmup Iteration   4: 6234541.938 ns/op
-# Warmup Iteration   5: 6269531.800 ns/op
-Iteration   1: 6218522.950 ns/op
+# Warmup Iteration   1: 8638908.397 ns/op
+# Warmup Iteration   2: 6076910.982 ns/op
+# Warmup Iteration   3: 6081090.188 ns/op
+# Warmup Iteration   4: 6078334.679 ns/op
+# Warmup Iteration   5: 6069968.194 ns/op
+Iteration   1: 6060439.506 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.169 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6216747.509 ns/op
+Iteration   2: 6068074.624 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6236168.652 ns/op
+Iteration   3: 6081508.988 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6232404.950 ns/op
+Iteration   4: 6069821.479 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.280 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 6318366.057 ns/op
+Iteration   5: 6086663.752 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 44.025 B/op
+                 gc.alloc.rate.norm: 42.230 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -793,34 +791,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 8730184.757 ns/op
-# Warmup Iteration   2: 6260657.356 ns/op
-# Warmup Iteration   3: 6227663.640 ns/op
-# Warmup Iteration   4: 6226420.752 ns/op
-# Warmup Iteration   5: 6244200.994 ns/op
-Iteration   1: 6216463.261 ns/op
+# Warmup Iteration   1: 8509023.636 ns/op
+# Warmup Iteration   2: 6066676.970 ns/op
+# Warmup Iteration   3: 6083312.667 ns/op
+# Warmup Iteration   4: 6063222.170 ns/op
+# Warmup Iteration   5: 6057453.994 ns/op
+Iteration   1: 6065510.642 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6215206.925 ns/op
+Iteration   2: 6068897.636 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6186196.346 ns/op
+Iteration   3: 6116580.634 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 42.488 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6212039.807 ns/op
+Iteration   4: 6071401.485 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.280 B/op
+                 gc.alloc.rate.norm: 42.230 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 6203079.611 ns/op
+Iteration   5: 6081856.061 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 42.230 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -831,42 +829,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 8745065.983 ns/op
-# Warmup Iteration   2: 6214353.783 ns/op
-# Warmup Iteration   3: 6200960.457 ns/op
-# Warmup Iteration   4: 6241080.491 ns/op
-# Warmup Iteration   5: 6211057.296 ns/op
-Iteration   1: 6312161.421 ns/op
+# Warmup Iteration   1: 8574608.222 ns/op
+# Warmup Iteration   2: 6050095.952 ns/op
+# Warmup Iteration   3: 6034714.488 ns/op
+# Warmup Iteration   4: 6038062.554 ns/op
+# Warmup Iteration   5: 6037126.301 ns/op
+Iteration   1: 6031548.259 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 44.025 B/op
+                 gc.alloc.rate.norm: 42.169 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6326768.245 ns/op
+Iteration   2: 6045546.994 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 44.025 B/op
+                 gc.alloc.rate.norm: 42.169 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6273389.813 ns/op
+Iteration   3: 6032885.283 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.750 B/op
+                 gc.alloc.rate.norm: 42.169 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6295966.830 ns/op
+Iteration   4: 6039495.145 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 44.025 B/op
+                 gc.alloc.rate.norm: 42.169 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 6237576.099 ns/op
+Iteration   5: 6043394.596 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 41.976 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl":
-  6246737.232 ±(99.9%) 49266.455 ns/op [Average]
-  (min, avg, max) = (6186196.346, 6246737.232, 6326768.245), stdev = 46083.872
-  CI (99.9%): [6197470.777, 6296003.686] (assumes normal distribution)
+  6064241.672 ±(99.9%) 24634.735 ns/op [Average]
+  (min, avg, max) = (6031548.259, 6064241.672, 6116580.634), stdev = 23043.347
+  CI (99.9%): [6039606.937, 6088876.407] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -874,9 +872,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.alloc.rate.norm":
-  43.580 ±(99.9%) 0.331 B/op [Average]
-  (min, avg, max) = (43.210, 43.580, 44.025), stdev = 0.309
-  CI (99.9%): [43.249, 43.910] (assumes normal distribution)
+  42.275 ±(99.9%) 0.159 B/op [Average]
+  (min, avg, max) = (41.976, 42.275, 42.488), stdev = 0.148
+  CI (99.9%): [42.116, 42.433] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:gc.count":
   ≈ 0 counts
@@ -902,34 +900,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 87.509 ns/op
-# Warmup Iteration   2: 84.412 ns/op
-# Warmup Iteration   3: 85.980 ns/op
-# Warmup Iteration   4: 87.102 ns/op
-# Warmup Iteration   5: 87.708 ns/op
-Iteration   1: 85.779 ns/op
+# Warmup Iteration   1: 71.531 ns/op
+# Warmup Iteration   2: 70.610 ns/op
+# Warmup Iteration   3: 70.418 ns/op
+# Warmup Iteration   4: 70.434 ns/op
+# Warmup Iteration   5: 69.709 ns/op
+Iteration   1: 70.364 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 85.901 ns/op
+Iteration   2: 70.913 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 85.737 ns/op
+Iteration   3: 70.480 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 86.104 ns/op
+Iteration   4: 70.974 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 85.680 ns/op
+Iteration   5: 71.003 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.001 B/op
+                 gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -940,32 +938,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 88.590 ns/op
-# Warmup Iteration   2: 84.799 ns/op
-# Warmup Iteration   3: 85.014 ns/op
-# Warmup Iteration   4: 85.480 ns/op
-# Warmup Iteration   5: 85.546 ns/op
-Iteration   1: 84.788 ns/op
+# Warmup Iteration   1: 85.261 ns/op
+# Warmup Iteration   2: 84.275 ns/op
+# Warmup Iteration   3: 83.534 ns/op
+# Warmup Iteration   4: 83.466 ns/op
+# Warmup Iteration   5: 82.851 ns/op
+Iteration   1: 83.281 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 85.554 ns/op
+Iteration   2: 83.835 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 84.478 ns/op
+Iteration   3: 83.549 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 84.975 ns/op
+Iteration   4: 82.557 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 83.928 ns/op
+Iteration   5: 83.010 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
@@ -978,32 +976,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 73.386 ns/op
-# Warmup Iteration   2: 72.069 ns/op
-# Warmup Iteration   3: 71.516 ns/op
-# Warmup Iteration   4: 72.419 ns/op
-# Warmup Iteration   5: 71.953 ns/op
-Iteration   1: 72.577 ns/op
+# Warmup Iteration   1: 84.170 ns/op
+# Warmup Iteration   2: 83.760 ns/op
+# Warmup Iteration   3: 81.604 ns/op
+# Warmup Iteration   4: 82.563 ns/op
+# Warmup Iteration   5: 81.991 ns/op
+Iteration   1: 84.004 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 71.942 ns/op
+Iteration   2: 83.668 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 72.612 ns/op
+Iteration   3: 82.703 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 71.791 ns/op
+Iteration   4: 82.766 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 72.246 ns/op
+Iteration   5: 83.367 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
@@ -1011,9 +1009,9 @@ Iteration   5: 72.246 ns/op
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
-  80.939 ±(99.9%) 6.843 ns/op [Average]
-  (min, avg, max) = (71.791, 80.939, 86.104), stdev = 6.400
-  CI (99.9%): [74.097, 87.782] (assumes normal distribution)
+  79.098 ±(99.9%) 6.551 ns/op [Average]
+  (min, avg, max) = (70.364, 79.098, 84.004), stdev = 6.128
+  CI (99.9%): [72.547, 85.649] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -1022,7 +1020,7 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.allo
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate.norm":
   0.001 ±(99.9%) 0.001 B/op [Average]
-  (min, avg, max) = (0.001, 0.001, 0.001), stdev = 0.001
+  (min, avg, max) = (≈ 10⁻³, 0.001, 0.001), stdev = 0.001
   CI (99.9%): [0.001, 0.001] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.count":
@@ -1049,34 +1047,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7938.469 ns/op
-# Warmup Iteration   2: 7481.051 ns/op
-# Warmup Iteration   3: 8029.311 ns/op
-# Warmup Iteration   4: 7454.601 ns/op
-# Warmup Iteration   5: 7486.250 ns/op
-Iteration   1: 7475.374 ns/op
+# Warmup Iteration   1: 7595.617 ns/op
+# Warmup Iteration   2: 7361.177 ns/op
+# Warmup Iteration   3: 7547.078 ns/op
+# Warmup Iteration   4: 7710.037 ns/op
+# Warmup Iteration   5: 7557.949 ns/op
+Iteration   1: 7630.487 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.053 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 7445.143 ns/op
+Iteration   2: 7686.051 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.054 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 7497.487 ns/op
+Iteration   3: 7705.851 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.054 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7473.573 ns/op
+Iteration   4: 7582.048 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.052 B/op
+                 gc.alloc.rate.norm: 0.053 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 7819.381 ns/op
+Iteration   5: 7653.193 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.alloc.rate.norm: 0.054 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -1087,34 +1085,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7893.622 ns/op
-# Warmup Iteration   2: 7461.931 ns/op
-# Warmup Iteration   3: 7795.082 ns/op
-# Warmup Iteration   4: 7696.580 ns/op
-# Warmup Iteration   5: 7704.321 ns/op
-Iteration   1: 7690.211 ns/op
+# Warmup Iteration   1: 7712.455 ns/op
+# Warmup Iteration   2: 7505.439 ns/op
+# Warmup Iteration   3: 7726.383 ns/op
+# Warmup Iteration   4: 7812.829 ns/op
+# Warmup Iteration   5: 7741.015 ns/op
+Iteration   1: 7812.142 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 7875.684 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 7803.555 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 7752.703 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.054 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 8164.040 ns/op
+Iteration   5: 7908.370 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.057 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   3: 8166.423 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.057 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   4: 8030.205 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.056 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 8162.892 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.057 B/op
+                 gc.alloc.rate.norm: 0.055 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -1125,42 +1123,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7751.907 ns/op
-# Warmup Iteration   2: 7345.298 ns/op
-# Warmup Iteration   3: 7737.357 ns/op
-# Warmup Iteration   4: 7830.274 ns/op
-# Warmup Iteration   5: 7895.977 ns/op
-Iteration   1: 7972.559 ns/op
+# Warmup Iteration   1: 7453.542 ns/op
+# Warmup Iteration   2: 7176.389 ns/op
+# Warmup Iteration   3: 7399.202 ns/op
+# Warmup Iteration   4: 7409.911 ns/op
+# Warmup Iteration   5: 7391.397 ns/op
+Iteration   1: 7419.031 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.056 B/op
+                 gc.alloc.rate.norm: 0.052 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 7658.847 ns/op
+Iteration   2: 7491.757 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.054 B/op
+                 gc.alloc.rate.norm: 0.052 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 7918.251 ns/op
+Iteration   3: 7421.212 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.alloc.rate.norm: 0.052 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7809.649 ns/op
+Iteration   4: 7365.653 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.055 B/op
+                 gc.alloc.rate.norm: 0.052 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 8050.681 ns/op
+Iteration   5: 7437.028 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.056 B/op
+                 gc.alloc.rate.norm: 0.052 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
-  7822.314 ±(99.9%) 287.489 ns/op [Average]
-  (min, avg, max) = (7445.143, 7822.314, 8166.423), stdev = 268.917
-  CI (99.9%): [7534.826, 8109.803] (assumes normal distribution)
+  7636.318 ±(99.9%) 189.883 ns/op [Average]
+  (min, avg, max) = (7365.653, 7636.318, 7908.370), stdev = 177.617
+  CI (99.9%): [7446.435, 7826.200] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -1168,9 +1166,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.allo
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate.norm":
-  0.055 ±(99.9%) 0.002 B/op [Average]
-  (min, avg, max) = (0.052, 0.055, 0.057), stdev = 0.002
-  CI (99.9%): [0.053, 0.057] (assumes normal distribution)
+  0.053 ±(99.9%) 0.001 B/op [Average]
+  (min, avg, max) = (0.052, 0.053, 0.055), stdev = 0.001
+  CI (99.9%): [0.052, 0.055] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.count":
   ≈ 0 counts
@@ -1196,34 +1194,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7512808.627 ns/op
-# Warmup Iteration   2: 6236304.882 ns/op
-# Warmup Iteration   3: 6262329.375 ns/op
-# Warmup Iteration   4: 6240121.671 ns/op
-# Warmup Iteration   5: 6145137.479 ns/op
-Iteration   1: 6231844.342 ns/op
+# Warmup Iteration   1: 7266431.435 ns/op
+# Warmup Iteration   2: 6076137.564 ns/op
+# Warmup Iteration   3: 6074576.661 ns/op
+# Warmup Iteration   4: 6067760.079 ns/op
+# Warmup Iteration   5: 6079412.715 ns/op
+Iteration   1: 6100306.598 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.683 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6210368.284 ns/op
+Iteration   2: 6073905.352 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6276896.444 ns/op
+Iteration   3: 6084697.224 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.750 B/op
+                 gc.alloc.rate.norm: 42.230 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6212597.255 ns/op
+Iteration   4: 6067920.836 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 6172632.423 ns/op
+Iteration   5: 6053561.229 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 42.945 B/op
+                 gc.alloc.rate.norm: 42.169 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -1234,34 +1232,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7415719.889 ns/op
-# Warmup Iteration   2: 6286355.375 ns/op
-# Warmup Iteration   3: 6364949.430 ns/op
-# Warmup Iteration   4: 6296265.440 ns/op
-# Warmup Iteration   5: 6185521.883 ns/op
-Iteration   1: 6208008.994 ns/op
+# Warmup Iteration   1: 7285288.007 ns/op
+# Warmup Iteration   2: 6057906.789 ns/op
+# Warmup Iteration   3: 6066551.897 ns/op
+# Warmup Iteration   4: 6075970.709 ns/op
+# Warmup Iteration   5: 6064434.412 ns/op
+Iteration   1: 6084566.618 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 42.230 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6218088.745 ns/op
+Iteration   2: 6070801.218 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.618 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6247292.460 ns/op
+Iteration   3: 6059195.060 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 41.976 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6189010.833 ns/op
+Iteration   4: 6070206.594 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 6197041.574 ns/op
+Iteration   5: 6071766.885 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -1272,42 +1270,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7475892.545 ns/op
-# Warmup Iteration   2: 6273761.206 ns/op
-# Warmup Iteration   3: 6210139.043 ns/op
-# Warmup Iteration   4: 6236302.037 ns/op
-# Warmup Iteration   5: 6220789.720 ns/op
-Iteration   1: 6248453.149 ns/op
+# Warmup Iteration   1: 7305851.277 ns/op
+# Warmup Iteration   2: 6079145.527 ns/op
+# Warmup Iteration   3: 6057910.325 ns/op
+# Warmup Iteration   4: 6065541.497 ns/op
+# Warmup Iteration   5: 6096740.612 ns/op
+Iteration   1: 6075526.436 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6219350.248 ns/op
+Iteration   2: 6069171.988 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.618 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6209141.685 ns/op
+Iteration   3: 6083247.309 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 42.230 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6259541.413 ns/op
+Iteration   4: 6070451.673 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.750 B/op
+                 gc.alloc.rate.norm: 42.424 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 6213658.516 ns/op
+Iteration   5: 6093273.473 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
+                 gc.alloc.rate.norm: 42.230 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
-  6220928.424 ±(99.9%) 29509.615 ns/op [Average]
-  (min, avg, max) = (6172632.423, 6220928.424, 6276896.444), stdev = 27603.312
-  CI (99.9%): [6191418.809, 6250438.039] (assumes normal distribution)
+  6075239.900 ±(99.9%) 13073.843 ns/op [Average]
+  (min, avg, max) = (6053561.229, 6075239.900, 6100306.598), stdev = 12229.281
+  CI (99.9%): [6062166.056, 6088313.743] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -1315,9 +1313,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.allo
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.alloc.rate.norm":
-  43.389 ±(99.9%) 0.235 B/op [Average]
-  (min, avg, max) = (42.945, 43.389, 43.750), stdev = 0.219
-  CI (99.9%): [43.155, 43.624] (assumes normal distribution)
+  42.369 ±(99.9%) 0.205 B/op [Average]
+  (min, avg, max) = (41.976, 42.369, 42.683), stdev = 0.191
+  CI (99.9%): [42.164, 42.573] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:gc.count":
   ≈ 0 counts
@@ -1343,32 +1341,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 636.214 ns/op
-# Warmup Iteration   2: 598.005 ns/op
-# Warmup Iteration   3: 613.864 ns/op
-# Warmup Iteration   4: 608.658 ns/op
-# Warmup Iteration   5: 593.086 ns/op
-Iteration   1: 601.265 ns/op
+# Warmup Iteration   1: 617.726 ns/op
+# Warmup Iteration   2: 591.947 ns/op
+# Warmup Iteration   3: 586.353 ns/op
+# Warmup Iteration   4: 588.965 ns/op
+# Warmup Iteration   5: 590.909 ns/op
+Iteration   1: 592.568 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 597.278 ns/op
+Iteration   2: 588.225 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 596.644 ns/op
+Iteration   3: 589.400 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 592.182 ns/op
+Iteration   4: 587.382 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 587.787 ns/op
+Iteration   5: 593.603 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
@@ -1381,32 +1379,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 634.126 ns/op
-# Warmup Iteration   2: 598.364 ns/op
-# Warmup Iteration   3: 599.200 ns/op
-# Warmup Iteration   4: 592.390 ns/op
-# Warmup Iteration   5: 596.503 ns/op
-Iteration   1: 599.128 ns/op
+# Warmup Iteration   1: 620.139 ns/op
+# Warmup Iteration   2: 598.548 ns/op
+# Warmup Iteration   3: 587.122 ns/op
+# Warmup Iteration   4: 589.371 ns/op
+# Warmup Iteration   5: 591.690 ns/op
+Iteration   1: 593.057 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 595.329 ns/op
+Iteration   2: 587.065 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 594.007 ns/op
+Iteration   3: 595.389 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 591.683 ns/op
+Iteration   4: 586.127 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 598.493 ns/op
+Iteration   5: 592.975 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
@@ -1419,32 +1417,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 640.328 ns/op
-# Warmup Iteration   2: 598.742 ns/op
-# Warmup Iteration   3: 596.711 ns/op
-# Warmup Iteration   4: 600.889 ns/op
-# Warmup Iteration   5: 594.196 ns/op
-Iteration   1: 592.522 ns/op
+# Warmup Iteration   1: 617.957 ns/op
+# Warmup Iteration   2: 589.503 ns/op
+# Warmup Iteration   3: 586.600 ns/op
+# Warmup Iteration   4: 589.011 ns/op
+# Warmup Iteration   5: 590.941 ns/op
+Iteration   1: 588.752 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 595.673 ns/op
+Iteration   2: 588.660 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 592.805 ns/op
+Iteration   3: 588.905 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 597.903 ns/op
+Iteration   4: 586.495 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 593.552 ns/op
+Iteration   5: 593.095 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
@@ -1452,9 +1450,9 @@ Iteration   5: 593.552 ns/op
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
-  595.083 ±(99.9%) 3.728 ns/op [Average]
-  (min, avg, max) = (587.787, 595.083, 601.265), stdev = 3.487
-  CI (99.9%): [591.355, 598.812] (assumes normal distribution)
+  590.113 ±(99.9%) 3.220 ns/op [Average]
+  (min, avg, max) = (586.127, 590.113, 595.389), stdev = 3.012
+  CI (99.9%): [586.893, 593.333] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -1490,34 +1488,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 42093.977 ns/op
-# Warmup Iteration   2: 42267.558 ns/op
-# Warmup Iteration   3: 41635.429 ns/op
-# Warmup Iteration   4: 40526.909 ns/op
-# Warmup Iteration   5: 40930.087 ns/op
-Iteration   1: 40288.680 ns/op
+# Warmup Iteration   1: 41320.805 ns/op
+# Warmup Iteration   2: 41424.117 ns/op
+# Warmup Iteration   3: 40244.125 ns/op
+# Warmup Iteration   4: 39399.975 ns/op
+# Warmup Iteration   5: 39448.920 ns/op
+Iteration   1: 39294.603 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.282 B/op
+                 gc.alloc.rate.norm: 0.275 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 40454.765 ns/op
+Iteration   2: 39135.741 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.283 B/op
+                 gc.alloc.rate.norm: 0.274 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 40179.343 ns/op
+Iteration   3: 39114.207 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.281 B/op
+                 gc.alloc.rate.norm: 0.274 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 39383.115 ns/op
+Iteration   4: 38997.456 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.276 B/op
+                 gc.alloc.rate.norm: 0.273 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 39469.163 ns/op
+Iteration   5: 39591.747 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.276 B/op
+                 gc.alloc.rate.norm: 0.277 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -1528,34 +1526,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 42553.575 ns/op
-# Warmup Iteration   2: 41741.156 ns/op
-# Warmup Iteration   3: 41267.795 ns/op
-# Warmup Iteration   4: 39705.805 ns/op
-# Warmup Iteration   5: 39798.645 ns/op
-Iteration   1: 40028.469 ns/op
+# Warmup Iteration   1: 40943.221 ns/op
+# Warmup Iteration   2: 41357.161 ns/op
+# Warmup Iteration   3: 39937.226 ns/op
+# Warmup Iteration   4: 38904.260 ns/op
+# Warmup Iteration   5: 39101.091 ns/op
+Iteration   1: 38590.653 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.280 B/op
+                 gc.alloc.rate.norm: 0.270 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 39875.009 ns/op
+Iteration   2: 38456.250 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.279 B/op
+                 gc.alloc.rate.norm: 0.269 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 39890.224 ns/op
+Iteration   3: 38627.363 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.279 B/op
+                 gc.alloc.rate.norm: 0.270 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 40237.594 ns/op
+Iteration   4: 38481.171 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.282 B/op
+                 gc.alloc.rate.norm: 0.269 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 39660.730 ns/op
+Iteration   5: 38907.373 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.278 B/op
+                 gc.alloc.rate.norm: 0.272 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -1566,42 +1564,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 43410.633 ns/op
-# Warmup Iteration   2: 42141.525 ns/op
-# Warmup Iteration   3: 42711.804 ns/op
-# Warmup Iteration   4: 42262.727 ns/op
-# Warmup Iteration   5: 42343.484 ns/op
-Iteration   1: 42043.893 ns/op
+# Warmup Iteration   1: 40938.435 ns/op
+# Warmup Iteration   2: 41350.066 ns/op
+# Warmup Iteration   3: 40130.178 ns/op
+# Warmup Iteration   4: 38987.366 ns/op
+# Warmup Iteration   5: 38879.835 ns/op
+Iteration   1: 38822.162 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.294 B/op
+                 gc.alloc.rate.norm: 0.272 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 42158.182 ns/op
+Iteration   2: 39016.432 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.295 B/op
+                 gc.alloc.rate.norm: 0.273 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 42370.479 ns/op
+Iteration   3: 38910.999 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.295 B/op
+                 gc.alloc.rate.norm: 0.272 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 41966.749 ns/op
+Iteration   4: 39015.526 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.294 B/op
+                 gc.alloc.rate.norm: 0.273 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 42429.166 ns/op
+Iteration   5: 39018.388 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.297 B/op
+                 gc.alloc.rate.norm: 0.273 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
-  40695.704 ±(99.9%) 1217.174 ns/op [Average]
-  (min, avg, max) = (39383.115, 40695.704, 42429.166), stdev = 1138.545
-  CI (99.9%): [39478.530, 41912.878] (assumes normal distribution)
+  38932.005 ±(99.9%) 328.182 ns/op [Average]
+  (min, avg, max) = (38456.250, 38932.005, 39591.747), stdev = 306.982
+  CI (99.9%): [38603.823, 39260.187] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -1609,9 +1607,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate"
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate.norm":
-  0.285 ±(99.9%) 0.008 B/op [Average]
-  (min, avg, max) = (0.276, 0.285, 0.297), stdev = 0.008
-  CI (99.9%): [0.276, 0.293] (assumes normal distribution)
+  0.272 ±(99.9%) 0.002 B/op [Average]
+  (min, avg, max) = (0.269, 0.272, 0.277), stdev = 0.002
+  CI (99.9%): [0.270, 0.275] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.count":
   ≈ 0 counts
@@ -1637,128 +1635,128 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 30619218.485 ns/op
-# Warmup Iteration   2: 29544045.147 ns/op
-# Warmup Iteration   3: 29592392.000 ns/op
-# Warmup Iteration   4: 29902802.412 ns/op
-# Warmup Iteration   5: 29959840.265 ns/op
-Iteration   1: 29941671.500 ns/op
+# Warmup Iteration   1: 29022776.857 ns/op
+# Warmup Iteration   2: 28193540.194 ns/op
+# Warmup Iteration   3: 28156601.000 ns/op
+# Warmup Iteration   4: 28361368.194 ns/op
+# Warmup Iteration   5: 28214638.944 ns/op
+Iteration   1: 28207106.611 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 205.882 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 29800983.824 ns/op
+Iteration   2: 28175043.528 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 205.882 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 29586999.559 ns/op
+Iteration   3: 28190042.972 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 205.882 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 29306048.629 ns/op
+Iteration   4: 28252935.972 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 194.444 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 28801589.886 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 200.000 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 29004307.600 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
-                 gc.count:           ≈ 0 counts
 
-
-# Run progress: 62.96% complete, ETA 00:03:25
+# Run progress: 62.96% complete, ETA 00:03:24
 # Fork: 2 of 3
 WARNING: Using incubator modules: jdk.incubator.vector
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 29775264.118 ns/op
-# Warmup Iteration   2: 28681137.514 ns/op
-# Warmup Iteration   3: 28576167.800 ns/op
-# Warmup Iteration   4: 29048716.343 ns/op
-# Warmup Iteration   5: 28888966.143 ns/op
-Iteration   1: 28930513.229 ns/op
+# Warmup Iteration   1: 29050460.743 ns/op
+# Warmup Iteration   2: 28103419.778 ns/op
+# Warmup Iteration   3: 28370870.778 ns/op
+# Warmup Iteration   4: 28138514.917 ns/op
+# Warmup Iteration   5: 28226269.028 ns/op
+Iteration   1: 28256434.722 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 28646958.571 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+Iteration   2: 28525487.028 ns/op
+                 gc.alloc.rate:      0.006 MB/sec
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 29131401.714 ns/op
+Iteration   3: 28335201.306 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 199.086 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 29078912.971 ns/op
+Iteration   4: 28204821.917 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.914 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 28593504.914 ns/op
+Iteration   5: 28143959.194 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
 
-# Run progress: 64.81% complete, ETA 00:03:15
+# Run progress: 64.81% complete, ETA 00:03:14
 # Fork: 3 of 3
 WARNING: Using incubator modules: jdk.incubator.vector
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 29568767.735 ns/op
-# Warmup Iteration   2: 28662261.286 ns/op
-# Warmup Iteration   3: 28959073.943 ns/op
-# Warmup Iteration   4: 29148170.600 ns/op
-# Warmup Iteration   5: 28842410.571 ns/op
-Iteration   1: 28608002.086 ns/op
+# Warmup Iteration   1: 28941539.571 ns/op
+# Warmup Iteration   2: 28377065.472 ns/op
+# Warmup Iteration   3: 28149592.694 ns/op
+# Warmup Iteration   4: 28242938.972 ns/op
+# Warmup Iteration   5: 28143814.111 ns/op
+Iteration   1: 28200668.028 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 28587629.314 ns/op
+Iteration   2: 28326954.722 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+                 gc.alloc.rate.norm: 195.333 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 28597110.257 ns/op
+Iteration   3: 28322324.000 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 28950036.171 ns/op
+Iteration   4: 28141861.139 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 29216977.657 ns/op
+Iteration   5: 28216552.389 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 200.000 B/op
+                 gc.alloc.rate.norm: 194.444 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.list":
-  29065403.866 ±(99.9%) 474345.553 ns/op [Average]
-  (min, avg, max) = (28587629.314, 29065403.866, 29941671.500), stdev = 443703.125
-  CI (99.9%): [28591058.314, 29539749.419] (assumes normal distribution)
+  28286732.228 ±(99.9%) 184714.954 ns/op [Average]
+  (min, avg, max) = (28141861.139, 28286732.228, 28801589.886), stdev = 172782.482
+  CI (99.9%): [28102017.274, 28471447.181] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
-  (min, avg, max) = (0.007, 0.007, 0.007), stdev = 0.001
+  (min, avg, max) = (0.006, 0.007, 0.007), stdev = 0.001
   CI (99.9%): [0.007, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.alloc.rate.norm":
-  201.176 ±(99.9%) 2.630 B/op [Average]
-  (min, avg, max) = (199.086, 201.176, 205.882), stdev = 2.460
-  CI (99.9%): [198.547, 203.806] (assumes normal distribution)
+  194.874 ±(99.9%) 1.536 B/op [Average]
+  (min, avg, max) = (194.444, 194.874, 200.000), stdev = 1.436
+  CI (99.9%): [193.338, 196.410] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.count":
   ≈ 0 counts
@@ -1777,39 +1775,39 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.list:gc.count":
 # Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
 # Parameters: (size = 1024)
 
-# Run progress: 66.67% complete, ETA 00:03:04
+# Run progress: 66.67% complete, ETA 00:03:05
 # Fork: 1 of 3
 WARNING: Using incubator modules: jdk.incubator.vector
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 563.921 ns/op
-# Warmup Iteration   2: 555.441 ns/op
-# Warmup Iteration   3: 550.027 ns/op
-# Warmup Iteration   4: 544.301 ns/op
-# Warmup Iteration   5: 540.294 ns/op
-Iteration   1: 541.827 ns/op
+# Warmup Iteration   1: 538.300 ns/op
+# Warmup Iteration   2: 541.478 ns/op
+# Warmup Iteration   3: 534.194 ns/op
+# Warmup Iteration   4: 537.834 ns/op
+# Warmup Iteration   5: 528.611 ns/op
+Iteration   1: 533.964 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 546.131 ns/op
+Iteration   2: 539.015 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 542.514 ns/op
+Iteration   3: 539.923 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 540.304 ns/op
+Iteration   4: 528.774 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 531.621 ns/op
+Iteration   5: 533.541 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 0.005 B/op
                  gc.count:           ≈ 0 counts
@@ -1822,32 +1820,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 559.896 ns/op
-# Warmup Iteration   2: 546.529 ns/op
-# Warmup Iteration   3: 561.880 ns/op
-# Warmup Iteration   4: 529.082 ns/op
-# Warmup Iteration   5: 544.227 ns/op
-Iteration   1: 533.288 ns/op
+# Warmup Iteration   1: 538.766 ns/op
+# Warmup Iteration   2: 545.616 ns/op
+# Warmup Iteration   3: 528.635 ns/op
+# Warmup Iteration   4: 536.329 ns/op
+# Warmup Iteration   5: 534.891 ns/op
+Iteration   1: 534.049 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 548.837 ns/op
+Iteration   2: 541.457 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 549.686 ns/op
+Iteration   3: 538.468 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 542.557 ns/op
+Iteration   4: 527.390 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 552.577 ns/op
+Iteration   5: 539.183 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 0.005 B/op
                  gc.count:           ≈ 0 counts
@@ -1860,32 +1858,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 545.899 ns/op
-# Warmup Iteration   2: 529.942 ns/op
-# Warmup Iteration   3: 541.703 ns/op
-# Warmup Iteration   4: 526.950 ns/op
-# Warmup Iteration   5: 530.490 ns/op
-Iteration   1: 535.574 ns/op
+# Warmup Iteration   1: 541.248 ns/op
+# Warmup Iteration   2: 542.074 ns/op
+# Warmup Iteration   3: 528.971 ns/op
+# Warmup Iteration   4: 537.079 ns/op
+# Warmup Iteration   5: 528.862 ns/op
+Iteration   1: 534.969 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 533.759 ns/op
+Iteration   2: 539.821 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 551.893 ns/op
+Iteration   3: 541.965 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 540.480 ns/op
+Iteration   4: 527.892 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.004 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 546.883 ns/op
+Iteration   5: 532.900 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 0.005 B/op
                  gc.count:           ≈ 0 counts
@@ -1893,9 +1891,9 @@ Iteration   5: 546.883 ns/op
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
-  542.529 ±(99.9%) 7.289 ns/op [Average]
-  (min, avg, max) = (531.621, 542.529, 552.577), stdev = 6.818
-  CI (99.9%): [535.239, 549.818] (assumes normal distribution)
+  535.554 ±(99.9%) 5.225 ns/op [Average]
+  (min, avg, max) = (527.390, 535.554, 541.965), stdev = 4.888
+  CI (99.9%): [530.329, 540.779] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -1924,41 +1922,41 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.co
 # Benchmark: dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar
 # Parameters: (size = 65536)
 
-# Run progress: 72.22% complete, ETA 00:02:33
+# Run progress: 72.22% complete, ETA 00:02:34
 # Fork: 1 of 3
 WARNING: Using incubator modules: jdk.incubator.vector
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 37809.527 ns/op
-# Warmup Iteration   2: 36788.583 ns/op
-# Warmup Iteration   3: 37152.083 ns/op
-# Warmup Iteration   4: 35602.493 ns/op
-# Warmup Iteration   5: 35774.937 ns/op
-Iteration   1: 36168.545 ns/op
+# Warmup Iteration   1: 36307.040 ns/op
+# Warmup Iteration   2: 35580.806 ns/op
+# Warmup Iteration   3: 34827.954 ns/op
+# Warmup Iteration   4: 35162.032 ns/op
+# Warmup Iteration   5: 34864.189 ns/op
+Iteration   1: 35768.469 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.253 B/op
+                 gc.alloc.rate.norm: 0.250 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 36259.478 ns/op
+Iteration   2: 35051.832 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.254 B/op
+                 gc.alloc.rate.norm: 0.245 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 37032.450 ns/op
+Iteration   3: 35280.019 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.259 B/op
+                 gc.alloc.rate.norm: 0.247 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 36819.421 ns/op
+Iteration   4: 34855.204 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.258 B/op
+                 gc.alloc.rate.norm: 0.244 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 35564.587 ns/op
+Iteration   5: 35212.315 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 0.302 B/op
+                 gc.alloc.rate.norm: 0.299 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -1969,34 +1967,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 36218.170 ns/op
-# Warmup Iteration   2: 35375.713 ns/op
-# Warmup Iteration   3: 36396.863 ns/op
-# Warmup Iteration   4: 34907.295 ns/op
-# Warmup Iteration   5: 35884.470 ns/op
-Iteration   1: 34829.459 ns/op
+# Warmup Iteration   1: 36314.683 ns/op
+# Warmup Iteration   2: 35212.567 ns/op
+# Warmup Iteration   3: 34869.779 ns/op
+# Warmup Iteration   4: 35809.702 ns/op
+# Warmup Iteration   5: 34796.153 ns/op
+Iteration   1: 35801.728 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.251 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 34797.473 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.244 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 35430.255 ns/op
+Iteration   3: 35230.752 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.248 B/op
+                 gc.alloc.rate.norm: 0.247 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 37067.906 ns/op
+Iteration   4: 34800.090 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.259 B/op
+                 gc.alloc.rate.norm: 0.244 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 37229.317 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.261 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 36333.409 ns/op
+Iteration   5: 35129.360 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 0.309 B/op
+                 gc.alloc.rate.norm: 0.299 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -2007,42 +2005,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 38069.628 ns/op
-# Warmup Iteration   2: 37236.403 ns/op
-# Warmup Iteration   3: 36956.907 ns/op
-# Warmup Iteration   4: 36154.138 ns/op
-# Warmup Iteration   5: 36487.170 ns/op
-Iteration   1: 36741.454 ns/op
+# Warmup Iteration   1: 36204.333 ns/op
+# Warmup Iteration   2: 35269.293 ns/op
+# Warmup Iteration   3: 34846.664 ns/op
+# Warmup Iteration   4: 35237.046 ns/op
+# Warmup Iteration   5: 34792.973 ns/op
+Iteration   1: 36044.353 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.257 B/op
+                 gc.alloc.rate.norm: 0.252 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 36845.971 ns/op
+Iteration   2: 35329.519 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.258 B/op
+                 gc.alloc.rate.norm: 0.247 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 36857.079 ns/op
+Iteration   3: 35227.583 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.258 B/op
+                 gc.alloc.rate.norm: 0.247 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 36789.702 ns/op
+Iteration   4: 34735.953 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.257 B/op
+                 gc.alloc.rate.norm: 0.243 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 35908.051 ns/op
+Iteration   5: 35400.191 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 0.305 B/op
+                 gc.alloc.rate.norm: 0.301 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
-  36391.806 ±(99.9%) 745.595 ns/op [Average]
-  (min, avg, max) = (34829.459, 36391.806, 37229.317), stdev = 697.430
-  CI (99.9%): [35646.211, 37137.401] (assumes normal distribution)
+  35244.323 ±(99.9%) 415.712 ns/op [Average]
+  (min, avg, max) = (34735.953, 35244.323, 36044.353), stdev = 388.857
+  CI (99.9%): [34828.611, 35660.034] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -2050,9 +2048,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.al
   CI (99.9%): [0.006, 0.008] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate.norm":
-  0.266 ±(99.9%) 0.023 B/op [Average]
-  (min, avg, max) = (0.244, 0.266, 0.309), stdev = 0.021
-  CI (99.9%): [0.243, 0.288] (assumes normal distribution)
+  0.257 ±(99.9%) 0.024 B/op [Average]
+  (min, avg, max) = (0.243, 0.257, 0.301), stdev = 0.022
+  CI (99.9%): [0.234, 0.281] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.count":
   ≈ 0 counts
@@ -2078,34 +2076,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 10217611.898 ns/op
-# Warmup Iteration   2: 10075261.040 ns/op
-# Warmup Iteration   3: 10026365.540 ns/op
-# Warmup Iteration   4: 10078885.940 ns/op
-# Warmup Iteration   5: 9937456.208 ns/op
-Iteration   1: 10077935.050 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 70.000 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   2: 10003516.446 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 69.307 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   3: 10062560.820 ns/op
+# Warmup Iteration   1: 10274400.857 ns/op
+# Warmup Iteration   2: 9923491.277 ns/op
+# Warmup Iteration   3: 9887441.608 ns/op
+# Warmup Iteration   4: 9781267.689 ns/op
+# Warmup Iteration   5: 9903884.765 ns/op
+Iteration   1: 10042137.700 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 69.680 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 9930975.149 ns/op
+Iteration   2: 9889839.304 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 69.307 B/op
+                 gc.alloc.rate.norm: 68.314 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 9957931.743 ns/op
+Iteration   3: 9780278.223 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 67.961 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 9871676.902 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 68.941 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 9781992.155 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 84.198 B/op
+                 gc.alloc.rate.norm: 82.563 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -2116,32 +2114,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 10090019.030 ns/op
-# Warmup Iteration   2: 10108029.434 ns/op
-# Warmup Iteration   3: 10118246.667 ns/op
-# Warmup Iteration   4: 10053978.830 ns/op
-# Warmup Iteration   5: 9907511.436 ns/op
-Iteration   1: 9969056.079 ns/op
+# Warmup Iteration   1: 10134273.980 ns/op
+# Warmup Iteration   2: 9856035.275 ns/op
+# Warmup Iteration   3: 9910402.465 ns/op
+# Warmup Iteration   4: 9777182.592 ns/op
+# Warmup Iteration   5: 10080429.090 ns/op
+Iteration   1: 9772800.136 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 67.650 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 9887057.961 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 68.627 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 9770123.000 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 67.961 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 9984223.743 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 69.307 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 10224791.092 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 71.429 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   3: 10069381.130 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 69.680 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   4: 10191039.970 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 70.707 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 9952784.772 ns/op
+Iteration   5: 9951770.802 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 84.198 B/op
                  gc.count:           ≈ 0 counts
@@ -2154,32 +2152,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 10327782.340 ns/op
-# Warmup Iteration   2: 10045652.530 ns/op
-# Warmup Iteration   3: 10030022.010 ns/op
-# Warmup Iteration   4: 10022892.140 ns/op
-# Warmup Iteration   5: 9944609.535 ns/op
-Iteration   1: 10193968.495 ns/op
+# Warmup Iteration   1: 10068798.240 ns/op
+# Warmup Iteration   2: 9973202.248 ns/op
+# Warmup Iteration   3: 9844805.980 ns/op
+# Warmup Iteration   4: 9827361.333 ns/op
+# Warmup Iteration   5: 10028430.120 ns/op
+Iteration   1: 9812753.559 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 70.384 B/op
+                 gc.alloc.rate.norm: 68.627 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 10180731.646 ns/op
+Iteration   2: 9927213.673 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 70.707 B/op
+                 gc.alloc.rate.norm: 68.990 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 10031021.290 ns/op
+Iteration   3: 9813273.284 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 69.680 B/op
+                 gc.alloc.rate.norm: 68.627 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 9925322.772 ns/op
+Iteration   4: 9872689.127 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 69.624 B/op
+                 gc.alloc.rate.norm: 68.627 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 9906164.970 ns/op
+Iteration   5: 9968775.663 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 84.198 B/op
                  gc.count:           ≈ 0 counts
@@ -2187,9 +2185,9 @@ Iteration   5: 9906164.970 ns/op
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
-  10045145.428 ±(99.9%) 116628.517 ns/op [Average]
-  (min, avg, max) = (9906164.970, 10045145.428, 10224791.092), stdev = 109094.387
-  CI (99.9%): [9928516.912, 10161773.945] (assumes normal distribution)
+  9875107.016 ±(99.9%) 92323.782 ns/op [Average]
+  (min, avg, max) = (9770123.000, 9875107.016, 10042137.700), stdev = 86359.723
+  CI (99.9%): [9782783.234, 9967430.798] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -2197,9 +2195,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.al
   CI (99.9%): [0.006, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.alloc.rate.norm":
-  72.827 ±(99.9%) 6.324 B/op [Average]
-  (min, avg, max) = (69.307, 72.827, 84.198), stdev = 5.916
-  CI (99.9%): [66.503, 79.151] (assumes normal distribution)
+  71.618 ±(99.9%) 6.692 B/op [Average]
+  (min, avg, max) = (67.650, 71.618, 84.198), stdev = 6.260
+  CI (99.9%): [64.926, 78.311] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:gc.count":
   ≈ 0 counts
@@ -2225,32 +2223,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 63.089 ns/op
-# Warmup Iteration   2: 59.669 ns/op
-# Warmup Iteration   3: 60.457 ns/op
-# Warmup Iteration   4: 59.913 ns/op
-# Warmup Iteration   5: 60.421 ns/op
-Iteration   1: 60.520 ns/op
+# Warmup Iteration   1: 61.748 ns/op
+# Warmup Iteration   2: 59.856 ns/op
+# Warmup Iteration   3: 59.535 ns/op
+# Warmup Iteration   4: 60.000 ns/op
+# Warmup Iteration   5: 59.862 ns/op
+Iteration   1: 59.662 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 60.202 ns/op
+Iteration   2: 59.551 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 59.405 ns/op
+Iteration   3: 59.729 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 61.957 ns/op
+Iteration   4: 60.022 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 60.428 ns/op
+Iteration   5: 60.150 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
@@ -2263,32 +2261,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 64.371 ns/op
-# Warmup Iteration   2: 59.829 ns/op
-# Warmup Iteration   3: 60.013 ns/op
-# Warmup Iteration   4: 59.409 ns/op
-# Warmup Iteration   5: 60.534 ns/op
-Iteration   1: 60.867 ns/op
+# Warmup Iteration   1: 61.699 ns/op
+# Warmup Iteration   2: 60.300 ns/op
+# Warmup Iteration   3: 59.384 ns/op
+# Warmup Iteration   4: 60.016 ns/op
+# Warmup Iteration   5: 59.406 ns/op
+Iteration   1: 59.740 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 60.790 ns/op
+Iteration   2: 59.340 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 59.882 ns/op
+Iteration   3: 59.727 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 60.779 ns/op
+Iteration   4: 60.235 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 61.678 ns/op
+Iteration   5: 59.799 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
@@ -2301,32 +2299,32 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 63.204 ns/op
-# Warmup Iteration   2: 59.825 ns/op
-# Warmup Iteration   3: 59.873 ns/op
-# Warmup Iteration   4: 59.471 ns/op
-# Warmup Iteration   5: 59.781 ns/op
-Iteration   1: 60.262 ns/op
+# Warmup Iteration   1: 61.696 ns/op
+# Warmup Iteration   2: 60.100 ns/op
+# Warmup Iteration   3: 59.356 ns/op
+# Warmup Iteration   4: 60.334 ns/op
+# Warmup Iteration   5: 60.047 ns/op
+Iteration   1: 59.778 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 59.820 ns/op
+Iteration   2: 59.420 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 59.492 ns/op
+Iteration   3: 59.778 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 60.219 ns/op
+Iteration   4: 60.233 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: ≈ 10⁻³ B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 61.018 ns/op
+Iteration   5: 59.872 ns/op
                  gc.alloc.rate:      0.008 MB/sec
                  gc.alloc.rate.norm: 0.001 B/op
                  gc.count:           ≈ 0 counts
@@ -2334,9 +2332,9 @@ Iteration   5: 61.018 ns/op
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
-  60.488 ±(99.9%) 0.775 ns/op [Average]
-  (min, avg, max) = (59.405, 60.488, 61.957), stdev = 0.725
-  CI (99.9%): [59.713, 61.263] (assumes normal distribution)
+  59.802 ±(99.9%) 0.286 ns/op [Average]
+  (min, avg, max) = (59.340, 59.802, 60.235), stdev = 0.268
+  CI (99.9%): [59.516, 60.089] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -2370,34 +2368,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7903.304 ns/op
-# Warmup Iteration   2: 7240.360 ns/op
-# Warmup Iteration   3: 7139.315 ns/op
-# Warmup Iteration   4: 7027.734 ns/op
-# Warmup Iteration   5: 7237.964 ns/op
-Iteration   1: 7329.447 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.051 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   2: 7094.294 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.050 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   3: 7066.126 ns/op
+# Warmup Iteration   1: 7652.786 ns/op
+# Warmup Iteration   2: 7038.039 ns/op
+# Warmup Iteration   3: 6947.352 ns/op
+# Warmup Iteration   4: 7187.079 ns/op
+# Warmup Iteration   5: 7034.262 ns/op
+Iteration   1: 6955.296 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.049 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7311.087 ns/op
+Iteration   2: 6947.359 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.051 B/op
+                 gc.alloc.rate.norm: 0.049 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 7225.244 ns/op
+Iteration   3: 7102.819 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.050 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   4: 7137.193 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 0.050 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   5: 7007.285 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 0.061 B/op
+                 gc.alloc.rate.norm: 0.060 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -2408,34 +2406,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7552.270 ns/op
-# Warmup Iteration   2: 6957.870 ns/op
-# Warmup Iteration   3: 7084.983 ns/op
-# Warmup Iteration   4: 7226.248 ns/op
-# Warmup Iteration   5: 7236.299 ns/op
-Iteration   1: 7108.659 ns/op
+# Warmup Iteration   1: 7565.891 ns/op
+# Warmup Iteration   2: 7185.035 ns/op
+# Warmup Iteration   3: 7129.030 ns/op
+# Warmup Iteration   4: 7306.047 ns/op
+# Warmup Iteration   5: 7118.251 ns/op
+Iteration   1: 7192.501 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.050 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 7116.615 ns/op
+Iteration   2: 7176.528 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.050 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 7143.861 ns/op
+Iteration   3: 7202.428 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 0.050 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7082.020 ns/op
+Iteration   4: 7226.503 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.049 B/op
+                 gc.alloc.rate.norm: 0.051 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 7065.312 ns/op
+Iteration   5: 7167.852 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 0.060 B/op
+                 gc.alloc.rate.norm: 0.061 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -2446,42 +2444,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7763.550 ns/op
-# Warmup Iteration   2: 7374.527 ns/op
-# Warmup Iteration   3: 7171.877 ns/op
-# Warmup Iteration   4: 7214.411 ns/op
-# Warmup Iteration   5: 7205.792 ns/op
-Iteration   1: 7146.782 ns/op
+# Warmup Iteration   1: 7433.324 ns/op
+# Warmup Iteration   2: 7065.087 ns/op
+# Warmup Iteration   3: 6936.477 ns/op
+# Warmup Iteration   4: 7023.652 ns/op
+# Warmup Iteration   5: 6914.060 ns/op
+Iteration   1: 6985.619 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.050 B/op
+                 gc.alloc.rate.norm: 0.049 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 7154.357 ns/op
+Iteration   2: 6941.571 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.050 B/op
+                 gc.alloc.rate.norm: 0.049 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 7141.757 ns/op
+Iteration   3: 7006.474 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.050 B/op
+                 gc.alloc.rate.norm: 0.049 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 7345.755 ns/op
+Iteration   4: 7020.457 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 0.051 B/op
+                 gc.alloc.rate.norm: 0.049 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 7280.854 ns/op
+Iteration   5: 7061.214 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 0.062 B/op
+                 gc.alloc.rate.norm: 0.060 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
-  7174.145 ±(99.9%) 105.135 ns/op [Average]
-  (min, avg, max) = (7065.312, 7174.145, 7345.755), stdev = 98.344
-  CI (99.9%): [7069.009, 7279.280] (assumes normal distribution)
+  7075.407 ±(99.9%) 108.958 ns/op [Average]
+  (min, avg, max) = (6941.571, 7075.407, 7226.503), stdev = 101.919
+  CI (99.9%): [6966.449, 7184.365] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -2490,8 +2488,8 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.al
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.alloc.rate.norm":
   0.052 ±(99.9%) 0.005 B/op [Average]
-  (min, avg, max) = (0.049, 0.052, 0.062), stdev = 0.005
-  CI (99.9%): [0.047, 0.057] (assumes normal distribution)
+  (min, avg, max) = (0.049, 0.052, 0.061), stdev = 0.004
+  CI (99.9%): [0.047, 0.056] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.count":
   ≈ 0 counts
@@ -2517,34 +2515,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7484501.187 ns/op
-# Warmup Iteration   2: 6256476.313 ns/op
-# Warmup Iteration   3: 6273715.269 ns/op
-# Warmup Iteration   4: 6180273.241 ns/op
-# Warmup Iteration   5: 6228316.031 ns/op
-Iteration   1: 6190104.519 ns/op
+# Warmup Iteration   1: 7483078.843 ns/op
+# Warmup Iteration   2: 6158024.454 ns/op
+# Warmup Iteration   3: 6173968.239 ns/op
+# Warmup Iteration   4: 6154679.742 ns/op
+# Warmup Iteration   5: 6163967.773 ns/op
+Iteration   1: 6168143.816 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 42.748 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 6162288.387 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 42.945 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   3: 6189999.531 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 43.210 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6239358.851 ns/op
+Iteration   4: 6155366.160 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.677 B/op
+                 gc.alloc.rate.norm: 42.748 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6184087.617 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   4: 6215614.447 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 6224225.317 ns/op
+Iteration   5: 6155790.926 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 52.820 B/op
+                 gc.alloc.rate.norm: 52.172 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -2555,34 +2553,34 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7479589.739 ns/op
-# Warmup Iteration   2: 6337607.620 ns/op
-# Warmup Iteration   3: 6323636.629 ns/op
-# Warmup Iteration   4: 6341536.949 ns/op
-# Warmup Iteration   5: 6233057.596 ns/op
-Iteration   1: 6331484.430 ns/op
+# Warmup Iteration   1: 7536350.135 ns/op
+# Warmup Iteration   2: 6161870.951 ns/op
+# Warmup Iteration   3: 6182390.216 ns/op
+# Warmup Iteration   4: 6150938.429 ns/op
+# Warmup Iteration   5: 6165609.209 ns/op
+Iteration   1: 6153364.730 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 44.304 B/op
+                 gc.alloc.rate.norm: 42.748 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6228748.646 ns/op
+Iteration   2: 6161512.650 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.280 B/op
+                 gc.alloc.rate.norm: 42.748 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6301738.704 ns/op
+Iteration   3: 6170140.540 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 44.025 B/op
+                 gc.alloc.rate.norm: 43.141 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6333051.551 ns/op
+Iteration   4: 6153329.828 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 44.304 B/op
+                 gc.alloc.rate.norm: 42.945 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   5: 6316733.434 ns/op
+Iteration   5: 6139262.982 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 53.484 B/op
+                 gc.alloc.rate.norm: 52.172 B/op
                  gc.count:           ≈ 0 counts
 
 
@@ -2593,42 +2591,42 @@ WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
 WARNING: Please consider reporting this to the maintainers of class org.openjdk.jmh.util.Utils
 WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-# Warmup Iteration   1: 7502340.918 ns/op
-# Warmup Iteration   2: 6237964.137 ns/op
-# Warmup Iteration   3: 6213188.685 ns/op
-# Warmup Iteration   4: 6281562.625 ns/op
-# Warmup Iteration   5: 6214730.870 ns/op
-Iteration   1: 6209795.784 ns/op
+# Warmup Iteration   1: 7476934.940 ns/op
+# Warmup Iteration   2: 6166596.644 ns/op
+# Warmup Iteration   3: 6173529.454 ns/op
+# Warmup Iteration   4: 6147892.417 ns/op
+# Warmup Iteration   5: 6154377.828 ns/op
+Iteration   1: 6143136.834 ns/op
+                 gc.alloc.rate:      0.007 MB/sec
+                 gc.alloc.rate.norm: 42.748 B/op
+                 gc.count:           ≈ 0 counts
+
+Iteration   2: 6178562.056 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 43.210 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   2: 6202495.179 ns/op
+Iteration   3: 6148205.638 ns/op
                  gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.210 B/op
+                 gc.alloc.rate.norm: 43.141 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   3: 6210831.858 ns/op
+Iteration   4: 6184384.241 ns/op
                  gc.alloc.rate:      0.007 MB/sec
                  gc.alloc.rate.norm: 43.012 B/op
                  gc.count:           ≈ 0 counts
 
-Iteration   4: 6220518.311 ns/op
-                 gc.alloc.rate:      0.007 MB/sec
-                 gc.alloc.rate.norm: 43.478 B/op
-                 gc.count:           ≈ 0 counts
-
-Iteration   5: 6221019.373 ns/op
+Iteration   5: 6181669.068 ns/op
                  gc.alloc.rate:      0.008 MB/sec
-                 gc.alloc.rate.norm: 52.820 B/op
+                 gc.alloc.rate.norm: 52.494 B/op
                  gc.count:           ≈ 0 counts
 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
-  6241987.201 ±(99.9%) 55080.851 ns/op [Average]
-  (min, avg, max) = (6184087.617, 6241987.201, 6333051.551), stdev = 51522.662
-  CI (99.9%): [6186906.351, 6297068.052] (assumes normal distribution)
+  6163010.492 ±(99.9%) 16489.191 ns/op [Average]
+  (min, avg, max) = (6139262.982, 6163010.492, 6189999.531), stdev = 15423.999
+  CI (99.9%): [6146521.301, 6179499.683] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.alloc.rate":
   0.007 ±(99.9%) 0.001 MB/sec [Average]
@@ -2636,9 +2634,9 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.al
   CI (99.9%): [0.006, 0.007] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.alloc.rate.norm":
-  45.435 ±(99.9%) 4.233 B/op [Average]
-  (min, avg, max) = (43.012, 45.435, 53.484), stdev = 3.959
-  CI (99.9%): [41.202, 49.668] (assumes normal distribution)
+  44.812 ±(99.9%) 4.136 B/op [Average]
+  (min, avg, max) = (42.748, 44.812, 52.494), stdev = 3.869
+  CI (99.9%): [40.676, 48.948] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:gc.count":
   ≈ 0 counts
@@ -2659,77 +2657,77 @@ different JVMs are already problematic, the performance difference caused by dif
 modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
 
 Benchmark                                              (size)  Mode  Cnt         Score        Error   Units
-DotProductBench.array                                    1024  avgt   15       554.048 ±      7.219   ns/op
+DotProductBench.array                                    1024  avgt   15       542.477 ±      7.358   ns/op
 DotProductBench.array:gc.alloc.rate                      1024  avgt   15         0.007 ±      0.001  MB/sec
 DotProductBench.array:gc.alloc.rate.norm                 1024  avgt   15         0.004 ±      0.001    B/op
 DotProductBench.array:gc.count                           1024  avgt   15           ≈ 0               counts
-DotProductBench.array                                   65536  avgt   15     37405.313 ±    424.600   ns/op
+DotProductBench.array                                   65536  avgt   15     35997.610 ±    216.263   ns/op
 DotProductBench.array:gc.alloc.rate                     65536  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.array:gc.alloc.rate.norm                65536  avgt   15         0.262 ±      0.003    B/op
+DotProductBench.array:gc.alloc.rate.norm                65536  avgt   15         0.252 ±      0.002    B/op
 DotProductBench.array:gc.count                          65536  avgt   15           ≈ 0               counts
-DotProductBench.array                                16777216  avgt   15  10420546.523 ± 130777.725   ns/op
+DotProductBench.array                                16777216  avgt   15  10073244.996 ±  81908.093   ns/op
 DotProductBench.array:gc.alloc.rate                  16777216  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.array:gc.alloc.rate.norm             16777216  avgt   15        72.573 ±      0.913    B/op
+DotProductBench.array:gc.alloc.rate.norm             16777216  avgt   15        70.164 ±      0.752    B/op
 DotProductBench.array:gc.count                       16777216  avgt   15           ≈ 0               counts
-DotProductBench.arrayLoadControl                         1024  avgt   15        75.028 ±      7.135   ns/op
+DotProductBench.arrayLoadControl                         1024  avgt   15        70.867 ±      0.859   ns/op
 DotProductBench.arrayLoadControl:gc.alloc.rate           1024  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.arrayLoadControl:gc.alloc.rate.norm      1024  avgt   15         0.001 ±      0.001    B/op
+DotProductBench.arrayLoadControl:gc.alloc.rate.norm      1024  avgt   15        ≈ 10⁻³                 B/op
 DotProductBench.arrayLoadControl:gc.count                1024  avgt   15           ≈ 0               counts
-DotProductBench.arrayLoadControl                        65536  avgt   15      7501.078 ±    109.251   ns/op
+DotProductBench.arrayLoadControl                        65536  avgt   15      7368.302 ±    161.012   ns/op
 DotProductBench.arrayLoadControl:gc.alloc.rate          65536  avgt   15         0.007 ±      0.001  MB/sec
 DotProductBench.arrayLoadControl:gc.alloc.rate.norm     65536  avgt   15         0.052 ±      0.001    B/op
 DotProductBench.arrayLoadControl:gc.count               65536  avgt   15           ≈ 0               counts
-DotProductBench.arrayLoadControl                     16777216  avgt   15   6246737.232 ±  49266.455   ns/op
+DotProductBench.arrayLoadControl                     16777216  avgt   15   6064241.672 ±  24634.735   ns/op
 DotProductBench.arrayLoadControl:gc.alloc.rate       16777216  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.arrayLoadControl:gc.alloc.rate.norm  16777216  avgt   15        43.580 ±      0.331    B/op
+DotProductBench.arrayLoadControl:gc.alloc.rate.norm  16777216  avgt   15        42.275 ±      0.159    B/op
 DotProductBench.arrayLoadControl:gc.count            16777216  avgt   15           ≈ 0               counts
-DotProductBench.arrayVector                              1024  avgt   15        80.939 ±      6.843   ns/op
+DotProductBench.arrayVector                              1024  avgt   15        79.098 ±      6.551   ns/op
 DotProductBench.arrayVector:gc.alloc.rate                1024  avgt   15         0.007 ±      0.001  MB/sec
 DotProductBench.arrayVector:gc.alloc.rate.norm           1024  avgt   15         0.001 ±      0.001    B/op
 DotProductBench.arrayVector:gc.count                     1024  avgt   15           ≈ 0               counts
-DotProductBench.arrayVector                             65536  avgt   15      7822.314 ±    287.489   ns/op
+DotProductBench.arrayVector                             65536  avgt   15      7636.318 ±    189.883   ns/op
 DotProductBench.arrayVector:gc.alloc.rate               65536  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.arrayVector:gc.alloc.rate.norm          65536  avgt   15         0.055 ±      0.002    B/op
+DotProductBench.arrayVector:gc.alloc.rate.norm          65536  avgt   15         0.053 ±      0.001    B/op
 DotProductBench.arrayVector:gc.count                    65536  avgt   15           ≈ 0               counts
-DotProductBench.arrayVector                          16777216  avgt   15   6220928.424 ±  29509.615   ns/op
+DotProductBench.arrayVector                          16777216  avgt   15   6075239.900 ±  13073.843   ns/op
 DotProductBench.arrayVector:gc.alloc.rate            16777216  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.arrayVector:gc.alloc.rate.norm       16777216  avgt   15        43.389 ±      0.235    B/op
+DotProductBench.arrayVector:gc.alloc.rate.norm       16777216  avgt   15        42.369 ±      0.205    B/op
 DotProductBench.arrayVector:gc.count                 16777216  avgt   15           ≈ 0               counts
-DotProductBench.list                                     1024  avgt   15       595.083 ±      3.728   ns/op
+DotProductBench.list                                     1024  avgt   15       590.113 ±      3.220   ns/op
 DotProductBench.list:gc.alloc.rate                       1024  avgt   15         0.007 ±      0.001  MB/sec
 DotProductBench.list:gc.alloc.rate.norm                  1024  avgt   15         0.004 ±      0.001    B/op
 DotProductBench.list:gc.count                            1024  avgt   15           ≈ 0               counts
-DotProductBench.list                                    65536  avgt   15     40695.704 ±   1217.174   ns/op
+DotProductBench.list                                    65536  avgt   15     38932.005 ±    328.182   ns/op
 DotProductBench.list:gc.alloc.rate                      65536  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.list:gc.alloc.rate.norm                 65536  avgt   15         0.285 ±      0.008    B/op
+DotProductBench.list:gc.alloc.rate.norm                 65536  avgt   15         0.272 ±      0.002    B/op
 DotProductBench.list:gc.count                           65536  avgt   15           ≈ 0               counts
-DotProductBench.list                                 16777216  avgt   15  29065403.866 ± 474345.553   ns/op
+DotProductBench.list                                 16777216  avgt   15  28286732.228 ± 184714.954   ns/op
 DotProductBench.list:gc.alloc.rate                   16777216  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.list:gc.alloc.rate.norm              16777216  avgt   15       201.176 ±      2.630    B/op
+DotProductBench.list:gc.alloc.rate.norm              16777216  avgt   15       194.874 ±      1.536    B/op
 DotProductBench.list:gc.count                        16777216  avgt   15           ≈ 0               counts
-DotProductBench.segmentScalar                            1024  avgt   15       542.529 ±      7.289   ns/op
+DotProductBench.segmentScalar                            1024  avgt   15       535.554 ±      5.225   ns/op
 DotProductBench.segmentScalar:gc.alloc.rate              1024  avgt   15         0.007 ±      0.001  MB/sec
 DotProductBench.segmentScalar:gc.alloc.rate.norm         1024  avgt   15         0.004 ±      0.001    B/op
 DotProductBench.segmentScalar:gc.count                   1024  avgt   15           ≈ 0               counts
-DotProductBench.segmentScalar                           65536  avgt   15     36391.806 ±    745.595   ns/op
+DotProductBench.segmentScalar                           65536  avgt   15     35244.323 ±    415.712   ns/op
 DotProductBench.segmentScalar:gc.alloc.rate             65536  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.segmentScalar:gc.alloc.rate.norm        65536  avgt   15         0.266 ±      0.023    B/op
+DotProductBench.segmentScalar:gc.alloc.rate.norm        65536  avgt   15         0.257 ±      0.024    B/op
 DotProductBench.segmentScalar:gc.count                  65536  avgt   15           ≈ 0               counts
-DotProductBench.segmentScalar                        16777216  avgt   15  10045145.428 ± 116628.517   ns/op
+DotProductBench.segmentScalar                        16777216  avgt   15   9875107.016 ±  92323.782   ns/op
 DotProductBench.segmentScalar:gc.alloc.rate          16777216  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.segmentScalar:gc.alloc.rate.norm     16777216  avgt   15        72.827 ±      6.324    B/op
+DotProductBench.segmentScalar:gc.alloc.rate.norm     16777216  avgt   15        71.618 ±      6.692    B/op
 DotProductBench.segmentScalar:gc.count               16777216  avgt   15           ≈ 0               counts
-DotProductBench.segmentVector                            1024  avgt   15        60.488 ±      0.775   ns/op
+DotProductBench.segmentVector                            1024  avgt   15        59.802 ±      0.286   ns/op
 DotProductBench.segmentVector:gc.alloc.rate              1024  avgt   15         0.007 ±      0.001  MB/sec
 DotProductBench.segmentVector:gc.alloc.rate.norm         1024  avgt   15        ≈ 10⁻³                 B/op
 DotProductBench.segmentVector:gc.count                   1024  avgt   15           ≈ 0               counts
-DotProductBench.segmentVector                           65536  avgt   15      7174.145 ±    105.135   ns/op
+DotProductBench.segmentVector                           65536  avgt   15      7075.407 ±    108.958   ns/op
 DotProductBench.segmentVector:gc.alloc.rate             65536  avgt   15         0.007 ±      0.001  MB/sec
 DotProductBench.segmentVector:gc.alloc.rate.norm        65536  avgt   15         0.052 ±      0.005    B/op
 DotProductBench.segmentVector:gc.count                  65536  avgt   15           ≈ 0               counts
-DotProductBench.segmentVector                        16777216  avgt   15   6241987.201 ±  55080.851   ns/op
+DotProductBench.segmentVector                        16777216  avgt   15   6163010.492 ±  16489.191   ns/op
 DotProductBench.segmentVector:gc.alloc.rate          16777216  avgt   15         0.007 ±      0.001  MB/sec
-DotProductBench.segmentVector:gc.alloc.rate.norm     16777216  avgt   15        45.435 ±      4.233    B/op
+DotProductBench.segmentVector:gc.alloc.rate.norm     16777216  avgt   15        44.812 ±      4.136    B/op
 DotProductBench.segmentVector:gc.count               16777216  avgt   15           ≈ 0               counts
 
-Benchmark result is saved to results/2026-08-26-final-gc-avgt.json
+Benchmark result is saved to results/session/2026-08-26-final-gc-avgt.json

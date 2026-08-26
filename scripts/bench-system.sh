@@ -37,12 +37,20 @@ case "${1:-}" in
       exit 1
     fi
     mkdir -p "$(dirname "$STATE")"
-    {
-      echo "GOV=$(gov)"
-      echo "PARANOID=$(parano)"
-      echo "KPTR=$(kptr)"
-    } > "$STATE"
-    echo "saved prior state to $STATE:"; sed 's/^/  /' "$STATE"
+    # Do not overwrite a saved state: setting up twice would record the
+    # already-modified settings as the prior ones, and restore would then put
+    # the machine back into benchmark mode instead of out of it.
+    if [ -f "$STATE" ]; then
+      echo "prior state already recorded (setup ran before), keeping it:"
+      sed 's/^/  /' "$STATE"
+    else
+      {
+        echo "GOV=$(gov)"
+        echo "PARANOID=$(parano)"
+        echo "KPTR=$(kptr)"
+      } > "$STATE"
+      echo "saved prior state to $STATE:"; sed 's/^/  /' "$STATE"
+    fi
     sudo cpupower frequency-set -g performance
     sudo sysctl kernel.perf_event_paranoid=0 kernel.kptr_restrict=0
     echo "benchmark mode ON  (governor=performance, perf counters unlocked)"

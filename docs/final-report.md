@@ -2,7 +2,7 @@
 
 The controlled session the whole lab was built for: one machine state, one
 build, every file the article can quote. Run with `scripts/session.sh final`
-on 2026-08-26, commit `78c2e2e`, JDK 25.0.4, Ryzen 9 7950X3D, Blackhole mode
+on 2026-08-26, commit `bf5a096`, JDK 25.0.4, Ryzen 9 7950X3D, Blackhole mode
 `compiler`, pinned to `8-15,24-31`. The full state is in
 `results/session/2026-08-26-final-manifest.txt`, which records the governor and perf
 settings as measured rather than as intended.
@@ -31,37 +31,35 @@ Raw data: `results/session/2026-08-26-final-avgt.{txt,json}`,
 `-perfnorm-16777216.txt`. The ns/op inside the profiled files are not
 citable: the profiler perturbs the run.
 
-**Note on two of the perfasm files.** `arrayVector` and `arrayLoadControl`
-each contain six instructions the disassembler failed to decode, showing up as
-`.byte 0x62` (the EVEX prefix) followed by mnemonics that belong to no real
-instruction. The cause is the decoder, not the compiler: these runs used a
-capstone-backed hsdis, and capstone 4.0.2, the newest this distribution ships,
-does not cover every AVX-512 encoding. It is deterministic, affecting the two
-kernels that load through `DoubleVector.fromArray` under JDK 25.0.4.
+**A note on the disassembler.** All five listings here decode completely,
+because this session used an LLVM-backed hsdis built by `scripts/build-hsdis.sh`.
+An earlier session used a capstone-backed one, and capstone 4.0.2, the newest
+this distribution ships, does not cover every AVX-512 encoding: six
+instructions per file came out as `.byte 0x62`, the EVEX prefix, followed by
+mnemonics belonging to no real instruction, deterministically in the two
+kernels that load through `DoubleVector.fromArray`.
 
-Re-taking the same disassembly with an LLVM-backed hsdis (`scripts/build-hsdis.sh`)
-decodes everything, and the result matters: `arrayVector` then shows 8
-`vmovups`, 8 `vmulpd` and 8 `vaddpd`, that is **the same loop body as
-`segmentVector`**. Read literally, the capstone listing would have said the two
-compile differently. Nothing in this report rests on those six instructions,
-and the structural claim is in any case carried by the instruction counters,
-which do not depend on a decoder.
+That is worth recording because reading such a listing literally leads to a
+wrong conclusion: it showed `arrayVector` with a different instruction mix from
+`segmentVector`, when with a working decoder the two are identical. Suspect the
+decoder before the compiler, and cross-check against instruction counters,
+which do not depend on one.
 
 ## Numbers (avgt, 3 forks x 5 iterations)
 
 | size | list | array | segmentScalar | arrayVector | segmentVector | arrayLoadControl |
 |---|---|---|---|---|---|---|
-| 1 024 | 590.2 ± 2.8 ns | 536.6 ± 3.7 ns | 541.4 ± 8.0 ns | 81.0 ± 6.5 ns | **60.4 ± 1.0 ns** | 72.7 ± 1.9 ns |
-| 65 536 | 39.81 ± 0.72 µs | 36.21 ± 0.40 µs | 35.64 ± 0.44 µs | 7.93 ± 0.24 µs | **7.08 ± 0.25 µs** | 7.70 ± 0.21 µs |
-| 16 M | 28.90 ± 0.54 ms | 10.45 ± 0.17 ms | 10.08 ± 0.20 ms | **6.08 ± 0.06 ms** | 6.26 ± 0.05 ms | 6.11 ± 0.06 ms |
+| 1 024 | 599.5 ± 9.1 ns | 540.0 ± 4.0 ns | 530.9 ± 4.5 ns | 76.0 ± 7.2 ns | **60.6 ± 1.0 ns** | 77.2 ± 6.8 ns |
+| 65 536 | 39.28 ± 0.46 µs | 36.60 ± 0.36 µs | 35.37 ± 0.43 µs | 7.82 ± 0.21 µs | **7.04 ± 0.22 µs** | 7.53 ± 0.20 µs |
+| 16 M | 29.04 ± 0.56 ms | 10.13 ± 0.15 ms | 9.87 ± 0.06 ms | 6.19 ± 0.05 ms | 6.29 ± 0.07 ms | **6.11 ± 0.02 ms** |
 
 Each vector variant against its own scalar baseline:
 
 | size | array / arrayVector | segmentScalar / segmentVector |
 |---|---|---|
-| 1 024 | 6.6x | **9.0x** |
-| 65 536 | 4.6x | 5.0x |
-| 16 M | 1.7x | 1.6x |
+| 1 024 | 7.1x | **8.8x** |
+| 65 536 | 4.7x | 5.0x |
+| 16 M | 1.6x | 1.6x |
 
 Zero steady-state allocation everywhere: `gc.count ≈ 0` and `gc.alloc.rate`
 flat at the 0.007 MB/s harness background for all six benchmarks at every
@@ -70,56 +68,63 @@ materialized, no segment escapes.
 
 ## Findings
 
-1. **The aligned segment beats the array in cache, and the margin is wide.**
-   60.4 against 81.0 ns at 1024, a 25 percent difference with error bars far
-   apart; 7.08 against 7.93 µs at 65 536, still separated. At 16 M the order
-   flips by 2.8 percent in the array's favour. **The mechanism is not the
+1. **The segment beats the array in cache, and the margin is wide.**
+   60.6 against 76.0 ns at 1024, a 20 percent difference; 7.04 against 7.82 µs
+   at 65 536, still separated. At 16 M the order flips by 1.7 percent in the
+   array's favour. **The mechanism is not the
    alignment**, which a later single-variable experiment ruled out at these
    sizes (see below): an unaligned segment beats the array in cache just as
    well, 60.1 against 69.4 ns comparing like-for-like fork modes. Both vector
    kernels compile to the same loop body, and the segment executes more
    instructions while finishing sooner, so the difference is throughput rather
    than instruction count. Where that throughput goes is not established.
-2. **The array is also less reproducible, and that is a finding in itself.**
-   At 1024, `arrayVector` carries ±6.5 ns on 81 (8 percent) while
-   `segmentVector` carries ±1.0 on 60 (1.6 percent). The others sit between
-   0.5 and 2.6 percent, so `arrayVector` is not merely the worst: it is three
-   times worse than the next one. The three forks are not noise around a mean
-   but three plateaus, roughly 85.6, 72.8 and 84.7 ns, which is what different
-   heap placements would look like. **The fork-to-fork spread is consistent
-   with heap-placement effects; the segment removes that source of uncertainty
-   by requesting its alignment explicitly.** Stated that way it is what the
-   data supports: the causal link is demonstrated for the segment (see the
-   experiment in `archive/m4-report.md`), not yet for the array. Closing it would take
-   a padded-array variant sweeping offsets 0 to 7.
-3. **The speedup over the scalar baseline is larger for the segment (9.0x)
-   than for the array (6.6x) at 1024, and it is not because the vector kernel
+2. **The two kernels that read from `double[]` are also the least
+   reproducible.** At 1024, `arrayVector` carries ±7.2 ns on 76 (9.5 percent)
+   and `arrayLoadControl` ±6.8 on 77 (8.9 percent), while `segmentVector`
+   carries ±1.0 on 60.6 (1.7 percent) and the scalar variants stay under 1.6.
+   This is not dispersion around a mean: the dedicated experiment (below) shows
+   these distributions are bimodal, a fast plateau plus occasional slow forks.
+   **The spread is consistent with heap-placement effects, and the segment
+   avoids that source of variation by requesting its alignment explicitly.**
+   The causal link is demonstrated for the segment, not for the array; closing
+   it would take a padded-array variant sweeping offsets 0 to 7.
+3. **The speedup over the scalar baseline is larger for the segment (8.8x)
+   than for the array (7.1x) at 1024, and it is not because the vector kernel
    is better.** It is because the baselines differ: `segmentScalar` is purely
    scalar (see the disassembly below), while `array` is partly
    auto-vectorized. The ratio measures the distance from its own starting
    point, so quote it with the baseline attached or not at all.
-4. **The ratio still collapses with the working set**, 6.6x to 4.6x to 1.7x,
+4. **The ratio still collapses with the working set**, 7.1x to 4.7x to 1.6x,
    and section 6 of the article is that collapse: the wall moves from the
    order of the additions to the arrival of the data.
-5. `list` at 16 M is 28.9 ms, 2.8x the primitive array, stable across all
-   five sessions.
-6. `segmentScalar` is 1.6 percent faster than `array` at 65 536 (35.64
-   against 36.21 µs). This is the same unexplained margin as in M2, now
-   inside the error bars. **Still not to be quoted.**
+5. `list` at 16 M is 29.0 ms, 2.9x the primitive array, stable across every
+   session so far.
+6. `segmentScalar` is 3.4 percent faster than `array` at 65 536 (35.37 against
+   36.60 µs) and 2.5 percent at 16 M. This is the same unexplained margin as in
+   M2, and unlike in the previous session it is now outside the error bars
+   again. Four sessions without a mechanism: **still not to be quoted.**
 
 ## Perfasm at 1024: three ways to add the same numbers
 
 Instruction mix inside the hot loop, one file per variant. This is the table
 for section 4 of the article.
 
-| | segmentScalar | array (auto-vectorized) | segmentVector (declared) |
-|---|---|---|---|
-| explicit load instructions | 8x `vmovsd` | 6x `vmovups` zmm | 8x `vmovups` zmm |
-| loads folded into the multiply | none | 7 memory operands | 8 memory operands |
-| multiplies | 8x `vmulsd` | 7x `vmulpd` zmm | 8x `vmulpd` zmm |
-| lane extraction | none | 32x `vpshufd`, 16x `vextractf128`, 8x `vextracti64x4` | none |
-| additions | 8x `vaddsd`, ordered chain | **64x `vaddsd`**, ordered chain | 8x `vaddpd`, ordered chain |
-| hot region share | 94.3% | 88.2% | 79.3% |
+| | segmentScalar | array (auto-vectorized) | arrayVector | segmentVector |
+|---|---|---|---|---|
+| explicit loads | 8x `vmovsd` | 7x `vmovups` zmm | 8x `vmovups` zmm | 8x `vmovups` zmm |
+| multiplies | 8x `vmulsd` | 7x `vmulpd` zmm | 8x `vmulpd` zmm | 8x `vmulpd` zmm |
+| lane extraction | none | 32x `vpshufd`, 16x `vextractf128`, 8x `vextracti64x4` | none | none |
+| additions | 8x `vaddsd` | **64x `vaddsd`** | 8x `vaddpd` | 8x `vaddpd` |
+
+Every remaining load is folded into a multiply as a memory operand, so the
+explicit-load row understates the traffic by half in the vector columns.
+`arrayLoadControl`, not shown, compiles to 16 `vaddpd` with every load folded
+and no multiply left, which is what it was written to test.
+
+**The two vector columns are identical**, verified on both sides in this
+session. That is the claim of section 4: explicit layout and explicit compute
+produce the same loop body, differing only in the address arithmetic the
+counters measure below.
 
 Three readings, in order of how surprising they are:
 
@@ -149,12 +154,11 @@ indicative.
 
 | | array | segmentScalar | arrayVector | segmentVector | arrayLoadControl |
 |---|---|---|---|---|---|
-| ns/op | 10 292 554 | 10 190 575 | 6 153 034 | 6 458 250 | 6 117 452 |
-| instructions | 36.96 M | 71.79 M | 7.22 M | 9.09 M | **5.11 M** |
-| CPI | 1.52 | 0.78 | 4.71 | 3.81 | **6.58** |
-| L1-dcache-loads | 8.56 M | 33.83 M | 8.48 M | 8.56 M | 8.48 M |
-| L1-dcache-load-misses | 4.21 M | 5.25 M | 4.26 M | 4.27 M | 4.25 M |
-| L1-miss events per line | 1.003 | 1.253 | 1.016 | 1.017 | 1.013 |
+| ns/op | 10 153 792 | 9 971 554 | 6 115 252 | 6 199 044 | 6 166 993 |
+| instructions | 36.98 M | 71.88 M | 7.23 M | 9.10 M | **5.11 M** |
+| CPI | 1.50 | 0.78 | 4.73 | 3.82 | **6.69** |
+| L1-dcache-load-misses | 4.20 M | 5.26 M | 4.26 M | 4.27 M | 4.25 M |
+| L1-miss events per line | 1.002 | 1.254 | 1.016 | 1.018 | 1.012 |
 
 The streaming minimum is 268 435 456 bytes over 64-byte lines = 4 194 304.
 
@@ -171,26 +175,23 @@ the misaligned-access events this vendor exposes through IBS.
 1. **The bandwidth claim, open since M3, is now measured.**
    `arrayLoadControl` walks the same two arrays with two independent
    accumulators and no multiply. It executes **29 percent fewer instructions**
-   than `arrayVector` (5.11 M against 7.22 M) and has the **highest CPI of any
-   variant** (6.58), and it finishes in the same time. In the avgt run, which
-   is the citable one: 6.107 ± 0.055 ms against 6.084 ± 0.064. Less work, same
+   than `arrayVector` (5.11 M against 7.23 M) and has the **highest CPI of any
+   variant** (6.69), and it finishes in the same time. In the avgt run, which
+   is the citable one: 6.112 ± 0.021 ms against 6.188 ± 0.053. Less work, same
    duration. At 16 M the dot product is limited by the arrival of the data,
    not by arithmetic. About 44 GB/s for the single benchmark thread.
 2. **Every vector variant streams ideally**, 1.00 to 1.02 L1-miss events
    per theoretical cache line.
    The excess that M4 found in the unaligned segment (1.33) is gone.
-3. **The structural claim of section 4, without needing the disassembly.**
-   `segmentVector` executes 9.09 M instructions against 7.22 M for
-   `arrayVector`: 1.87 M more over 262 144 iterations is **7.1 instructions
-   per iteration**, exactly the address preamble visible in the (clean)
-   `segmentVector` listing. Explicit layout and explicit compute compile to
-   the same loop plus one address computation, and this is a hardware count,
-   independent of what the disassembler managed to render.
-4. **`segmentScalar` records about four times as many L1 load events** as the
-   vector kernels (33.8 M against 8.5 M), consistent with scalar 8-byte
-   accesses rather than wide vector ones. As with the miss counter, this is a
-   hardware event count and not a one-to-one count of source-level loads. It
-   also carries the highest miss-event rate of the six, 1.25 per line, and is
+3. **The structural claim of section 4, twice over.** `segmentVector` executes
+   9.10 M instructions against 7.23 M for `arrayVector`: 1.87 M more over
+   262 144 iterations is **7.1 instructions per iteration**, exactly the address
+   preamble in the listing. The disassembly and the counters now agree, and
+   neither depends on the other.
+4. **`segmentScalar` carries the highest miss-event rate of the six**, 1.25
+   per line against 1.00 to 1.02, consistent with scalar 8-byte accesses rather
+   than wide vector ones. As with every counter here, this is a hardware event
+   count and not a one-to-one count of source-level loads. It is
    still faster than `array` at 16 M because it remains compute-bound and the
    misses hide behind the chain.
 
@@ -276,8 +277,8 @@ kept implicit: **the layout of the data and the structure of the computation**.
 The measurements then show what each one buys, and they do not buy the same
 thing in the same place.
 
-- **Explicit computation pays while the data is near.** 6.6x in L1, 4.6x at
-  1 MB, 1.7x at 256 MB. The ceiling is not arithmetic: at 16 M a kernel doing
+- **Explicit computation pays while the data is near.** 7.1x in L1, 4.7x at
+  1 MB, 1.6x at 256 MB. The ceiling is not arithmetic: at 16 M a kernel doing
   29 percent fewer instructions takes the same time. Section 4 gets the
   speedup, section 6 gets its collapse.
 - **Explicit layout is a performance variable the program controls, and it
@@ -313,25 +314,20 @@ thing in the same place.
   the sequential order explicitly**; the compiler cannot infer that from the
   scalar loop, which is why it has to build the extract-and-add staircase.
 - **Quote every ratio with its baseline.** `segmentScalar / segmentVector` is
-  9.0x against 6.6x for the array pair, which reads as if the segment kernel
-  were better. It is not: the direct comparison is 25 percent, and the 9.0x is
+  8.8x against 7.1x for the array pair, which reads as if the segment kernel
+  were better. It is not: the direct comparison is 20 percent, and the 8.8x is
   inflated by a worse starting point, the unvectorized scalar segment loop. A
   ratio measures distance from its own baseline, and these baselines differ.
-- **`List<Double>` is the size-dependent one**: 1.10x at 1024 and 65 536, then
-  2.76x at 16 M. Boxing and pointer chasing become visible exactly when the
+- **`List<Double>` is the size-dependent one**: 1.11x at 1024, 1.07x at 65 536,
+  then 2.87x at 16 M. Boxing and pointer chasing become visible exactly when the
   memory hierarchy starts to dominate.
 - **Scoping, as always**: this kernel, JDK 25.0.4, Zen 4, 512-bit species, one
   CCD. The reasoning about lanes and alignment transfers across ISAs; the
-  numbers do not. Note that this session's manifest predates the change that
-  records the JVM layout flags, so any statement about array headers here rests
-  on the defaults of this JDK build rather than on a logged value.
+  numbers do not, and the JVM layout flags this run depended on are recorded in
+  the manifest rather than assumed.
 
 ## Open
 
-- Two perfasm files in this session carry six undecoded instructions each.
-  Fixed for the future rather than in place: `scripts/build-hsdis.sh` now
-  builds an LLVM-backed hsdis, which decodes them all. Re-taking those two
-  listings would cost two minutes and a machine setup.
 - The slow mode at 1024 is uncharacterized. One precise measurement would
   close it: log `segment.address() & 63` for both segments on every fork and
   correlate it with that fork's time. If the 88.7 ns fork sits at a particular
@@ -343,13 +339,10 @@ thing in the same place.
   candidate. The remaining hypothesis is the placement of the two `double[]`
   in a 32 KB L1, which would need a padded-array variant sweeping offsets to
   test.
-- This session's manifest predates the flag logging added to `session.sh`.
-  A rerun would produce a manifest that records `ObjectAlignmentInBytes`,
-  `UseCompactObjectHeaders` and the rest, making the layout statements
-  auditable rather than dependent on the defaults holding.
-- The 1.6 percent `segmentScalar` advantage at 65 536 has been unexplained
-  across four sessions and is now inside the error bars. Either profile at
-  that size or keep it out of the article.
+- The `segmentScalar` advantage over `array` has been unexplained across every
+  session: 3.4 percent at 65 536 and 2.5 percent at 16 M here, outside the error
+  bars, inside them in the previous session. Either profile at those sizes or
+  keep it out of the article.
 - `segmentVector` is 2.8 percent slower than `arrayVector` at 16 M, outside
   the error bars. The likely cause is the seven address instructions per
   iteration, but that is inference, not measurement.

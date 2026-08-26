@@ -1,18 +1,25 @@
 # session: final   date: 2026-08-26
-# commit: 78c2e2e
+# commit: bf5a096
 # JDK: openjdk 25.0.4 2026-07-21
-# CPU: Ryzen 9 7950X3D
+# CPU: AMD Ryzen 9 7950X3D 16-Core Processor
 # pinning: 8-15,24-31
-# hsdis: /home/sp4/Workspace/decode-shape/hsdis-build/lib
+# hsdis: /home/sp4/Workspace/segment-lanes/hsdis/lib
+# hsdis backend: LLVM (decodes AVX-512 fully)
 # perfasm at size 1024, perfnorm at size 16777216
+# JVM layout flags (a lab about layout should record these):
+#   ObjectAlignmentInBytes = 8
+#   UseAVX = 3
+#   UseCompactObjectHeaders = false
+#   UseCompressedClassPointers = true
+#   UseCompressedOops = true
 # machine state as measured:
 #   governor            = performance
 #   perf_event_paranoid = 0
 #   kptr_restrict       = 0
 #   saved prior state:
-#     GOV=powersave
-#     PARANOID=4
-#     KPTR=1
+#     GOV=performance
+#     PARANOID=0
+#     KPTR=0
 # files:
 #   2026-08-26-final-avgt.{txt,json}
 #   2026-08-26-final-gc-avgt.{txt,json}

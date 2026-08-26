@@ -1,4 +1,4 @@
-# commit: 78c2e2e JDK: openjdk 25.0.4 2026-07-21  CPU: Ryzen 9 7950X3D
+# commit: bf5a096 JDK: openjdk 25.0.4 2026-07-21  CPU: AMD Ryzen 9 7950X3D 16-Core Processor
 # taskset -c 8-15,24-31 java -jar target/benchmarks.jar 'DotProductBench.(array|segmentScalar|arrayVector|segmentVector|arrayLoadControl)$' -p size=16777216 -f 3 -wi 5 -i 5 -prof perfnorm
 WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
 WARNING: sun.misc.Unsafe::objectFieldOffset has been called by org.openjdk.jmh.util.Utils (file:/home/sp4/Workspace/segment-lanes/target/benchmarks.jar)
@@ -21,130 +21,130 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 # Fork: 1 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 10700573.213 ns/op
-# Warmup Iteration   2: 10629375.011 ns/op
-# Warmup Iteration   3: 10787436.387 ns/op
-# Warmup Iteration   4: 10470087.208 ns/op
-# Warmup Iteration   5: 10365193.361 ns/op
-Iteration   1: 10283667.765 ns/op
-Iteration   2: 10450763.052 ns/op
-Iteration   3: 10340983.423 ns/op
-Iteration   4: 10296988.888 ns/op
-Iteration   5: 10375394.144 ns/op
+# Warmup Iteration   1: 10213118.337 ns/op
+# Warmup Iteration   2: 10168183.889 ns/op
+# Warmup Iteration   3: 10314865.845 ns/op
+# Warmup Iteration   4: 10193215.364 ns/op
+# Warmup Iteration   5: 10074566.720 ns/op
+Iteration   1: 10270113.561 ns/op
+Iteration   2: 10124846.364 ns/op
+Iteration   3: 10188625.848 ns/op
+Iteration   4: 10157652.545 ns/op
+Iteration   5: 10170225.919 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 6.67% complete, ETA 00:02:35
 # Fork: 2 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 10440142.615 ns/op
-# Warmup Iteration   2: 10503042.771 ns/op
-# Warmup Iteration   3: 10173692.828 ns/op
-# Warmup Iteration   4: 10321773.381 ns/op
-# Warmup Iteration   5: 10220302.918 ns/op
-Iteration   1: 10368976.856 ns/op
-Iteration   2: 10232712.929 ns/op
-Iteration   3: 10237835.898 ns/op
-Iteration   4: 10166959.182 ns/op
-Iteration   5: 10344737.175 ns/op
+# Warmup Iteration   1: 10187058.677 ns/op
+# Warmup Iteration   2: 10059173.250 ns/op
+# Warmup Iteration   3: 10167192.768 ns/op
+# Warmup Iteration   4: 10208536.041 ns/op
+# Warmup Iteration   5: 10194704.758 ns/op
+Iteration   1: 10224752.571 ns/op
+Iteration   2: 10143355.101 ns/op
+Iteration   3: 10187272.970 ns/op
+Iteration   4: 10109722.242 ns/op
+Iteration   5: 10256653.684 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
-# Run progress: 13.33% complete, ETA 00:02:24
+# Run progress: 13.33% complete, ETA 00:02:23
 # Fork: 3 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 10369105.351 ns/op
-# Warmup Iteration   2: 10200564.434 ns/op
-# Warmup Iteration   3: 10367326.041 ns/op
-# Warmup Iteration   4: 10195900.646 ns/op
-# Warmup Iteration   5: 10251524.643 ns/op
-Iteration   1: 10200094.374 ns/op
-Iteration   2: 10223098.571 ns/op
-Iteration   3: 10151847.717 ns/op
-Iteration   4: 10392966.907 ns/op
-Iteration   5: 10321286.381 ns/op
+# Warmup Iteration   1: 10110126.475 ns/op
+# Warmup Iteration   2: 10115379.333 ns/op
+# Warmup Iteration   3: 10107529.626 ns/op
+# Warmup Iteration   4: 10207089.531 ns/op
+# Warmup Iteration   5: 10101733.020 ns/op
+Iteration   1: 10094626.660 ns/op
+Iteration   2: 10036867.930 ns/op
+Iteration   3: 10070290.640 ns/op
+Iteration   4: 10136997.737 ns/op
+Iteration   5: 10134869.889 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.array":
-  10292554.217 ±(99.9%) 94472.483 ns/op [Average]
-  (min, avg, max) = (10151847.717, 10292554.217, 10450763.052), stdev = 88369.619
-  CI (99.9%): [10198081.735, 10387026.700] (assumes normal distribution)
+  10153791.577 ±(99.9%) 69658.641 ns/op [Average]
+  (min, avg, max) = (10036867.930, 10153791.577, 10270113.561), stdev = 65158.736
+  CI (99.9%): [10084132.936, 10223450.219] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:CPI":
-  1.517 ±(99.9%) 0.212 clks/insn [Average]
-  (min, avg, max) = (1.505, 1.517, 1.528), stdev = 0.012
-  CI (99.9%): [1.305, 1.729] (assumes normal distribution)
+  1.504 ±(99.9%) 0.133 clks/insn [Average]
+  (min, avg, max) = (1.496, 1.504, 1.509), stdev = 0.007
+  CI (99.9%): [1.371, 1.638] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:IPC":
-  0.659 ±(99.9%) 0.092 insns/clk [Average]
-  (min, avg, max) = (0.654, 0.659, 0.665), stdev = 0.005
-  CI (99.9%): [0.567, 0.751] (assumes normal distribution)
+  0.665 ±(99.9%) 0.059 insns/clk [Average]
+  (min, avg, max) = (0.663, 0.665, 0.668), stdev = 0.003
+  CI (99.9%): [0.606, 0.724] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:L1-dcache-load-misses":
-  4205080.893 ±(99.9%) 74387.915 #/op [Average]
-  (min, avg, max) = (4200373.768, 4205080.893, 4207523.065), stdev = 4077.453
-  CI (99.9%): [4130692.977, 4279468.808] (assumes normal distribution)
+  4202625.329 ±(99.9%) 97530.078 #/op [Average]
+  (min, avg, max) = (4196655.685, 4202625.329, 4206970.933), stdev = 5345.953
+  CI (99.9%): [4105095.251, 4300155.407] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:L1-dcache-loads":
-  8561817.398 ±(99.9%) 473628.188 #/op [Average]
-  (min, avg, max) = (8546542.351, 8561817.398, 8591792.927), stdev = 25961.159
-  CI (99.9%): [8088189.210, 9035445.587] (assumes normal distribution)
+  8551693.943 ±(99.9%) 44929.347 #/op [Average]
+  (min, avg, max) = (8550213.118, 8551693.943, 8554536.831), stdev = 2462.729
+  CI (99.9%): [8506764.596, 8596623.289] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:L1-icache-load-misses":
-  560.208 ±(99.9%) 605.332 #/op [Average]
-  (min, avg, max) = (527.570, 560.208, 593.905), stdev = 33.180
-  CI (99.9%): [≈ 0, 1165.539] (assumes normal distribution)
+  613.789 ±(99.9%) 142.251 #/op [Average]
+  (min, avg, max) = (605.637, 613.789, 621.174), stdev = 7.797
+  CI (99.9%): [471.538, 756.040] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:L1-icache-loads":
-  238536.886 ±(99.9%) 210881.942 #/op [Average]
-  (min, avg, max) = (230748.871, 238536.886, 251818.336), stdev = 11559.151
-  CI (99.9%): [27654.944, 449418.828] (assumes normal distribution)
+  235164.348 ±(99.9%) 39366.893 #/op [Average]
+  (min, avg, max) = (233518.893, 235164.348, 237607.446), stdev = 2157.832
+  CI (99.9%): [195797.455, 274531.241] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:branch-misses":
-  5825.473 ±(99.9%) 12483.739 #/op [Average]
-  (min, avg, max) = (5277.469, 5825.473, 6592.428), stdev = 684.276
-  CI (99.9%): [≈ 0, 18309.212] (assumes normal distribution)
+  5700.815 ±(99.9%) 4917.863 #/op [Average]
+  (min, avg, max) = (5448.931, 5700.815, 5985.127), stdev = 269.565
+  CI (99.9%): [782.952, 10618.678] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:branches":
-  310424.888 ±(99.9%) 208285.212 #/op [Average]
-  (min, avg, max) = (302276.641, 310424.888, 323473.878), stdev = 11416.815
-  CI (99.9%): [102139.676, 518710.100] (assumes normal distribution)
+  308676.419 ±(99.9%) 154778.354 #/op [Average]
+  (min, avg, max) = (303358.786, 308676.419, 318460.476), stdev = 8483.924
+  CI (99.9%): [153898.066, 463454.773] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:cycles":
-  56065949.793 ±(99.9%) 7353101.563 #/op [Average]
-  (min, avg, max) = (55612943.020, 56065949.793, 56384846.833), stdev = 403048.309
-  CI (99.9%): [48712848.229, 63419051.356] (assumes normal distribution)
+  55633019.763 ±(99.9%) 5116730.237 #/op [Average]
+  (min, avg, max) = (55309300.562, 55633019.763, 55802951.892), stdev = 280465.250
+  CI (99.9%): [50516289.526, 60749750.000] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:dTLB-load-misses":
-  60630.826 ±(99.9%) 162114.758 #/op [Average]
-  (min, avg, max) = (50382.981, 60630.826, 66200.021), stdev = 8886.057
-  CI (99.9%): [≈ 0, 222745.584] (assumes normal distribution)
+  66152.164 ±(99.9%) 746.215 #/op [Average]
+  (min, avg, max) = (66105.861, 66152.164, 66183.382), stdev = 40.903
+  CI (99.9%): [65405.949, 66898.379] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:dTLB-loads":
-  61656.367 ±(99.9%) 161922.585 #/op [Average]
-  (min, avg, max) = (51425.936, 61656.367, 67299.425), stdev = 8875.523
-  CI (99.9%): [≈ 0, 223578.952] (assumes normal distribution)
+  67254.418 ±(99.9%) 792.164 #/op [Average]
+  (min, avg, max) = (67225.126, 67254.418, 67304.304), stdev = 43.421
+  CI (99.9%): [66462.255, 68046.582] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:iTLB-load-misses":
-  20.713 ±(99.9%) 34.409 #/op [Average]
-  (min, avg, max) = (19.059, 20.713, 22.767), stdev = 1.886
-  CI (99.9%): [≈ 0, 55.122] (assumes normal distribution)
+  12.362 ±(99.9%) 38.752 #/op [Average]
+  (min, avg, max) = (10.036, 12.362, 14.200), stdev = 2.124
+  CI (99.9%): [≈ 0, 51.114] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:iTLB-loads":
-  71.463 ±(99.9%) 940.085 #/op [Average]
-  (min, avg, max) = (25.994, 71.463, 127.435), stdev = 51.529
-  CI (99.9%): [≈ 0, 1011.549] (assumes normal distribution)
+  69.761 ±(99.9%) 410.181 #/op [Average]
+  (min, avg, max) = (52.383, 69.761, 95.153), stdev = 22.483
+  CI (99.9%): [≈ 0, 479.942] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:instructions":
-  36957666.518 ±(99.9%) 1006867.705 #/op [Average]
-  (min, avg, max) = (36903065.963, 36957666.518, 37013427.302), stdev = 55189.816
-  CI (99.9%): [35950798.812, 37964534.223] (assumes normal distribution)
+  36978311.541 ±(99.9%) 159632.872 #/op [Average]
+  (min, avg, max) = (36970162.501, 36978311.541, 36987558.841), stdev = 8750.016
+  CI (99.9%): [36818678.669, 37137944.413] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:stalled-cycles-frontend":
-  446132.296 ±(99.9%) 210462.173 #/op [Average]
-  (min, avg, max) = (435472.893, 446132.296, 458380.481), stdev = 11536.142
-  CI (99.9%): [235670.123, 656594.468] (assumes normal distribution)
+  404229.139 ±(99.9%) 197393.321 #/op [Average]
+  (min, avg, max) = (391736.963, 404229.139, 410639.834), stdev = 10819.794
+  CI (99.9%): [206835.819, 601622.460] (assumes normal distribution)
 
 
 # JMH version: 1.37
@@ -164,130 +164,130 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.array:stalled-cycle
 # Fork: 1 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 8804116.202 ns/op
-# Warmup Iteration   2: 6118105.396 ns/op
-# Warmup Iteration   3: 6070051.206 ns/op
-# Warmup Iteration   4: 6094924.521 ns/op
-# Warmup Iteration   5: 6065739.297 ns/op
-Iteration   1: 6068001.782 ns/op
-Iteration   2: 6059950.892 ns/op
-Iteration   3: 6068979.558 ns/op
-Iteration   4: 6081713.624 ns/op
-Iteration   5: 6059369.440 ns/op
+# Warmup Iteration   1: 8788833.053 ns/op
+# Warmup Iteration   2: 6129608.195 ns/op
+# Warmup Iteration   3: 6102244.384 ns/op
+# Warmup Iteration   4: 6129006.305 ns/op
+# Warmup Iteration   5: 6113247.140 ns/op
+Iteration   1: 6182588.241 ns/op
+Iteration   2: 6130739.707 ns/op
+Iteration   3: 6099039.463 ns/op
+Iteration   4: 6218973.106 ns/op
+Iteration   5: 6306054.151 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 26.67% complete, ETA 00:02:03
 # Fork: 2 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 8741464.061 ns/op
-# Warmup Iteration   2: 6146550.595 ns/op
-# Warmup Iteration   3: 6163801.840 ns/op
-# Warmup Iteration   4: 6123775.244 ns/op
-# Warmup Iteration   5: 6142829.755 ns/op
-Iteration   1: 6144232.074 ns/op
-Iteration   2: 6141773.472 ns/op
-Iteration   3: 6154953.840 ns/op
-Iteration   4: 6195702.117 ns/op
-Iteration   5: 6146907.337 ns/op
+# Warmup Iteration   1: 8986397.268 ns/op
+# Warmup Iteration   2: 6169955.583 ns/op
+# Warmup Iteration   3: 6177932.185 ns/op
+# Warmup Iteration   4: 6126448.506 ns/op
+# Warmup Iteration   5: 6135278.787 ns/op
+Iteration   1: 6299310.208 ns/op
+Iteration   2: 6228745.863 ns/op
+Iteration   3: 6233864.404 ns/op
+Iteration   4: 6173906.160 ns/op
+Iteration   5: 6150974.092 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 33.33% complete, ETA 00:01:52
 # Fork: 3 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 8722473.748 ns/op
-# Warmup Iteration   2: 6152752.840 ns/op
-# Warmup Iteration   3: 6144378.239 ns/op
-# Warmup Iteration   4: 6166901.031 ns/op
-# Warmup Iteration   5: 6129642.652 ns/op
-Iteration   1: 6138656.344 ns/op
-Iteration   2: 6135165.933 ns/op
-Iteration   3: 6139989.209 ns/op
-Iteration   4: 6109249.159 ns/op
-Iteration   5: 6117141.463 ns/op
+# Warmup Iteration   1: 8745255.852 ns/op
+# Warmup Iteration   2: 6088794.382 ns/op
+# Warmup Iteration   3: 6099707.945 ns/op
+# Warmup Iteration   4: 6089401.988 ns/op
+# Warmup Iteration   5: 6127266.354 ns/op
+Iteration   1: 6091191.442 ns/op
+Iteration   2: 6089066.473 ns/op
+Iteration   3: 6076301.109 ns/op
+Iteration   4: 6096593.848 ns/op
+Iteration   5: 6127549.683 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl":
-  6117452.416 ±(99.9%) 44075.354 ns/op [Average]
-  (min, avg, max) = (6059369.440, 6117452.416, 6195702.117), stdev = 41228.114
-  CI (99.9%): [6073377.062, 6161527.771] (assumes normal distribution)
+  6166993.197 ±(99.9%) 81250.532 ns/op [Average]
+  (min, avg, max) = (6076301.109, 6166993.197, 6306054.151), stdev = 76001.798
+  CI (99.9%): [6085742.664, 6248243.729] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:CPI":
-  6.575 ±(99.9%) 0.206 clks/insn [Average]
-  (min, avg, max) = (6.562, 6.575, 6.582), stdev = 0.011
-  CI (99.9%): [6.368, 6.781] (assumes normal distribution)
+  6.687 ±(99.9%) 0.468 clks/insn [Average]
+  (min, avg, max) = (6.672, 6.687, 6.717), stdev = 0.026
+  CI (99.9%): [6.219, 7.155] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:IPC":
-  0.152 ±(99.9%) 0.005 insns/clk [Average]
-  (min, avg, max) = (0.152, 0.152, 0.152), stdev = 0.001
-  CI (99.9%): [0.147, 0.157] (assumes normal distribution)
+  0.150 ±(99.9%) 0.010 insns/clk [Average]
+  (min, avg, max) = (0.149, 0.150, 0.150), stdev = 0.001
+  CI (99.9%): [0.139, 0.160] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:L1-dcache-load-misses":
-  4247576.362 ±(99.9%) 92889.659 #/op [Average]
-  (min, avg, max) = (4242175.323, 4247576.362, 4252288.331), stdev = 5091.596
-  CI (99.9%): [4154686.703, 4340466.021] (assumes normal distribution)
+  4245998.971 ±(99.9%) 92705.473 #/op [Average]
+  (min, avg, max) = (4240354.839, 4245998.971, 4250210.090), stdev = 5081.500
+  CI (99.9%): [4153293.498, 4338704.444] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:L1-dcache-loads":
-  8476696.698 ±(99.9%) 299327.054 #/op [Average]
-  (min, avg, max) = (8457864.941, 8476696.698, 8487906.303), stdev = 16407.126
-  CI (99.9%): [8177369.645, 8776023.752] (assumes normal distribution)
+  8484482.322 ±(99.9%) 276869.017 #/op [Average]
+  (min, avg, max) = (8474052.699, 8484482.322, 8501892.707), stdev = 15176.125
+  CI (99.9%): [8207613.306, 8761351.339] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:L1-icache-load-misses":
-  365.540 ±(99.9%) 361.994 #/op [Average]
-  (min, avg, max) = (343.595, 365.540, 382.215), stdev = 19.842
-  CI (99.9%): [3.546, 727.534] (assumes normal distribution)
+  296.984 ±(99.9%) 428.616 #/op [Average]
+  (min, avg, max) = (277.605, 296.984, 323.114), stdev = 23.494
+  CI (99.9%): [≈ 0, 725.600] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:L1-icache-loads":
-  83740.698 ±(99.9%) 76522.189 #/op [Average]
-  (min, avg, max) = (79209.537, 83740.698, 87487.750), stdev = 4194.439
-  CI (99.9%): [7218.508, 160262.887] (assumes normal distribution)
+  88174.440 ±(99.9%) 51386.489 #/op [Average]
+  (min, avg, max) = (85800.568, 88174.440, 91286.775), stdev = 2816.667
+  CI (99.9%): [36787.951, 139560.930] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:branch-misses":
-  3594.554 ±(99.9%) 6643.588 #/op [Average]
-  (min, avg, max) = (3174.081, 3594.554, 3808.338), stdev = 364.157
-  CI (99.9%): [≈ 0, 10238.142] (assumes normal distribution)
+  3672.079 ±(99.9%) 4180.843 #/op [Average]
+  (min, avg, max) = (3411.210, 3672.079, 3840.954), stdev = 229.166
+  CI (99.9%): [≈ 0, 7852.921] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:branches":
-  290363.537 ±(99.9%) 65990.091 #/op [Average]
-  (min, avg, max) = (286191.509, 290363.537, 292620.822), stdev = 3617.140
-  CI (99.9%): [224373.446, 356353.629] (assumes normal distribution)
+  290967.192 ±(99.9%) 68796.670 #/op [Average]
+  (min, avg, max) = (286737.250, 290967.192, 293977.131), stdev = 3770.978
+  CI (99.9%): [222170.522, 359763.862] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:cycles":
-  33599646.628 ±(99.9%) 1568763.695 #/op [Average]
-  (min, avg, max) = (33519470.908, 33599646.628, 33690459.614), stdev = 85989.232
-  CI (99.9%): [32030882.933, 35168410.323] (assumes normal distribution)
+  34170150.623 ±(99.9%) 2608494.562 #/op [Average]
+  (min, avg, max) = (34043034.081, 34170150.623, 34324947.210), stdev = 142980.389
+  CI (99.9%): [31561656.061, 36778645.186] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:dTLB-load-misses":
-  64904.547 ±(99.9%) 33452.367 #/op [Average]
-  (min, avg, max) = (62787.980, 64904.547, 66011.137), stdev = 1833.637
-  CI (99.9%): [31452.179, 98356.914] (assumes normal distribution)
+  66016.755 ±(99.9%) 1282.667 #/op [Average]
+  (min, avg, max) = (65941.942, 66016.755, 66081.463), stdev = 70.307
+  CI (99.9%): [64734.088, 67299.422] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:dTLB-loads":
-  65856.497 ±(99.9%) 33518.769 #/op [Average]
-  (min, avg, max) = (63737.003, 65856.497, 66996.200), stdev = 1837.277
-  CI (99.9%): [32337.728, 99375.266] (assumes normal distribution)
+  66935.521 ±(99.9%) 1139.032 #/op [Average]
+  (min, avg, max) = (66881.582, 66935.521, 67003.915), stdev = 62.434
+  CI (99.9%): [65796.488, 68074.553] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:iTLB-load-misses":
-  11.642 ±(99.9%) 130.520 #/op [Average]
-  (min, avg, max) = (6.715, 11.642, 19.848), stdev = 7.154
-  CI (99.9%): [≈ 0, 142.162] (assumes normal distribution)
+  10.457 ±(99.9%) 82.038 #/op [Average]
+  (min, avg, max) = (5.266, 10.457, 13.140), stdev = 4.497
+  CI (99.9%): [≈ 0, 92.495] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:iTLB-loads":
-  44.561 ±(99.9%) 551.026 #/op [Average]
-  (min, avg, max) = (25.571, 44.561, 79.390), stdev = 30.204
-  CI (99.9%): [≈ 0, 595.587] (assumes normal distribution)
+  38.858 ±(99.9%) 570.084 #/op [Average]
+  (min, avg, max) = (2.971, 38.858, 60.050), stdev = 31.248
+  CI (99.9%): [≈ 0, 608.942] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:instructions":
-  5110454.075 ±(99.9%) 137625.702 #/op [Average]
-  (min, avg, max) = (5104146.193, 5110454.075, 5118810.498), stdev = 7543.729
-  CI (99.9%): [4972828.374, 5248079.777] (assumes normal distribution)
+  5109970.367 ±(99.9%) 137378.155 #/op [Average]
+  (min, avg, max) = (5102194.146, 5109970.367, 5117227.617), stdev = 7530.160
+  CI (99.9%): [4972592.212, 5247348.522] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:stalled-cycles-frontend":
-  227709.443 ±(99.9%) 262946.672 #/op [Average]
-  (min, avg, max) = (216070.579, 227709.443, 243831.158), stdev = 14412.994
-  CI (99.9%): [≈ 0, 490656.115] (assumes normal distribution)
+  231284.979 ±(99.9%) 297881.650 #/op [Average]
+  (min, avg, max) = (213969.531, 231284.979, 246402.712), stdev = 16327.898
+  CI (99.9%): [≈ 0, 529166.629] (assumes normal distribution)
 
 
 # JMH version: 1.37
@@ -307,130 +307,130 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayLoadControl:st
 # Fork: 1 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 7417468.926 ns/op
-# Warmup Iteration   2: 6080244.812 ns/op
-# Warmup Iteration   3: 6064036.236 ns/op
-# Warmup Iteration   4: 6072209.691 ns/op
-# Warmup Iteration   5: 6099635.091 ns/op
-Iteration   1: 6076263.606 ns/op
-Iteration   2: 6092467.818 ns/op
-Iteration   3: 6282948.100 ns/op
-Iteration   4: 6272788.556 ns/op
-Iteration   5: 6109034.463 ns/op
+# Warmup Iteration   1: 7523573.271 ns/op
+# Warmup Iteration   2: 6099721.866 ns/op
+# Warmup Iteration   3: 6147980.184 ns/op
+# Warmup Iteration   4: 6096821.588 ns/op
+# Warmup Iteration   5: 6121651.226 ns/op
+Iteration   1: 6108859.518 ns/op
+Iteration   2: 6118499.061 ns/op
+Iteration   3: 6124326.207 ns/op
+Iteration   4: 6107911.238 ns/op
+Iteration   5: 6095169.752 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 46.67% complete, ETA 00:01:30
 # Fork: 2 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 7495357.149 ns/op
-# Warmup Iteration   2: 6126604.043 ns/op
-# Warmup Iteration   3: 6128663.024 ns/op
-# Warmup Iteration   4: 6164567.356 ns/op
-# Warmup Iteration   5: 6140033.540 ns/op
-Iteration   1: 6128402.951 ns/op
-Iteration   2: 6201734.302 ns/op
-Iteration   3: 6156952.074 ns/op
-Iteration   4: 6182095.062 ns/op
-Iteration   5: 6152388.552 ns/op
+# Warmup Iteration   1: 7508438.567 ns/op
+# Warmup Iteration   2: 6116487.720 ns/op
+# Warmup Iteration   3: 6096233.576 ns/op
+# Warmup Iteration   4: 6107459.165 ns/op
+# Warmup Iteration   5: 6097537.758 ns/op
+Iteration   1: 6109844.835 ns/op
+Iteration   2: 6121028.189 ns/op
+Iteration   3: 6108014.183 ns/op
+Iteration   4: 6097853.455 ns/op
+Iteration   5: 6120853.012 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 53.33% complete, ETA 00:01:18
 # Fork: 3 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 7486391.157 ns/op
-# Warmup Iteration   2: 6133134.146 ns/op
-# Warmup Iteration   3: 6152845.356 ns/op
-# Warmup Iteration   4: 6131093.244 ns/op
-# Warmup Iteration   5: 6122318.494 ns/op
-Iteration   1: 6128867.671 ns/op
-Iteration   2: 6119061.537 ns/op
-Iteration   3: 6150313.926 ns/op
-Iteration   4: 6112887.091 ns/op
-Iteration   5: 6129306.360 ns/op
+# Warmup Iteration   1: 7583631.068 ns/op
+# Warmup Iteration   2: 6128949.396 ns/op
+# Warmup Iteration   3: 6125537.854 ns/op
+# Warmup Iteration   4: 6109621.689 ns/op
+# Warmup Iteration   5: 6114806.348 ns/op
+Iteration   1: 6128053.030 ns/op
+Iteration   2: 6122124.634 ns/op
+Iteration   3: 6145488.871 ns/op
+Iteration   4: 6121720.317 ns/op
+Iteration   5: 6099037.799 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector":
-  6153034.138 ±(99.9%) 64191.842 ns/op [Average]
-  (min, avg, max) = (6076263.606, 6153034.138, 6282948.100), stdev = 60045.088
-  CI (99.9%): [6088842.296, 6217225.980] (assumes normal distribution)
+  6115252.273 ±(99.9%) 14200.259 ns/op [Average]
+  (min, avg, max) = (6095169.752, 6115252.273, 6145488.871), stdev = 13282.932
+  CI (99.9%): [6101052.014, 6129452.533] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:CPI":
-  4.706 ±(99.9%) 0.542 clks/insn [Average]
-  (min, avg, max) = (4.683, 4.706, 4.740), stdev = 0.030
-  CI (99.9%): [4.164, 5.248] (assumes normal distribution)
+  4.731 ±(99.9%) 0.492 clks/insn [Average]
+  (min, avg, max) = (4.704, 4.731, 4.758), stdev = 0.027
+  CI (99.9%): [4.239, 5.222] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:IPC":
-  0.212 ±(99.9%) 0.024 insns/clk [Average]
-  (min, avg, max) = (0.211, 0.212, 0.214), stdev = 0.001
-  CI (99.9%): [0.188, 0.237] (assumes normal distribution)
+  0.211 ±(99.9%) 0.022 insns/clk [Average]
+  (min, avg, max) = (0.210, 0.211, 0.213), stdev = 0.001
+  CI (99.9%): [0.189, 0.233] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:L1-dcache-load-misses":
-  4262519.334 ±(99.9%) 126215.362 #/op [Average]
-  (min, avg, max) = (4255214.986, 4262519.334, 4268972.867), stdev = 6918.290
-  CI (99.9%): [4136303.972, 4388734.697] (assumes normal distribution)
+  4260587.314 ±(99.9%) 63128.178 #/op [Average]
+  (min, avg, max) = (4256677.043, 4260587.314, 4263253.640), stdev = 3460.268
+  CI (99.9%): [4197459.136, 4323715.491] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:L1-dcache-loads":
-  8482484.388 ±(99.9%) 95738.674 #/op [Average]
-  (min, avg, max) = (8478547.903, 8482484.388, 8488442.248), stdev = 5247.760
-  CI (99.9%): [8386745.714, 8578223.062] (assumes normal distribution)
+  8482070.032 ±(99.9%) 216679.009 #/op [Average]
+  (min, avg, max) = (8474614.959, 8482070.032, 8495766.387), stdev = 11876.908
+  CI (99.9%): [8265391.023, 8698749.041] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:L1-icache-load-misses":
-  354.171 ±(99.9%) 457.644 #/op [Average]
-  (min, avg, max) = (325.451, 354.171, 371.789), stdev = 25.085
-  CI (99.9%): [≈ 0, 811.815] (assumes normal distribution)
+  335.722 ±(99.9%) 321.346 #/op [Average]
+  (min, avg, max) = (318.355, 335.722, 353.574), stdev = 17.614
+  CI (99.9%): [14.376, 657.068] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:L1-icache-loads":
-  91010.899 ±(99.9%) 30145.167 #/op [Average]
-  (min, avg, max) = (89109.946, 91010.899, 92103.042), stdev = 1652.358
-  CI (99.9%): [60865.732, 121156.067] (assumes normal distribution)
+  89264.267 ±(99.9%) 89213.457 #/op [Average]
+  (min, avg, max) = (84702.164, 89264.267, 94426.880), stdev = 4890.091
+  CI (99.9%): [50.810, 178477.724] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:branch-misses":
-  3579.978 ±(99.9%) 8269.607 #/op [Average]
-  (min, avg, max) = (3239.598, 3579.978, 4094.513), stdev = 453.285
-  CI (99.9%): [≈ 0, 11849.585] (assumes normal distribution)
+  3738.339 ±(99.9%) 1947.323 #/op [Average]
+  (min, avg, max) = (3660.212, 3738.339, 3859.958), stdev = 106.739
+  CI (99.9%): [1791.016, 5685.661] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:branches":
-  293022.759 ±(99.9%) 127723.848 #/op [Average]
-  (min, avg, max) = (285909.235, 293022.759, 299905.477), stdev = 7000.975
-  CI (99.9%): [165298.911, 420746.607] (assumes normal distribution)
+  293376.312 ±(99.9%) 60441.266 #/op [Average]
+  (min, avg, max) = (290058.435, 293376.312, 296684.393), stdev = 3312.990
+  CI (99.9%): [232935.046, 353817.578] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:cycles":
-  33984642.053 ±(99.9%) 4877181.559 #/op [Average]
-  (min, avg, max) = (33808229.423, 33984642.053, 34292226.630), stdev = 267334.779
-  CI (99.9%): [29107460.493, 38861823.612] (assumes normal distribution)
+  34198731.181 ±(99.9%) 1049653.234 #/op [Average]
+  (min, avg, max) = (34141221.491, 34198731.181, 34256291.529), stdev = 57535.036
+  CI (99.9%): [33149077.947, 35248384.415] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:dTLB-load-misses":
-  65944.581 ±(99.9%) 1319.820 #/op [Average]
-  (min, avg, max) = (65868.854, 65944.581, 66012.984), stdev = 72.344
-  CI (99.9%): [64624.762, 67264.401] (assumes normal distribution)
+  66054.917 ±(99.9%) 551.250 #/op [Average]
+  (min, avg, max) = (66032.747, 66054.917, 66089.334), stdev = 30.216
+  CI (99.9%): [65503.667, 66606.167] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:dTLB-loads":
-  66916.221 ±(99.9%) 949.724 #/op [Average]
-  (min, avg, max) = (66856.110, 66916.221, 66946.278), stdev = 52.058
-  CI (99.9%): [65966.497, 67865.945] (assumes normal distribution)
+  66931.260 ±(99.9%) 812.572 #/op [Average]
+  (min, avg, max) = (66904.242, 66931.260, 66982.667), stdev = 44.540
+  CI (99.9%): [66118.688, 67743.831] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:iTLB-load-misses":
-  11.891 ±(99.9%) 152.740 #/op [Average]
-  (min, avg, max) = (5.764, 11.891, 21.431), stdev = 8.372
-  CI (99.9%): [≈ 0, 164.631] (assumes normal distribution)
+  10.459 ±(99.9%) 22.322 #/op [Average]
+  (min, avg, max) = (9.087, 10.459, 11.435), stdev = 1.224
+  CI (99.9%): [≈ 0, 32.781] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:iTLB-loads":
-  50.521 ±(99.9%) 764.810 #/op [Average]
-  (min, avg, max) = (5.632, 50.521, 88.655), stdev = 41.922
-  CI (99.9%): [≈ 0, 815.331] (assumes normal distribution)
+  29.639 ±(99.9%) 392.791 #/op [Average]
+  (min, avg, max) = (6.807, 29.639, 49.575), stdev = 21.530
+  CI (99.9%): [≈ 0, 422.430] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:instructions":
-  7221127.486 ±(99.9%) 344569.391 #/op [Average]
-  (min, avg, max) = (7199621.614, 7221127.486, 7235017.665), stdev = 18887.011
-  CI (99.9%): [6876558.095, 7565696.877] (assumes normal distribution)
+  7229217.663 ±(99.9%) 529339.822 #/op [Average]
+  (min, avg, max) = (7199341.267, 7229217.663, 7257286.559), stdev = 29014.902
+  CI (99.9%): [6699877.841, 7758557.485] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:stalled-cycles-frontend":
-  240041.800 ±(99.9%) 418490.650 #/op [Average]
-  (min, avg, max) = (220041.570, 240041.800, 265081.381), stdev = 22938.885
-  CI (99.9%): [≈ 0, 658532.450] (assumes normal distribution)
+  243440.209 ±(99.9%) 275940.685 #/op [Average]
+  (min, avg, max) = (233377.323, 243440.209, 260833.959), stdev = 15125.240
+  CI (99.9%): [≈ 0, 519380.894] (assumes normal distribution)
 
 
 # JMH version: 1.37
@@ -450,130 +450,130 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.arrayVector:stalled
 # Fork: 1 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 10445213.000 ns/op
-# Warmup Iteration   2: 9960513.307 ns/op
-# Warmup Iteration   3: 10045460.760 ns/op
-# Warmup Iteration   4: 9962855.218 ns/op
-# Warmup Iteration   5: 10262909.714 ns/op
-Iteration   1: 10307617.031 ns/op
-Iteration   2: 10136460.717 ns/op
-Iteration   3: 10105961.909 ns/op
-Iteration   4: 10034019.800 ns/op
-Iteration   5: 9953590.327 ns/op
+# Warmup Iteration   1: 10092521.020 ns/op
+# Warmup Iteration   2: 9990457.485 ns/op
+# Warmup Iteration   3: 9877985.127 ns/op
+# Warmup Iteration   4: 10122062.677 ns/op
+# Warmup Iteration   5: 10025984.190 ns/op
+Iteration   1: 9965322.218 ns/op
+Iteration   2: 9881831.294 ns/op
+Iteration   3: 9948505.475 ns/op
+Iteration   4: 10047429.060 ns/op
+Iteration   5: 9980764.594 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 66.67% complete, ETA 00:00:56
 # Fork: 2 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 10416883.454 ns/op
-# Warmup Iteration   2: 10247783.888 ns/op
-# Warmup Iteration   3: 10188103.939 ns/op
-# Warmup Iteration   4: 10188609.939 ns/op
-# Warmup Iteration   5: 10171401.303 ns/op
-Iteration   1: 10207857.173 ns/op
-Iteration   2: 10343789.371 ns/op
-Iteration   3: 10250707.235 ns/op
-Iteration   4: 10146810.646 ns/op
-Iteration   5: 10382256.567 ns/op
+# Warmup Iteration   1: 10191391.232 ns/op
+# Warmup Iteration   2: 9987384.683 ns/op
+# Warmup Iteration   3: 10162460.131 ns/op
+# Warmup Iteration   4: 9857281.647 ns/op
+# Warmup Iteration   5: 10064993.690 ns/op
+Iteration   1: 9886311.882 ns/op
+Iteration   2: 9994970.119 ns/op
+Iteration   3: 10018776.200 ns/op
+Iteration   4: 9942477.911 ns/op
+Iteration   5: 9961638.307 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 73.33% complete, ETA 00:00:45
 # Fork: 3 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 10485628.615 ns/op
-# Warmup Iteration   2: 10249861.888 ns/op
-# Warmup Iteration   3: 10246987.510 ns/op
-# Warmup Iteration   4: 10217697.582 ns/op
-# Warmup Iteration   5: 10339924.186 ns/op
-Iteration   1: 10059765.190 ns/op
-Iteration   2: 10207490.878 ns/op
-Iteration   3: 10045729.070 ns/op
-Iteration   4: 10589974.653 ns/op
-Iteration   5: 10086590.000 ns/op
+# Warmup Iteration   1: 10089568.090 ns/op
+# Warmup Iteration   2: 10131583.414 ns/op
+# Warmup Iteration   3: 9975463.584 ns/op
+# Warmup Iteration   4: 9957155.644 ns/op
+# Warmup Iteration   5: 9859266.931 ns/op
+Iteration   1: 9985141.901 ns/op
+Iteration   2: 10188853.222 ns/op
+Iteration   3: 9949287.644 ns/op
+Iteration   4: 9862293.618 ns/op
+Iteration   5: 9959700.416 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar":
-  10190574.704 ±(99.9%) 175946.645 ns/op [Average]
-  (min, avg, max) = (9953590.327, 10190574.704, 10589974.653), stdev = 164580.601
-  CI (99.9%): [10014628.060, 10366521.349] (assumes normal distribution)
+  9971553.591 ±(99.9%) 83510.000 ns/op [Average]
+  (min, avg, max) = (9862293.618, 9971553.591, 10188853.222), stdev = 78115.306
+  CI (99.9%): [9888043.590, 10055063.591] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:CPI":
-  0.780 ±(99.9%) 0.046 clks/insn [Average]
-  (min, avg, max) = (0.777, 0.780, 0.782), stdev = 0.003
-  CI (99.9%): [0.734, 0.827] (assumes normal distribution)
+  0.776 ±(99.9%) 0.012 clks/insn [Average]
+  (min, avg, max) = (0.776, 0.776, 0.777), stdev = 0.001
+  CI (99.9%): [0.764, 0.788] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:IPC":
-  1.282 ±(99.9%) 0.076 insns/clk [Average]
-  (min, avg, max) = (1.278, 1.282, 1.286), stdev = 0.004
-  CI (99.9%): [1.205, 1.358] (assumes normal distribution)
+  1.288 ±(99.9%) 0.020 insns/clk [Average]
+  (min, avg, max) = (1.287, 1.288, 1.289), stdev = 0.001
+  CI (99.9%): [1.268, 1.308] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:L1-dcache-load-misses":
-  5253900.809 ±(99.9%) 117314.626 #/op [Average]
-  (min, avg, max) = (5248975.440, 5253900.809, 5261175.534), stdev = 6430.410
-  CI (99.9%): [5136586.183, 5371215.434] (assumes normal distribution)
+  5261265.938 ±(99.9%) 83705.719 #/op [Average]
+  (min, avg, max) = (5256095.090, 5261265.938, 5264850.492), stdev = 4588.193
+  CI (99.9%): [5177560.219, 5344971.657] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:L1-dcache-loads":
-  33830347.909 ±(99.9%) 563289.638 #/op [Average]
-  (min, avg, max) = (33810347.946, 33830347.909, 33865907.947), stdev = 30875.806
-  CI (99.9%): [33267058.271, 34393637.548] (assumes normal distribution)
+  33856179.655 ±(99.9%) 803709.871 #/op [Average]
+  (min, avg, max) = (33810182.213, 33856179.655, 33897991.558), stdev = 44054.050
+  CI (99.9%): [33052469.783, 34659889.526] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:L1-icache-load-misses":
-  95.558 ±(99.9%) 408.895 #/op [Average]
-  (min, avg, max) = (70.218, 95.558, 112.782), stdev = 22.413
-  CI (99.9%): [≈ 0, 504.453] (assumes normal distribution)
+  151.146 ±(99.9%) 868.066 #/op [Average]
+  (min, avg, max) = (96.232, 151.146, 180.139), stdev = 47.582
+  CI (99.9%): [≈ 0, 1019.212] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:L1-icache-loads":
-  123354.501 ±(99.9%) 92286.519 #/op [Average]
-  (min, avg, max) = (117519.470, 123354.501, 126502.438), stdev = 5058.536
-  CI (99.9%): [31067.982, 215641.019] (assumes normal distribution)
+  125386.167 ±(99.9%) 87560.150 #/op [Average]
+  (min, avg, max) = (120071.267, 125386.167, 129403.311), stdev = 4799.467
+  CI (99.9%): [37826.017, 212946.317] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:branch-misses":
-  7746.057 ±(99.9%) 9664.050 #/op [Average]
-  (min, avg, max) = (7158.674, 7746.057, 8187.525), stdev = 529.719
-  CI (99.9%): [≈ 0, 17410.107] (assumes normal distribution)
+  7301.351 ±(99.9%) 4398.432 #/op [Average]
+  (min, avg, max) = (7023.429, 7301.351, 7454.283), stdev = 241.093
+  CI (99.9%): [2902.919, 11699.783] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:branches":
-  2164100.092 ±(99.9%) 79557.837 #/op [Average]
-  (min, avg, max) = (2159277.607, 2164100.092, 2167766.165), stdev = 4360.834
-  CI (99.9%): [2084542.255, 2243657.929] (assumes normal distribution)
+  2153525.386 ±(99.9%) 54621.601 #/op [Average]
+  (min, avg, max) = (2150896.716, 2153525.386, 2156784.347), stdev = 2993.994
+  CI (99.9%): [2098903.785, 2208146.987] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:cycles":
-  56015926.492 ±(99.9%) 2690687.280 #/op [Average]
-  (min, avg, max) = (55854768.023, 56015926.492, 56144181.482), stdev = 147485.649
-  CI (99.9%): [53325239.211, 58706613.772] (assumes normal distribution)
+  55791110.757 ±(99.9%) 612304.727 #/op [Average]
+  (min, avg, max) = (55753764.686, 55791110.757, 55818750.054), stdev = 33562.488
+  CI (99.9%): [55178806.030, 56403415.483] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:dTLB-load-misses":
-  62081.493 ±(99.9%) 135423.727 #/op [Average]
-  (min, avg, max) = (53510.370, 62081.493, 66424.291), stdev = 7423.031
-  CI (99.9%): [≈ 0, 197505.220] (assumes normal distribution)
+  66425.369 ±(99.9%) 624.519 #/op [Average]
+  (min, avg, max) = (66390.037, 66425.369, 66458.383), stdev = 34.232
+  CI (99.9%): [65800.850, 67049.889] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:dTLB-loads":
-  62635.068 ±(99.9%) 135233.515 #/op [Average]
-  (min, avg, max) = (54076.227, 62635.068, 66994.471), stdev = 7412.605
-  CI (99.9%): [≈ 0, 197868.583] (assumes normal distribution)
+  66991.497 ±(99.9%) 601.806 #/op [Average]
+  (min, avg, max) = (66956.406, 66991.497, 67021.873), stdev = 32.987
+  CI (99.9%): [66389.691, 67593.303] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:iTLB-load-misses":
-  21.210 ±(99.9%) 235.186 #/op [Average]
-  (min, avg, max) = (13.022, 21.210, 36.069), stdev = 12.891
-  CI (99.9%): [≈ 0, 256.396] (assumes normal distribution)
+  17.400 ±(99.9%) 132.170 #/op [Average]
+  (min, avg, max) = (9.477, 17.400, 23.686), stdev = 7.245
+  CI (99.9%): [≈ 0, 149.570] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:iTLB-loads":
-  94.296 ±(99.9%) 1275.068 #/op [Average]
-  (min, avg, max) = (26.034, 94.296, 165.709), stdev = 69.891
-  CI (99.9%): [≈ 0, 1369.365] (assumes normal distribution)
+  86.481 ±(99.9%) 767.592 #/op [Average]
+  (min, avg, max) = (50.359, 86.481, 132.679), stdev = 42.074
+  CI (99.9%): [≈ 0, 854.074] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:instructions":
-  71793368.103 ±(99.9%) 833360.244 #/op [Average]
-  (min, avg, max) = (71760323.067, 71793368.103, 71845494.223), stdev = 45679.287
-  CI (99.9%): [70960007.859, 72626728.347] (assumes normal distribution)
+  71877966.331 ±(99.9%) 879395.267 #/op [Average]
+  (min, avg, max) = (71826024.613, 71877966.331, 71921258.744), stdev = 48202.622
+  CI (99.9%): [70998571.063, 72757361.598] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:stalled-cycles-frontend":
-  360311.417 ±(99.9%) 647743.303 #/op [Average]
-  (min, avg, max) = (324819.943, 360311.417, 395829.920), stdev = 35504.996
-  CI (99.9%): [≈ 0, 1008054.720] (assumes normal distribution)
+  349805.783 ±(99.9%) 426298.857 #/op [Average]
+  (min, avg, max) = (329082.366, 349805.783, 375131.315), stdev = 23366.879
+  CI (99.9%): [≈ 0, 776104.640] (assumes normal distribution)
 
 
 # JMH version: 1.37
@@ -593,130 +593,130 @@ Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentScalar:stall
 # Fork: 1 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 7818717.133 ns/op
-# Warmup Iteration   2: 6263556.363 ns/op
-# Warmup Iteration   3: 6239644.385 ns/op
-# Warmup Iteration   4: 6237975.727 ns/op
-# Warmup Iteration   5: 6267486.050 ns/op
-Iteration   1: 6591981.158 ns/op
-Iteration   2: 7583895.273 ns/op
-Iteration   3: 6409689.790 ns/op
-Iteration   4: 6249674.621 ns/op
-Iteration   5: 6297989.050 ns/op
+# Warmup Iteration   1: 7788885.837 ns/op
+# Warmup Iteration   2: 6225495.478 ns/op
+# Warmup Iteration   3: 6229619.547 ns/op
+# Warmup Iteration   4: 6228889.596 ns/op
+# Warmup Iteration   5: 6237302.453 ns/op
+Iteration   1: 6214406.373 ns/op
+Iteration   2: 6220501.776 ns/op
+Iteration   3: 6223254.130 ns/op
+Iteration   4: 6226991.820 ns/op
+Iteration   5: 6234694.770 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 86.67% complete, ETA 00:00:22
 # Fork: 2 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 7958967.921 ns/op
-# Warmup Iteration   2: 6302617.799 ns/op
-# Warmup Iteration   3: 6412826.494 ns/op
-# Warmup Iteration   4: 6552408.595 ns/op
-# Warmup Iteration   5: 6535226.760 ns/op
-Iteration   1: 6496541.286 ns/op
-Iteration   2: 6498280.584 ns/op
-Iteration   3: 6451097.308 ns/op
-Iteration   4: 6488508.368 ns/op
-Iteration   5: 6307492.981 ns/op
+# Warmup Iteration   1: 7787609.194 ns/op
+# Warmup Iteration   2: 6177615.130 ns/op
+# Warmup Iteration   3: 6179056.154 ns/op
+# Warmup Iteration   4: 6204665.500 ns/op
+# Warmup Iteration   5: 6194733.340 ns/op
+Iteration   1: 6196141.833 ns/op
+Iteration   2: 6186900.772 ns/op
+Iteration   3: 6184542.883 ns/op
+Iteration   4: 6215826.590 ns/op
+Iteration   5: 6195660.080 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 # Run progress: 93.33% complete, ETA 00:00:11
 # Fork: 3 of 3
 # Preparing profilers: LinuxPerfNormProfiler 
 # Profilers consume stderr from target VM, use -v EXTRA to copy to console
-# Warmup Iteration   1: 7756451.729 ns/op
-# Warmup Iteration   2: 6262267.956 ns/op
-# Warmup Iteration   3: 6252977.031 ns/op
-# Warmup Iteration   4: 6325683.642 ns/op
-# Warmup Iteration   5: 6531654.221 ns/op
-Iteration   1: 6423445.776 ns/op
-Iteration   2: 6321423.447 ns/op
-Iteration   3: 6259321.488 ns/op
-Iteration   4: 6240547.019 ns/op
-Iteration   5: 6253868.331 ns/op
+# Warmup Iteration   1: 7803196.372 ns/op
+# Warmup Iteration   2: 6176325.623 ns/op
+# Warmup Iteration   3: 6188827.401 ns/op
+# Warmup Iteration   4: 6173010.018 ns/op
+# Warmup Iteration   5: 6163720.245 ns/op
+Iteration   1: 6175021.407 ns/op
+Iteration   2: 6167639.362 ns/op
+Iteration   3: 6202050.383 ns/op
+Iteration   4: 6170686.221 ns/op
+Iteration   5: 6171344.264 ns/op
 # Processing profiler results: LinuxPerfNormProfiler 
 
 
 Result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector":
-  6458250.432 ±(99.9%) 353638.411 ns/op [Average]
-  (min, avg, max) = (6240547.019, 6458250.432, 7583895.273), stdev = 330793.589
-  CI (99.9%): [6104612.020, 6811888.843] (assumes normal distribution)
+  6199044.178 ±(99.9%) 24138.917 ns/op [Average]
+  (min, avg, max) = (6167639.362, 6199044.178, 6234694.770), stdev = 22579.558
+  CI (99.9%): [6174905.261, 6223183.094] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:CPI":
-  3.808 ±(99.9%) 0.985 clks/insn [Average]
-  (min, avg, max) = (3.755, 3.808, 3.862), stdev = 0.054
-  CI (99.9%): [2.823, 4.793] (assumes normal distribution)
+  3.820 ±(99.9%) 0.331 clks/insn [Average]
+  (min, avg, max) = (3.800, 3.820, 3.836), stdev = 0.018
+  CI (99.9%): [3.489, 4.151] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:IPC":
-  0.263 ±(99.9%) 0.068 insns/clk [Average]
-  (min, avg, max) = (0.259, 0.263, 0.266), stdev = 0.004
-  CI (99.9%): [0.195, 0.331] (assumes normal distribution)
+  0.262 ±(99.9%) 0.023 insns/clk [Average]
+  (min, avg, max) = (0.261, 0.262, 0.263), stdev = 0.001
+  CI (99.9%): [0.239, 0.285] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:L1-dcache-load-misses":
-  4266699.570 ±(99.9%) 200486.935 #/op [Average]
-  (min, avg, max) = (4256385.871, 4266699.570, 4278258.518), stdev = 10989.365
-  CI (99.9%): [4066212.635, 4467186.505] (assumes normal distribution)
+  4270290.023 ±(99.9%) 124454.467 #/op [Average]
+  (min, avg, max) = (4265095.378, 4270290.023, 4278015.531), stdev = 6821.769
+  CI (99.9%): [4145835.556, 4394744.490] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:L1-dcache-loads":
-  8559740.110 ±(99.9%) 116097.579 #/op [Average]
-  (min, avg, max) = (8552438.755, 8559740.110, 8564107.959), stdev = 6363.700
-  CI (99.9%): [8443642.531, 8675837.690] (assumes normal distribution)
+  8567389.484 ±(99.9%) 249204.782 #/op [Average]
+  (min, avg, max) = (8554952.812, 8567389.484, 8582009.356), stdev = 13659.755
+  CI (99.9%): [8318184.702, 8816594.266] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:L1-icache-load-misses":
-  334.825 ±(99.9%) 489.154 #/op [Average]
-  (min, avg, max) = (303.891, 334.825, 351.382), stdev = 26.812
-  CI (99.9%): [≈ 0, 823.979] (assumes normal distribution)
+  333.525 ±(99.9%) 1107.322 #/op [Average]
+  (min, avg, max) = (293.218, 333.525, 403.332), stdev = 60.696
+  CI (99.9%): [≈ 0, 1440.847] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:L1-icache-loads":
-  97796.516 ±(99.9%) 100133.479 #/op [Average]
-  (min, avg, max) = (91458.903, 97796.516, 101001.621), stdev = 5488.654
-  CI (99.9%): [≈ 0, 197929.996] (assumes normal distribution)
+  99998.362 ±(99.9%) 71557.189 #/op [Average]
+  (min, avg, max) = (95542.412, 99998.362, 102928.298), stdev = 3922.291
+  CI (99.9%): [28441.173, 171555.550] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:branch-misses":
-  3313.561 ±(99.9%) 3674.134 #/op [Average]
-  (min, avg, max) = (3133.462, 3313.561, 3531.015), stdev = 201.392
-  CI (99.9%): [≈ 0, 6987.695] (assumes normal distribution)
+  3328.788 ±(99.9%) 2237.670 #/op [Average]
+  (min, avg, max) = (3216.291, 3328.788, 3459.551), stdev = 122.654
+  CI (99.9%): [1091.119, 5566.458] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:branches":
-  293411.922 ±(99.9%) 108951.883 #/op [Average]
-  (min, avg, max) = (286579.202, 293411.922, 297634.808), stdev = 5972.020
-  CI (99.9%): [184460.039, 402363.805] (assumes normal distribution)
+  292110.589 ±(99.9%) 17217.779 #/op [Average]
+  (min, avg, max) = (291414.225, 292110.589, 293184.718), stdev = 943.765
+  CI (99.9%): [274892.810, 309328.367] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:cycles":
-  34617439.748 ±(99.9%) 11159527.394 #/op [Average]
-  (min, avg, max) = (33998720.945, 34617439.748, 35221852.692), stdev = 611691.353
-  CI (99.9%): [23457912.353, 45776967.142] (assumes normal distribution)
+  34761812.440 ±(99.9%) 2560896.959 #/op [Average]
+  (min, avg, max) = (34609690.041, 34761812.440, 34886332.000), stdev = 140371.404
+  CI (99.9%): [32200915.481, 37322709.400] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:dTLB-load-misses":
-  66316.793 ±(99.9%) 1385.622 #/op [Average]
-  (min, avg, max) = (66253.092, 66316.793, 66400.846), stdev = 75.951
-  CI (99.9%): [64931.171, 67702.416] (assumes normal distribution)
+  66432.466 ±(99.9%) 396.589 #/op [Average]
+  (min, avg, max) = (66410.839, 66432.466, 66454.314), stdev = 21.738
+  CI (99.9%): [66035.877, 66829.054] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:dTLB-loads":
-  67285.477 ±(99.9%) 1479.391 #/op [Average]
-  (min, avg, max) = (67193.011, 67285.477, 67344.483), stdev = 81.090
-  CI (99.9%): [65806.086, 68764.868] (assumes normal distribution)
+  67394.826 ±(99.9%) 643.610 #/op [Average]
+  (min, avg, max) = (67369.428, 67394.826, 67435.107), stdev = 35.278
+  CI (99.9%): [66751.216, 68038.436] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:iTLB-load-misses":
-  16.695 ±(99.9%) 184.359 #/op [Average]
-  (min, avg, max) = (8.124, 16.695, 27.838), stdev = 10.105
-  CI (99.9%): [≈ 0, 201.054] (assumes normal distribution)
+  17.289 ±(99.9%) 130.128 #/op [Average]
+  (min, avg, max) = (9.129, 17.289, 22.336), stdev = 7.133
+  CI (99.9%): [≈ 0, 147.417] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:iTLB-loads":
-  83.121 ±(99.9%) 816.515 #/op [Average]
-  (min, avg, max) = (45.308, 83.121, 132.536), stdev = 44.756
-  CI (99.9%): [≈ 0, 899.636] (assumes normal distribution)
+  74.495 ±(99.9%) 601.830 #/op [Average]
+  (min, avg, max) = (36.571, 74.495, 96.549), stdev = 32.988
+  CI (99.9%): [≈ 0, 676.325] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:instructions":
-  9090741.627 ±(99.9%) 590114.328 #/op [Average]
-  (min, avg, max) = (9055429.978, 9090741.627, 9118937.352), stdev = 32346.158
-  CI (99.9%): [8500627.298, 9680855.955] (assumes normal distribution)
+  9100327.224 ±(99.9%) 118124.504 #/op [Average]
+  (min, avg, max) = (9094370.316, 9100327.224, 9107218.414), stdev = 6474.803
+  CI (99.9%): [8982202.720, 9218451.728] (assumes normal distribution)
 
 Secondary result "dev.cdelmonte.segmentlanes.DotProductBench.segmentVector:stalled-cycles-frontend":
-  281040.688 ±(99.9%) 372115.485 #/op [Average]
-  (min, avg, max) = (259156.926, 281040.688, 299523.091), stdev = 20396.905
-  CI (99.9%): [≈ 0, 653156.173] (assumes normal distribution)
+  293874.508 ±(99.9%) 85902.825 #/op [Average]
+  (min, avg, max) = (288812.931, 293874.508, 298124.735), stdev = 4708.624
+  CI (99.9%): [207971.684, 379777.333] (assumes normal distribution)
 
 
 # Run complete. Total time: 00:02:48
@@ -733,84 +733,84 @@ works, and factor in a small probability of new VM bugs. Additionally, while com
 different JVMs are already problematic, the performance difference caused by different Blackhole
 modes can be very significant. Please make sure you use the consistent Blackhole mode for comparisons.
 
-Benchmark                                                   (size)  Mode  Cnt         Score          Error      Units
-DotProductBench.array                                     16777216  avgt   15  10292554.217 ±    94472.483      ns/op
-DotProductBench.array:CPI                                 16777216  avgt    3         1.517 ±        0.212  clks/insn
-DotProductBench.array:IPC                                 16777216  avgt    3         0.659 ±        0.092  insns/clk
-DotProductBench.array:L1-dcache-load-misses               16777216  avgt    3   4205080.893 ±    74387.915       #/op
-DotProductBench.array:L1-dcache-loads                     16777216  avgt    3   8561817.398 ±   473628.188       #/op
-DotProductBench.array:L1-icache-load-misses               16777216  avgt    3       560.208 ±      605.332       #/op
-DotProductBench.array:L1-icache-loads                     16777216  avgt    3    238536.886 ±   210881.942       #/op
-DotProductBench.array:branch-misses                       16777216  avgt    3      5825.473 ±    12483.739       #/op
-DotProductBench.array:branches                            16777216  avgt    3    310424.888 ±   208285.212       #/op
-DotProductBench.array:cycles                              16777216  avgt    3  56065949.793 ±  7353101.563       #/op
-DotProductBench.array:dTLB-load-misses                    16777216  avgt    3     60630.826 ±   162114.758       #/op
-DotProductBench.array:dTLB-loads                          16777216  avgt    3     61656.367 ±   161922.585       #/op
-DotProductBench.array:iTLB-load-misses                    16777216  avgt    3        20.713 ±       34.409       #/op
-DotProductBench.array:iTLB-loads                          16777216  avgt    3        71.463 ±      940.085       #/op
-DotProductBench.array:instructions                        16777216  avgt    3  36957666.518 ±  1006867.705       #/op
-DotProductBench.array:stalled-cycles-frontend             16777216  avgt    3    446132.296 ±   210462.173       #/op
-DotProductBench.arrayLoadControl                          16777216  avgt   15   6117452.416 ±    44075.354      ns/op
-DotProductBench.arrayLoadControl:CPI                      16777216  avgt    3         6.575 ±        0.206  clks/insn
-DotProductBench.arrayLoadControl:IPC                      16777216  avgt    3         0.152 ±        0.005  insns/clk
-DotProductBench.arrayLoadControl:L1-dcache-load-misses    16777216  avgt    3   4247576.362 ±    92889.659       #/op
-DotProductBench.arrayLoadControl:L1-dcache-loads          16777216  avgt    3   8476696.698 ±   299327.054       #/op
-DotProductBench.arrayLoadControl:L1-icache-load-misses    16777216  avgt    3       365.540 ±      361.994       #/op
-DotProductBench.arrayLoadControl:L1-icache-loads          16777216  avgt    3     83740.698 ±    76522.189       #/op
-DotProductBench.arrayLoadControl:branch-misses            16777216  avgt    3      3594.554 ±     6643.588       #/op
-DotProductBench.arrayLoadControl:branches                 16777216  avgt    3    290363.537 ±    65990.091       #/op
-DotProductBench.arrayLoadControl:cycles                   16777216  avgt    3  33599646.628 ±  1568763.695       #/op
-DotProductBench.arrayLoadControl:dTLB-load-misses         16777216  avgt    3     64904.547 ±    33452.367       #/op
-DotProductBench.arrayLoadControl:dTLB-loads               16777216  avgt    3     65856.497 ±    33518.769       #/op
-DotProductBench.arrayLoadControl:iTLB-load-misses         16777216  avgt    3        11.642 ±      130.520       #/op
-DotProductBench.arrayLoadControl:iTLB-loads               16777216  avgt    3        44.561 ±      551.026       #/op
-DotProductBench.arrayLoadControl:instructions             16777216  avgt    3   5110454.075 ±   137625.702       #/op
-DotProductBench.arrayLoadControl:stalled-cycles-frontend  16777216  avgt    3    227709.443 ±   262946.672       #/op
-DotProductBench.arrayVector                               16777216  avgt   15   6153034.138 ±    64191.842      ns/op
-DotProductBench.arrayVector:CPI                           16777216  avgt    3         4.706 ±        0.542  clks/insn
-DotProductBench.arrayVector:IPC                           16777216  avgt    3         0.212 ±        0.024  insns/clk
-DotProductBench.arrayVector:L1-dcache-load-misses         16777216  avgt    3   4262519.334 ±   126215.362       #/op
-DotProductBench.arrayVector:L1-dcache-loads               16777216  avgt    3   8482484.388 ±    95738.674       #/op
-DotProductBench.arrayVector:L1-icache-load-misses         16777216  avgt    3       354.171 ±      457.644       #/op
-DotProductBench.arrayVector:L1-icache-loads               16777216  avgt    3     91010.899 ±    30145.167       #/op
-DotProductBench.arrayVector:branch-misses                 16777216  avgt    3      3579.978 ±     8269.607       #/op
-DotProductBench.arrayVector:branches                      16777216  avgt    3    293022.759 ±   127723.848       #/op
-DotProductBench.arrayVector:cycles                        16777216  avgt    3  33984642.053 ±  4877181.559       #/op
-DotProductBench.arrayVector:dTLB-load-misses              16777216  avgt    3     65944.581 ±     1319.820       #/op
-DotProductBench.arrayVector:dTLB-loads                    16777216  avgt    3     66916.221 ±      949.724       #/op
-DotProductBench.arrayVector:iTLB-load-misses              16777216  avgt    3        11.891 ±      152.740       #/op
-DotProductBench.arrayVector:iTLB-loads                    16777216  avgt    3        50.521 ±      764.810       #/op
-DotProductBench.arrayVector:instructions                  16777216  avgt    3   7221127.486 ±   344569.391       #/op
-DotProductBench.arrayVector:stalled-cycles-frontend       16777216  avgt    3    240041.800 ±   418490.650       #/op
-DotProductBench.segmentScalar                             16777216  avgt   15  10190574.704 ±   175946.645      ns/op
-DotProductBench.segmentScalar:CPI                         16777216  avgt    3         0.780 ±        0.046  clks/insn
-DotProductBench.segmentScalar:IPC                         16777216  avgt    3         1.282 ±        0.076  insns/clk
-DotProductBench.segmentScalar:L1-dcache-load-misses       16777216  avgt    3   5253900.809 ±   117314.626       #/op
-DotProductBench.segmentScalar:L1-dcache-loads             16777216  avgt    3  33830347.909 ±   563289.638       #/op
-DotProductBench.segmentScalar:L1-icache-load-misses       16777216  avgt    3        95.558 ±      408.895       #/op
-DotProductBench.segmentScalar:L1-icache-loads             16777216  avgt    3    123354.501 ±    92286.519       #/op
-DotProductBench.segmentScalar:branch-misses               16777216  avgt    3      7746.057 ±     9664.050       #/op
-DotProductBench.segmentScalar:branches                    16777216  avgt    3   2164100.092 ±    79557.837       #/op
-DotProductBench.segmentScalar:cycles                      16777216  avgt    3  56015926.492 ±  2690687.280       #/op
-DotProductBench.segmentScalar:dTLB-load-misses            16777216  avgt    3     62081.493 ±   135423.727       #/op
-DotProductBench.segmentScalar:dTLB-loads                  16777216  avgt    3     62635.068 ±   135233.515       #/op
-DotProductBench.segmentScalar:iTLB-load-misses            16777216  avgt    3        21.210 ±      235.186       #/op
-DotProductBench.segmentScalar:iTLB-loads                  16777216  avgt    3        94.296 ±     1275.068       #/op
-DotProductBench.segmentScalar:instructions                16777216  avgt    3  71793368.103 ±   833360.244       #/op
-DotProductBench.segmentScalar:stalled-cycles-frontend     16777216  avgt    3    360311.417 ±   647743.303       #/op
-DotProductBench.segmentVector                             16777216  avgt   15   6458250.432 ±   353638.411      ns/op
-DotProductBench.segmentVector:CPI                         16777216  avgt    3         3.808 ±        0.985  clks/insn
-DotProductBench.segmentVector:IPC                         16777216  avgt    3         0.263 ±        0.068  insns/clk
-DotProductBench.segmentVector:L1-dcache-load-misses       16777216  avgt    3   4266699.570 ±   200486.935       #/op
-DotProductBench.segmentVector:L1-dcache-loads             16777216  avgt    3   8559740.110 ±   116097.579       #/op
-DotProductBench.segmentVector:L1-icache-load-misses       16777216  avgt    3       334.825 ±      489.154       #/op
-DotProductBench.segmentVector:L1-icache-loads             16777216  avgt    3     97796.516 ±   100133.479       #/op
-DotProductBench.segmentVector:branch-misses               16777216  avgt    3      3313.561 ±     3674.134       #/op
-DotProductBench.segmentVector:branches                    16777216  avgt    3    293411.922 ±   108951.883       #/op
-DotProductBench.segmentVector:cycles                      16777216  avgt    3  34617439.748 ± 11159527.394       #/op
-DotProductBench.segmentVector:dTLB-load-misses            16777216  avgt    3     66316.793 ±     1385.622       #/op
-DotProductBench.segmentVector:dTLB-loads                  16777216  avgt    3     67285.477 ±     1479.391       #/op
-DotProductBench.segmentVector:iTLB-load-misses            16777216  avgt    3        16.695 ±      184.359       #/op
-DotProductBench.segmentVector:iTLB-loads                  16777216  avgt    3        83.121 ±      816.515       #/op
-DotProductBench.segmentVector:instructions                16777216  avgt    3   9090741.627 ±   590114.328       #/op
-DotProductBench.segmentVector:stalled-cycles-frontend     16777216  avgt    3    281040.688 ±   372115.485       #/op
+Benchmark                                                   (size)  Mode  Cnt         Score         Error      Units
+DotProductBench.array                                     16777216  avgt   15  10153791.577 ±   69658.641      ns/op
+DotProductBench.array:CPI                                 16777216  avgt    3         1.504 ±       0.133  clks/insn
+DotProductBench.array:IPC                                 16777216  avgt    3         0.665 ±       0.059  insns/clk
+DotProductBench.array:L1-dcache-load-misses               16777216  avgt    3   4202625.329 ±   97530.078       #/op
+DotProductBench.array:L1-dcache-loads                     16777216  avgt    3   8551693.943 ±   44929.347       #/op
+DotProductBench.array:L1-icache-load-misses               16777216  avgt    3       613.789 ±     142.251       #/op
+DotProductBench.array:L1-icache-loads                     16777216  avgt    3    235164.348 ±   39366.893       #/op
+DotProductBench.array:branch-misses                       16777216  avgt    3      5700.815 ±    4917.863       #/op
+DotProductBench.array:branches                            16777216  avgt    3    308676.419 ±  154778.354       #/op
+DotProductBench.array:cycles                              16777216  avgt    3  55633019.763 ± 5116730.237       #/op
+DotProductBench.array:dTLB-load-misses                    16777216  avgt    3     66152.164 ±     746.215       #/op
+DotProductBench.array:dTLB-loads                          16777216  avgt    3     67254.418 ±     792.164       #/op
+DotProductBench.array:iTLB-load-misses                    16777216  avgt    3        12.362 ±      38.752       #/op
+DotProductBench.array:iTLB-loads                          16777216  avgt    3        69.761 ±     410.181       #/op
+DotProductBench.array:instructions                        16777216  avgt    3  36978311.541 ±  159632.872       #/op
+DotProductBench.array:stalled-cycles-frontend             16777216  avgt    3    404229.139 ±  197393.321       #/op
+DotProductBench.arrayLoadControl                          16777216  avgt   15   6166993.197 ±   81250.532      ns/op
+DotProductBench.arrayLoadControl:CPI                      16777216  avgt    3         6.687 ±       0.468  clks/insn
+DotProductBench.arrayLoadControl:IPC                      16777216  avgt    3         0.150 ±       0.010  insns/clk
+DotProductBench.arrayLoadControl:L1-dcache-load-misses    16777216  avgt    3   4245998.971 ±   92705.473       #/op
+DotProductBench.arrayLoadControl:L1-dcache-loads          16777216  avgt    3   8484482.322 ±  276869.017       #/op
+DotProductBench.arrayLoadControl:L1-icache-load-misses    16777216  avgt    3       296.984 ±     428.616       #/op
+DotProductBench.arrayLoadControl:L1-icache-loads          16777216  avgt    3     88174.440 ±   51386.489       #/op
+DotProductBench.arrayLoadControl:branch-misses            16777216  avgt    3      3672.079 ±    4180.843       #/op
+DotProductBench.arrayLoadControl:branches                 16777216  avgt    3    290967.192 ±   68796.670       #/op
+DotProductBench.arrayLoadControl:cycles                   16777216  avgt    3  34170150.623 ± 2608494.562       #/op
+DotProductBench.arrayLoadControl:dTLB-load-misses         16777216  avgt    3     66016.755 ±    1282.667       #/op
+DotProductBench.arrayLoadControl:dTLB-loads               16777216  avgt    3     66935.521 ±    1139.032       #/op
+DotProductBench.arrayLoadControl:iTLB-load-misses         16777216  avgt    3        10.457 ±      82.038       #/op
+DotProductBench.arrayLoadControl:iTLB-loads               16777216  avgt    3        38.858 ±     570.084       #/op
+DotProductBench.arrayLoadControl:instructions             16777216  avgt    3   5109970.367 ±  137378.155       #/op
+DotProductBench.arrayLoadControl:stalled-cycles-frontend  16777216  avgt    3    231284.979 ±  297881.650       #/op
+DotProductBench.arrayVector                               16777216  avgt   15   6115252.273 ±   14200.259      ns/op
+DotProductBench.arrayVector:CPI                           16777216  avgt    3         4.731 ±       0.492  clks/insn
+DotProductBench.arrayVector:IPC                           16777216  avgt    3         0.211 ±       0.022  insns/clk
+DotProductBench.arrayVector:L1-dcache-load-misses         16777216  avgt    3   4260587.314 ±   63128.178       #/op
+DotProductBench.arrayVector:L1-dcache-loads               16777216  avgt    3   8482070.032 ±  216679.009       #/op
+DotProductBench.arrayVector:L1-icache-load-misses         16777216  avgt    3       335.722 ±     321.346       #/op
+DotProductBench.arrayVector:L1-icache-loads               16777216  avgt    3     89264.267 ±   89213.457       #/op
+DotProductBench.arrayVector:branch-misses                 16777216  avgt    3      3738.339 ±    1947.323       #/op
+DotProductBench.arrayVector:branches                      16777216  avgt    3    293376.312 ±   60441.266       #/op
+DotProductBench.arrayVector:cycles                        16777216  avgt    3  34198731.181 ± 1049653.234       #/op
+DotProductBench.arrayVector:dTLB-load-misses              16777216  avgt    3     66054.917 ±     551.250       #/op
+DotProductBench.arrayVector:dTLB-loads                    16777216  avgt    3     66931.260 ±     812.572       #/op
+DotProductBench.arrayVector:iTLB-load-misses              16777216  avgt    3        10.459 ±      22.322       #/op
+DotProductBench.arrayVector:iTLB-loads                    16777216  avgt    3        29.639 ±     392.791       #/op
+DotProductBench.arrayVector:instructions                  16777216  avgt    3   7229217.663 ±  529339.822       #/op
+DotProductBench.arrayVector:stalled-cycles-frontend       16777216  avgt    3    243440.209 ±  275940.685       #/op
+DotProductBench.segmentScalar                             16777216  avgt   15   9971553.591 ±   83510.000      ns/op
+DotProductBench.segmentScalar:CPI                         16777216  avgt    3         0.776 ±       0.012  clks/insn
+DotProductBench.segmentScalar:IPC                         16777216  avgt    3         1.288 ±       0.020  insns/clk
+DotProductBench.segmentScalar:L1-dcache-load-misses       16777216  avgt    3   5261265.938 ±   83705.719       #/op
+DotProductBench.segmentScalar:L1-dcache-loads             16777216  avgt    3  33856179.655 ±  803709.871       #/op
+DotProductBench.segmentScalar:L1-icache-load-misses       16777216  avgt    3       151.146 ±     868.066       #/op
+DotProductBench.segmentScalar:L1-icache-loads             16777216  avgt    3    125386.167 ±   87560.150       #/op
+DotProductBench.segmentScalar:branch-misses               16777216  avgt    3      7301.351 ±    4398.432       #/op
+DotProductBench.segmentScalar:branches                    16777216  avgt    3   2153525.386 ±   54621.601       #/op
+DotProductBench.segmentScalar:cycles                      16777216  avgt    3  55791110.757 ±  612304.727       #/op
+DotProductBench.segmentScalar:dTLB-load-misses            16777216  avgt    3     66425.369 ±     624.519       #/op
+DotProductBench.segmentScalar:dTLB-loads                  16777216  avgt    3     66991.497 ±     601.806       #/op
+DotProductBench.segmentScalar:iTLB-load-misses            16777216  avgt    3        17.400 ±     132.170       #/op
+DotProductBench.segmentScalar:iTLB-loads                  16777216  avgt    3        86.481 ±     767.592       #/op
+DotProductBench.segmentScalar:instructions                16777216  avgt    3  71877966.331 ±  879395.267       #/op
+DotProductBench.segmentScalar:stalled-cycles-frontend     16777216  avgt    3    349805.783 ±  426298.857       #/op
+DotProductBench.segmentVector                             16777216  avgt   15   6199044.178 ±   24138.917      ns/op
+DotProductBench.segmentVector:CPI                         16777216  avgt    3         3.820 ±       0.331  clks/insn
+DotProductBench.segmentVector:IPC                         16777216  avgt    3         0.262 ±       0.023  insns/clk
+DotProductBench.segmentVector:L1-dcache-load-misses       16777216  avgt    3   4270290.023 ±  124454.467       #/op
+DotProductBench.segmentVector:L1-dcache-loads             16777216  avgt    3   8567389.484 ±  249204.782       #/op
+DotProductBench.segmentVector:L1-icache-load-misses       16777216  avgt    3       333.525 ±    1107.322       #/op
+DotProductBench.segmentVector:L1-icache-loads             16777216  avgt    3     99998.362 ±   71557.189       #/op
+DotProductBench.segmentVector:branch-misses               16777216  avgt    3      3328.788 ±    2237.670       #/op
+DotProductBench.segmentVector:branches                    16777216  avgt    3    292110.589 ±   17217.779       #/op
+DotProductBench.segmentVector:cycles                      16777216  avgt    3  34761812.440 ± 2560896.959       #/op
+DotProductBench.segmentVector:dTLB-load-misses            16777216  avgt    3     66432.466 ±     396.589       #/op
+DotProductBench.segmentVector:dTLB-loads                  16777216  avgt    3     67394.826 ±     643.610       #/op
+DotProductBench.segmentVector:iTLB-load-misses            16777216  avgt    3        17.289 ±     130.128       #/op
+DotProductBench.segmentVector:iTLB-loads                  16777216  avgt    3        74.495 ±     601.830       #/op
+DotProductBench.segmentVector:instructions                16777216  avgt    3   9100327.224 ±  118124.504       #/op
+DotProductBench.segmentVector:stalled-cycles-frontend     16777216  avgt    3    293874.508 ±   85902.825       #/op
