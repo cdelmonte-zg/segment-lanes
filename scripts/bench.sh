@@ -32,13 +32,18 @@ filename_json="${out_dir}/${run_date}-${1}-avgt.json"
 jdk_version=$(java --version 2>&1 | head -1)
 mkdir -p "${out_dir}"
 
+# BENCH_FORKS raises the fork count when the quantity of interest is the
+# fork-to-fork distribution itself: 3 forks are 3 samples of it, and at least
+# one kernel here turns out to be bimodal across forks.
+forks="${BENCH_FORKS:-3}"
+
 # BENCH_PIN pins the run to a set of cores, e.g. BENCH_PIN=8-15,24-31 for one CCD
 pin=""
 if [ -n "${BENCH_PIN:-}" ]; then
 	pin="taskset -c ${BENCH_PIN} "
 fi
 
-cmd="${pin}java -jar target/benchmarks.jar -f 3 -wi 5 -i 5 -rf json -rff ${filename_json} ${@:2}"
+cmd="${pin}java -jar target/benchmarks.jar -f ${forks} -wi 5 -i 5 -rf json -rff ${filename_json} ${@:2}"
 
 echo "# commit: ${commit} JDK: ${jdk_version}  CPU: ${cpu_model}
 # ${cmd}" > "${filename_txt}"

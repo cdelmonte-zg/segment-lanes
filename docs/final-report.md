@@ -63,8 +63,10 @@ Each vector variant against its own scalar baseline:
 
 Zero steady-state allocation everywhere: `gc.count ≈ 0` and `gc.alloc.rate`
 flat at the 0.007 MB/s harness background for all six benchmarks at every
-size, with `alloc.rate.norm` at or below 0.004 B/op. No vector is
-materialized, no segment escapes.
+size, with `alloc.rate.norm` at or below 0.004 B/op. That is no measurable
+steady-state allocation, which is what the profiler can show; it is consistent
+with vectors staying in registers and segments not escaping, without proving
+either directly.
 
 ## Findings
 
@@ -83,7 +85,9 @@ materialized, no segment escapes.
    and `arrayLoadControl` ±6.8 on 77 (8.9 percent), while `segmentVector`
    carries ±1.0 on 60.6 (1.7 percent) and the scalar variants stay under 1.6.
    This is not dispersion around a mean: the dedicated experiment (below) shows
-   these distributions are bimodal, a fast plateau plus occasional slow forks.
+   `arrayVector` to be bimodal, a fast plateau plus occasional slow forks.
+   `arrayLoadControl` carries a comparable spread here but was not part of that
+   experiment, so its shape is unmeasured.
    **The spread is consistent with heap-placement effects, and the segment
    avoids that source of variation by requesting its alignment explicitly.**
    The causal link is demonstrated for the segment, not for the array; closing
@@ -111,13 +115,18 @@ for section 4 of the article.
 
 | | segmentScalar | array (auto-vectorized) | arrayVector | segmentVector |
 |---|---|---|---|---|
-| explicit loads | 8x `vmovsd` | 7x `vmovups` zmm | 8x `vmovups` zmm | 8x `vmovups` zmm |
-| multiplies | 8x `vmulsd` | 7x `vmulpd` zmm | 8x `vmulpd` zmm | 8x `vmulpd` zmm |
+| explicit loads | 8x `vmovsd` | 8x `vmovups` zmm | 8x `vmovups` zmm | 8x `vmovups` zmm |
+| multiplies | 8x `vmulsd` | 8x `vmulpd` zmm | 8x `vmulpd` zmm | 8x `vmulpd` zmm |
 | lane extraction | none | 32x `vpshufd`, 16x `vextractf128`, 8x `vextracti64x4` | none | none |
 | additions | 8x `vaddsd` | **64x `vaddsd`** | 8x `vaddpd` | 8x `vaddpd` |
 
 Every remaining load is folded into a multiply as a memory operand, so the
-explicit-load row understates the traffic by half in the vector columns.
+explicit-load row understates the traffic by half in the vector columns. The
+`array` column is read from a hot region that perfasm prints truncated: seven
+chunks are visible, at displacements 0x10 through 0x190, but the loop advances
+by 64 elements (`leal 0x40`) and 64 `vaddsd` follow, so the eighth chunk exists
+outside the printed window. **All 64 elements are multiplied packed**, and all
+64 are then fed back through a scalar chain to preserve the order.
 `arrayLoadControl`, not shown, compiles to 16 `vaddpd` with every load folded
 and no multiply left, which is what it was written to test.
 
@@ -168,18 +177,20 @@ counter reports 8.5 M, consistent with 64-byte accesses being served over the
 256-bit datapath of this microarchitecture. So a ratio above 1.0 means extra
 miss events per line, which misaligned accesses produce; it does not license
 the statement that a third of the lines were fetched twice. The strong result
-is the change itself: correcting the alignment moves the segment from 1.25 to
-1.02 and nothing else moves with it. Closing the mechanism properly would take
+is the change itself: correcting the alignment moves the unaligned segment from
+1.33 to 1.02 and nothing else moves with it. The 1.25 in the table belongs to
+`segmentScalar`, a different kernel and a different cause. Closing the mechanism properly would take
 the misaligned-access events this vendor exposes through IBS.
 
 1. **The bandwidth claim, open since M3, is now measured.**
    `arrayLoadControl` walks the same two arrays with two independent
    accumulators and no multiply. It executes **29 percent fewer instructions**
    than `arrayVector` (5.11 M against 7.23 M) and has the **highest CPI of any
-   variant** (6.69), and it finishes in the same time. In the avgt run, which
-   is the citable one: 6.112 ± 0.021 ms against 6.188 ± 0.053. Less work, same
-   duration. At 16 M the dot product is limited by the arrival of the data,
-   not by arithmetic. About 44 GB/s for the single benchmark thread.
+   variant** (6.69). In the avgt run, which is the citable one, it finishes at
+   6.112 ± 0.021 ms against 6.188 ± 0.053: **29 percent fewer instructions buys
+   1.2 percent of time**. That is the sharper way to put it than "the same
+   duration", and it says what section 6 needs: at 16 M arithmetic is no longer
+   the dominant constraint. About 44 GB/s for the single benchmark thread.
 2. **Every vector variant streams ideally**, 1.00 to 1.02 L1-miss events
    per theoretical cache line.
    The excess that M4 found in the unaligned segment (1.33) is gone.
@@ -201,12 +212,14 @@ the misaligned-access events this vendor exposes through IBS.
 changing that one property and nothing else. The obvious follow-up was whether
 the same holds in cache, where the final session shows the segment ahead of the
 array. Branch `experiment/alignment-vs-size` answers it properly:
-`SegmentVectorUnalignedDot` is `SegmentVectorDot` with one line changed, and
-both run **in the same JMH session**, so alignment is the single variable
+`SegmentVectorUnalignedDot` is `SegmentVectorDot` with one line changed: it
+asks the arena for the layout's natural 8-byte alignment instead of 64. Note
+that this is a *request*, a lower bound: an allocation may happen to come back
+more strongly aligned. Both variants run **in the same JMH session**, so alignment is the single variable
 rather than a comparison across two runs. Pinned to one CCD under
 `bench-system setup`, ten forks, with `arrayVector` present as a reference.
 
-| size | 8-byte alignment | 64-byte alignment | effect |
+| size | natural (8-byte request) | 64-byte request | effect |
 |---|---|---|---|
 | 1 024 | 63.01 ± 4.28 ns | 60.88 ± 0.56 ns | -3.4%, **error bars overlap** |
 | 65 536 | 7 221 ± 56 ns | 7 190 ± 72 ns | -0.4%, **error bars overlap** |
@@ -259,10 +272,10 @@ cycles. Whatever it is, it is not extra work.
 
 ## Corrections to the earlier reports
 
-- **`archive/m4-report.md`, finding 1, "In cache, the segment is the array."** True
-  for the kernel measured there, which took the 8-byte element alignment.
-  With `allocate(bytes, 64)` the segment is 25 percent *faster* than the array
-  at 1024. The earlier sentence describes the default, not the API.
+- **`archive/m4-report.md`, finding 1, "In cache, the segment is the array."**
+  Superseded, but not for the reason it first looked: the segment is ahead of
+  the array in cache, and the by-size experiment shows that alignment is not
+  what puts it there. An unaligned segment leads by the same margin.
 - **`archive/m3-report.md`, finding 1 and the Open section, the bandwidth
   hypothesis.** No longer a hypothesis, see above. The load-only control
   kernel listed there as optional turned out to be the measurement that
@@ -343,6 +356,8 @@ thing in the same place.
   session: 3.4 percent at 65 536 and 2.5 percent at 16 M here, outside the error
   bars, inside them in the previous session. Either profile at those sizes or
   keep it out of the article.
-- `segmentVector` is 2.8 percent slower than `arrayVector` at 16 M, outside
-  the error bars. The likely cause is the seven address instructions per
-  iteration, but that is inference, not measurement.
+- `segmentVector` trails `arrayVector` at 16 M by 1.7 percent in this session,
+  with intervals that just touch, and by 1.3 percent in the ten-fork experiment,
+  where they separate. The seven address instructions per iteration are the
+  obvious candidate, but that is inference, not measurement, and the margin is
+  too small to build anything on.

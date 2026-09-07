@@ -19,8 +19,10 @@ Two further classes sit beside the ladder without being part of it.
 compiler will allow, as a control for whether the largest size is limited by
 memory bandwidth rather than by compute. `SegmentVectorUnalignedDot` is
 `SegmentVectorDot` with one line changed, the alignment asked of the arena, and
-exists so that alignment can be varied on its own. Neither is measured by the
-full session: they belong to the experiments that use them.
+exists so that alignment can be varied on its own. The full session measures
+`ArrayLoadControl` alongside the ladder, since the bandwidth question is part
+of the story; `SegmentVectorUnalignedDot` it deliberately excludes, because
+that one belongs to its own experiment.
 
 ## Requirements and usage
 
@@ -95,8 +97,8 @@ machine from a trap on exit, so an interrupted session cannot leave the
 governor pinned, and it builds hsdis first if it is missing. Note that
 everything inside a session runs under `bench-system setup`, which makes its
 numbers a self-consistent baseline of their own rather than a continuation of
-runs taken on a stock machine. A session measures the five variants and the
-bandwidth control, never the experimental kernels.
+runs taken on a stock machine. A session measures the five variants of the
+ladder plus the bandwidth control, and never the experimental kernels.
 
 Controlled experiments have their own scripts, so that each one is a single
 command and stays reproducible:
@@ -145,13 +147,13 @@ java -jar target/benchmarks.jar 'DotProductBench.array$' -p size=1024 \
 -f 1 -wi 5 -i 5 -prof perfasm | tee results/<date>-<tag>-perfasm.txt
 ```
 
-Know your decoder before trusting a listing. Two of the five disassemblies in
-the final session were taken with a capstone-backed hsdis and carry six
-undecoded instructions each: they show up as `.byte 0x62`, the EVEX prefix,
-followed by mnemonics that belong to no real instruction. Read one of those
-literally and you conclude that two kernels compile to different loop bodies,
-when re-running the same benchmark under the LLVM backend shows them
-identical. If a listing looks structurally wrong, suspect the decoder before
+Know your decoder before trusting a listing. The current session decodes
+completely, but an earlier one was taken with a capstone-backed hsdis and two
+of its five disassemblies carry six undecoded instructions each, showing up as
+`.byte 0x62`, the EVEX prefix, followed by mnemonics that belong to no real
+instruction. Those files are in `results/archive/`. Read one literally and you
+conclude that two kernels compile to different loop bodies, when the same
+benchmark under the LLVM backend shows them identical. If a listing looks structurally wrong, suspect the decoder before
 the compiler, and cross-check against the instruction counters from
 `-prof perfnorm`, which do not depend on it.
 
