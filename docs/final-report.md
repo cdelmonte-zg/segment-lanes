@@ -63,10 +63,12 @@ Each vector variant against its own scalar baseline:
 
 Zero steady-state allocation everywhere: `gc.count ≈ 0` and `gc.alloc.rate`
 flat at the 0.007 MB/s harness background for all six benchmarks at every
-size, with `alloc.rate.norm` at or below 0.004 B/op. That is no measurable
-steady-state allocation, which is what the profiler can show; it is consistent
-with vectors staying in registers and segments not escaping, without proving
-either directly.
+size. Per operation that background reads as 0.004 B/op at 1024 and grows
+with the duration of the operation, up to 195 B/op for `list` at 16 M, which
+is 0.007 MB/s times 29 ms: the same constant rate, not allocation inside the
+kernel. That is no measurable steady-state allocation, which is what the
+profiler can show; it is consistent with vectors staying in registers and
+segments not escaping, without proving either directly.
 
 ## Findings
 
@@ -93,11 +95,16 @@ either directly.
    The causal link is demonstrated for the segment, not for the array; closing
    it would take a padded-array variant sweeping offsets 0 to 7.
 3. **The speedup over the scalar baseline is larger for the segment (8.8x)
-   than for the array (7.1x) at 1024, and it is not because the vector kernel
-   is better.** It is because the baselines differ: `segmentScalar` is purely
-   scalar (see the disassembly below), while `array` is partly
-   auto-vectorized. The ratio measures the distance from its own starting
-   point, so quote it with the baseline attached or not at all.
+   than for the array (7.1x) at 1024, and the surplus does not come from the
+   baseline.** In time the two scalar baselines are equal: 530.9 against
+   540.0 ns, the segment's even 1.7 percent faster, although it is purely
+   scalar while `array` is partly auto-vectorized. The code shapes differ,
+   the times do not, and a ratio divides by the time. The whole gap sits in
+   the vectorized times, 60.6 against 76.0 ns: 530.9 / 76.0 = 7.0x. So the
+   8.8x is finding 1, the unexplained in-cache advantage of `segmentVector`,
+   seen through a ratio. Quote it with that attached or not at all.
+   (Corrected 2026-09-07 after review: the earlier text attributed the
+   surplus to a "weaker baseline", which the numbers contradict.)
 4. **The ratio still collapses with the working set**, 7.1x to 4.7x to 1.6x,
    and section 6 of the article is that collapse: the wall moves from the
    order of the additions to the arrival of the data.
@@ -326,11 +333,12 @@ thing in the same place.
   programmer declares the structure, one partial sum per lane, and **gives up
   the sequential order explicitly**; the compiler cannot infer that from the
   scalar loop, which is why it has to build the extract-and-add staircase.
-- **Quote every ratio with its baseline.** `segmentScalar / segmentVector` is
-  8.8x against 7.1x for the array pair, which reads as if the segment kernel
-  were better. It is not: the direct comparison is 20 percent, and the 8.8x is
-  inflated by a worse starting point, the unvectorized scalar segment loop. A
-  ratio measures distance from its own baseline, and these baselines differ.
+- **Quote every ratio with what it divides.** `segmentScalar / segmentVector`
+  is 8.8x against 7.1x for the array pair, which reads as if the segment
+  kernel were better. The scalar baselines are equal in time (530.9 against
+  540.0 ns), so the surplus is not a baseline artefact: it is the 20 percent
+  in-cache advantage of `segmentVector` over `arrayVector`, whose cause is
+  open. Say that, or quote only the direct comparison.
 - **`List<Double>` is the size-dependent one**: 1.11x at 1024, 1.07x at 65 536,
   then 2.87x at 16 M. Boxing and pointer chasing become visible exactly when the
   memory hierarchy starts to dominate.
