@@ -49,7 +49,7 @@ which do not depend on one.
 
 | size | list | array | segmentScalar | arrayVector | segmentVector | arrayLoadControl |
 |---|---|---|---|---|---|---|
-| 1 024 | 599.5 ± 9.1 ns | 540.0 ± 4.0 ns | 530.9 ± 4.5 ns | 76.0 ± 7.2 ns | **60.6 ± 1.0 ns** | 77.2 ± 6.8 ns |
+| 1 024 | 599.5 ± 9.1 ns | 540.0 ± 4.0 ns | 530.8 ± 4.5 ns | 76.0 ± 7.2 ns | **60.6 ± 1.0 ns** | 77.2 ± 6.8 ns |
 | 65 536 | 39.28 ± 0.46 µs | 36.60 ± 0.36 µs | 35.37 ± 0.43 µs | 7.82 ± 0.21 µs | **7.04 ± 0.22 µs** | 7.53 ± 0.20 µs |
 | 16 M | 29.04 ± 0.56 ms | 10.13 ± 0.15 ms | 9.87 ± 0.06 ms | 6.19 ± 0.05 ms | 6.29 ± 0.07 ms | **6.11 ± 0.02 ms** |
 
@@ -96,11 +96,11 @@ segments not escaping, without proving either directly.
    it would take a padded-array variant sweeping offsets 0 to 7.
 3. **The speedup over the scalar baseline is larger for the segment (8.8x)
    than for the array (7.1x) at 1024, and the surplus does not come from the
-   baseline.** In time the two scalar baselines are equal: 530.9 against
+   baseline.** In time the two scalar baselines are equal: 530.8 against
    540.0 ns, the segment's even 1.7 percent faster, although it is purely
    scalar while `array` is partly auto-vectorized. The code shapes differ,
    the times do not, and a ratio divides by the time. The whole gap sits in
-   the vectorized times, 60.6 against 76.0 ns: 530.9 / 76.0 = 7.0x. So the
+   the vectorized times, 60.6 against 76.0 ns: 530.8 / 76.0 = 7.0x. So the
    8.8x is finding 1, the unexplained in-cache advantage of `segmentVector`,
    seen through a ratio. Quote it with that attached or not at all.
    (Corrected 2026-09-07 after review: the earlier text attributed the
@@ -335,7 +335,7 @@ thing in the same place.
   scalar loop, which is why it has to build the extract-and-add staircase.
 - **Quote every ratio with what it divides.** `segmentScalar / segmentVector`
   is 8.8x against 7.1x for the array pair, which reads as if the segment
-  kernel were better. The scalar baselines are equal in time (530.9 against
+  kernel were better. The scalar baselines are equal in time (530.8 against
   540.0 ns), so the surplus is not a baseline artefact: it is the 20 percent
   in-cache advantage of `segmentVector` over `arrayVector`, whose cause is
   open. Say that, or quote only the direct comparison.
