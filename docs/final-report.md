@@ -1,7 +1,7 @@
 # Final session report: the five variants, measured together
 
 The controlled session the whole lab was built for: one machine state, one
-build, every file the article can quote. Run with `scripts/session.sh final`
+build, every file the reports quote. Run with `scripts/session.sh final`
 on 2026-08-26, commit `bf5a096`, JDK 25.0.4, Ryzen 9 7950X3D, Blackhole mode
 `compiler`, pinned to `8-15,24-31`. The full state is in
 `results/session/2026-08-26-final-manifest.txt`, which records the governor and perf
@@ -34,10 +34,12 @@ citable: the profiler perturbs the run.
 **A note on the disassembler.** All five listings here decode completely,
 because this session used an LLVM-backed hsdis built by `scripts/build-hsdis.sh`.
 An earlier session used a capstone-backed one, and capstone 4.0.2, the newest
-this distribution ships, does not cover every AVX-512 encoding: six
-instructions per file came out as `.byte 0x62`, the EVEX prefix, followed by
-mnemonics belonging to no real instruction, deterministically in the two
-kernels that load through `DoubleVector.fromArray`.
+Ubuntu 24.04 ships, fails on one AVX-512 encoding, a zmm memory operand
+with base and index both in `r8` to `r15`: six instructions per file came
+out as `.byte 0x62`, the EVEX prefix, followed by mnemonics belonging to no
+real instruction. Which kernels were hit depended on the registers C2 had
+allocated in that run, not on the kernel; the details are in
+`docs/reading-perfasm.md`.
 
 That is worth recording because reading such a listing literally leads to a
 wrong conclusion: it showed `arrayVector` with a different instruction mix from
@@ -106,7 +108,7 @@ segments not escaping, without proving either directly.
    (Corrected 2026-09-07 after review: the earlier text attributed the
    surplus to a "weaker baseline", which the numbers contradict.)
 4. **The ratio still collapses with the working set**, 7.1x to 4.7x to 1.6x,
-   and section 6 of the article is that collapse: the wall moves from the
+   and that collapse is the point: the wall moves from the
    order of the additions to the arrival of the data.
 5. `list` at 16 M is 29.0 ms, 2.9x the primitive array, stable across every
    session so far.
@@ -117,8 +119,7 @@ segments not escaping, without proving either directly.
 
 ## Perfasm at 1024: three ways to add the same numbers
 
-Instruction mix inside the hot loop, one file per variant. This is the table
-for section 4 of the article.
+Instruction mix inside the hot loop, one file per variant.
 
 | | segmentScalar | array (auto-vectorized) | arrayVector | segmentVector |
 |---|---|---|---|---|
@@ -289,7 +290,7 @@ cycles. Whatever it is, it is not extra work.
   closes it.
 - Every quoted figure in M1 to M4 is superseded by the tables above.
 
-## Direction for the article
+## What the lab says
 
 The lab does not say that the Vector API and `MemorySegment` are faster. It
 says that the JVM now lets a program make explicit two things the object model
@@ -310,10 +311,10 @@ thing in the same place.
   **alignment has become an explicit parameter of the memory model**, and it
   buys double digits exactly where the data no longer fits. What it does not
   explain is why the segment is ahead of the array in cache, which the same
-  experiment rules out as an alignment effect and leaves open. **For the
-  article, use the 16 M result and stop there.** The bimodality at 1024 is
-  worth keeping in the lab, but in a section on layout it would derail the
-  argument for a phenomenon whose cause is unidentified.
+  experiment rules out as an alignment effect and leaves open. **Quote the
+  16 M result and stop there.** The bimodality at 1024 is worth keeping in
+  the lab, but in an argument about layout it would derail the point for a
+  phenomenon whose cause is unidentified.
 - **Section 3**, on layout: `ValueLayout.JAVA_DOUBLE` requires only the
   natural 8-byte alignment of a `double`, while the program can request a
   stronger one for a wider access pattern. In the controlled 16 M experiment,
@@ -352,8 +353,7 @@ thing in the same place.
 - The slow mode at 1024 is uncharacterized. One precise measurement would
   close it: log `segment.address() & 63` for both segments on every fork and
   correlate it with that fork's time. If the 88.7 ns fork sits at a particular
-  offset and the 60 ns ones elsewhere, the mechanism is settled. Not needed for
-  the article.
+  offset and the 60 ns ones elsewhere, the mechanism is settled.
 - Why the segment is ahead of the array in cache is open. Same loop body, more
   instructions, better CPI: the time goes somewhere the counters at 1024 are
   too noisy to show, and the alignment experiment has ruled out the obvious
@@ -363,7 +363,7 @@ thing in the same place.
 - The `segmentScalar` advantage over `array` has been unexplained across every
   session: 3.4 percent at 65 536 and 2.5 percent at 16 M here, outside the error
   bars, inside them in the previous session. Either profile at those sizes or
-  keep it out of the article.
+  do not quote it.
 - `segmentVector` trails `arrayVector` at 16 M by 1.7 percent in this session,
   with intervals that just touch, and by 1.3 percent in the ten-fork experiment,
   where they separate. The seven address instructions per iteration are the

@@ -12,7 +12,7 @@ size 1024 in `docs/final-report.md`.
 `scripts/session.sh`: all five variants plus the bandwidth control, measured
 under a single machine state, with a manifest recording that state as it
 actually was, including the JVM layout flags and which disassembler produced
-the listings. If you want a number for the article, take it from here. The
+the listings. If you want a citable number, take it from here. The
 whole directory is reproducible with one command, which is the point of it:
 
 ```bash
@@ -27,7 +27,7 @@ interchangeable with the session figures.
 **`archive/`** holds the milestone runs M1 to M4, which document how the
 investigation proceeded: the auto-vectorization of the array baseline, the
 alignment regression and the hypotheses discarded along the way. **They are
-superseded.** Do not quote them for the article: the machine state, the
+superseded.** Do not quote them: the machine state, the
 benchmark state isolation and the segment alignment all changed afterwards.
 Their reports live in `docs/archive/` and open with the same warning.
 
@@ -47,8 +47,8 @@ profiler perturbs the run, and in at least one case it also shifts which mode a
 variant lands in.
 
 Check which disassembler produced a listing before reading it. The manifest
-records it, and the files in `archive/` were taken with a capstone-backed hsdis
-whose 4.0.2 release leaves some AVX-512 encodings as `.byte 0x62` followed by
-mnemonics belonging to no real instruction. Read one of those literally and you
-conclude that two kernels compile differently when they do not. The session
-files use the LLVM backend from `scripts/build-hsdis.sh` and decode completely.
+records it. The files in `archive/` were taken with a capstone-backed hsdis
+whose 4.0.2 release leaves one AVX-512 encoding undecoded; they happen to be
+clean, but a listing from that decoder is only trustworthy once checked for
+`.byte 0x62` lines, see `docs/reading-perfasm.md`. The session files use the
+LLVM backend from `scripts/build-hsdis.sh` and decode completely.

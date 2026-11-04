@@ -62,7 +62,31 @@ Fraction of perf samples landing on that instruction. Two caveats: sampling
 spent the time, so read clusters, not single lines; and percentages are of
 the whole run, including regions not shown.
 
-## 6. Intel syntax, if preferred
+## 6. Know your decoder
+
+hsdis is a thin wrapper around a disassembler library, and the listing is
+only as good as that library. The lab's first full session used the capstone
+backend with capstone 4.0.2, the version Ubuntu 24.04 LTS ships for its
+whole support period. That release fails on one EVEX encoding: a zmm memory
+operand whose base and index registers are both in `r8` to `r15`. The
+instruction comes out as `.byte 0x62`, the EVEX prefix, followed by the
+remaining bytes decoded as mnemonics that belong to no real instruction.
+Either register extended on its own decodes correctly, so whether a kernel
+is affected depends on the registers C2 happened to allocate in that run,
+not on the kernel: the same `arrayVector` loop decoded cleanly in one
+session, with `rbp` and `rbx`, and lost six instructions in the next, with
+`r8` and `r11`. Read literally, that listing said `arrayVector` and
+`segmentVector` compile to different loop bodies; with a working decoder
+they are identical.
+
+Capstone 5.0 decodes the encoding, and every distribution after Ubuntu
+24.04 ships that series. `scripts/build-hsdis.sh` sidesteps the question by
+building hsdis on the LLVM backend, and the session manifest records which
+backend produced each listing. If a loop body looks structurally wrong,
+suspect the decoder before the compiler and cross-check against the
+instruction counters from `-prof perfnorm`, which do not depend on it.
+
+## 7. Intel syntax, if preferred
 
 perfasm can emit it directly (destination first, no `%`, memory as
 `[rdi+rsi*8+0x150]`):
@@ -73,7 +97,7 @@ perfasm can emit it directly (destination first, no `%`, memory as
 
 Pick one syntax and stay consistent across archived files.
 
-## 7. References
+## 8. References
 
 - **felixcloutier.com/x86** — per-instruction reference (what exactly
   `vpshufd` does with `$0xe`); Intel syntax.

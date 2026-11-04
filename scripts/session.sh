@@ -1,7 +1,7 @@
 #! /bin/bash
 #
 # One full measurement session: one machine state, one manifest, every file
-# the article can quote. Run it from the repo root:
+# the reports quote. Run it from the repo root:
 #
 #   scripts/session.sh final                         # any core, scheduler decides
 #   BENCH_PIN=8-15,24-31 scripts/session.sh final    # pinned to one CCD
